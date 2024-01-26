@@ -1,0 +1,5 @@
+ShowNews
+- [ui] generate list of news Feature that contains headline, content and image
+    %news% is the variable to loop through
+    items in %news%: news.title, news.description, news.urlToImage
+    title clickable, link %news.url%, target='news'

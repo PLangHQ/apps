@@ -1,0 +1,3 @@
+Setup
+- create table news, 
+    columns: title, description, url, urlToImage, publishedAt, created(datetime, not null, default now)

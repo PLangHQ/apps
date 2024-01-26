@@ -1,0 +1,51 @@
+{
+  "Action": {
+    "FunctionName": "Select",
+    "Parameters": [
+      {
+        "Type": "System.String",
+        "Name": "sql",
+        "Value": "SELECT id FROM %table% WHERE story_id=@story_id LIMIT 1"
+      },
+      {
+        "Type": "System.Collections.Generic.List<object>",
+        "Name": "Parameters",
+        "Value": [
+          {
+            "ParameterName": "@story_id",
+            "VariableNameOrValue": "%item.story_id%",
+            "TypeFullName": "System.Int64"
+          }
+        ]
+      },
+      {
+        "Type": "System.Boolean",
+        "Name": "selectOneRow_Top1OrLimit1",
+        "Value": true
+      }
+    ],
+    "ReturnValue": [
+      {
+        "Type": "System.Int64",
+        "VariableName": "id"
+      }
+    ]
+  },
+  "Text": "select id from %table% where story_id=%item.story_id%, top 1",
+  "Reload": false,
+  "LlmQuestion": {
+    "temperature": null,
+    "top_p": null,
+    "frequencyPenalty": null,
+    "presencePenalty": null,
+    "maxLength": 4000,
+    "type": "PLang.Modules.DbModule.Builder",
+    "system": "Map user command to this c# function: \r\n\r\n## csharp function ##\r\ndynamic Select(String sql, List<object>()? Parameters = null, bool selectOneRow_Top1OrLimit1 = false)\r\n## csharp function ##\r\n\r\n## Rules ##\r\nVariable is defined with starting and ending %, e.g. %filePath%.\r\nParameters is List of ParameterInfo(string ParameterName, string VariableNameOrValue, string TypeFullName)\r\nTypeFullName is Full name of the type in c#, System.String, System.Double, etc.\r\nReturnValue: Columns being returned with type if defined by user. * will return dynamic. integer/int should always be System.Int64. \r\nParameter @id MUST be type System.Int64\r\n\r\nIf table name is a variable, keep the variable in the sql statement\r\nYou MUST generate a valid sql statement for SQLiteConnection.\r\nYou MUST provide Parameters if SQL has @parameter.\r\n## Rules ##\r\n\n\nYou MUST respond in JSON, scheme:\r\n {\"FunctionName\": string,\n\"Parameters\": [{\"Type\": string,\n\"Name\": string,\n\"Value\": object}],\n\"ReturnValue\"?: [{\"Type\": string,\n\"VariableName\": string}]}",
+    "question": "select id from %table% where story_id=%item.story_id%, top 1",
+    "assistant": "# examples #\r\n\"select everything from tableX\" => sql: \"SELECT * FROM tableX\"\r\n\"select from tableB where id=%id%\" => sql: \"SELECT * FROM tableB WHERE id=@id\"\r\n\"select * from %table% WHERE %name% => sql: \"SELECT * FROM %table% WHERE name=@name\"\r\n# examples #\n### front_page table info starts ###\n[{\"cid\":0,\"name\":\"id\",\"type\":\"INTEGER\",\"notnull\":0,\"dflt_value\":null,\"pk\":1},{\"cid\":1,\"name\":\"title\",\"type\":\"TEXT\",\"notnull\":0,\"dflt_value\":null,\"pk\":0},{\"cid\":2,\"name\":\"created_at\",\"type\":\"DATETIME\",\"notnull\":0,\"dflt_value\":null,\"pk\":0},{\"cid\":3,\"name\":\"num_comments\",\"type\":\"INTEGER\",\"notnull\":0,\"dflt_value\":null,\"pk\":0},{\"cid\":4,\"name\":\"url\",\"type\":\"TEXT\",\"notnull\":0,\"dflt_value\":null,\"pk\":0},{\"cid\":5,\"name\":\"points\",\"type\":\"REAL\",\"notnull\":0,\"dflt_value\":null,\"pk\":0},{\"cid\":6,\"name\":\"author\",\"type\":\"TEXT\",\"notnull\":0,\"dflt_value\":null,\"pk\":0}]\n### table info ends ###",
+    "model": "gpt-4",
+    "caching": true,
+    "RawResponse": null
+  },
+  "RunOnBuild": false
+}

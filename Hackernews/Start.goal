@@ -1,0 +1,25 @@
+Start
+- start window app, call LoadHackerNews
+- call GetHackerNews run and forget
+- every 10 minutes, call GetHackerNews
+
+LoadHackerNews
+- select * from front_page, newest first, write to %items%
+- call !ShowItems
+
+GetHackerNews
+- GET https://hn.algolia.com/api/v1/search?tags=front_page
+    write to %items%
+- foreach %items.hits%, call ProcessItem table='front_page'
+- call !LoadHackerNews
+
+ProcessItem
+- select id from %table% where story_id=%item.story_id%, top 1
+- if %id% is empty, call !InsertItem, call !UpdateItem
+
+InsertItem
+- insert into %table%,
+    columns: %item.story_id%, %item.title%, %item.created_at%, %item.num_comments%, %item.url%, %item.points%, %item.author%
+
+UpdateItem
+- update %table%, set %item.num_comments%, %item.item.points%, WHERE id=%id%

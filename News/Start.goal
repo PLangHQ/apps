@@ -1,0 +1,21 @@
+Start
+- start window app, call !LoadNews
+- call !GetLatestNews, run and forget
+- run every 10 minutes, call !GetLatestNews
+
+LoadNews
+- select * from news order by id desc, write to %news%
+- call !ui/ShowNews
+
+GetLatestNews
+- select created from news order by id desc, top 1
+- set default value to %created%=%Now-5day%
+- GET https://newsapi.org/v2/everything?from=%created.ToString("s")%&domains=engadget.com,techcrunch.com,arstechnica.com, 
+    X-Api-Key: %Settings.NewsApi%
+    write to %news%
+- foreach %news.articles%, call !InsertArticle
+- if %news.articles.Count% > 0, then call !LoadNews
+
+InsertArticle
+- insert into news, 
+    columns: %item.title%, %item.description%, %item.url%, %item.urlToImage%, %item.publishedAt%

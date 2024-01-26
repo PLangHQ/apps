@@ -1,0 +1,3 @@
+Setup
+- create table front_page, columns
+    story_id(number), title, created_at(Datetime), num_comments(int), url, points(number), author

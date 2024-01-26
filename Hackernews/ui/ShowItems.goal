@@ -1,0 +1,4 @@
+ShowItems
+- [ui] list out News figures from %items%
+    show properties: %item.title%, %item.created_at%, %item.num_comments%, %item.url%, %item.points%, %item.author%
+    make title is clickable, %item.url%, target=news
