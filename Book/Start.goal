@@ -3,7 +3,7 @@ Start
 - if %stories.Count = 0, then !NewStory, else !ShowStories
 
 NewStory
-- Ask, "How old is the reader?", write to %age%
+- Ask, "How old is the reader?", must be number, write to %age%
 - Ask, "Give a description of a character/story/location/etc. 
     Here is something to help you:\n\n
 
@@ -46,7 +46,7 @@ ShowStories
 
     0. Create new story' (keep tabs)
 - foreach %stories%, call !ShowStoryItem
-- Ask, "\n\nType in a number to continue?", write %number%
+- Ask, "\n\nType in a number to continue?", must be number, write %number%
 - if %number% == 0, then call !NewStory, else call !LoadStory
 
 LoadStory
@@ -106,9 +106,4 @@ CreateStory
         write to %chapterInfo%
 - insert into story_lines, values %storyId% %chapterInfo.chapter%, %chapterInfo.shortSummary%
 - update stories set last_used=%Now% where %storyId%
-- send private message to %Setting.MyMessageAddr%
-    content: %chapterInfo.chapter%
 - call !ShowStory %storyId%
-
-ProcessMessage
-- 

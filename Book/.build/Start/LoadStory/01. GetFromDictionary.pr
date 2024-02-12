@@ -37,11 +37,13 @@
         "content": [
           {
             "type": "text",
-            "text": "Your job is: \r\n1. Parse user intent\r\n2. Map the intent to one of C# function provided to you\r\n3. Return a valid JSON\r\n\r\nVariable is defined with starting and ending %, e.g. %filePath%. Variables MUST be wrapped in quotes(\") in json response, e.g. { \"name\":\"%name%\" }\r\n\r\nIf there is some api key, settings, config replace it with %Settings.Get(\"settingName\", \"defaultValue\", \"Explain\")% \r\n- settingName would be the api key, config key, \r\n- defaultValue for settings is the usual value given, make it \"\" if no value can be default\r\n- Explain is an explanation about the setting that novice user can understand.\r\n\r\nJSON scheme information\r\nFunctionName: Name of the function to use from list of functions, if no function matches set as \"N/A\"\r\nParameters: List of parameters that are needed according to the user intent.\r\n- Type: the object type in c#\r\n- Name: name of the variable\r\n- Value: \"%variable%\" or hardcode string that should be used\r\nReturnValue: Only if the function returns a value AND if user defines %variable% to write into. If no %variable% is defined then set as null."
+            "text": "Your job is: \r\n1. Parse user intent\r\n2. Map the intent to one of C# function provided to you\r\n3. Return a valid JSON\r\n\r\nVariable is defined with starting and ending %, e.g. %filePath%. \r\nVariables MUST be wrapped in quotes(\") in json response, e.g. { \"name\":\"%name%\" }\r\nVariables should not be changed, they can include dot(.) and parentheses()\r\n\r\nIf there is some api key, settings, config replace it with %Settings.Get(\"settingName\", \"defaultValue\", \"Explain\")% \r\n- settingName would be the api key, config key, \r\n- defaultValue for settings is the usual value given, make it \"\" if no value can be default\r\n- Explain is an explanation about the setting that novice user can understand.\r\n\r\nJSON scheme information\r\nFunctionName: Name of the function to use from list of functions, if no function matches set as \"N/A\"\r\nParameters: List of parameters that are needed according to the user intent.\r\n- Type: the object type in c#\r\n- Name: name of the variable\r\n- Value: \"%variable%\" or hardcode string that should be used\r\nReturnValue rules\r\n- Only if the function returns a value AND if user defines %variable% to write into, e.g. ' write into %data%' or 'into %result%', or simliar intent to write return value into variable\r\n- If no %variable% is defined then set as null.",
+            "image_url": null
           },
           {
             "type": "text",
-            "text": "You MUST respond in JSON, scheme:\r\n {\"FunctionName\": string,\n\"Parameters\": [{\"Type\": string,\n\"Name\": string,\n\"Value\": object}],\n\"ReturnValue\"?: [{\"Type\": string,\n\"VariableName\": string}] = null}"
+            "text": "You MUST respond in JSON, scheme:\r\n {\"FunctionName\": string,\n\"Parameters\": [{\"Type\": string,\n\"Name\": string,\n\"Value\": object}],\n\"ReturnValue\"?: [{\"Type\": string,\n\"VariableName\": string}] = null}",
+            "image_url": null
           }
         ]
       },
@@ -50,7 +52,8 @@
         "content": [
           {
             "type": "text",
-            "text": "## functions available starts ##\r\nBoolean DeleteFromList(Object item, List`1<Object> listInstance) \nBoolean DeleteKeyFromDictionary(String key, Dictionary`2<String, Object> dictionary) \nList`1 AddToList(Object value, List`1<Object>? listInstance)  // Method always returns instance of listInstance, it creates a new instance if it is null. ReturnValue should always be used with AddToList. \nObject GetFromList(Int32 position, List`1<Object>? listInstance)  // Gets an item from a list by position. \nDictionary`2 AddToDictionary(String key, Object value, Dictionary`2<String, Object>? dictionaryInstance, Boolean? updateIfExists = True)  // Method always returns instance of dictionaryInstance, it creates a new instance if it is null. ReturnValue should always be used with AddToDictionary. \nObject GetFromDictionary(String key, Dictionary`2<String, Object>? dictionaryInstance)  // Gets an object from dictionary. ReturnValue should always be used with GetFromDictionary.\r\n## functions available ends ##\r\n## defined variables ##\r\nstories_dict (type:object), number (type:object), storyId (type:System.Int64), \r\n## defined variables ##"
+            "text": "## functions available starts ##\r\nvoid ClearList(List`1<Object> listInstance) \nvoid ClearDictionary(Dictionary`2<String, Object> dictionary) \nBoolean DeleteFromList(Object item, List`1<Object> listInstance) \nBoolean DeleteKeyFromDictionary(String key, Dictionary`2<String, Object> dictionary) \nList`1 AddToList(Object value, List`1<Object>? listInstance)  // Method always returns instance of listInstance, it creates a new instance if it is null. ReturnValue should always be used with AddToList. \nObject GetFromList(Int32 position, List`1<Object>? listInstance)  // Gets an item from a list by position. \nDictionary`2 AddToDictionary(String key, Object value, Dictionary`2<String, Object>? dictionaryInstance, Boolean? updateIfExists = True)  // Method always returns instance of dictionaryInstance, it creates a new instance if it is null. ReturnValue should always be used with AddToDictionary. \nObject GetFromDictionary(String key, Dictionary`2<String, Object>? dictionaryInstance)  // Gets an object from dictionary. ReturnValue should always be used with GetFromDictionary.\r\n## functions available ends ##\r\n## defined variables ##\r\nstories_dict (type:object), number (type:string), storyId (type:System.Int64), \r\n## defined variables ##",
+            "image_url": null
           }
         ]
       },
@@ -59,7 +62,8 @@
         "content": [
           {
             "type": "text",
-            "text": "get from dictionary, %stories_dict%, key %number%, write to %storyId%"
+            "text": "get from dictionary, %stories_dict%, key %number%, write to %storyId%",
+            "image_url": null
           }
         ]
       }
