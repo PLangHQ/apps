@@ -1,0 +1,17 @@
+{
+  "GoalName": "#### Tests\\Message\\Message.goal ####",
+  "Comment": null,
+  "GoalSteps": [],
+  "Description": null,
+  "Visibility": 1,
+  "GoalFileName": "Message.goal",
+  "RelativeGoalPath": "\\Tests\\Message\\Message.goal",
+  "RelativeGoalFolderPath": "\\Tests\\Message",
+  "RelativePrPath": ".build\\Tests\\Message\\Message\\00. Goal.pr",
+  "RelativePrFolderPath": ".build\\Tests\\Message\\Message",
+  "BuilderVersion": "0.1.0.0",
+  "GoalApiInfo": null,
+  "Injections": [],
+  "Signature": null,
+  "Hash": "d6c2029cf9e44b9657603f488ab8aaf64ede930f6c3165cebcf2cf39be38ff91"
+}

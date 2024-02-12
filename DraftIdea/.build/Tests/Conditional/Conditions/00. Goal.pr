@@ -1,0 +1,17 @@
+{
+  "GoalName": "#### Tests\\Conditional\\Conditions.goal ####",
+  "Comment": null,
+  "GoalSteps": [],
+  "Description": null,
+  "Visibility": 1,
+  "GoalFileName": "Conditions.goal",
+  "RelativeGoalPath": "\\Tests\\Conditional\\Conditions.goal",
+  "RelativeGoalFolderPath": "\\Tests\\Conditional",
+  "RelativePrPath": ".build\\Tests\\Conditional\\Conditions\\00. Goal.pr",
+  "RelativePrFolderPath": ".build\\Tests\\Conditional\\Conditions",
+  "BuilderVersion": "0.1.0.0",
+  "GoalApiInfo": null,
+  "Injections": [],
+  "Signature": null,
+  "Hash": "9b9193237147bbaa952b6966c8725cd94707a9ed3649d0adc26c60624d7e338e"
+}

@@ -1,0 +1,17 @@
+{
+  "GoalName": "#### Tests\\Compression\\Compression.goal ####",
+  "Comment": null,
+  "GoalSteps": [],
+  "Description": null,
+  "Visibility": 1,
+  "GoalFileName": "Compression.goal",
+  "RelativeGoalPath": "\\Tests\\Compression\\Compression.goal",
+  "RelativeGoalFolderPath": "\\Tests\\Compression",
+  "RelativePrPath": ".build\\Tests\\Compression\\Compression\\00. Goal.pr",
+  "RelativePrFolderPath": ".build\\Tests\\Compression\\Compression",
+  "BuilderVersion": "0.1.0.0",
+  "GoalApiInfo": null,
+  "Injections": [],
+  "Signature": null,
+  "Hash": "86704ad8e1f3c1acac277bfad00f00507fbb45da095c512399d8d318cf4ae170"
+}

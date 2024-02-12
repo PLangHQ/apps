@@ -1,0 +1,17 @@
+{
+  "GoalName": "#### Tests\\Blockchain\\ListenToBlock.goal ####",
+  "Comment": null,
+  "GoalSteps": [],
+  "Description": null,
+  "Visibility": 0,
+  "GoalFileName": "ListenToBlock.goal",
+  "RelativeGoalPath": "\\Tests\\Blockchain\\ListenToBlock.goal",
+  "RelativeGoalFolderPath": "\\Tests\\Blockchain",
+  "RelativePrPath": ".build\\Tests\\Blockchain\\ListenToBlock\\#### Tests\\Blockchain\\ListenToBlock.goal ####\\00. Goal.pr",
+  "RelativePrFolderPath": ".build\\Tests\\Blockchain\\ListenToBlock\\#### Tests\\Blockchain\\ListenToBlock.goal ####",
+  "BuilderVersion": "0.1.0.0",
+  "GoalApiInfo": null,
+  "Injections": [],
+  "Signature": null,
+  "Hash": "e9fe7ac57430fca04ee52c56206570782b26b40e39622b3489dd8240534b19ad"
+}

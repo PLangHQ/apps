@@ -34,7 +34,7 @@
       },
       "Number": 1,
       "LineNumber": 1,
-      "LlmQuestion": null
+      "LlmRequest": null
     },
     {
       "Text": "before goal ends, include private goals, call !SendDebug, only in debug mode",
@@ -68,7 +68,7 @@
       },
       "Number": 2,
       "LineNumber": 2,
-      "LlmQuestion": null
+      "LlmRequest": null
     }
   ],
   "Description": null,

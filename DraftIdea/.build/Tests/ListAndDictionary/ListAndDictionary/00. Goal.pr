@@ -1,0 +1,17 @@
+{
+  "GoalName": "#### Tests\\ListAndDictionary\\ListAndDictionary.goal ####",
+  "Comment": null,
+  "GoalSteps": [],
+  "Description": null,
+  "Visibility": 1,
+  "GoalFileName": "ListAndDictionary.goal",
+  "RelativeGoalPath": "\\Tests\\ListAndDictionary\\ListAndDictionary.goal",
+  "RelativeGoalFolderPath": "\\Tests\\ListAndDictionary",
+  "RelativePrPath": ".build\\Tests\\ListAndDictionary\\ListAndDictionary\\00. Goal.pr",
+  "RelativePrFolderPath": ".build\\Tests\\ListAndDictionary\\ListAndDictionary",
+  "BuilderVersion": "0.1.0.0",
+  "GoalApiInfo": null,
+  "Injections": [],
+  "Signature": null,
+  "Hash": "5155ebd3fc8da10feb5a154dd64ad8cf54c31cd4e37b9aaeab0d77e63b2debb7"
+}

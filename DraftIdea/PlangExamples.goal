@@ -1,7 +1,12 @@
 PlangExamples
-- get all *.goal files from '../Tests/, write to %testFiles%
+/ you will need the https://github.com/PLangHQ/plang repository for the Tests folder
+- get content of all *.goal files from '../../plang/Tests/' and subfolders, write to %testFiles%
 - foreach %testFiles%, call !AppendFile
-- write to output/plangexample.txt
+- write %content% to plangexample.txt
 
 AppendFile
+- [code] remove anything that comes before 'Tests' in %item.Path%(string)
+    write to %fileName%
+- append to var %content%, "#### Start of %fileName% ####\n"
 - append %item.Content% to var %content%, seperator two new lines
+- append to var %content%, "#### End of %fileName% ####\n"

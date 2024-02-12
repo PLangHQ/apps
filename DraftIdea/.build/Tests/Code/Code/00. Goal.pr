@@ -1,0 +1,17 @@
+{
+  "GoalName": "#### Tests\\Code\\Code.goal ####",
+  "Comment": null,
+  "GoalSteps": [],
+  "Description": null,
+  "Visibility": 1,
+  "GoalFileName": "Code.goal",
+  "RelativeGoalPath": "\\Tests\\Code\\Code.goal",
+  "RelativeGoalFolderPath": "\\Tests\\Code",
+  "RelativePrPath": ".build\\Tests\\Code\\Code\\00. Goal.pr",
+  "RelativePrFolderPath": ".build\\Tests\\Code\\Code",
+  "BuilderVersion": "0.1.0.0",
+  "GoalApiInfo": null,
+  "Injections": [],
+  "Signature": null,
+  "Hash": "939093c4c279e10b13afd90b02f76e820aab93a3440f412a798f06fa038744dd"
+}

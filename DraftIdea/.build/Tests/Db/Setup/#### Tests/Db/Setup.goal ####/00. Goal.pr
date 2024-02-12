@@ -1,0 +1,17 @@
+{
+  "GoalName": "#### Tests\\Db\\Setup.goal ####",
+  "Comment": null,
+  "GoalSteps": [],
+  "Description": null,
+  "Visibility": 0,
+  "GoalFileName": "Setup.goal",
+  "RelativeGoalPath": "\\Tests\\Db\\Setup.goal",
+  "RelativeGoalFolderPath": "\\Tests\\Db",
+  "RelativePrPath": ".build\\Tests\\Db\\Setup\\#### Tests\\Db\\Setup.goal ####\\00. Goal.pr",
+  "RelativePrFolderPath": ".build\\Tests\\Db\\Setup\\#### Tests\\Db\\Setup.goal ####",
+  "BuilderVersion": "0.1.0.0",
+  "GoalApiInfo": null,
+  "Injections": [],
+  "Signature": null,
+  "Hash": "855becc84072e5b8dd3f29d63165cf1449eb0a131a8d0713c5be0dc327bd1db2"
+}

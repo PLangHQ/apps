@@ -1,0 +1,17 @@
+{
+  "GoalName": "#### Tests\\Events\\SendDebug.goal ####",
+  "Comment": null,
+  "GoalSteps": [],
+  "Description": null,
+  "Visibility": 0,
+  "GoalFileName": "SendDebug.goal",
+  "RelativeGoalPath": "\\Tests\\Events\\SendDebug.goal",
+  "RelativeGoalFolderPath": "\\Tests\\Events",
+  "RelativePrPath": ".build\\Tests\\Events\\SendDebug\\#### Tests\\Events\\SendDebug.goal ####\\00. Goal.pr",
+  "RelativePrFolderPath": ".build\\Tests\\Events\\SendDebug\\#### Tests\\Events\\SendDebug.goal ####",
+  "BuilderVersion": "0.1.0.0",
+  "GoalApiInfo": null,
+  "Injections": [],
+  "Signature": null,
+  "Hash": "d630c30e8a235c3d36062f1646638bda62ecb1f233c94c0986f4269ba5bb7074"
+}

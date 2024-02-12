@@ -1,3 +1,5 @@
+#### Start of Tests\Start.goal ####
+
 Start
 - get content of all '.goal' files, write to %files%
 - write out %files%
@@ -13,6 +15,10 @@ LoadText
     === %moduleName% ends ===
     
     '
+#### End of Tests\Start.goal ####
+
+#### Start of Tests\Blockchain\Examples.goal ####
+
 Examples
 - [block] get current rpc server, write to %server%
 - write out %server.ToJson()%
@@ -30,6 +36,10 @@ Examples
 - [block] get decimal of 0x0FA8781a83E46826621b3BC094Ea2A0212e71B23, write to %decimal%
 - [block] get symbol of 0x0FA8781a83E46826621b3BC094Ea2A0212e71B23, write to %symbol%
 - write out '%symbol% has the %decimal% decimals"
+#### End of Tests\Blockchain\Examples.goal ####
+
+#### Start of Tests\Blockchain\ListenerToUSDCTransfer.goal ####
+
 ListenerToUSDCTransfer
 - set chain, matic
 - listen to usdc, Transfer event , call !Transfer
@@ -42,6 +52,10 @@ Transfer
 
 WriteOutSetupMessage
 - write out 'You need to setup rpc server, call plang settings in terminal'
+#### End of Tests\Blockchain\ListenerToUSDCTransfer.goal ####
+
+#### Start of Tests\Blockchain\ListenToBlock.goal ####
+
 ListenToBlock
 / default rpc server dont work. You can use websocket from Infra or Alchemy or other
 - listen to new block, call !BlockEvent
@@ -49,6 +63,10 @@ ListenToBlock
 BlockEvent
 - write out "timestamp:%timestamp% | lastBlockNotification:%lastBlockNotification%
 - write out block: %block.ToJson()%
+#### End of Tests\Blockchain\ListenToBlock.goal ####
+
+#### Start of Tests\Caching\Caching.goal ####
+
 Caching
 - cache %Now-1year% to 'lastYear'
 - get cache 'lastYear', write to %cachedItem%
@@ -60,28 +78,39 @@ Caching
     cache for 10 minutes, key 'weatherData'
 - get cache 'weatherData', write to %cachedWeatherData%
 - write out  %cachedWeatherData%
+#### End of Tests\Caching\Caching.goal ####
+
+#### Start of Tests\CallGoal\CallGoal.goal ####
+
 CallGoal
 - set variable %greetings% to 'Hello'
 - call !Show %greetings%, time=%Now% / greetings & Now are parameters
 / Here we call apps/HelloWorld/Start.goal, if it is not install it will install it.
-- call !HelloWorld/Start
-/ - call !Ffmpeg.ConvertToMp4 inputFile='myvideo.mov', outputPath='myvideo.mp4'
+- call !apps/HelloWorld/Start
 
 Show
 - write out '%greetings% PLang world at %time%'
+#### End of Tests\CallGoal\CallGoal.goal ####
+
+#### Start of Tests\Code\Code.goal ####
+
 Code
-- set %name% as 'Toby Flenderson'
-- [code] get first  name of %name%, write to %firstName%
+- set %name%(string) as 'Toby Flenderson'
+- [code] get first  name of %name%,  write to %firstName%
 - write out %firstName%
 - [code] get last name of %name%, write to %lastName%
 - write out %lastName%
 - [code] uppercase %name%, write to %uppercaseName%
 - write out %uppercaseName%
-- [code] create string of list with 10 rows of random data, write to %list%
+- [code] create string of list with 10 rows of random list data, write to %list%
 - write out %list.ToJson()%
 - set %fileNameWithExtension% as 'video.mp4'
 - [code] remove file extension from %fileNameWithExtension%, write to %fileName%
 - write out %fileName%
+#### End of Tests\Code\Code.goal ####
+
+#### Start of Tests\Compression\Compression.goal ####
+
 Compression
 - delete  dir ./extract
 - compress file.txt to file.zip
@@ -93,13 +122,29 @@ Compression
 - delete file.zip
 - delete dir  ./extract
 
+#### End of Tests\Compression\Compression.goal ####
+
+#### Start of Tests\Conditional\Conditions.goal ####
+
+/ Note: There is no "- else ..." step in plang conditions.
 Conditions
 - set var 'Valid' as  true
-- if %Valid% (bool) then 
+- if %Valid% (bool) then call !IsValid, else call !NotValid
     - write out 'It is valid'
 - set var 'NotValid' as false
 - if %NotValid% is false then
     - write out 'Not valid variable is set to false'
+
+IsValid
+- write out 'it is valid'
+
+NotValid
+- write out 'it is not valid'
+
+#### End of Tests\Conditional\Conditions.goal ####
+
+#### Start of Tests\Cryptographic\Cryptographic.goal ####
+
 Cryptographic
 - set var %text% to 'Hello PLang world'
 - encrypt %text%, write to %encryptedText%
@@ -116,18 +161,30 @@ Cryptographic
 - validate bearer token %bearer%, write to %isValidBearer%
 - if %isValidBearer% then
     - write out 'bearer is valid'
+#### End of Tests\Cryptographic\Cryptographic.goal ####
+
+#### Start of Tests\CultureInfo\CultureInfo.goal ####
+
 CultureInfo
 - set culture to is-is
 - write out %Now%
 - set culture to en-US
 - write out %Now%
+#### End of Tests\CultureInfo\CultureInfo.goal ####
+
+#### Start of Tests\Db\Setup.goal ####
+
 Setup
 - create table tasks, columns decription(not null), due_date(datetime, not null), created(datetime, default now)
 - alter table tasks, add column: completed(bit)
 - add unqiue index to table task, on description and due_date
 - create table items, columns: name(string, not null)
 
-Tasks
+#### End of Tests\Db\Setup.goal ####
+
+#### Start of Tests\Db\Start.goal ####
+
+Start
 - set var 'description' as 'This is a task description'
 - set var due_date as %Now+5days%
 - add rows into items, name='John'
@@ -151,9 +208,17 @@ Tasks
 
 PrintOut
 - write %item.description% - %item.due_date%
+#### End of Tests\Db\Start.goal ####
+
+#### Start of Tests\Events\Events.goal ####
+
 Events
 - before each step, include private goals,call !SendDebug, only in debug mode
 - before goal ends, include private goals, call !SendDebug, only in debug mode
+
+#### End of Tests\Events\Events.goal ####
+
+#### Start of Tests\Events\SendDebug.goal ####
 
 SendDebug
 - post http://localhost:60877/ 
@@ -174,6 +239,10 @@ SendDebug
 
 GoToLine
 - set %__StepIndex__% as %line%
+#### End of Tests\Events\SendDebug.goal ####
+
+#### Start of Tests\File\File.goal ####
+
 File
 - read '1px.png', into %base64%
 - write out %base64%
@@ -209,6 +278,10 @@ PrintOutExcel
 
 PrintOutCSV
 - write out %item%
+#### End of Tests\File\File.goal ####
+
+#### Start of Tests\Http\Http.goal ####
+
 Http
 - GET https://httpbin.org/get, write to %getResponse%
 - write out 'UserAgent: %getResponse.headers.User-Agent% , ip: %getResponse.origin%'
@@ -227,6 +300,10 @@ Http
 - write out %delResponse%
 - patch https://httpbin.org/patch, write to %patchResponse%
 - write out %patchResponse%
+#### End of Tests\Http\Http.goal ####
+
+#### Start of Tests\Identity\Identity.goal ####
+
 Identity
 - write out 'My identity: %MyIdentity%'
 - get my identity, write %myCurrentIdentity%
@@ -245,33 +322,52 @@ Identity
 - write out 'Signature: %signature%'
 - validate signature, %body%, %method%, %url%, %signature%, write to %address%
 - write out 'This is the address: %address%
+#### End of Tests\Identity\Identity.goal ####
+
+#### Start of Tests\InjectDb\Setup.goal ####
+
 Setup
 - create datasource 'mydb'
 - Create table users, columns name(not null), email(not null)
 
+#### End of Tests\InjectDb\Setup.goal ####
+
+#### Start of Tests\InjectDb\Start.goal ####
+
 Start
+/ You need postgresql running for this to work
 - set datasource 'my_postgresql'
 - write out 'Start db injection'
 - SELECT version(); write to %version%
 - write out 'Version: %version%'
 
+#### End of Tests\InjectDb\Start.goal ####
+
+#### Start of Tests\InjectOpenAI\DoStuff.goal ####
+
 DoStuff
 - write out  'DoStuff called'
-@llm=PLangOpenAIModule
+#### End of Tests\InjectOpenAI\DoStuff.goal ####
 
-Events
-- Before each goal, call !DoStuff
+#### Start of Tests\InjectOpenAI\LlmTest.goal ####
+
 / This should not use the injected llm service
 LlmTest
 - [llm] system: Say hello again to  me
 		{hello:string}
 - write out 'Response: %hello%'
-@llm=PLangOpenAIModule
+#### End of Tests\InjectOpenAI\LlmTest.goal ####
+
+#### Start of Tests\InjectOpenAI\Start.goal ####
 
 Start
 - [llm] system: Say hello to  me
 		{hello:string}
 - write out 'Response: %hello%'
+#### End of Tests\InjectOpenAI\Start.goal ####
+
+#### Start of Tests\ListAndDictionary\ListAndDictionary.goal ####
+
 ListAndDictionary
 - add [{"name":"Product1", "price":123}, {"name":"Product2", "price":222}] to list, write to %products%
 - add {"name":"Product3", "price":333} to %products%
@@ -288,6 +384,10 @@ ShowProduct
 
 ShowHello
 - write out %item.Value%
+#### End of Tests\ListAndDictionary\ListAndDictionary.goal ####
+
+#### Start of Tests\LLM\imagellm.goal ####
+
 ImageLlm
 - read 'invoice.png' into %base64%
 - [llm] system: analyze this invoice
@@ -301,6 +401,10 @@ ImageLlm
         write to %info%
 - write out %info%
 
+#### End of Tests\LLM\imagellm.goal ####
+
+#### Start of Tests\LLM\llm.goal ####
+
 LLM
 - set %comment% as 'This is awesome'
 - [llm] system: give me sentiment from the user comment
@@ -311,8 +415,12 @@ LLM
 - set %text% as 'AI is taking over the world'
 - [llm] system: give me 2 categories from the user text
         user: %text% 
-        write to %cat1% and %cat2%
-- write out 'The category is: %cat1% and %cat2%'
+        write to %categories%
+- write out 'The categories are: %categories%'
+#### End of Tests\LLM\llm.goal ####
+
+#### Start of Tests\LocalOrGlobalVariable\LocalOrGlobalVariable.goal ####
+
 LocalOrGlobalVariable
 - when var 'key' is created, call !NewVarAdded 
 - set var 'house' to true
@@ -330,6 +438,10 @@ ChangedVar
 
 VarRemoved
 - write out 'house' is just removed
+#### End of Tests\LocalOrGlobalVariable\LocalOrGlobalVariable.goal ####
+
+#### Start of Tests\Loop\Loop.goal ####
+
 Loop
 - add {"Name":"Product1", "Price":111} to list, write to %products%
 - add {"Name":"Product2", "Price":222} to list, write to %products%
@@ -345,6 +457,10 @@ ShowProduct
 PrintDict
 / listCount give -1 on dictionary objects
 - write out %item.Key% - %item.Value%, listCount:%listCount%, %list.ToJson()%
+#### End of Tests\Loop\Loop.goal ####
+
+#### Start of Tests\Message\Message.goal ####
+
 Message
 - get public key for messages, write to %pubKey%
 - write out %pubKey%
@@ -354,18 +470,40 @@ Message
 
 NewMessage
 - write out "%content%, with the Identity: %Identity% from %sender%"
+#### End of Tests\Message\Message.goal ####
+
+#### Start of Tests\ModuleExample\Start.goal ####
+
 Start
 - use complex algo to add 2 and 3, write to %result%
 - write out %result%
+#### End of Tests\ModuleExample\Start.goal ####
+
+#### Start of Tests\Output\Output.goal ####
+
 Output
+- write out 'This is an text shown to user'
 - write out '{', use buffer
-- write out '}'
-- write out 'Hello PLang world'
+- write out '"name":"John"', use buffer
+- write out '}', use buffer
+- ask 'How old are you?', should be number, write to %age%
+- ask 'What is your name', cannot be empty, write to %name%
+- ask 'Type in url', must be valid url, write to %url%
+- ask 'Are you sure you want to do this?", either 'yes' or 'no', write to %response%
+- write out, 'Hello %name%, you are %age% years old, website %url%, and do you want to do this? Your answer is %response%'
+#### End of Tests\Output\Output.goal ####
+
+#### Start of Tests\Python\Python.goal ####
+
 Python
 - set var %number1% to 20
 - set var %number2% to 10
 - call main.py, %number1%, %number2%, write to %result%
 - write out 'Calculated: %result%'
+#### End of Tests\Python\Python.goal ####
+
+#### Start of Tests\RunAllTests\Test.goal ####
+
 Test
 - get all '00. Goal.pr' files in ../ and subfolders, exclude 'RunAllTests', write to %files%
 - go through %files%, call !RunTest
@@ -376,6 +514,10 @@ RunTest
     - write out '----- %item% ----'
     - Call goal %item%
     - write out '----- %item% ----\n\n'
+#### End of Tests\RunAllTests\Test.goal ####
+
+#### Start of Tests\Schedule\Schedule.goal ####
+
 Schedule
 - write out %Now%
 - sleep for 1 sec
@@ -384,6 +526,104 @@ Schedule
 
 ItIsCalled
 - write out 'Calling it every 1 min - %Now%
+#### End of Tests\Schedule\Schedule.goal ####
+
+#### Start of Tests\Settings\Start.goal ####
+
+Start
+- get all available settings, write to %settings%
+- go through each %settings%, call !Modules
+- ask user, 'What settings would you like to access, type in nr.', into %nr%
+- if %nr% is a number then call !ModuleSetting , else call !Start
+
+Modules
+- write out '%idx%. %item.FullName%'
+
+ModuleSetting
+- [settings] get all method in settings %module%, write to %methods%
+- [llm] system: These are methods available, convert them to natural language
+        put them in numbered list
+        assistant: %methods%
+- ask user, input= %result%, write to %methodSelected%
+- [llm] system: format user input to match method that is provided, 
+            if no method fits, return {error:string},
+        assistant: %methods%
+        user: %methodSelected%
+        write to %methodMapping%
+- [settings] call dynamic method with %methodMapping%, write to %result%
+- if %result% is false
+    - write out 'Could not map function'
+- call !ModuleSetting
+#### End of Tests\Settings\Start.goal ####
+
+#### Start of Tests\Terminal\Terminal.goal ####
+
+Terminal
+- when var %outputDelta% changes, call !WriteOutputDelta
+- ping google.com, output delta %outputDelta%, write to %output%
+- write out '\n\n-----------------\n%output%'
+
+WriteOutputDelta
+- write out %outputDelta%
+#### End of Tests\Terminal\Terminal.goal ####
+
+#### Start of Tests\ThrowError\StopRunning.goal ####
+
+StopRunning
+- set default value of %test% to false
+- if !%test% then
+    - write out 'will end goal now'
+    - end goal
+- write out 'This should not print out'
+#### End of Tests\ThrowError\StopRunning.goal ####
+
+#### Start of Tests\ThrowError\ThrowError.goal ####
+
+ThrowError
+- set default value of %test% to false
+- if !%test% then
+    - throw 'Test variable is false'
+#### End of Tests\ThrowError\ThrowError.goal ####
+
+#### Start of Tests\Tutorial\Setup.goal ####
+
+Setup
+- create table Todos 
+    columns:    task(string, not null), due_date(datetime, not null), 
+                completed(bool, false), created(datetime, now)
+- add column 'category' to tbl 'Todos'
+#### End of Tests\Tutorial\Setup.goal ####
+
+#### Start of Tests\Tutorial\Start.goal ####
+
+Start
+- start window app, call !Todos
+/- start webserver
+#### End of Tests\Tutorial\Start.goal ####
+
+#### Start of Tests\Tutorial_new\Setup.goal ####
+
+Setup
+- create table Todos 
+    columns:    task(string, not null), due_date(datetime, not null), 
+                completed(bool, false), created(datetime, now)
+- add column 'category' to tbl 'Todos'                
+#### End of Tests\Tutorial_new\Setup.goal ####
+
+#### Start of Tests\Tutorial_new\Start.goal ####
+
+Start
+- start webserver on number 9090
+#### End of Tests\Tutorial_new\Start.goal ####
+
+#### Start of Tests\UI\Start.goal ####
+
+Start
+- start window app, call !App
+#### End of Tests\UI\Start.goal ####
+
+#### Start of Tests\WebBrowser\Selenium.goal ####
+
 Selenium
 - go to https://quotes.toscrape.com/, dont show browser
 - click href=/login
@@ -402,69 +642,19 @@ Selenium
 ShowQuote
 - write out 'Quote: %item%\n-------'
 
-Start
-- get all available settings, write to %settings%
-- go through each %settings%, call !Modules
-- ask user, 'What settings would you like to access, type in nr.', into %nr%
-- if %nr% is a number then call !ModuleSetting , else call !Start
+#### End of Tests\WebBrowser\Selenium.goal ####
 
-Modules
-- write out '%position%. %item.FullName%'
+#### Start of Tests\Webserver\Webserver.goal ####
 
-ModuleSetting
-- [settings] get all method in settings %module%, write to %methods%
-- [llm] system: These are methods available, convert them to natural language
-        put them in numbered list
-        assistant: %methods%
-- ask user, input= %result%, write to %methodSelected%
-- [llm] system: format user input to match method that is provided, 
-            if no method fits, return {error:string},
-        assistant: %methods%
-        user: %methodSelected%
-        write to %methodMapping%
-- [settings] call dynamic method with %methodMapping%, write to %result%
-- if %result% is false
-    - write out 'Could not map function'
-- call !ModuleSetting
-Terminal
-- when var %outputDelta% changes, call !WriteOutputDelta
-- ping google.com, output delta %outputDelta%, write to %output%
-- write out '\n\n-----------------\n%output%'
-
-WriteOutputDelta
-- write out %outputDelta%
-StopRunning
-- set default value of %test% to false
-- if !%test% then
-    - write out 'will end goal now'
-    - end goal
-- write out 'This should not print out'
-ThrowError
-- set default value of %test% to false
-- if !%test% then
-    - throw 'Test variable is false'
-Setup
-- create table Todos 
-    columns:    task(string, not null), due_date(datetime, not null), 
-                completed(bool, false), created(datetime, now)
-- add column 'category' to tbl 'Todos'
-Start
-- start window app, call !Todos
-/- start webserver
-Setup
-- create table Todos 
-    columns:    task(string, not null), due_date(datetime, not null), 
-                completed(bool, false), created(datetime, now)
-- add column 'category' to tbl 'Todos'                
-Start
-- start webserver on number 9090
-Start
-- start window app, call !App
 Webserver
 - start webserver
 - write out 'webserver start on http://localhost:8080'
 - start webserver, 'plang.is', port 4550
 - restart webserver, 'plang.is'
+#### End of Tests\Webserver\Webserver.goal ####
+
+#### Start of Tests\Webserver\WebserverMoreOptions.goal ####
+
 WebserverMoreOptions
 - set var %host% as '127.0.0.1'
 - set var %port% as 7070
@@ -473,9 +663,17 @@ WebserverMoreOptions
     port %port%, max upload size 10mb, ascii
     public path: public
 - write out 'webserver start on http://%host%:%port%/hello.goal'
+#### End of Tests\Webserver\WebserverMoreOptions.goal ####
+
+#### Start of Tests\Blockchain\Events\Events.goal ####
+
 Events
 - before each step, include private goals,call !SendDebug, only in debug mode
 - before goal ends, include private goals, call !SendDebug, only in debug mode
+
+#### End of Tests\Blockchain\Events\Events.goal ####
+
+#### Start of Tests\Blockchain\Events\SendDebug.goal ####
 
 SendDebug
 - post http://localhost:60877/ 
@@ -496,9 +694,17 @@ SendDebug
 
 GoToLine
 - set %__StepIndex__% as %line%
+#### End of Tests\Blockchain\Events\SendDebug.goal ####
+
+#### Start of Tests\CallGoal\Events\Events.goal ####
+
 Events
 - before each step, include private goals,call !SendDebug, only in debug mode
 - before goal ends, include private goals, call !SendDebug, only in debug mode
+
+#### End of Tests\CallGoal\Events\Events.goal ####
+
+#### Start of Tests\CallGoal\Events\SendDebug.goal ####
 
 SendDebug
 - post http://localhost:60877/ 
@@ -519,9 +725,17 @@ SendDebug
 
 GoToLine
 - set %__StepIndex__% as %line%
+#### End of Tests\CallGoal\Events\SendDebug.goal ####
+
+#### Start of Tests\Code\Events\Events.goal ####
+
 Events
 - before each step, include private goals,call !SendDebug, only in debug mode
 - before goal ends, include private goals, call !SendDebug, only in debug mode
+
+#### End of Tests\Code\Events\Events.goal ####
+
+#### Start of Tests\Code\Events\SendDebug.goal ####
 
 SendDebug
 - post http://localhost:60877/ 
@@ -542,82 +756,38 @@ SendDebug
 
 GoToLine
 - set %__StepIndex__% as %line%
-Events
-- before each step, include private goals,call !SendDebug, only in debug mode
-- before goal ends, include private goals, call !SendDebug, only in debug mode
+#### End of Tests\Code\Events\SendDebug.goal ####
 
-SendDebug
-- post http://localhost:60877/ 
-    data: {
-        goal:"%__GOAL__%", 
-        step:"%__STEP__%",
-        event:"%__Event__%",
-        isHttpRequest:"%__IsHttpRequest__%",
-        stepIndex:%__StepIndex__%,
-        instruction:%__Instruction__%,
-        memoryStack:"%__memorystack__%",
-        absolutePath:%__GOAL__.AbsoluteGoalPath%,        
-        exception:"%__Exception__%",
-        }
-    timeout 30 min
-    write to %debugReponse%
-- if %debugReponse.go_to% is not null then call GoToLine line=%debugReponse.go_to%
+#### Start of Tests\InjectDb\Events\Events.goal ####
 
-GoToLine
-- set %__StepIndex__% as %line%
-Events
-- before each step, include private goals,call !SendDebug, only in debug mode
-- before goal ends, include private goals, call !SendDebug, only in debug mode
-
-SendDebug
-- post http://localhost:60877/ 
-    data: {
-        goal:"%__GOAL__%", 
-        step:"%__STEP__%",
-        event:"%__Event__%",
-        isHttpRequest:"%__IsHttpRequest__%",
-        stepIndex:%__StepIndex__%,
-        instruction:%__Instruction__%,
-        memoryStack:"%__memorystack__%",
-        absolutePath:%__GOAL__.AbsoluteGoalPath%,        
-        exception:"%__Exception__%",
-        }
-    timeout 30 min
-    write to %debugReponse%
-- if %debugReponse.go_to% is not null then call GoToLine line=%debugReponse.go_to%
-
-GoToLine
-- set %__StepIndex__% as %line%
-Events
-- before each step, include private goals,call !SendDebug, only in debug mode
-- before goal ends, include private goals, call !SendDebug, only in debug mode
-
-SendDebug
-- post http://localhost:60877/ 
-    data: {
-        goal:"%__GOAL__%", 
-        step:"%__STEP__%",
-        event:"%__Event__%",
-        isHttpRequest:"%__IsHttpRequest__%",
-        stepIndex:%__StepIndex__%,
-        instruction:%__Instruction__%,
-        memoryStack:"%__memorystack__%",
-        absolutePath:%__GOAL__.AbsoluteGoalPath%,        
-        exception:"%__Exception__%",
-        }
-    timeout 30 min
-    write to %debugReponse%
-- if %debugReponse.go_to% is not null then call GoToLine line=%debugReponse.go_to%
-
-GoToLine
-- set %__StepIndex__% as %line%
 Events
 - Before app starts, call InjectTypes
+#### End of Tests\InjectDb\Events\Events.goal ####
+
+#### Start of Tests\InjectDb\Events\InjectTypes.goal ####
+
 InjectTypes
 - inject db, npgsql/lib/net7.0/Npgsql.dll, make it global
+#### End of Tests\InjectDb\Events\InjectTypes.goal ####
+
+#### Start of Tests\InjectOpenAI\Events\Events.goal ####
+
+/ You might have to modify the path depending on your operating system
+@llm=OpenAIService/win-x64/OpenAiService
+
+Events
+- Before each goal, call !DoStuff
+#### End of Tests\InjectOpenAI\Events\Events.goal ####
+
+#### Start of Tests\LocalOrGlobalVariable\Events\Events.goal ####
+
 Events
 - before each step, include private goals,call !SendDebug, only in debug mode
 - before goal ends, include private goals, call !SendDebug, only in debug mode
+
+#### End of Tests\LocalOrGlobalVariable\Events\Events.goal ####
+
+#### Start of Tests\LocalOrGlobalVariable\Events\SendDebug.goal ####
 
 SendDebug
 - post http://localhost:60877/ 
@@ -638,55 +808,17 @@ SendDebug
 
 GoToLine
 - set %__StepIndex__% as %line%
-Events
-- before each step, include private goals,call !SendDebug, only in debug mode
-- before goal ends, include private goals, call !SendDebug, only in debug mode
+#### End of Tests\LocalOrGlobalVariable\Events\SendDebug.goal ####
 
-SendDebug
-- post http://localhost:60877/ 
-    data: {
-        goal:"%__GOAL__%", 
-        step:"%__STEP__%",
-        event:"%__Event__%",
-        isHttpRequest:"%__IsHttpRequest__%",
-        stepIndex:%__StepIndex__%,
-        instruction:%__Instruction__%,
-        memoryStack:"%__memorystack__%",
-        absolutePath:%__GOAL__.AbsoluteGoalPath%,        
-        exception:"%__Exception__%",
-        }
-    timeout 30 min
-    write to %debugReponse%
-- if %debugReponse.go_to% is not null then call GoToLine line=%debugReponse.go_to%
+#### Start of Tests\Tutorial\api\List.goal ####
 
-GoToLine
-- set %__StepIndex__% as %line%
-Events
-- before each step, include private goals,call !SendDebug, only in debug mode
-- before goal ends, include private goals, call !SendDebug, only in debug mode
-
-SendDebug
-- post http://localhost:60877/ 
-    data: {
-        goal:"%__GOAL__%", 
-        step:"%__STEP__%",
-        event:"%__Event__%",
-        isHttpRequest:"%__IsHttpRequest__%",
-        stepIndex:%__StepIndex__%,
-        instruction:%__Instruction__%,
-        memoryStack:"%__memorystack__%",
-        absolutePath:%__GOAL__.AbsoluteGoalPath%,        
-        exception:"%__Exception__%",
-        }
-    timeout 30 min
-    write to %debugReponse%
-- if %debugReponse.go_to% is not null then call GoToLine line=%debugReponse.go_to%
-
-GoToLine
-- set %__StepIndex__% as %line%
 List
 - select everything from Todos, write to %todos%
 - write out %todos%
+#### End of Tests\Tutorial\api\List.goal ####
+
+#### Start of Tests\Tutorial\api\NewTask.goal ####
+
 NewTask
 - make sure that %task% and %due_date% is not empty, throw error
 - insert into Todos %task%, %due_date%, write to %id%
@@ -698,9 +830,17 @@ Categorize
     user: %task%
     scheme: {category:string}
 - update table Todos, set %category% where %id%
+#### End of Tests\Tutorial\api\NewTask.goal ####
+
+#### Start of Tests\Tutorial\Events\Events.goal ####
+
 Events
 - before each step, include private goals,call !SendDebug, only in debug mode
 - before goal ends, include private goals, call !SendDebug, only in debug mode
+
+#### End of Tests\Tutorial\Events\Events.goal ####
+
+#### Start of Tests\Tutorial\Events\SendDebug.goal ####
 
 SendDebug
 - post http://localhost:60877/ 
@@ -721,9 +861,17 @@ SendDebug
 
 GoToLine
 - set %__StepIndex__% as %line%
+#### End of Tests\Tutorial\Events\SendDebug.goal ####
+
+#### Start of Tests\Tutorial\test\TestList.goal ####
+
 TestList 
 - get http://localhost:8080/api/list, write to %todos%
 - write out %todos%
+#### End of Tests\Tutorial\test\TestList.goal ####
+
+#### Start of Tests\Tutorial\test\TestNewTask.goal ####
+
 TestNewTask
 - post http://localhost:8080/api/newtask
     {
@@ -732,9 +880,17 @@ TestNewTask
     }
     write to %result%
 - write out %result%
+#### End of Tests\Tutorial\test\TestNewTask.goal ####
+
+#### Start of Tests\Tutorial\ui\AddTask.goal ####
+
 AddTask
 - form, inputs for "task"(required) and "due_date"(required, type is date)
 - [html] button "Save", call !NewTask %task%, %due_date%
+
+#### End of Tests\Tutorial\ui\AddTask.goal ####
+
+#### Start of Tests\Tutorial\ui\Todos.goal ####
 
 Todos
 - select * from todos, where not completed, newest first, write to %todos%
@@ -742,9 +898,17 @@ Todos
 - table for %todos%
     header: Task, Category, Due Date
     body:  task, category, due_date(as date)
+#### End of Tests\Tutorial\ui\Todos.goal ####
+
+#### Start of Tests\Tutorial_new\api\List.goal ####
+
 List
 - select everything from Todos, write to %todos%
 - write out %todos%
+#### End of Tests\Tutorial_new\api\List.goal ####
+
+#### Start of Tests\Tutorial_new\api\NewTask.goal ####
+
 NewTask
 - make sure that %task% and %due_date% is not empty, throw error
 - insert into Todos %task%, %due_date%, write to %id%
@@ -756,9 +920,17 @@ Categorize
     user: %task%
     scheme: {category:string}
 - update table Todos, set %category% where %id%
+#### End of Tests\Tutorial_new\api\NewTask.goal ####
+
+#### Start of Tests\Tutorial_new\Events\Events.goal ####
+
 Events
 - before each step, include private goals,call !SendDebug, only in debug mode
 - before goal ends, include private goals, call !SendDebug, only in debug mode
+
+#### End of Tests\Tutorial_new\Events\Events.goal ####
+
+#### Start of Tests\Tutorial_new\Events\SendDebug.goal ####
 
 SendDebug
 - post http://localhost:60877/ 
@@ -779,9 +951,17 @@ SendDebug
 
 GoToLine
 - set %__StepIndex__% as %line%
+#### End of Tests\Tutorial_new\Events\SendDebug.goal ####
+
+#### Start of Tests\Tutorial_new\test\TestList.goal ####
+
 TestList 
 - get http://localhost:9090/api/list, write to %todos%
 - write out %todos%
+#### End of Tests\Tutorial_new\test\TestList.goal ####
+
+#### Start of Tests\Tutorial_new\test\TestNewTask.goal ####
+
 TestNewTask
 - post http://localhost:9090/api/newtask
     {
@@ -790,16 +970,28 @@ TestNewTask
     }
     write to %result%
 - write out %result%
+#### End of Tests\Tutorial_new\test\TestNewTask.goal ####
+
+#### Start of Tests\Tutorial_new\ui\AddTask.goal ####
+
 AddTask
 - form, inputs for "task"(required) and "due_date"(required, type is date)
 - [html] button "Save", call !NewTask %task%, %due_date%
 - call !Todos
+#### End of Tests\Tutorial_new\ui\AddTask.goal ####
+
+#### Start of Tests\Tutorial_new\ui\Todos.goal ####
+
 Todos
 - select * from todos, where not completed, newest first , write to %todos%
 - button, name="Add task", call !AddTask
 - [html] table for %todos%
     header: Task, Category, Due Date
     body:  task, category, due_date(as date)
+#### End of Tests\Tutorial_new\ui\Todos.goal ####
+
+#### Start of Tests\UI\UI\App.goal ####
+
 App
 - divide content in 2 parts, left is fixed 200px, right is flexible
     - call !Countries
@@ -814,14 +1006,30 @@ Countries
 
 ShowInfo
 - center content, show info icon, 'Click country to see information about it'
+#### End of Tests\UI\UI\App.goal ####
+
+#### Start of Tests\Webserver\api\ShowDate.goal ####
+
 ShowDate - GET, do not cache or store
 - write %Now%
+#### End of Tests\Webserver\api\ShowDate.goal ####
+
+#### Start of Tests\Webserver\api\ShowList.goal ####
+
 ShowList - GET, browser cache 2 days
 - create List<int> from 0 to 10, write to %list%
 - write out %list.toJson()%
+#### End of Tests\Webserver\api\ShowList.goal ####
+
+#### Start of Tests\Webserver\Events\Events.goal ####
+
 Events
 - before each step, include private goals,call !SendDebug, only in debug mode
 - before goal ends, include private goals, call !SendDebug, only in debug mode
+
+#### End of Tests\Webserver\Events\Events.goal ####
+
+#### Start of Tests\Webserver\Events\SendDebug.goal ####
 
 SendDebug
 - post http://localhost:60877/ 
@@ -842,8 +1050,17 @@ SendDebug
 
 GoToLine
 - set %__StepIndex__% as %line%
+#### End of Tests\Webserver\Events\SendDebug.goal ####
+
+#### Start of Tests\Webserver\public\Hello.goal ####
+
 / Since this goal is not in api folder, we need to define the Method(GET|POST|DELETE|PATCH|OPTION|HEAD|PUT) in the title of the goal. 
 Hello - GET
 - write out 'Hello PLang world'
+#### End of Tests\Webserver\public\Hello.goal ####
+
+#### Start of Tests\CallGoal\apps\HelloWorld\Start.goal ####
+
 HelloWorld
 - write out 'Hello plang world'
+#### End of Tests\CallGoal\apps\HelloWorld\Start.goal ####

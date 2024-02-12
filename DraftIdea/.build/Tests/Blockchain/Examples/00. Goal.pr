@@ -1,0 +1,17 @@
+{
+  "GoalName": "#### Tests\\Blockchain\\Examples.goal ####",
+  "Comment": null,
+  "GoalSteps": [],
+  "Description": null,
+  "Visibility": 1,
+  "GoalFileName": "Examples.goal",
+  "RelativeGoalPath": "\\Tests\\Blockchain\\Examples.goal",
+  "RelativeGoalFolderPath": "\\Tests\\Blockchain",
+  "RelativePrPath": ".build\\Tests\\Blockchain\\Examples\\00. Goal.pr",
+  "RelativePrFolderPath": ".build\\Tests\\Blockchain\\Examples",
+  "BuilderVersion": "0.1.0.0",
+  "GoalApiInfo": null,
+  "Injections": [],
+  "Signature": null,
+  "Hash": "c0cbf8e30eca416fbf75bd66402408294c8bbc53777da4a565b1894661f55f18"
+}

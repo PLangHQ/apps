@@ -1,0 +1,17 @@
+{
+  "GoalName": "#### Tests\\InjectDb\\Setup.goal ####",
+  "Comment": null,
+  "GoalSteps": [],
+  "Description": null,
+  "Visibility": 0,
+  "GoalFileName": "Setup.goal",
+  "RelativeGoalPath": "\\Tests\\InjectDb\\Setup.goal",
+  "RelativeGoalFolderPath": "\\Tests\\InjectDb",
+  "RelativePrPath": ".build\\Tests\\InjectDb\\Setup\\#### Tests\\InjectDb\\Setup.goal ####\\00. Goal.pr",
+  "RelativePrFolderPath": ".build\\Tests\\InjectDb\\Setup\\#### Tests\\InjectDb\\Setup.goal ####",
+  "BuilderVersion": "0.1.0.0",
+  "GoalApiInfo": null,
+  "Injections": [],
+  "Signature": null,
+  "Hash": "9e4ad78da5d9e03b867a3106e3a058f58ea3782c941477c575846b8b5a0193ce"
+}

@@ -1,0 +1,17 @@
+{
+  "GoalName": "#### Tests\\InjectOpenAI\\LlmTest.goal ####",
+  "Comment": null,
+  "GoalSteps": [],
+  "Description": null,
+  "Visibility": 1,
+  "GoalFileName": "LlmTest.goal",
+  "RelativeGoalPath": "\\Tests\\InjectOpenAI\\LlmTest.goal",
+  "RelativeGoalFolderPath": "\\Tests\\InjectOpenAI",
+  "RelativePrPath": ".build\\Tests\\InjectOpenAI\\LlmTest\\00. Goal.pr",
+  "RelativePrFolderPath": ".build\\Tests\\InjectOpenAI\\LlmTest",
+  "BuilderVersion": "0.1.0.0",
+  "GoalApiInfo": null,
+  "Injections": [],
+  "Signature": null,
+  "Hash": "339ee49255f89588a24aabe85ee328a805164ae3ddd53358f81ced7415949856"
+}

@@ -1,0 +1,17 @@
+{
+  "GoalName": "#### Tests\\Cryptographic\\Cryptographic.goal ####",
+  "Comment": null,
+  "GoalSteps": [],
+  "Description": null,
+  "Visibility": 1,
+  "GoalFileName": "Cryptographic.goal",
+  "RelativeGoalPath": "\\Tests\\Cryptographic\\Cryptographic.goal",
+  "RelativeGoalFolderPath": "\\Tests\\Cryptographic",
+  "RelativePrPath": ".build\\Tests\\Cryptographic\\Cryptographic\\00. Goal.pr",
+  "RelativePrFolderPath": ".build\\Tests\\Cryptographic\\Cryptographic",
+  "BuilderVersion": "0.1.0.0",
+  "GoalApiInfo": null,
+  "Injections": [],
+  "Signature": null,
+  "Hash": "aad7f8e582d93b7bc6031d9cce64d9468d923b6cd574479ee8de16f6a03b618a"
+}

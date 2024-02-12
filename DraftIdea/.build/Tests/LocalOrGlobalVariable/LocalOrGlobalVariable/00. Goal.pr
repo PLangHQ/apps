@@ -1,0 +1,17 @@
+{
+  "GoalName": "#### Tests\\LocalOrGlobalVariable\\LocalOrGlobalVariable.goal ####",
+  "Comment": null,
+  "GoalSteps": [],
+  "Description": null,
+  "Visibility": 1,
+  "GoalFileName": "LocalOrGlobalVariable.goal",
+  "RelativeGoalPath": "\\Tests\\LocalOrGlobalVariable\\LocalOrGlobalVariable.goal",
+  "RelativeGoalFolderPath": "\\Tests\\LocalOrGlobalVariable",
+  "RelativePrPath": ".build\\Tests\\LocalOrGlobalVariable\\LocalOrGlobalVariable\\00. Goal.pr",
+  "RelativePrFolderPath": ".build\\Tests\\LocalOrGlobalVariable\\LocalOrGlobalVariable",
+  "BuilderVersion": "0.1.0.0",
+  "GoalApiInfo": null,
+  "Injections": [],
+  "Signature": null,
+  "Hash": "77ca7684f646b52cb60a4ba7825aba7a7cb0f9eea07d7078b6c93490c2524b71"
+}

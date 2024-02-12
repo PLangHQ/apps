@@ -1,0 +1,17 @@
+{
+  "GoalName": "#### Tests\\LLM\\imagellm.goal ####",
+  "Comment": null,
+  "GoalSteps": [],
+  "Description": null,
+  "Visibility": 0,
+  "GoalFileName": "imagellm.goal",
+  "RelativeGoalPath": "\\Tests\\LLM\\imagellm.goal",
+  "RelativeGoalFolderPath": "\\Tests\\LLM",
+  "RelativePrPath": ".build\\Tests\\LLM\\imagellm\\#### Tests\\LLM\\imagellm.goal ####\\00. Goal.pr",
+  "RelativePrFolderPath": ".build\\Tests\\LLM\\imagellm\\#### Tests\\LLM\\imagellm.goal ####",
+  "BuilderVersion": "0.1.0.0",
+  "GoalApiInfo": null,
+  "Injections": [],
+  "Signature": null,
+  "Hash": "82d4a9e96d6ff77b89c88cd015b5c267b6cbc1935a275f063d75e58e6de42fb7"
+}

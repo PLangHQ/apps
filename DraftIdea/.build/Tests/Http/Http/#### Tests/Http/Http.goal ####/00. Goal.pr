@@ -1,0 +1,17 @@
+{
+  "GoalName": "#### Tests\\Http\\Http.goal ####",
+  "Comment": null,
+  "GoalSteps": [],
+  "Description": null,
+  "Visibility": 0,
+  "GoalFileName": "Http.goal",
+  "RelativeGoalPath": "\\Tests\\Http\\Http.goal",
+  "RelativeGoalFolderPath": "\\Tests\\Http",
+  "RelativePrPath": ".build\\Tests\\Http\\Http\\#### Tests\\Http\\Http.goal ####\\00. Goal.pr",
+  "RelativePrFolderPath": ".build\\Tests\\Http\\Http\\#### Tests\\Http\\Http.goal ####",
+  "BuilderVersion": "0.1.0.0",
+  "GoalApiInfo": null,
+  "Injections": [],
+  "Signature": null,
+  "Hash": "15b72e166803dfc9a8abd368bb3615b5493cde355790c1332e7c18b5b861669f"
+}

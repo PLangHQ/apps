@@ -1,0 +1,17 @@
+{
+  "GoalName": "#### Tests\\InjectOpenAI\\DoStuff.goal ####",
+  "Comment": null,
+  "GoalSteps": [],
+  "Description": null,
+  "Visibility": 0,
+  "GoalFileName": "DoStuff.goal",
+  "RelativeGoalPath": "\\Tests\\InjectOpenAI\\DoStuff.goal",
+  "RelativeGoalFolderPath": "\\Tests\\InjectOpenAI",
+  "RelativePrPath": ".build\\Tests\\InjectOpenAI\\DoStuff\\#### Tests\\InjectOpenAI\\DoStuff.goal ####\\00. Goal.pr",
+  "RelativePrFolderPath": ".build\\Tests\\InjectOpenAI\\DoStuff\\#### Tests\\InjectOpenAI\\DoStuff.goal ####",
+  "BuilderVersion": "0.1.0.0",
+  "GoalApiInfo": null,
+  "Injections": [],
+  "Signature": null,
+  "Hash": "722a1840a256d8e79ab36cf1335a253eda68eaf63d35b0026601fdf38a068fae"
+}

@@ -1,0 +1,17 @@
+{
+  "GoalName": "#### Tests\\Tutorial\\Start.goal ####",
+  "Comment": null,
+  "GoalSteps": [],
+  "Description": null,
+  "Visibility": 1,
+  "GoalFileName": "Start.goal",
+  "RelativeGoalPath": "\\Tests\\Tutorial\\Start.goal",
+  "RelativeGoalFolderPath": "\\Tests\\Tutorial",
+  "RelativePrPath": ".build\\Tests\\Tutorial\\Start\\00. Goal.pr",
+  "RelativePrFolderPath": ".build\\Tests\\Tutorial\\Start",
+  "BuilderVersion": "0.1.0.0",
+  "GoalApiInfo": null,
+  "Injections": [],
+  "Signature": null,
+  "Hash": "32869dd7b0bfcc5bba6a66a6bc3139eff8908b10eb26c9133699359f977020f0"
+}

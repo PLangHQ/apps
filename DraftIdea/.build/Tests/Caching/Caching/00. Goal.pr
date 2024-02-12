@@ -1,0 +1,17 @@
+{
+  "GoalName": "#### Tests\\Caching\\Caching.goal ####",
+  "Comment": null,
+  "GoalSteps": [],
+  "Description": null,
+  "Visibility": 1,
+  "GoalFileName": "Caching.goal",
+  "RelativeGoalPath": "\\Tests\\Caching\\Caching.goal",
+  "RelativeGoalFolderPath": "\\Tests\\Caching",
+  "RelativePrPath": ".build\\Tests\\Caching\\Caching\\00. Goal.pr",
+  "RelativePrFolderPath": ".build\\Tests\\Caching\\Caching",
+  "BuilderVersion": "0.1.0.0",
+  "GoalApiInfo": null,
+  "Injections": [],
+  "Signature": null,
+  "Hash": "2139cea0e0cb97cdee4f86bd02b5b892a9b6cdb5d75f24157ae9312beeb7beef"
+}
