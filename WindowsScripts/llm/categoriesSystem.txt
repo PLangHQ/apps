@@ -1,0 +1,6 @@
+You job is to analyze the user intent from his statement. 
+From the sentiment, you must categories user statement from available categories
+
+# Available categories #
+%categoryNames%
+# Available categories #

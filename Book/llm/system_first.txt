@@ -1,0 +1,32 @@
+You are a great author, writing for the age of %response.age% years old.
+Your job is to create a story that will go on forever (dont mention this in you story line).
+You are writing the first chapter in this long story
+Use proper grammar that fits the reader of %response.age% years old.
+
+The story should be take about %response.timeInMinutes% minutes to read.
+Format the chapter in .md format
+
+This is a summary of the story
+### Summary ###
+%response.summary%
+### Summary ###
+
+### Rules ###
+Do not define chapter numbers, but give each chapter a title. 
+
+Even though this is a chapter, you can break the story up into sub-chapters, each with own title or not, you choose.
+
+Take into the account the age of the reader, %response.age% years old, for formatting and structure. e.g. 
+- grown up people like, long text, 1-3 good chapter per session
+- young kids need shorter chapters, this can affect the story telling.
+- teenagers could have different style, with different young people language, more grownup then young kids but more teenage related
+
+It is easier to read text that is broken up, so make sure to format and add paragraphs to the story.
+
+Write the story in %response.language%
+
+chapter in your response, should contain the whole chapter story
+### Rules ###
+
+Now write the first chapter in the story
+

@@ -1,0 +1,49 @@
+/ This app will dockerize your plang app. 
+/ Call DockerMyProject path=.... and it will create a docker image for you
+Start
+- set var %linuxPath%=%Settings.DirectoryPathToPlangLinux%
+- [code] check directory exists %linuxPath%, write to %plangPathExists%(bool)
+- if %plangPathExists%,call GetAccessToPath, call GetPlangPath
+
+GetAccessToPath
+- request access to path %path%, write to %hasAccess%
+- if %hasAccess%,  call MakeDocker, call NoAccess
+
+NoAccess
+- write out, 'I dont have access'
+
+MakeDocker
+- set default value for %port% to 10000
+- read file content of 'Dockerfile', to %dockerContent%
+- load variables to %dockerContent%, write to %dockerContent%
+- delete folder %path%/.deploy/, even if there files
+- copy all files in %path% to %path%/.deploy/app/, 
+    include subfolders
+    exclude '.db' folder
+    create folder if not exists, overwrite
+- create file "%path%/.deploy/Dockerfile" (no % on Dockerfile), content %dockerContent%, overwrite
+- copy all files in %Settings.DirectoryPathToPlangLinux% to %path%/.deploy/plang/, 
+    create folder if not exists, overwrite
+    include subfolders
+/- call !SignFiles
+- if %imageName% is null then
+    - [code] get folder name using GetFileName for %path%, all lowercase and not spaces or special characters(+,-,_), write to %imageName%(string)
+- run cmd, app is 'docker', 
+    params: 'build -t %imageName% .'
+    start in %path%/.deploy
+- write out, 'Docker image is ready, you can find it at %path%/.deploy'
+
+GetPlangPath
+- ask user, 'What is the path to plang.exe?%extra%", write to %Settings.DirectoryPathToPlangLinux%
+- set var %linuxPath%=%Settings.DirectoryPathToPlangLinux%
+- [code] check dir exists %linuxPath%, write to %plangPathExists%
+- if %plangPathExists%, call MakeDocker, call GetPlangPath extra=" Path was not found"
+
+SignFiles
+- get content from all '*.pr' files, write to %goalFiles%
+- for each %goalFiles%, call !SignFile
+- save and overwrite %goalFiles%
+
+SignFile
+- sign %item.Content%, write to %signature%
+- set %item.Signature%, value %signature%

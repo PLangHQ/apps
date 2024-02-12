@@ -1,0 +1,21 @@
+Start
+- Ask user, "Write description of you app you want to create
+
+    \t- Does it need to read or write to database?
+    \t- Does it need to get data from webservice?
+    \t- Does the user need to make decision
+    ", 
+    write to %idea%
+- read system.txt into %system%
+- read plangexample.txt, write to %plangExamples%, dont load vars
+- [llm] system: %system%
+    assistant: "==== plang examples start ====\n%plangExamples%\n==== plang examples end ===="
+    user:%idea%
+    model:'gpt-4-0125-preview'
+    scheme: {appName:string, code:string}
+- write %code% to %appName%.goal
+- write out '
+    Your code has been generated to %appName%.goal file. 
+
+    Note that this is only to get you started, syntax and logic might be wrong.
+    '

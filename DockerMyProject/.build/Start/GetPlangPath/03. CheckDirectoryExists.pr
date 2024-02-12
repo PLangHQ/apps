@@ -1,0 +1,30 @@
+{
+  "Action": {
+    "Name": "CheckDirExists",
+    "Code": "\nusing System;\nusing System.Dynamic;\nusing PLang.SafeFileSystem;\n\npublic static class CheckDirExists\n{\n    public static void Process(object linuxPath, out bool plangPathExists, PLangFileSystem fileSystem)\n    {\n        if(linuxPath == null)\n            throw new Exception(\"The directory path is not provided.\");\n\n        plangPathExists = fileSystem.Directory.Exists(linuxPath.ToString());\n    }\n}\n",
+    "Using": [
+      "System",
+      "System.Dynamic",
+      "PLang.SafeFileSystem"
+    ],
+    "Parameters": {
+      "linuxPath": "object",
+      "plangPathExists": "bool",
+      "fileSystem": "PLangFileSystem"
+    },
+    "OutParameterDefinition": {
+      "plangPathExists": [
+        {
+          "Name": "plangPathExists",
+          "FullTypeName": "System.Boolean"
+        }
+      ]
+    },
+    "GoalToCallOnTrue": null,
+    "GoalToCallOnFalse": null
+  },
+  "Text": "[code] check dir exists %linuxPath%, write to %plangPathExists%",
+  "Reload": false,
+  "LlmQuestion": null,
+  "RunOnBuild": false
+}

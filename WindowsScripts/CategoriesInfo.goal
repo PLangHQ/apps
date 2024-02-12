@@ -1,0 +1,17 @@
+CategoriesInfo
+- select * from categories where description is null, write to %categories%
+- foreach %categories% call GiveDescription item=%category%
+
+GiveDescription
+- select s.fileName, s.description from categories c
+    join scripts_categories sc on sc.categoryId=c.id
+    join scripts s on sc.scriptId=s.id 
+    where sc.categoryId=%category.id%
+    group by s.id
+    write to %scriptsInCategory%
+- read file llm/giveCategoryDescription.txt, into  %giveCategoryDescription%, load vars
+- write out 'Loading for %category.name%'
+- [llm] system: %giveCategoryDescription%
+        model: 'gpt-4-0125-preview'
+        write to %categoryDescription%
+- update categories, set description=%categoryDescription% where id=%category.id%

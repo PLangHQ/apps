@@ -1,0 +1,9 @@
+Setup
+- create table scripts, columns
+        fileName(string), description(string), example(string), parameters(string), created(datetime, now), updated(datetime, now)
+- create table scripts_categories, columns
+        scriptId, category(string)
+/- add column to scripts: has_category(bool, false)
+/- drop column category from table scripts_categories
+- add column categoryId to table scripts_categories
+- add table categories , columns: name, description, created(datetime, now), updated(datetime, now)

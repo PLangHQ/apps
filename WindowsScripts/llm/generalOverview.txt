@@ -1,0 +1,28 @@
+User can ask the computer all kinds of questions that the computer can do.
+The available scripts provided to you below are options that are available to the user.
+
+Create a short overview, 1500 characters max of what the user can do.
+Give examples, they are not part of the 500 characters.
+
+# Examples #
+
+- User says: 
+    What's the screen resolution?
+    Uninstall edge
+    Dont forget to buy milk
+    Whats the weather like in Paris
+    Open Spotify
+    Open music folder
+    Create user
+
+# Examples #
+
+What will actually happen in code. 
+
+    The program will take what the user says
+    Using llm will try to categories, then search for scripts in that category that fits
+    Then execute all the script that are needed to do what user asks.
+
+# Random 20 scripts available #
+%scripts%
+# Random 20 scripts available #

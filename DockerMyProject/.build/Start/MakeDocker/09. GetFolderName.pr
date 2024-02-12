@@ -1,0 +1,30 @@
+{
+  "Action": {
+    "Name": "GetFolderName",
+    "Code": "\nusing System;\nusing System.Dynamic;\nusing PLang.SafeFileSystem;\n\npublic static class GetFolderName\n{\n    public static void Process(object path, out string imageName, PLangFileSystem fileSystem)\n    {\n        if (path == null)\n            throw new Exception(\"Path is not provided.\");\n\n        var folderName = fileSystem.Path.GetFileName(path.ToString());\n        imageName = string.IsNullOrEmpty(folderName) ? throw new Exception(\"Folder name is not found.\") : folderName.ToLower().Replace(\" \", \"\").Replace(\"+\", \"\").Replace(\"-\", \"\").Replace(\"_\", \"\");\n    }\n}\n",
+    "Using": [
+      "System",
+      "System.Dynamic",
+      "PLang.SafeFileSystem"
+    ],
+    "Parameters": {
+      "path": "object",
+      "imageName": "string",
+      "fileSystem": "PLangFileSystem"
+    },
+    "OutParameterDefinition": {
+      "imageName": [
+        {
+          "Name": "imageName",
+          "FullTypeName": "System.String"
+        }
+      ]
+    },
+    "GoalToCallOnTrue": null,
+    "GoalToCallOnFalse": null
+  },
+  "Text": "[code] get folder name using GetFileName for %path%, all lowercase and not spaces or special characters(+,-,_), write to %imageName%(string)",
+  "Reload": false,
+  "LlmQuestion": null,
+  "RunOnBuild": false
+}

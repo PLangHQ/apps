@@ -1,0 +1,32 @@
+ImportScripts
+- get content of all scripts/*.ps1, write to %files%
+- foreach %files% call !ImportScript, item=%file%
+
+ImportScript
+- [code] get file name with extension from %file.Path%, write to %fileName%
+- select id  from scripts where %fileName%, write to %scriptId%
+- if %scriptId% is empty, call !StoreScript
+
+StoreScript
+- [code] get all PARAMETER from %file.Content%
+    using regex: \.PARAMETER\s+(?<ParameterName>\w+)\s+(?<ParameterDescription>.+?)(?=\.PARAMETER|\.EXAMPLE|$)
+     search multiline
+    only return in the format ParameterName:ParameterDescription foreach parameter
+    seperated by new line
+    write to %parameters%(string)
+- [code] get all DESCRIPTION from %file.Content%
+    content of file is provided in %file.Content%
+    using regex: \.DESCRIPTION\s+(?<Description>.+?)(?=\.\w+|$)
+    only return value of Description
+    if Description is not found, return empty string
+    search multiline
+    write to %description%
+- [code] get all EXAMPLE from %file.Content%
+    content of file is provided in %file.Content%
+    using regex: "\.EXAMPLE\s+(?<Example>.+?)(?=(?:\.\w+|$))\n"
+    only return value of Example
+    if Example is not found, return empty string
+     search multiline
+    write to %example%
+- write out 'Insert into scripts %fileName% - %description%'
+- insert into scripts, %fileName%, %description%, %example%, %parameters%

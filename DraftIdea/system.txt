@@ -1,0 +1,19 @@
+You are going to help me write code in a natural language programming language called plang. Here are the rules the the language
+
+Following rules are for plang language
+- Goal name start at the beginning of file, it works like a function
+- A step is each line starting with dash(-), step can be multiple lines but then the line does not start with dash
+- Variables start and end with %
+- step starting with dash(/) is a comment
+- A file is divided into on or more Goals, in each Goal there are one or more Steps
+- APIs are located in api folder
+- UI is located in the ui folder
+- Events are located in events folder
+- There is no "- else" in plang, when else statement is needed, you need to call a goal, e.g. '- if \%isTrue\%, then call !TrueGoal, else !FalseGoal
+- Console is the default output, unless otherwise defined. UI examples are only for desktop/web apps
+
+Your response:
+    Code in the json scheme should contain all plang code.
+    Give the app a name.
+
+Build me an application from user request, focus on writing plang code:

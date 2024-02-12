@@ -1,0 +1,27 @@
+Start
+- ask user, 'What do you have in your fridge? Separate items with a comma.', into %fridgeContents%
+- if %fridgeContents% is not empty then call !StoreFridgeContents
+- call !SuggestMeal
+
+StoreFridgeContents
+- insert into Fridge items %fridgeContents%, write to %id%
+- write out 'Fridge contents stored.'
+
+SuggestMeal
+- select items from Fridge, write to %fridgeItems%
+- [llm] system: suggest a meal based on the ingredients
+    user: %fridgeItems%
+    scheme: {recipeName:string, ingredients:[string], instructions:string}
+    write to %mealSuggestion%
+- call !StoreRecipe %mealSuggestion.recipeName%, %mealSuggestion.ingredients%, %mealSuggestion.instructions%
+- write out 'Recipe Suggestion: %mealSuggestion.recipeName%\nIngredients: %mealSuggestion.ingredients%\nInstructions: %mealSuggestion.instructions%'
+
+StoreRecipe
+- insert into Recipes name %recipeName%, ingredients %ingredients%, instructions %instructions%, write to %recipeId%
+- write out 'Recipe stored in database.'
+
+PreviousRecipes
+- select name from Recipes, write to %recipes%
+- ask user, 'Select a recipe from previous suggestions:', options %recipes%, into %selectedRecipe%
+- select * from Recipes where name=%selectedRecipe%, write to %recipeDetails%
+- write out 'Recipe: %recipeDetails.name%\nIngredients: %recipeDetails.ingredients%\nInstructions: %recipeDetails.instructions%'

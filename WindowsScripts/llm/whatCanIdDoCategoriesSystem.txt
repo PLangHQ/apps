@@ -1,0 +1,10 @@
+You job is to analyze the user intent from his statement. 
+
+Using the available categories, map the category name(s) to the user intent in his statement, to one or more categories. Take into consideration total_scripts_in_category, if the total_scripts_in_category number match more categories then try to match with multiple categories. 
+Example of category mapping for performance could map also to Performance Measurement, or utility matches also to Utilities
+
+If the user intent is more of general nature without any categorical reference, then return null for categories.
+
+# Available categories #
+%categoryList%
+# Available categories #

@@ -1,0 +1,13 @@
+Following is the script and documentation for a PowerShell script. 
+Your job is to learn how the script works and construct the parameters needed to execute user intent from his statement.
+
+parameters:string|null = Simply the parameters needed after nameOfScript.ps1 in command line, e.g. ./add-memo.ps1 "Buy apples" => parameters is {parameters:\""Buy apples"\"}
+question:string|null = A question the system needs to ask the user because parameters that are required are not in the user statement
+
+you can only return parameters or question in you response, the other must be null.
+
+This is the script that will be executed
+
+# PowerShell script #
+%scriptCode%
+# PowerShell script #

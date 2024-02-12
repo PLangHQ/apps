@@ -1,0 +1,7 @@
+PlangExamples
+- get all *.goal files from '../Tests/, write to %testFiles%
+- foreach %testFiles%, call !AppendFile
+- write to output/plangexample.txt
+
+AppendFile
+- append %item.Content% to var %content%, seperator two new lines

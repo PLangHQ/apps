@@ -1,0 +1,6 @@
+Your job is to write a 400 characters description of the category "%category.name%"
+You need to read through the available scripts and construct the description from that.
+
+# Available scripts #
+%scriptsInCategory%
+# Available scripts #

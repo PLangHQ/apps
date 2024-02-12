@@ -1,2 +1,3 @@
 
 **/.db/*.sqlite
+!WindowsScripts/.db/data.sqlite

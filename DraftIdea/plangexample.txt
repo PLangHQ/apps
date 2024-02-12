@@ -1,0 +1,849 @@
+Start
+- get content of all '.goal' files, write to %files%
+- write out %files%
+- foreach %files%, call !LoadText
+- write %content% to examples.txt
+
+LoadText
+- [code] get folder name that files is in from abosolute path %item.Path%, do not show full path, only name of folder at top level, write to %moduleName%
+- write out %item.Content%
+- [var] append to variable %content%, 
+    '=== %moduleName% starts === 
+    %item.Content% 
+    === %moduleName% ends ===
+    
+    '
+Examples
+- [block] get current rpc server, write to %server%
+- write out %server.ToJson()%
+- get wallets, write to %wallets%
+- write out %wallets.ToJson()%
+- [block] get current address, write to %address%
+- write out %address%
+- [block] sign "Hello world", write to %signature%
+- [block] verify signature, "Hello world", %signature%, %address%, write to %result%
+- write out "Is message verified:%result%"
+- set to mumbai testnet
+- get wei balance of 0x50041223216d8bfd392544562d70fda452df5042, write to %maticBalance%
+- get balance on 0x0FA8781a83E46826621b3BC094Ea2A0212e71B23 for address 0x50041223216d8bfd392544562d70fda452df5042, write to %usdcBalance%
+- write out 'Balance of Matic:%maticBalance%, usdc balance:%usdcBalance%
+- [block] get decimal of 0x0FA8781a83E46826621b3BC094Ea2A0212e71B23, write to %decimal%
+- [block] get symbol of 0x0FA8781a83E46826621b3BC094Ea2A0212e71B23, write to %symbol%
+- write out '%symbol% has the %decimal% decimals"
+ListenerToUSDCTransfer
+- set chain, matic
+- listen to usdc, Transfer event , call !Transfer
+    if exception is 500, call !WriteOutSetupMessage
+
+Transfer
+- write out "from: %from% | to:%to% | value:%value%
+- write out %__TxLog__.ToJson()%
+- stop listening %subscriptionId%
+
+WriteOutSetupMessage
+- write out 'You need to setup rpc server, call plang settings in terminal'
+ListenToBlock
+/ default rpc server dont work. You can use websocket from Infra or Alchemy or other
+- listen to new block, call !BlockEvent
+
+BlockEvent
+- write out "timestamp:%timestamp% | lastBlockNotification:%lastBlockNotification%
+- write out block: %block.ToJson()%
+Caching
+- cache %Now-1year% to 'lastYear'
+- get cache 'lastYear', write to %cachedItem%
+- write out %cachedItem%
+- cache 'abc' for 10 minutes, to 'abcKey'
+- get cache 'abcKey', write to %cachedAbcKey%
+- write out %cachedAbcKey%
+- get https://goweather.herokuapp.com/weather/London, write to %weatherData%
+    cache for 10 minutes, key 'weatherData'
+- get cache 'weatherData', write to %cachedWeatherData%
+- write out  %cachedWeatherData%
+CallGoal
+- set variable %greetings% to 'Hello'
+- call !Show %greetings%, time=%Now% / greetings & Now are parameters
+/ Here we call apps/HelloWorld/Start.goal, if it is not install it will install it.
+- call !HelloWorld/Start
+/ - call !Ffmpeg.ConvertToMp4 inputFile='myvideo.mov', outputPath='myvideo.mp4'
+
+Show
+- write out '%greetings% PLang world at %time%'
+Code
+- set %name% as 'Toby Flenderson'
+- [code] get first  name of %name%, write to %firstName%
+- write out %firstName%
+- [code] get last name of %name%, write to %lastName%
+- write out %lastName%
+- [code] uppercase %name%, write to %uppercaseName%
+- write out %uppercaseName%
+- [code] create string of list with 10 rows of random data, write to %list%
+- write out %list.ToJson()%
+- set %fileNameWithExtension% as 'video.mp4'
+- [code] remove file extension from %fileNameWithExtension%, write to %fileName%
+- write out %fileName%
+Compression
+- delete  dir ./extract
+- compress file.txt to file.zip
+- uncompress file.zip to ./extract/, overwrite
+- read extract/file.txt to %content%
+- if %content% contains 'this is a text file' then
+    - write out 'Yes, the file was decompressed and read, it contains correct data'
+/ cleanup
+- delete file.zip
+- delete dir  ./extract
+
+Conditions
+- set var 'Valid' as  true
+- if %Valid% (bool) then 
+    - write out 'It is valid'
+- set var 'NotValid' as false
+- if %NotValid% is false then
+    - write out 'Not valid variable is set to false'
+Cryptographic
+- set var %text% to 'Hello PLang world'
+- encrypt %text%, write to %encryptedText%
+- write out %encryptedText%
+- decrypt %encryptedText%, write to %decryptedText%
+- write out %decryptedText%
+- set var %password% as 'MySuperPassword123.'
+- hash %password% using bcrypt, write to %hashedPassword%
+- validate  hashed password, 'MySuperPassword123.' to %hashedPassword%, write to %isValid%
+- if %isValid% then
+    - write out 'hash is valid'
+- get bearer secret, write to %bearerSecret%
+- create bearer, test@example.org, write to %bearer%, expires in 5 minutes
+- validate bearer token %bearer%, write to %isValidBearer%
+- if %isValidBearer% then
+    - write out 'bearer is valid'
+CultureInfo
+- set culture to is-is
+- write out %Now%
+- set culture to en-US
+- write out %Now%
+Setup
+- create table tasks, columns decription(not null), due_date(datetime, not null), created(datetime, default now)
+- alter table tasks, add column: completed(bit)
+- add unqiue index to table task, on description and due_date
+- create table items, columns: name(string, not null)
+
+Tasks
+- set var 'description' as 'This is a task description'
+- set var due_date as %Now+5days%
+- add rows into items, name='John'
+- select * from items, write to %items%
+- write out %items%
+- begin transaction
+- Insert into tasks, %description%, %due_date%
+- Insert into tasks, description='This is a desc', due_date=%Now+10days%, write to %id%
+- select * from tasks, write to %tasks%
+- go through %tasks%, call !PrintOut
+- update tasks, set description='Updated first task' where id=%tasks[1].id%
+- update tasks set description='Hello PLang world'  where id=%id%
+- select * from tasks, write to %tasks%
+- go through %tasks%, call !PrintOut
+- delete from  table tasks
+- end transaction
+- select * from tasks
+    cache for 10 minutes
+    retry 2 times over 1 minutes
+    write to %tasks%
+
+PrintOut
+- write %item.description% - %item.due_date%
+Events
+- before each step, include private goals,call !SendDebug, only in debug mode
+- before goal ends, include private goals, call !SendDebug, only in debug mode
+
+SendDebug
+- post http://localhost:60877/ 
+    data: {
+        goal:"%__GOAL__%", 
+        step:"%__STEP__%",
+        event:"%__Event__%",
+        isHttpRequest:"%__IsHttpRequest__%",
+        stepIndex:%__StepIndex__%,
+        instruction:%__Instruction__%,
+        memoryStack:"%__memorystack__%",
+        absolutePath:%__GOAL__.AbsoluteGoalPath%,        
+        exception:"%__Exception__%",
+        }
+    timeout 30 min
+    write to %debugReponse%
+- if %debugReponse.go_to% is not null then call GoToLine line=%debugReponse.go_to%
+
+GoToLine
+- set %__StepIndex__% as %line%
+File
+- read '1px.png', into %base64%
+- write out %base64%
+- read file.txt into %content%
+- write out %content%
+- read Employees.xlsx  into %excelData%
+- loop through %excelData%, call !PrintOutExcel
+- write  %excelData% to Employees.xlsx, has header, overwrite
+- read  Test5x2.csv into %csvData%
+- loop through %csvData%, call !PrintOutCSV
+- write to Test5x2.csv, data %csvData%
+- write to file2.txt, 'This is a content'
+- read file2.txt, into %newContent%
+- write out %newContent%
+- append ', some more content' to file2.txt
+- copy file2.txt to file3.txt
+- read file3.txt into %file3Content%
+- write out %file3Content%
+- delete file file2.txt
+- delete file file3.txt
+- get file info on Employees.xlsx   into %fileInfo%
+/ See https://learn.microsoft.com/en-us/dotnet/api/system.io.fileinfo?view=net-8.0#properties for properties on FileInfo
+- write out 'fileInfo: CreationTime: %fileInfo.CreationTime%, LastWriteTime: %fileInfo.LastWriteTime%'
+- write to  demo.xlsx, %csvData%,  overwrite file
+- write to demo.csv, %csvData%,  overwrite file
+- write to  demo2.xlsx, data: %excelData%, %csvData%, overwrite file
+- delete demo.xlsx
+- delete demo2.xlsx
+- listen to 'files/*.json', call !ProcessJson
+
+PrintOutExcel
+- write out %item.Name% - %item.Email%
+
+PrintOutCSV
+- write out %item%
+Http
+- GET https://httpbin.org/get, write to %getResponse%
+- write out 'UserAgent: %getResponse.headers.User-Agent% , ip: %getResponse.origin%'
+- post https://httpbin.org/post
+    data='test=1'
+    signRequest
+    write to %postResponse%
+- write out %postResponse%
+- post  multipart https://httpbin.org/post
+    data: @file='1px.png', name='1px'
+    write to %postResponse2%
+- write out %postResponse2%    
+- put https://httpbin.org/put, write to %putResponse%
+- write out %putResponse%
+- delete https://httpbin.org/delete, write to %delResponse%
+- write out %delResponse%
+- patch https://httpbin.org/patch, write to %patchResponse%
+- write out %patchResponse%
+Identity
+- write out 'My identity: %MyIdentity%'
+- get my identity, write %myCurrentIdentity%
+- write out 'My Current Identity: %myCurrentIdentity%'
+- create new identity 'testIdentity', write to %testIdentity%
+- write out 'Test identity: %testIdentity%'
+- get identity, 'testIdentity', write to %newVarFortestIdentity%
+- write out 'Should be same as before: %newVarFortestIdentity%'
+- archive 'testIdentity', write to %archivedIdentity%
+- write out 'Archived: %archivedIdentity%'
+- set default values: 
+    body = 'Hello world'
+    method = "post"
+    url = "http://plang.is"
+- sign using identity, %body%, %method%, %url%, write to %signature%
+- write out 'Signature: %signature%'
+- validate signature, %body%, %method%, %url%, %signature%, write to %address%
+- write out 'This is the address: %address%
+Setup
+- create datasource 'mydb'
+- Create table users, columns name(not null), email(not null)
+
+Start
+- set datasource 'my_postgresql'
+- write out 'Start db injection'
+- SELECT version(); write to %version%
+- write out 'Version: %version%'
+
+DoStuff
+- write out  'DoStuff called'
+@llm=PLangOpenAIModule
+
+Events
+- Before each goal, call !DoStuff
+/ This should not use the injected llm service
+LlmTest
+- [llm] system: Say hello again to  me
+		{hello:string}
+- write out 'Response: %hello%'
+@llm=PLangOpenAIModule
+
+Start
+- [llm] system: Say hello to  me
+		{hello:string}
+- write out 'Response: %hello%'
+ListAndDictionary
+- add [{"name":"Product1", "price":123}, {"name":"Product2", "price":222}] to list, write to %products%
+- add {"name":"Product3", "price":333} to %products%
+- foreach item in %products%, call !ShowProduct
+- add 'key1', 'hello' to dictionary, overwrite,  write to %ble%
+- add 'key2', 'plang',  write to %ble%, overwrite
+- add 'key3', 'world',  to %ble%, overwrite
+- go through %ble%, call !ShowHello
+- remove 'key3'  from %ble%
+- go through %ble%, call !ShowHello
+
+ShowProduct
+- write out %item.name% - %item.price%
+
+ShowHello
+- write out %item.Value%
+ImageLlm
+- read 'invoice.png' into %base64%
+- [llm] system: analyze this invoice
+        user: image is png,  %base64%
+        scheme:{name:string, address:string, phone:string, total_balance:number, total_tax:number, [description:string, qty:number, price:number, total:number]}
+        write to %invoiceInfo%
+- write out %invoiceInfo%
+- [llm] system: You should act a lawyer, specialising in non disclosure contracts.
+        user: give me an overview of what this image is about.
+        image: https://images.examples.com/wp-content/uploads/2018/07/non-disclosure-template-example.jpg
+        write to %info%
+- write out %info%
+
+LLM
+- set %comment% as 'This is awesome'
+- [llm] system: give me sentiment from the user comment
+        user:  %comment%
+        scheme: {sentiment:negative|neutral|positive}
+        write to %result%
+- write out 'The comment is: %result.sentiment%'
+- set %text% as 'AI is taking over the world'
+- [llm] system: give me 2 categories from the user text
+        user: %text% 
+        write to %cat1% and %cat2%
+- write out 'The category is: %cat1% and %cat2%'
+LocalOrGlobalVariable
+- when var 'key' is created, call !NewVarAdded 
+- set var 'house' to true
+- set var 'key' to 1
+- when var 'house' changes, call !ChangedVar
+- set var 'house' to false
+- on remove on var 'house' call !VarRemoved
+- remove 'house' var
+
+NewVarAdded
+- write out 'key' was just created
+
+ChangedVar
+- write out 'house' changed
+
+VarRemoved
+- write out 'house' is just removed
+Loop
+- add {"Name":"Product1", "Price":111} to list, write to %products%
+- add {"Name":"Product2", "Price":222} to list, write to %products%
+- go through %products% call !ShowProduct, item=%product%, list=%products%, key=1
+- add 'key1', 'Hello', write to %dict%
+- add 'key2', 'PLang', write to  %dict%
+- add 'key3', 'World', write to  %dict%
+- loop through %dict%, call !PrintDict
+
+ShowProduct
+- write out %product.Name% - %product.Price% - %products.Count% position:%position%, listCount:%listCount%, key:%key%
+
+PrintDict
+/ listCount give -1 on dictionary objects
+- write out %item.Key% - %item.Value%, listCount:%listCount%, %list.ToJson()%
+Message
+- get public key for messages, write to %pubKey%
+- write out %pubKey%
+- listen for new message, call !NewMessage, write content to %content%, %sender% for sender address
+- send my self message, 'Hi how are you, %Now%'
+- send message to %pubKey%, 'Another message that I will recieve, %now%'
+
+NewMessage
+- write out "%content%, with the Identity: %Identity% from %sender%"
+Start
+- use complex algo to add 2 and 3, write to %result%
+- write out %result%
+Output
+- write out '{', use buffer
+- write out '}'
+- write out 'Hello PLang world'
+Python
+- set var %number1% to 20
+- set var %number2% to 10
+- call main.py, %number1%, %number2%, write to %result%
+- write out 'Calculated: %result%'
+Test
+- get all '00. Goal.pr' files in ../ and subfolders, exclude 'RunAllTests', write to %files%
+- go through %files%, call !RunTest
+
+RunTest
+- read file %item% into %goal%, throw error if not found
+- if %goal.Visbility% = 0 then
+    - write out '----- %item% ----'
+    - Call goal %item%
+    - write out '----- %item% ----\n\n'
+Schedule
+- write out %Now%
+- sleep for 1 sec
+- write out %Now%
+- every 1 minute, call !ItIsCalled
+
+ItIsCalled
+- write out 'Calling it every 1 min - %Now%
+Selenium
+- go to https://quotes.toscrape.com/, dont show browser
+- click href=/login
+/ Help LLM here by using [Selenium], otherwise it thinks it's a variable
+- [Selenium] set #username as 'test'
+- set input #password value as '123'
+- submit form
+- find href="/logout", write to %isLoggedIn%
+/ since isLoggedIn is a list, lets the the first(1) item in the list
+- if %isLoggedIn[1]% = 'Logout' then
+    - write out 'Yes, I am logged in' 
+- click first .tag-item link
+- [Selenium] extract all .quote, clear html, write into %quotes%
+- go through %quotes%, call !ShowQuote
+
+ShowQuote
+- write out 'Quote: %item%\n-------'
+
+Start
+- get all available settings, write to %settings%
+- go through each %settings%, call !Modules
+- ask user, 'What settings would you like to access, type in nr.', into %nr%
+- if %nr% is a number then call !ModuleSetting , else call !Start
+
+Modules
+- write out '%position%. %item.FullName%'
+
+ModuleSetting
+- [settings] get all method in settings %module%, write to %methods%
+- [llm] system: These are methods available, convert them to natural language
+        put them in numbered list
+        assistant: %methods%
+- ask user, input= %result%, write to %methodSelected%
+- [llm] system: format user input to match method that is provided, 
+            if no method fits, return {error:string},
+        assistant: %methods%
+        user: %methodSelected%
+        write to %methodMapping%
+- [settings] call dynamic method with %methodMapping%, write to %result%
+- if %result% is false
+    - write out 'Could not map function'
+- call !ModuleSetting
+Terminal
+- when var %outputDelta% changes, call !WriteOutputDelta
+- ping google.com, output delta %outputDelta%, write to %output%
+- write out '\n\n-----------------\n%output%'
+
+WriteOutputDelta
+- write out %outputDelta%
+StopRunning
+- set default value of %test% to false
+- if !%test% then
+    - write out 'will end goal now'
+    - end goal
+- write out 'This should not print out'
+ThrowError
+- set default value of %test% to false
+- if !%test% then
+    - throw 'Test variable is false'
+Setup
+- create table Todos 
+    columns:    task(string, not null), due_date(datetime, not null), 
+                completed(bool, false), created(datetime, now)
+- add column 'category' to tbl 'Todos'
+Start
+- start window app, call !Todos
+/- start webserver
+Setup
+- create table Todos 
+    columns:    task(string, not null), due_date(datetime, not null), 
+                completed(bool, false), created(datetime, now)
+- add column 'category' to tbl 'Todos'                
+Start
+- start webserver on number 9090
+Start
+- start window app, call !App
+Webserver
+- start webserver
+- write out 'webserver start on http://localhost:8080'
+- start webserver, 'plang.is', port 4550
+- restart webserver, 'plang.is'
+WebserverMoreOptions
+- set var %host% as '127.0.0.1'
+- set var %port% as 7070
+- start webserver
+    host %host%
+    port %port%, max upload size 10mb, ascii
+    public path: public
+- write out 'webserver start on http://%host%:%port%/hello.goal'
+Events
+- before each step, include private goals,call !SendDebug, only in debug mode
+- before goal ends, include private goals, call !SendDebug, only in debug mode
+
+SendDebug
+- post http://localhost:60877/ 
+    data: {
+        goal:"%__GOAL__%", 
+        step:"%__STEP__%",
+        event:"%__Event__%",
+        isHttpRequest:"%__IsHttpRequest__%",
+        stepIndex:%__StepIndex__%,
+        instruction:%__Instruction__%,
+        memoryStack:"%__memorystack__%",
+        absolutePath:%__GOAL__.AbsoluteGoalPath%,        
+        exception:"%__Exception__%",
+        }
+    timeout 30 min
+    write to %debugReponse%
+- if %debugReponse.go_to% is not null then call GoToLine line=%debugReponse.go_to%
+
+GoToLine
+- set %__StepIndex__% as %line%
+Events
+- before each step, include private goals,call !SendDebug, only in debug mode
+- before goal ends, include private goals, call !SendDebug, only in debug mode
+
+SendDebug
+- post http://localhost:60877/ 
+    data: {
+        goal:"%__GOAL__%", 
+        step:"%__STEP__%",
+        event:"%__Event__%",
+        isHttpRequest:"%__IsHttpRequest__%",
+        stepIndex:%__StepIndex__%,
+        instruction:%__Instruction__%,
+        memoryStack:"%__memorystack__%",
+        absolutePath:%__GOAL__.AbsoluteGoalPath%,        
+        exception:"%__Exception__%",
+        }
+    timeout 30 min
+    write to %debugReponse%
+- if %debugReponse.go_to% is not null then call GoToLine line=%debugReponse.go_to%
+
+GoToLine
+- set %__StepIndex__% as %line%
+Events
+- before each step, include private goals,call !SendDebug, only in debug mode
+- before goal ends, include private goals, call !SendDebug, only in debug mode
+
+SendDebug
+- post http://localhost:60877/ 
+    data: {
+        goal:"%__GOAL__%", 
+        step:"%__STEP__%",
+        event:"%__Event__%",
+        isHttpRequest:"%__IsHttpRequest__%",
+        stepIndex:%__StepIndex__%,
+        instruction:%__Instruction__%,
+        memoryStack:"%__memorystack__%",
+        absolutePath:%__GOAL__.AbsoluteGoalPath%,        
+        exception:"%__Exception__%",
+        }
+    timeout 30 min
+    write to %debugReponse%
+- if %debugReponse.go_to% is not null then call GoToLine line=%debugReponse.go_to%
+
+GoToLine
+- set %__StepIndex__% as %line%
+Events
+- before each step, include private goals,call !SendDebug, only in debug mode
+- before goal ends, include private goals, call !SendDebug, only in debug mode
+
+SendDebug
+- post http://localhost:60877/ 
+    data: {
+        goal:"%__GOAL__%", 
+        step:"%__STEP__%",
+        event:"%__Event__%",
+        isHttpRequest:"%__IsHttpRequest__%",
+        stepIndex:%__StepIndex__%,
+        instruction:%__Instruction__%,
+        memoryStack:"%__memorystack__%",
+        absolutePath:%__GOAL__.AbsoluteGoalPath%,        
+        exception:"%__Exception__%",
+        }
+    timeout 30 min
+    write to %debugReponse%
+- if %debugReponse.go_to% is not null then call GoToLine line=%debugReponse.go_to%
+
+GoToLine
+- set %__StepIndex__% as %line%
+Events
+- before each step, include private goals,call !SendDebug, only in debug mode
+- before goal ends, include private goals, call !SendDebug, only in debug mode
+
+SendDebug
+- post http://localhost:60877/ 
+    data: {
+        goal:"%__GOAL__%", 
+        step:"%__STEP__%",
+        event:"%__Event__%",
+        isHttpRequest:"%__IsHttpRequest__%",
+        stepIndex:%__StepIndex__%,
+        instruction:%__Instruction__%,
+        memoryStack:"%__memorystack__%",
+        absolutePath:%__GOAL__.AbsoluteGoalPath%,        
+        exception:"%__Exception__%",
+        }
+    timeout 30 min
+    write to %debugReponse%
+- if %debugReponse.go_to% is not null then call GoToLine line=%debugReponse.go_to%
+
+GoToLine
+- set %__StepIndex__% as %line%
+Events
+- before each step, include private goals,call !SendDebug, only in debug mode
+- before goal ends, include private goals, call !SendDebug, only in debug mode
+
+SendDebug
+- post http://localhost:60877/ 
+    data: {
+        goal:"%__GOAL__%", 
+        step:"%__STEP__%",
+        event:"%__Event__%",
+        isHttpRequest:"%__IsHttpRequest__%",
+        stepIndex:%__StepIndex__%,
+        instruction:%__Instruction__%,
+        memoryStack:"%__memorystack__%",
+        absolutePath:%__GOAL__.AbsoluteGoalPath%,        
+        exception:"%__Exception__%",
+        }
+    timeout 30 min
+    write to %debugReponse%
+- if %debugReponse.go_to% is not null then call GoToLine line=%debugReponse.go_to%
+
+GoToLine
+- set %__StepIndex__% as %line%
+Events
+- Before app starts, call InjectTypes
+InjectTypes
+- inject db, npgsql/lib/net7.0/Npgsql.dll, make it global
+Events
+- before each step, include private goals,call !SendDebug, only in debug mode
+- before goal ends, include private goals, call !SendDebug, only in debug mode
+
+SendDebug
+- post http://localhost:60877/ 
+    data: {
+        goal:"%__GOAL__%", 
+        step:"%__STEP__%",
+        event:"%__Event__%",
+        isHttpRequest:"%__IsHttpRequest__%",
+        stepIndex:%__StepIndex__%,
+        instruction:%__Instruction__%,
+        memoryStack:"%__memorystack__%",
+        absolutePath:%__GOAL__.AbsoluteGoalPath%,        
+        exception:"%__Exception__%",
+        }
+    timeout 30 min
+    write to %debugReponse%
+- if %debugReponse.go_to% is not null then call GoToLine line=%debugReponse.go_to%
+
+GoToLine
+- set %__StepIndex__% as %line%
+Events
+- before each step, include private goals,call !SendDebug, only in debug mode
+- before goal ends, include private goals, call !SendDebug, only in debug mode
+
+SendDebug
+- post http://localhost:60877/ 
+    data: {
+        goal:"%__GOAL__%", 
+        step:"%__STEP__%",
+        event:"%__Event__%",
+        isHttpRequest:"%__IsHttpRequest__%",
+        stepIndex:%__StepIndex__%,
+        instruction:%__Instruction__%,
+        memoryStack:"%__memorystack__%",
+        absolutePath:%__GOAL__.AbsoluteGoalPath%,        
+        exception:"%__Exception__%",
+        }
+    timeout 30 min
+    write to %debugReponse%
+- if %debugReponse.go_to% is not null then call GoToLine line=%debugReponse.go_to%
+
+GoToLine
+- set %__StepIndex__% as %line%
+Events
+- before each step, include private goals,call !SendDebug, only in debug mode
+- before goal ends, include private goals, call !SendDebug, only in debug mode
+
+SendDebug
+- post http://localhost:60877/ 
+    data: {
+        goal:"%__GOAL__%", 
+        step:"%__STEP__%",
+        event:"%__Event__%",
+        isHttpRequest:"%__IsHttpRequest__%",
+        stepIndex:%__StepIndex__%,
+        instruction:%__Instruction__%,
+        memoryStack:"%__memorystack__%",
+        absolutePath:%__GOAL__.AbsoluteGoalPath%,        
+        exception:"%__Exception__%",
+        }
+    timeout 30 min
+    write to %debugReponse%
+- if %debugReponse.go_to% is not null then call GoToLine line=%debugReponse.go_to%
+
+GoToLine
+- set %__StepIndex__% as %line%
+List
+- select everything from Todos, write to %todos%
+- write out %todos%
+NewTask
+- make sure that %task% and %due_date% is not empty, throw error
+- insert into Todos %task%, %due_date%, write to %id%
+- call !Categorize, dont wait
+- call !Todos
+
+Categorize
+- [llm]: system: categories the user input by 3 categories, 'Work', "home", 'hobby'
+    user: %task%
+    scheme: {category:string}
+- update table Todos, set %category% where %id%
+Events
+- before each step, include private goals,call !SendDebug, only in debug mode
+- before goal ends, include private goals, call !SendDebug, only in debug mode
+
+SendDebug
+- post http://localhost:60877/ 
+    data: {
+        goal:"%__GOAL__%", 
+        step:"%__STEP__%",
+        event:"%__Event__%",
+        isHttpRequest:"%__IsHttpRequest__%",
+        stepIndex:%__StepIndex__%,
+        instruction:%__Instruction__%,
+        memoryStack:"%__memorystack__%",
+        absolutePath:%__GOAL__.AbsoluteGoalPath%,        
+        exception:"%__Exception__%",
+        }
+    timeout 30 min
+    write to %debugReponse%
+- if %debugReponse.go_to% is not null then call GoToLine line=%debugReponse.go_to%
+
+GoToLine
+- set %__StepIndex__% as %line%
+TestList 
+- get http://localhost:8080/api/list, write to %todos%
+- write out %todos%
+TestNewTask
+- post http://localhost:8080/api/newtask
+    {
+        "task":"Buy some Lego",
+        "due_date": "2023-12-27"
+    }
+    write to %result%
+- write out %result%
+AddTask
+- form, inputs for "task"(required) and "due_date"(required, type is date)
+- [html] button "Save", call !NewTask %task%, %due_date%
+
+Todos
+- select * from todos, where not completed, newest first, write to %todos%
+- button, name="Add task", call !AddTask
+- table for %todos%
+    header: Task, Category, Due Date
+    body:  task, category, due_date(as date)
+List
+- select everything from Todos, write to %todos%
+- write out %todos%
+NewTask
+- make sure that %task% and %due_date% is not empty, throw error
+- insert into Todos %task%, %due_date%, write to %id%
+- call !Categorize, dont wait
+- write out %id%
+
+Categorize
+- [llm]: system: categories the user input by 3 categories, 'Work', "home", 'hobby'
+    user: %task%
+    scheme: {category:string}
+- update table Todos, set %category% where %id%
+Events
+- before each step, include private goals,call !SendDebug, only in debug mode
+- before goal ends, include private goals, call !SendDebug, only in debug mode
+
+SendDebug
+- post http://localhost:60877/ 
+    data: {
+        goal:"%__GOAL__%", 
+        step:"%__STEP__%",
+        event:"%__Event__%",
+        isHttpRequest:"%__IsHttpRequest__%",
+        stepIndex:%__StepIndex__%,
+        instruction:%__Instruction__%,
+        memoryStack:"%__memorystack__%",
+        absolutePath:%__GOAL__.AbsoluteGoalPath%,        
+        exception:"%__Exception__%",
+        }
+    timeout 30 min
+    write to %debugReponse%
+- if %debugReponse.go_to% is not null then call GoToLine line=%debugReponse.go_to%
+
+GoToLine
+- set %__StepIndex__% as %line%
+TestList 
+- get http://localhost:9090/api/list, write to %todos%
+- write out %todos%
+TestNewTask
+- post http://localhost:9090/api/newtask
+    {
+        "task":"Buy some Lego",
+        "due_date": "%Now+2days%"
+    }
+    write to %result%
+- write out %result%
+AddTask
+- form, inputs for "task"(required) and "due_date"(required, type is date)
+- [html] button "Save", call !NewTask %task%, %due_date%
+- call !Todos
+Todos
+- select * from todos, where not completed, newest first , write to %todos%
+- button, name="Add task", call !AddTask
+- [html] table for %todos%
+    header: Task, Category, Due Date
+    body:  task, category, due_date(as date)
+App
+- divide content in 2 parts, left is fixed 200px, right is flexible
+    - call !Countries
+    - call !ShowInfo
+
+Countries
+- get https://restcountries.com/v3.1/all, write to %countries%
+    cache for 10 min
+- bullet list, %countries%
+    list item %countries.name.common%
+    link call to !LoadCountry name=%countries.name.common%
+
+ShowInfo
+- center content, show info icon, 'Click country to see information about it'
+ShowDate - GET, do not cache or store
+- write %Now%
+ShowList - GET, browser cache 2 days
+- create List<int> from 0 to 10, write to %list%
+- write out %list.toJson()%
+Events
+- before each step, include private goals,call !SendDebug, only in debug mode
+- before goal ends, include private goals, call !SendDebug, only in debug mode
+
+SendDebug
+- post http://localhost:60877/ 
+    data: {
+        goal:"%__GOAL__%", 
+        step:"%__STEP__%",
+        event:"%__Event__%",
+        isHttpRequest:"%__IsHttpRequest__%",
+        stepIndex:%__StepIndex__%,
+        instruction:%__Instruction__%,
+        memoryStack:"%__memorystack__%",
+        absolutePath:%__GOAL__.AbsoluteGoalPath%,        
+        exception:"%__Exception__%",
+        }
+    timeout 30 min
+    write to %debugReponse%
+- if %debugReponse.go_to% is not null then call GoToLine line=%debugReponse.go_to%
+
+GoToLine
+- set %__StepIndex__% as %line%
+/ Since this goal is not in api folder, we need to define the Method(GET|POST|DELETE|PATCH|OPTION|HEAD|PUT) in the title of the goal. 
+Hello - GET
+- write out 'Hello PLang world'
+HelloWorld
+- write out 'Hello plang world'

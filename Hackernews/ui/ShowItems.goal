@@ -2,3 +2,4 @@ ShowItems
 - [ui] list out News figures from %items%
     show properties: %item.title%, %item.created_at%, %item.num_comments%, %item.url%, %item.points%, %item.author%
     make title is clickable, %item.url%, target=news
+    link comment count, https://news.ycombinator.com/item?id=%item.story_id%, target=comment

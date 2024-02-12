@@ -1,0 +1,31 @@
+{
+  "Action": {
+    "Name": "UserIntent.Process",
+    "Code": "\npublic static class UserIntent\n{\n    public static void Process(object? position, object? listCount, out long listNr, out long chapterNr)\n    {\n        if (position == null)\n            throw new Exception(\"Position is not defined.\");\n        if (listCount == null)\n            throw new Exception(\"List count is not defined.\");\n\n        if (!(position is long))\n            throw new Exception(\"Position is not a number.\");\n        if (!(listCount is long))\n            throw new Exception(\"List count is not a number.\");\n\n        listNr = (long)position + 2;\n        chapterNr = (long)listCount - (long)position + 1;\n    }\n}\n",
+    "Using": [
+      "System"
+    ],
+    "InputParameters": {
+      "position": "object?",
+      "listCount": "object?",
+      "listNr": "long",
+      "chapterNr": "long"
+    },
+    "OutParameterDefinition": {
+      "listNr": {
+        "Name": "listNr",
+        "FullTypeName": "System.Int64"
+      },
+      "chapterNr": {
+        "Name": "chapterNr",
+        "FullTypeName": "System.Int64"
+      }
+    },
+    "GoalToCallOnTrue": null,
+    "GoalToCallOnFalse": null
+  },
+  "Text": "[code] %position%+2, write to %listNr%, and %listCount%-%position%+1, write to %chapterNr%",
+  "Reload": false,
+  "LlmRequest": null,
+  "RunOnBuild": false
+}

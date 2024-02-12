@@ -1,0 +1,6 @@
+You will be provided with list of scripts.
+Your job is to categorize the scripts into 1-3 categories
+
+# scripts #
+%scripts%
+# scripts #

@@ -1,0 +1,8 @@
+Setup
+- create stories table, columns:
+    title (not null), age(number, not null), character(string, not null), timeInMinutes(number, not null)
+    language(string, not null), category(string, not null), tags(string, not null)
+    last_used(datetime), created(datetime, now), updated(datetime, now)
+- create story_lines tables, columns:
+    storyId(number, foreign key to stories.id), chapter(string, not null), shortSummary(string, not null)
+- add column summary to table stories

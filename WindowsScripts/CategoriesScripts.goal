@@ -1,0 +1,16 @@
+CategoriesScripts
+- select id, description from scripts where has_category=false, top 100, write to %scripts%
+- read file llm/categoriesScriptSystem.txt, load vars, write into %categoriesScriptSystem%
+- [llm] system: %categoriesScriptSystem%
+        model:'gpt-4-0125-preview'
+        scheme: [{scriptId:number, categories:string[]), ...]
+        write to %scriptWithCategories%
+- foreach %scriptWithCategories%, call !UpdateScriptCategory, script=%item%
+
+UpdateScriptCategory
+- write out 'scriptId: %script.scriptId% - %script.categories%'
+- foreach %script.categories%, call !InsertIntoCategory category=%item%
+- update scripts set has_category=true where id=%script.scriptId%
+
+InsertIntoCategory
+- insert into scripts_categories %script.scriptId%, %category%
