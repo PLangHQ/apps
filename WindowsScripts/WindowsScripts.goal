@@ -1,0 +1,115 @@
+Start
+- set default val, %question% to "What's up?"
+- Ask, %question%, user is required to answer, write to %userStatement%
+- select c.name, c.description, count(sc.id) as total_scripts_in_category from scripts_categories sc 
+	join categories c on c.id=sc.categoryId 
+	group by c.name 
+	order by  count(sc.id) desc
+    write to %categoryList%
+- read file llm/whatsUpSystem.txt, load vars, write to %whatsUpSystem%
+- clear list %excludedCategories%
+- [llm] system: %whatsUpSystem%
+    user: %userStatement%
+    model:'gpt-4-0125-preview'
+    scheme: {GoalName:FindScript|WhatCanIDo|ListAllCategories}
+- call %GoalName%
+
+WhatCanIDo
+- read file llm/whatCanIdDoCategoriesSystem.txt, load vars, into %whatCanIdDoCategoriesSystem%
+- [llm] system: %whatCanIdDoCategoriesSystem%
+    user:%userStatement%
+    model:'gpt-4-0125-preview'
+    scheme: {categories:string[]|null}
+- if %categories% is null, call !GeneralOverview, call !CategoriesOverview
+
+GeneralOverview
+- select fileName, description, example from scripts, top 20, random rows, write to %scripts%
+- read file llm/generalOverview.txt, into %generalOverview%
+- [llm] system:%generalOverview%
+    user: %userStatement%
+    model:'gpt-4-0125-preview'
+    write to %overview%
+- write out %overview%
+- call !Start question="So, what would you like to do?"
+
+CategoriesOverview
+- select s.id as scriptId, s.description, s.example from scripts_categories sc 
+        join scripts s on s.id=sc.scriptId
+        where category in (%categories%), write to %scripts%
+- read file llm/categoryOverviewSystem.txt, write into %categoryOverviewSystem%
+- [llm] system: %categoryOverviewSystem%
+    model:'gpt-4-0125-preview'
+    user: %userStatement%
+    write to %overview%
+- write out %overview%
+- call !Start question="What would you like to do?"
+
+ListAllCategories
+- select name, description from categories, write to %categories%
+- foreach %categories% call !PrintOutCategory item=%category%
+- call !Start
+
+PrintOutCategory
+- write out "\n**%category.name%**
+    %category.description%
+    ####"
+
+
+FindScript
+- if %excludedCategories% is null, call LoadCategories, call LoadCategoriesWithoutExluded
+- read file llm/categoriesSystem.txt, into %categoriesSystem%
+- [llm] system: %categoriesSystem%
+    user:%userStatement%
+    model:'gpt-4-0125-preview'
+    scheme: {categories:string[]}
+- select s.id as scriptId, s.fileName, s.description, s.example from scripts_categories sc 
+        join scripts s on s.id=sc.scriptId
+        where category in (%categories%)  group by s.id
+        write to %scripts%
+- read file llm/selectScriptSystem.txt, load vars, write to %selectScriptSystem%
+- [llm] system: %selectScriptSystem%
+    user: %userStatement%
+    model:'gpt-4-0125-preview'
+    scheme: {scriptFileName:string[]|null}
+- if %scriptFileName%(array) is null, call !FindAnotherCategory, call !RunScripts
+
+LoadCategories
+- select name, description from categories, write to %categoryNames%
+
+LoadCategoriesWithoutExluded
+- select name, description from categories where name not in (%excludedCategories%), write to %categoryNames%
+
+FindAnotherCategory
+- if %excludedCategories%(list) Count > 2
+    call !CouldNotFindToolToRun, else ExcludeCategory
+
+ExcludeCategory
+- append %categories% to %excludedCategories%
+- call !FindScript
+
+CouldNotFindToolToRun
+- write out 'Could not find a tool to execute your command'
+- call !Start
+
+RunScripts
+- foreach %scriptFileName% call !PrepareScript scriptName=%item%
+- call !Start question="What now?"
+
+PrepareScript
+- read scripts/%scriptName%, write to %scriptCode%
+- read llm/createExecuteScript.txt, write to %createExecuteScriptSystem%
+- [llm] system: %createExecuteScriptSystem%
+        user: %userStatement%
+        model:'gpt-4-0125-preview'
+        scheme: {parameters:string|null, question:string|null}
+- if %question% is not null, call !AskForParameters, else !RunScript
+
+RunScript
+- run terminal 'powershell.exe' -ExecutionPolicy Bypass -File "scripts/%scriptName%" %parameters%
+    write to %output%
+- write out %output%
+
+AskForParameters
+- ask user, %question%, write to %answer%
+- append %answer% to %userStatement%
+- call !PrepareScript

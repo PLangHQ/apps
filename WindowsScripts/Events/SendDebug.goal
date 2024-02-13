@@ -4,6 +4,7 @@ SendDebug
         goal:"%__GOAL__%", 
         step:"%__STEP__%",
         event:"%__Event__%",
+        llm:"%__LLM__%",
         isHttpRequest:"%__IsHttpRequest__%",
         stepIndex:%__StepIndex__%,
         instruction:%__Instruction__%,

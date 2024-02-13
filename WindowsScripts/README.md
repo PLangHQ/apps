@@ -1,56 +1,74 @@
-# WindowsScript: Natural Language Command Interface for Windows
+# Natural Language Command Interface for Windows
 
 ## Overview
 
-WindowsScript revolutionizes the way you interact with your Windows system by allowing you to execute tasks through natural language commands. 
+We, the users, need to adjust to the computer. 
 
-Drawing from a rich repository of over 600 scripts sourced from [fleschutz's PowerShell GitHub repository](https://github.com/fleschutz/PowerShell), WindowsScript bridges the gap between complex scripting and user-friendly operations, making it easier for users to manage their systems without deep technical knowledge of PowerShell scripts.
+If you want to change the screen timeout on your computer, you need to find where that is done. How do you find it? Maybe you know, maybe you have no clue. Maybe you google it or ask ChatGPT. Then you get the instructions and you need to do multiple clicks and search on the screen where the settings are.
 
-## Features
+Wouldn't it be better if you just told your computer: 
 
-- **Natural Language Processing:** Interact with your Windows system using simple, conversational language.
-- **Extensive Script Library:** Access to a comprehensive collection of scripts for various tasks, from system diagnostics to application management.
-- **Dynamic Script Execution:** The platform intelligently interprets user commands and selects the appropriate script for execution.
-- **User-Centric Design:** Designed with the user in mind, WindowsScript simplifies complex system operations through an intuitive interface.
+    Set screen timeout to 45 minutes
 
-## Usage
+That is what this app is for. It's like Google Home/Alexa/Siri for you Windows machine.
 
-### Getting Started
+If the app doesn't know how to execute your request, it will ask you, to help construct a valid request.
 
-To begin using WindowsScript, ensure you have cloned this repository to your local system. Navigate to the WindowsScript directory in your command prompt and initiate the program by typing `plang`.
+## How to use
 
-### Important Note
+Download the content of this repository to your computer. Open terminal/cmd, navigator to the directory and run the command
 
-> ⚠️ **Warning:** WindowsScript is a powerful tool intended for demonstration and proof of concept. Each request to the system incurs a cost of approximately $0.25 due to the usage of Large Language Models (LLM) for processing natural language commands. Users should proceed with caution and be mindful of the potential costs associated with extensive use.
+```bash
+plang
+```
 
-### How to Use
+## Examples
+Here are some examples
 
-Upon starting WindowsScript, the application will prompt you with the question, "What would you like to do?" From here, you can engage with the system in various ways:
+- set screen timeout to 20 minutes when on battery
+- change desktop background to c:\background.jpg
+- set font size system wide to 120 dpi
+- open example.org
+- open spotify
+- how much space do I have on my hardrive
+- what the current time
+- in what timezone am I
+- disable wifi
+- what users are on my computer
+- what the uptime of my computer
 
-- **Discover Capabilities:** Ask "What can I do?" to get an overview of the system's capabilities.
-- **Explore Categories:** Request a "List of categories" to see the different types of scripts available.
-- **Execute Commands:** Input natural language commands for tasks you wish to perform. Examples include:
-  - "What users are on the system?"
-  - "How is my DNS speed?"
-  - "Start Spotify."
-  - "Go to music folder."
-  - "Check drive space."
-  - "Give me hardware details."
-  - "What is the weather in Reykjavik?"
-  - "What's my subnet mask?"
-  - "Mute the sound"
+You can also write in your own language, and it will understand you and reply in same language
 
-## Idea
+## Flow of app
+This application functions as an interactive assistant that processes user input to potentially execute PowerShell commands or provide explanations based on a set of predefined responses. 
 
-The core idea behind WindowsScript is to transform the traditional interaction paradigm with computers. Currently, performing tasks on a computer often involves a series of steps: searching for how-to guides, navigating through various settings, and adjusting specific options. WindowsScript aims to simplify this process by allowing users to communicate their intentions directly, using natural language. 
+Here’s a breakdown of [Start.goal](./Start.goal)
 
-For instance, rather than manually muting your computer through a series of clicks, you could simply say "mute sound" or "mute," and WindowsScript would execute the task for you. This approach flips the conventional model of computer use, making the machine adapt to human language rather than requiring humans to interpret and navigate machine-oriented interfaces.
+### Start
+1. **Initialize Default Prompt**: The application sets a default prompt `%question%` to "What's up?" to initiate interaction with the user.
+2. **User Input**: It then prompts the user with `%question%`, requiring a response that is captured and stored in `%userStatement%`.
+3. **System Configuration Load**: The app loads configurations or instructions from a file named `powerShell.txt` located in the `llm/powershell/` directory into `%powerShellSystem%`.
 
-## Contributing
+4. **Command Decision**:
+    - Utilizing a machine learning model (`gpt-4-0125-preview`), the application processes `%userStatement%` against `%powerShellSystem%` to determine if there are any PowerShell commands (`%commands%`) related to the user's statement.
+    - If relevant PowerShell commands are identified (`%commands%` is not null or empty), the app proceeds to execute these commands via `!RunPSCommands`.
+    - If no relevant commands are found, the app transitions to a fallback system called `!WhatsUpSystem` for further processing.
 
-We welcome contributions to enhance WindowsScript's capabilities and improve its user experience. If you're interested in contributing, please review our contribution guidelines and submit your pull requests.
+### WhatsUpSystem
+1. **Explanation System Load**: The app reads from an `explain.txt` file within the `llm/powershell/` directory, which likely contains data or logic for explaining concepts or commands, storing this in `%explainSystem%`.
+2. **Generate Explanation**:
+    - Again leveraging the `gpt-4-0125-preview` model, the app uses `%explainSystem%` and the user's original statement (`%userStatement%`) to generate an explanation, which includes a summary, a command (if applicable), a natural language version of the command, the language used, and the original question.
+    - The generated summary and natural language command are displayed to the user.
+3. **Loop Back**: After providing the explanation, the app calls `!Start` to loop back to the initial prompt, allowing for continuous interaction.
 
-## License
+### RunPSCommands
+1. **Execute Commands**: For each command in `%commands%`, the app calls `RunPSCommand` to execute it.
+2. **Loop Back**: After executing all commands, the app loops back to the initial prompt by calling `!Start`.
 
-WindowsScript is licensed under the MIT License. For more details, please refer to the LICENSE file in this repository.
+### RunPSCommand
+1. **Command Execution Notification**: The app notifies the user that it is running a specific command (`%command%`).
+2. **PowerShell Execution**:
+    - The command is executed in a PowerShell terminal with parameters set to bypass execution policies, ensuring the command runs without restrictions.
+    - The output of the command execution is captured in `%output%`.
+3. **Display Output**: The output of the PowerShell command is displayed to the user, providing immediate feedback on the executed command.
 

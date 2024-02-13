@@ -2,7 +2,7 @@ Start
 - start window app, call !LoadNews
 - call !GetLatestNews, run and forget
 - run every 1 minutes, call !GetLatestNews
-
+c
 LoadNews
 - select * from news order by id desc, write to %news%
 - call goal !ui/ShowNews
