@@ -1,5 +1,5 @@
 Start
-- start window app, call LoadHackerNews
+- start window app, title: Hackernews, height 800, call LoadHackerNews
 - call GetHackerNews run and forget
 - every 10 minutes, call GetHackerNews
 
@@ -14,12 +14,12 @@ GetHackerNews
 - call !LoadHackerNews
 
 ProcessItem
-- select id from %table% where story_id=%item.story_id%, top 1
+- select id from front_page where story_id=%item.story_id%, top 1
 - if %id% is empty, call !InsertItem, call !UpdateItem
 
 InsertItem
-- insert into %table%,
+- insert into front_page,
     columns: %item.story_id%, %item.title%, %item.created_at%, %item.num_comments%, %item.url%, %item.points%, %item.author%
 
 UpdateItem
-- update %table%, set %item.num_comments%, %item.item.points%, WHERE id=%id%
+- update front_page, set %item.num_comments%, %item.points%, WHERE id=%id%

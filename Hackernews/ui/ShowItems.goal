@@ -1,5 +1,8 @@
 ShowItems
-- [ui] list out News figures from %items%
-    show properties: %item.title%, %item.created_at%, %item.num_comments%, %item.url%, %item.points%, %item.author%
-    make title is clickable, %item.url%, target=news
-    link comment count, https://news.ycombinator.com/item?id=%item.story_id%, target=comment
+- h1 : Hackernews
+- [ui] setup table from %items%
+    header: Title, created
+    body: %item.title%, %item.created_at% (nobr)
+        in %item.title% column, show %item.num_comments%, %item.points%, %item.author% in small font
+        make title is clickable, %item.url%, target=news
+        link num_comments, https://news.ycombinator.com/item?id=%item.story_id% (no quotes around story_id), target=comment

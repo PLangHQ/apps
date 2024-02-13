@@ -1,0 +1,112 @@
+{
+  "Action": {
+    "FunctionName": "Insert",
+    "Parameters": [
+      {
+        "Type": "System.String",
+        "Name": "sql",
+        "Value": "insert into front_page (id, story_id, title, created_at, num_comments, url, points, author) values (@id, @story_id, @title, @created_at, @num_comments, @url, @points, @author)"
+      },
+      {
+        "Type": "System.Collections.Generic.List`1[System.Object]",
+        "Name": "SqlParameters",
+        "Value": [
+          {
+            "ParameterName": "@id",
+            "VariableNameOrValue": "%id%",
+            "TypeFullName": "System.Int64"
+          },
+          {
+            "ParameterName": "@story_id",
+            "VariableNameOrValue": "%item.story_id%",
+            "TypeFullName": "System.Double"
+          },
+          {
+            "ParameterName": "@title",
+            "VariableNameOrValue": "%item.title%",
+            "TypeFullName": "System.String"
+          },
+          {
+            "ParameterName": "@created_at",
+            "VariableNameOrValue": "%item.created_at%",
+            "TypeFullName": "System.DateTime"
+          },
+          {
+            "ParameterName": "@num_comments",
+            "VariableNameOrValue": "%item.num_comments%",
+            "TypeFullName": "System.Int64"
+          },
+          {
+            "ParameterName": "@url",
+            "VariableNameOrValue": "%item.url%",
+            "TypeFullName": "System.String"
+          },
+          {
+            "ParameterName": "@points",
+            "VariableNameOrValue": "%item.points%",
+            "TypeFullName": "System.Double"
+          },
+          {
+            "ParameterName": "@author",
+            "VariableNameOrValue": "%item.author%",
+            "TypeFullName": "System.String"
+          }
+        ]
+      }
+    ],
+    "ReturnValue": null
+  },
+  "Text": "insert into front_page,\n    columns: %item.story_id%, %item.title%, %item.created_at%, %item.num_comments%, %item.url%, %item.points%, %item.author%",
+  "Reload": false,
+  "LlmRequest": {
+    "temperature": 0.0,
+    "top_p": 0.0,
+    "frequencyPenalty": 0.0,
+    "presencePenalty": 0.0,
+    "maxLength": 4000,
+    "llmResponseType": "json",
+    "scheme": "{\"FunctionName\": string,\n\"Parameters\": [{\"Type\": string,\n\"Name\": string,\n\"Value\": object}],\n\"ReturnValue\"?: [{\"Type\": string,\n\"VariableName\": string}] = null}",
+    "type": "PLang.Modules.DbModule.Builder",
+    "promptMessage": [
+      {
+        "role": "system",
+        "content": [
+          {
+            "type": "text",
+            "text": "Map user command to this c# function: \r\n\r\n## csharp function ##\r\nInt32 Insert(String sql, List<object>()? SqlParameters = null)\r\n## csharp function ##\r\n\r\nvariable is defined with starting and ending %, e.g. %filePath%.\r\nSqlParameters is List of ParameterInfo(string ParameterName, string VariableNameOrValue, string TypeFullName)\r\nTypeFullName is Full name of the type in c#, System.String, System.Double, System.DateTime, System.Int64, etc.\r\nParameter @id MUST be type System.Int64\r\nYou MUST modify the user command by adding id to the sql statement and parameter %id%.\r\nIf table name is a variable, keep the variable in the sql statement\r\nYou MUST generate a valid sql statement for SQLiteConnection.\r\nYou MUST provide SqlParameters if SQL has @parameter.\r\n"
+          },
+          {
+            "type": "text",
+            "text": "You MUST respond in JSON, scheme:\r\n {\"FunctionName\": string,\n\"Parameters\": [{\"Type\": string,\n\"Name\": string,\n\"Value\": object}],\n\"ReturnValue\"?: [{\"Type\": string,\n\"VariableName\": string}] = null}"
+          }
+        ]
+      },
+      {
+        "role": "assistant",
+        "content": [
+          {
+            "type": "text",
+            "text": "# examples #\r\n\"insert into users, name=%name%\" => sql: \"insert into users (id, name) values (@id, @name)\"\r\n\"insert into tableX, %phone%, write to %rows%\" => sql: \"insert into tableX (id, phone) values (@id, @phone)\"\r\n\"insert into %table%, %phone%, write to %rows%\" => sql: \"insert into %table% (id, phone) values (@id, @phone)\"\r\n# examples #"
+          },
+          {
+            "type": "text",
+            "text": "### front_page table info starts ###\n[{\"cid\":0,\"name\":\"id\",\"type\":\"INTEGER\",\"notnull\":0,\"dflt_value\":null,\"pk\":1},{\"cid\":1,\"name\":\"story_id\",\"type\":\"NUMBER\",\"notnull\":0,\"dflt_value\":null,\"pk\":0},{\"cid\":2,\"name\":\"title\",\"type\":\"TEXT\",\"notnull\":0,\"dflt_value\":null,\"pk\":0},{\"cid\":3,\"name\":\"created_at\",\"type\":\"DATETIME\",\"notnull\":0,\"dflt_value\":null,\"pk\":0},{\"cid\":4,\"name\":\"num_comments\",\"type\":\"INTEGER\",\"notnull\":0,\"dflt_value\":null,\"pk\":0},{\"cid\":5,\"name\":\"url\",\"type\":\"TEXT\",\"notnull\":0,\"dflt_value\":null,\"pk\":0},{\"cid\":6,\"name\":\"points\",\"type\":\"NUMBER\",\"notnull\":0,\"dflt_value\":null,\"pk\":0},{\"cid\":7,\"name\":\"author\",\"type\":\"TEXT\",\"notnull\":0,\"dflt_value\":null,\"pk\":0}]\n### table info ends ###"
+          }
+        ]
+      },
+      {
+        "role": "user",
+        "content": [
+          {
+            "type": "text",
+            "text": "insert into front_page,\n    columns: %item.story_id%, %item.title%, %item.created_at%, %item.num_comments%, %item.url%, %item.points%, %item.author%"
+          }
+        ]
+      }
+    ],
+    "model": "gpt-4",
+    "caching": true,
+    "RawResponse": "{\r\n  \"FunctionName\": \"Insert\",\r\n  \"Parameters\": [\r\n    {\r\n      \"Type\": \"System.String\",\r\n      \"Name\": \"sql\",\r\n      \"Value\": \"insert into front_page (id, story_id, title, created_at, num_comments, url, points, author) values (@id, @story_id, @title, @created_at, @num_comments, @url, @points, @author)\"\r\n    },\r\n    {\r\n      \"Type\": \"System.Collections.Generic.List`1[System.Object]\",\r\n      \"Name\": \"SqlParameters\",\r\n      \"Value\": [\r\n        {\r\n          \"ParameterName\": \"@id\",\r\n          \"VariableNameOrValue\": \"%id%\",\r\n          \"TypeFullName\": \"System.Int64\"\r\n        },\r\n        {\r\n          \"ParameterName\": \"@story_id\",\r\n          \"VariableNameOrValue\": \"%item.story_id%\",\r\n          \"TypeFullName\": \"System.Double\"\r\n        },\r\n        {\r\n          \"ParameterName\": \"@title\",\r\n          \"VariableNameOrValue\": \"%item.title%\",\r\n          \"TypeFullName\": \"System.String\"\r\n        },\r\n        {\r\n          \"ParameterName\": \"@created_at\",\r\n          \"VariableNameOrValue\": \"%item.created_at%\",\r\n          \"TypeFullName\": \"System.DateTime\"\r\n        },\r\n        {\r\n          \"ParameterName\": \"@num_comments\",\r\n          \"VariableNameOrValue\": \"%item.num_comments%\",\r\n          \"TypeFullName\": \"System.Int64\"\r\n        },\r\n        {\r\n          \"ParameterName\": \"@url\",\r\n          \"VariableNameOrValue\": \"%item.url%\",\r\n          \"TypeFullName\": \"System.String\"\r\n        },\r\n        {\r\n          \"ParameterName\": \"@points\",\r\n          \"VariableNameOrValue\": \"%item.points%\",\r\n          \"TypeFullName\": \"System.Double\"\r\n        },\r\n        {\r\n          \"ParameterName\": \"@author\",\r\n          \"VariableNameOrValue\": \"%item.author%\",\r\n          \"TypeFullName\": \"System.String\"\r\n        }\r\n      ]\r\n    }\r\n  ]\r\n}"
+  },
+  "RunOnBuild": false
+}
