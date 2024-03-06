@@ -1,0 +1,32 @@
+Start
+- run window app, call !Weather, "My weather app", on drop call !StuffDropped, 1024x764
+
+StuffDropped
+- write out %data%
+
+Weather
+- set default value for %city% to "Reykjavik"
+- get https://goweather.herokuapp.com/weather/%city%, 
+    on error call LoadCache
+    write to %weather%
+- [code] remove ' km/h' and convert %weather.wind%(string) (e.g. 6 km/h) to meters to seconds, round 0, write to %windInMetersPerSecond%
+- call !WeatherUI
+
+LoadCache
+- set variable %weather% to '{  
+        "temperature":"29 °C",
+        "wind":"20 km/h",
+        "description":"Partly cloudy",
+        "forecast":[  
+            {  
+                "day":1,
+                "temperature":"27 °C",
+                "wind":"12 km/h"
+            },
+            {  
+                "day":2,
+                "temperature":"22 °C",
+                "wind":"8 km/h"
+            }
+        ]
+        }'

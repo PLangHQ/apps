@@ -1,0 +1,9 @@
+WeatherUI
+- divide content in two horizontal parts
+    - weather widget, 
+        %weather.temperature% (dont print "&deg C", it is provided in weather.temperature)
+        %windInMetersPerSecond%
+        %weather.description%
+    - table for %weather.forecast%
+        header: Day, Temperature, Wind
+        body: day, temperature, wind

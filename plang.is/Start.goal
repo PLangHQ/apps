@@ -1,0 +1,33 @@
+Start
+- ask user 'Welcome to plang.is
+    1. See balance
+    2. Add to balance
+    3. Download usage to csv
+    ', must be number, 1,2 or 3, write to %selection%
+- if %selection% = 1, call !ViewBalance
+- if %selection% = 2, call !AddToBalance
+- if %selection% = 3, call !DownloadUsage
+
+ViewBalance
+- GET http://localhost:10000/api/Balance.goal, write to %response%
+- [code] %response.balance%/1000000, 
+    2 decimal points
+    write to %amount%(double)
+- write out 'Your balance is %response.balance%
+- call !Start
+
+AddToBalance
+- GET http://localhost:10000/api/Balance.goal, write to %response%
+- [code] %response.balance%/1000000, 
+    2 decimal points
+    write to %amount%(double)
+- write out 'Open following link to fill up your account %response.payment_url%
+    You currently have %response.balance% on your account'
+- call !Start
+
+DownloadUsage
+- GET http://llm.plang.is/api/Usage.goal, write to %response%
+- set var fileName = '%Now.ToString("s")%.csv'
+- write %response% to csv file /usage/%fileName%
+- write 'Your usage file has been save to /usage/%fileName%'
+- call !Start

@@ -20,6 +20,11 @@ This app streamlines the initial phase of app development by automating the gene
 
 This application is designed to assist users in generating starter code for their app ideas based on a set of questions about the app's requirements. Here's how it works:
 
+Since plang is in natural language, it is easy for [LLM to understand](https://chat.openai.com/share/7065371a-42eb-4041-87a2-3c911df3ffcf) it and draw a flowchart of the application.
+
+![Flowchart](flowchart.svg)
+
+
 ### Start
 1. **Gather App Requirements**: The application begins by prompting the user to describe the app they want to create, specifically asking whether the app needs database interactions, data fetching from a web service, or decision-making capabilities from the user. The user's responses are saved in a variable `%idea%`.
 

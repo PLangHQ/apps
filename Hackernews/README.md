@@ -13,6 +13,9 @@ plangw
 This application is a Hacker News client that periodically fetches the latest news items from the Hacker News Algolia API, processes each item to determine if it's new or existing, and then updates the database accordingly. The application ensures that the user always has access to the newest articles without manual intervention.
 
 ## Flow explained
+Since plang is in natural language, it is easy for [LLM to understand](https://chat.openai.com/share/cfd0c824-1627-4f0f-8f45-4eb240a1d828) it and draw a flowchart of the application.
+
+![Flowchart](flowchart.svg)
 
 The following text explains [Start.goal](Start.goal)
 

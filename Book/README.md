@@ -22,3 +22,10 @@ The application will guide you through the process of creating or selecting a st
 
 ## Screenshot
 ![Book app](screenshot.jpg)
+
+## Flowchart
+Since plang is in natural language, it is easy for [LLM to understand](https://chat.openai.com/share/e386766b-68a7-46fb-88fe-672572aeab35) it and draw a flowchart of the application.
+
+
+
+![Flowchart](flowchart.svg)
