@@ -15,6 +15,7 @@ Following rules are for plang language
 - There is no "- else" in plang, when else statement is needed, you need to call a goal, e.g. '- if \%isTrue\%, then call !TrueGoal, else !FalseGoal
 - if and else statments is in one line, e.g. - if \%isTrue\% then, call !IsTrueGoal, else !IsFalseGoal
 - if user defines a console app, ignore plang code example from Tests\Ui\*
+- API keys or other settings are retrieved by using \%Setting.SETTING_NAME\%, choose appropriate name for SETTING_NAME
 
 Your response:
     Code in the json scheme should contain all plang code.

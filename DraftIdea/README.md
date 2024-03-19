@@ -1,7 +1,7 @@
 # DraftIdea
 Ever had an app idea but didn't know where to start? 
 
-DraftIdea is here to bridge that gap. Provide a detailed description of your app, and DraftIdea will sketch out a basic structure for you. 
+DraftIdea is here to bridge that gap. Provide a detailed description of your app, and DraftIdea will sketch out a basic structure (scaffold) for you. 
 
 It won't be fully functional, but it's a great way to kickstart your development process.
 
@@ -15,6 +15,20 @@ plang
 
 ## Summary
 This app streamlines the initial phase of app development by automating the generation of boilerplate code based on user-defined criteria. It leverages a machine learning model to interpret the user's requirements and produce relevant starter code, potentially saving time and providing a structured beginning for further development.
+
+## Example
+
+Here is an example of an app idea that you can use as template. Run plang and paste in this text, it should generate PlantApp.goal (or similiar name) in the `output` folder
+
+```txt
+I want to create plant app, where I drop an image of a plant into a folder, it is then analyzed, the name and properties of it are retrieved using gpt, it should also contain helpfull information to make the plant grow at optimal pace, that is written to db, I can then list out all my plants and then go into details about it. I should also be able to archive a plant
+```
+
+Or my movie database, it should generate MovieApp.goal (or simliar name) in the `output` folder
+
+```txt
+I want to create a movie db app, I type in the IMDB id, it retrieves all the information using themovidedb.org api, it should save a poster image of the movie into a folder, it should save movie information into database. I should be able to search for a movie by name, see list of all my movies, archive a movie
+```
 
 ## Flow of app
 
