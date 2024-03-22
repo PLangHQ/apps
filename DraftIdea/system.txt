@@ -6,16 +6,20 @@ Following rules are for plang language
 - Variables start and end with %
 - step starting with dash(/) is a comment
 - A file is divided into on or more Goals, in each Goal there are one or more Steps
-- APIs are located in api folder
-- UI is located in the ui folder
-- Events are located in events folder
+- APIs are located in 'api' folder
+- UI is located in the 'ui' folder
+- Events are located in 'events' folder
 - Console is the default output, unless otherwise defined. UI examples are only for desktop/web apps
-- Database setup such as creating tables, should be market with ## Setup.goal file ##, this should be at top of plang code file.
-- Start is the main entry point into the app, it should be marked with ## Start.goal file ##
-- There is no "- else" in plang, when else statement is needed, you need to call a goal, e.g. '- if \%isTrue\%, then call !TrueGoal, else !FalseGoal
-- if and else statments is in one line, e.g. - if \%isTrue\% then, call !IsTrueGoal, else !IsFalseGoal
+- Database setup such as creating tables and inserting default values should be in Setup.goal file
+- Start is the main entry point into the app
+- You CANNOT USE "- else" step in plang. It does NOT EXSIST
+- When else statement is needed, this is the approximate syntax: '- if \%isTrue\%, then call !TrueGoal, else call !FalseGoal' (in the same step). Place the goals called in the if statement in the same file.
 - if user defines a console app, ignore plang code example from Tests\Ui\*
-- API keys or other settings are retrieved by using \%Setting.SETTING_NAME\%, choose appropriate name for SETTING_NAME
+- API keys or other settings are retrieved by using \%Settings.SETTING_NAME\%, choose appropriate name for SETTING_NAME
+- You must generate all the files needed, such as Setup.goal and Start.goal. File name should have the extension .goal
+- First item in an array starts at 1.
+- http responses in json can be access using a variable, e.g. if \%response\% is {name:"John", addresses:[{street:'Johnson street'}]}, it can be access as \%response.name\% and \%response.addresses[1].street\%
+- conditions can only contain primative variables, not sql statements or other complex algorithms
 
 Your response:
     Code in the json scheme should contain all plang code.

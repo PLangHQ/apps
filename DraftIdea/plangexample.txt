@@ -283,6 +283,7 @@ PrintOutCSV
 #### Start of Tests\Http\Http.goal ####
 
 Http
+- download http://example.org/file.jpg to image/file.jpg
 - GET https://httpbin.org/get, write to %getResponse%
 - write out 'UserAgent: %getResponse.headers.User-Agent% , ip: %getResponse.origin%'
 - post https://httpbin.org/post

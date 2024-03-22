@@ -18,17 +18,27 @@ This app streamlines the initial phase of app development by automating the gene
 
 ## Example
 
-Here is an example of an app idea that you can use as template. Run plang and paste in this text, it should generate PlantApp.goal (or similiar name) in the `output` folder
+Here is an example of an app idea that you can use as template. Run plang and paste in this text, it should generate goal file in the `output\MovieAppDb` (or similiar name) folder
 
 ```txt
-I want to create plant app, where I drop an image of a plant into a folder, it is then analyzed, the name and properties of it are retrieved using gpt, it should also contain helpfull information to make the plant grow at optimal pace, that is written to db, I can then list out all my plants and then go into details about it. I should also be able to archive a plant
+I want to create a movie db app, I type in the IMDB id, it retrieves all the information using themovidedb.org api, it should save a poster image of the movie into a folder, it should save movie information into database. I should be able to search for a movie by name in my db and display the data about the movie, see list of all my movies, archive a movie. On start of the application, ask the user what he would like to do. After each goal that is called, ask the user again what he would like to do
 ```
 
-Or my movie database, it should generate MovieApp.goal (or simliar name) in the `output` folder
+Or my plant app, it should generate goal files in the `output\PlantApp` (or simliar name) folder
 
 ```txt
-I want to create a movie db app, I type in the IMDB id, it retrieves all the information using themovidedb.org api, it should save a poster image of the movie into a folder, it should save movie information into database. I should be able to search for a movie by name, see list of all my movies, archive a movie
+I want to create plant app, the app listens to a folder where I drop an image of a plant, it is then analyzed, the name and properties of it are retrieved using gpt, it should also contain helpfull information to make the plant grow at optimal pace, that is written to db, I can then list out all my plants and then go into details about it. I should also be able to archive a plant. On start of the application, ask the user what he would like to do. After each goal that is called, ask the user again what he would like to do
 ```
+
+## Few things to note
+
+The person creating the app needs to have a domain knowledge of the subject. 
+
+If I have a brilliant business idea that I want to implement, I need to know what I can use out there on the internet. Example of this is knowing about the themovidedb.org api for the movie db app. 
+
+You also need to have the understanding that a database exists, and what it does.
+
+Each time you generate an app, it will be different, same if you gave it to a programmer, each programmer would program it differently.
 
 ## Flow of app
 
