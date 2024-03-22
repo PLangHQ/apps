@@ -4,7 +4,8 @@ Ever had an app idea but didn't know where to start?
 DraftIdea is here to bridge that gap. Provide a detailed description of your app, and DraftIdea will sketch out a basic structure (scaffold) for you. 
 
 It won't be fully functional, but it's a great way to kickstart your development process.
-
+## Video
+Check out [the video](https://www.youtube.com/watch?v=6JFJWS6rpMQ)
 ## How to use
 1. Clone this repository to your local machine.
 2. Open a terminal or command prompt, navigate to the cloned directory, and execute:
