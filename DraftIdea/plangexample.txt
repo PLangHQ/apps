@@ -218,28 +218,6 @@ Events
 
 #### End of Tests\Events\Events.goal ####
 
-#### Start of Tests\Events\SendDebug.goal ####
-
-SendDebug
-- post http://localhost:60877/ 
-    data: {
-        goal:"%__GOAL__%", 
-        step:"%__STEP__%",
-        event:"%__Event__%",
-        isHttpRequest:"%__IsHttpRequest__%",
-        stepIndex:%__StepIndex__%,
-        instruction:%__Instruction__%,
-        memoryStack:"%__memorystack__%",
-        absolutePath:%__GOAL__.AbsoluteGoalPath%,        
-        exception:"%__Exception__%",
-        }
-    timeout 30 min
-    write to %debugReponse%
-- if %debugReponse.go_to% is not null then call GoToLine line=%debugReponse.go_to%
-
-GoToLine
-- set %__StepIndex__% as %line%
-#### End of Tests\Events\SendDebug.goal ####
 
 #### Start of Tests\File\File.goal ####
 
@@ -666,104 +644,6 @@ WebserverMoreOptions
 - write out 'webserver start on http://%host%:%port%/hello.goal'
 #### End of Tests\Webserver\WebserverMoreOptions.goal ####
 
-#### Start of Tests\Blockchain\Events\Events.goal ####
-
-Events
-- before each step, include private goals,call !SendDebug, only in debug mode
-- before goal ends, include private goals, call !SendDebug, only in debug mode
-
-#### End of Tests\Blockchain\Events\Events.goal ####
-
-#### Start of Tests\Blockchain\Events\SendDebug.goal ####
-
-SendDebug
-- post http://localhost:60877/ 
-    data: {
-        goal:"%__GOAL__%", 
-        step:"%__STEP__%",
-        event:"%__Event__%",
-        isHttpRequest:"%__IsHttpRequest__%",
-        stepIndex:%__StepIndex__%,
-        instruction:%__Instruction__%,
-        memoryStack:"%__memorystack__%",
-        absolutePath:%__GOAL__.AbsoluteGoalPath%,        
-        exception:"%__Exception__%",
-        }
-    timeout 30 min
-    write to %debugReponse%
-- if %debugReponse.go_to% is not null then call GoToLine line=%debugReponse.go_to%
-
-GoToLine
-- set %__StepIndex__% as %line%
-#### End of Tests\Blockchain\Events\SendDebug.goal ####
-
-#### Start of Tests\CallGoal\Events\Events.goal ####
-
-Events
-- before each step, include private goals,call !SendDebug, only in debug mode
-- before goal ends, include private goals, call !SendDebug, only in debug mode
-
-#### End of Tests\CallGoal\Events\Events.goal ####
-
-#### Start of Tests\CallGoal\Events\SendDebug.goal ####
-
-SendDebug
-- post http://localhost:60877/ 
-    data: {
-        goal:"%__GOAL__%", 
-        step:"%__STEP__%",
-        event:"%__Event__%",
-        isHttpRequest:"%__IsHttpRequest__%",
-        stepIndex:%__StepIndex__%,
-        instruction:%__Instruction__%,
-        memoryStack:"%__memorystack__%",
-        absolutePath:%__GOAL__.AbsoluteGoalPath%,        
-        exception:"%__Exception__%",
-        }
-    timeout 30 min
-    write to %debugReponse%
-- if %debugReponse.go_to% is not null then call GoToLine line=%debugReponse.go_to%
-
-GoToLine
-- set %__StepIndex__% as %line%
-#### End of Tests\CallGoal\Events\SendDebug.goal ####
-
-#### Start of Tests\Code\Events\Events.goal ####
-
-Events
-- before each step, include private goals,call !SendDebug, only in debug mode
-- before goal ends, include private goals, call !SendDebug, only in debug mode
-
-#### End of Tests\Code\Events\Events.goal ####
-
-#### Start of Tests\Code\Events\SendDebug.goal ####
-
-SendDebug
-- post http://localhost:60877/ 
-    data: {
-        goal:"%__GOAL__%", 
-        step:"%__STEP__%",
-        event:"%__Event__%",
-        isHttpRequest:"%__IsHttpRequest__%",
-        stepIndex:%__StepIndex__%,
-        instruction:%__Instruction__%,
-        memoryStack:"%__memorystack__%",
-        absolutePath:%__GOAL__.AbsoluteGoalPath%,        
-        exception:"%__Exception__%",
-        }
-    timeout 30 min
-    write to %debugReponse%
-- if %debugReponse.go_to% is not null then call GoToLine line=%debugReponse.go_to%
-
-GoToLine
-- set %__StepIndex__% as %line%
-#### End of Tests\Code\Events\SendDebug.goal ####
-
-#### Start of Tests\InjectDb\Events\Events.goal ####
-
-Events
-- Before app starts, call InjectTypes
-#### End of Tests\InjectDb\Events\Events.goal ####
 
 #### Start of Tests\InjectDb\Events\InjectTypes.goal ####
 
@@ -779,37 +659,6 @@ InjectTypes
 Events
 - Before each goal, call !DoStuff
 #### End of Tests\InjectOpenAI\Events\Events.goal ####
-
-#### Start of Tests\LocalOrGlobalVariable\Events\Events.goal ####
-
-Events
-- before each step, include private goals,call !SendDebug, only in debug mode
-- before goal ends, include private goals, call !SendDebug, only in debug mode
-
-#### End of Tests\LocalOrGlobalVariable\Events\Events.goal ####
-
-#### Start of Tests\LocalOrGlobalVariable\Events\SendDebug.goal ####
-
-SendDebug
-- post http://localhost:60877/ 
-    data: {
-        goal:"%__GOAL__%", 
-        step:"%__STEP__%",
-        event:"%__Event__%",
-        isHttpRequest:"%__IsHttpRequest__%",
-        stepIndex:%__StepIndex__%,
-        instruction:%__Instruction__%,
-        memoryStack:"%__memorystack__%",
-        absolutePath:%__GOAL__.AbsoluteGoalPath%,        
-        exception:"%__Exception__%",
-        }
-    timeout 30 min
-    write to %debugReponse%
-- if %debugReponse.go_to% is not null then call GoToLine line=%debugReponse.go_to%
-
-GoToLine
-- set %__StepIndex__% as %line%
-#### End of Tests\LocalOrGlobalVariable\Events\SendDebug.goal ####
 
 #### Start of Tests\Tutorial\api\List.goal ####
 
@@ -833,36 +682,6 @@ Categorize
 - update table Todos, set %category% where %id%
 #### End of Tests\Tutorial\api\NewTask.goal ####
 
-#### Start of Tests\Tutorial\Events\Events.goal ####
-
-Events
-- before each step, include private goals,call !SendDebug, only in debug mode
-- before goal ends, include private goals, call !SendDebug, only in debug mode
-
-#### End of Tests\Tutorial\Events\Events.goal ####
-
-#### Start of Tests\Tutorial\Events\SendDebug.goal ####
-
-SendDebug
-- post http://localhost:60877/ 
-    data: {
-        goal:"%__GOAL__%", 
-        step:"%__STEP__%",
-        event:"%__Event__%",
-        isHttpRequest:"%__IsHttpRequest__%",
-        stepIndex:%__StepIndex__%,
-        instruction:%__Instruction__%,
-        memoryStack:"%__memorystack__%",
-        absolutePath:%__GOAL__.AbsoluteGoalPath%,        
-        exception:"%__Exception__%",
-        }
-    timeout 30 min
-    write to %debugReponse%
-- if %debugReponse.go_to% is not null then call GoToLine line=%debugReponse.go_to%
-
-GoToLine
-- set %__StepIndex__% as %line%
-#### End of Tests\Tutorial\Events\SendDebug.goal ####
 
 #### Start of Tests\Tutorial\test\TestList.goal ####
 
@@ -923,36 +742,6 @@ Categorize
 - update table Todos, set %category% where %id%
 #### End of Tests\Tutorial_new\api\NewTask.goal ####
 
-#### Start of Tests\Tutorial_new\Events\Events.goal ####
-
-Events
-- before each step, include private goals,call !SendDebug, only in debug mode
-- before goal ends, include private goals, call !SendDebug, only in debug mode
-
-#### End of Tests\Tutorial_new\Events\Events.goal ####
-
-#### Start of Tests\Tutorial_new\Events\SendDebug.goal ####
-
-SendDebug
-- post http://localhost:60877/ 
-    data: {
-        goal:"%__GOAL__%", 
-        step:"%__STEP__%",
-        event:"%__Event__%",
-        isHttpRequest:"%__IsHttpRequest__%",
-        stepIndex:%__StepIndex__%,
-        instruction:%__Instruction__%,
-        memoryStack:"%__memorystack__%",
-        absolutePath:%__GOAL__.AbsoluteGoalPath%,        
-        exception:"%__Exception__%",
-        }
-    timeout 30 min
-    write to %debugReponse%
-- if %debugReponse.go_to% is not null then call GoToLine line=%debugReponse.go_to%
-
-GoToLine
-- set %__StepIndex__% as %line%
-#### End of Tests\Tutorial_new\Events\SendDebug.goal ####
 
 #### Start of Tests\Tutorial_new\test\TestList.goal ####
 
@@ -1022,36 +811,6 @@ ShowList - GET, browser cache 2 days
 - write out %list.toJson()%
 #### End of Tests\Webserver\api\ShowList.goal ####
 
-#### Start of Tests\Webserver\Events\Events.goal ####
-
-Events
-- before each step, include private goals,call !SendDebug, only in debug mode
-- before goal ends, include private goals, call !SendDebug, only in debug mode
-
-#### End of Tests\Webserver\Events\Events.goal ####
-
-#### Start of Tests\Webserver\Events\SendDebug.goal ####
-
-SendDebug
-- post http://localhost:60877/ 
-    data: {
-        goal:"%__GOAL__%", 
-        step:"%__STEP__%",
-        event:"%__Event__%",
-        isHttpRequest:"%__IsHttpRequest__%",
-        stepIndex:%__StepIndex__%,
-        instruction:%__Instruction__%,
-        memoryStack:"%__memorystack__%",
-        absolutePath:%__GOAL__.AbsoluteGoalPath%,        
-        exception:"%__Exception__%",
-        }
-    timeout 30 min
-    write to %debugReponse%
-- if %debugReponse.go_to% is not null then call GoToLine line=%debugReponse.go_to%
-
-GoToLine
-- set %__StepIndex__% as %line%
-#### End of Tests\Webserver\Events\SendDebug.goal ####
 
 #### Start of Tests\Webserver\public\Hello.goal ####
 
