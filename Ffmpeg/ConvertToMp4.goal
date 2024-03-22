@@ -1,0 +1,5 @@
+ConvertToMp4
+- call ffmpeg, convert %inputFile% to mp4,
+    use best standards
+    %parameter% should be injected into ffmpeg command for optional parameters
+    write out to %outputPath%

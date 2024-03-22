@@ -1,0 +1,77 @@
+{
+  "Action": {
+    "FunctionName": "RunTerminal",
+    "Parameters": [
+      {
+        "Type": "string",
+        "Name": "appExecutableName",
+        "Value": "ffmpeg"
+      },
+      {
+        "Type": "List`1<String>",
+        "Name": "parameters",
+        "Value": [
+          "-i",
+          "%inputFile%",
+          "-c:v",
+          "libx264",
+          "-crf",
+          "23",
+          "-preset",
+          "veryfast",
+          "-c:a",
+          "aac",
+          "-b:a",
+          "128k",
+          "-movflags",
+          "+faststart",
+          "%parameter%",
+          "%outputPath%"
+        ]
+      },
+      {
+        "Type": "string",
+        "Name": "pathToWorkingDirInTerminal",
+        "Value": ""
+      },
+      {
+        "Type": "string",
+        "Name": "dataOutputVariable",
+        "Value": ""
+      },
+      {
+        "Type": "string",
+        "Name": "errorDebugInfoOutputVariable",
+        "Value": ""
+      },
+      {
+        "Type": "string",
+        "Name": "dataStreamDelta",
+        "Value": ""
+      },
+      {
+        "Type": "string",
+        "Name": "errorStreamDelta",
+        "Value": ""
+      }
+    ],
+    "ReturnValue": null
+  },
+  "Text": "call ffmpeg, convert %inputFile% to mp4,\n    use best standards\n    %parameter% should be injected into ffmpeg command for optional parameters\n    write out to %outputPath%",
+  "Reload": false,
+  "LlmQuestion": {
+    "temperature": null,
+    "top_p": null,
+    "frequencyPenalty": null,
+    "presencePenalty": null,
+    "maxLength": 4000,
+    "type": "PLang.Modules.TerminalModule.Builder",
+    "system": "Parse user command.\r\n\r\nSelect the correct function from list of available functions based on user command\r\n\r\nvariable is defined with starting and ending %, e.g. %filePath%\r\n\r\nIf there is some api key, settings, config replace it with %Settings.Get(\"settingName\", \"defaultValue\", \"Explain\")% \r\n- settingName would be the api key, config key, \r\n- defaultValue for settings is the usual value given, make it \"\" if no value can be default\r\n- Explain is an explanation about the setting that novice user can understand.\r\n\r\nOnExceptionContainingTextCallGoal - if no text is defined, set as \"*\", goal to call is required from user\r\n\r\nJSON scheme information\r\nType: the object type in c#\r\nName: name of the variable\r\nValue: %variable% or hardcode string that should be used\r\nFunctionName: Name of the function to use from list of functions, if no function matches set as \"N/A\"\r\nReturnValue: Only if the function returns a value AND if user defines %variable% to write into. If no %variable% is defined then set as null.\n\nYou MUST respond in JSON, scheme:\r\n {\"FunctionName\": string,\n\"Parameters\": [{\"Type\": string,\n\"Name\": string,\n\"Value\": object}],\n\"ReturnValue\"?: [{\"Type\": string,\n\"VariableName\": string}]}",
+    "question": "command: call ffmpeg, convert %inputFile% to mp4,\n    use best standards\n    %parameter% should be injected into ffmpeg command for optional parameters\n    write out to %outputPath%",
+    "assistant": "## functions available defined in csharp ##\r\nvoid Read(String variableName) \nDictionary`2 RunTerminal(String appExecutableName, List`1<String>? parameters, String? pathToWorkingDirInTerminal, String? dataOutputVariable, String? errorDebugInfoOutputVariable, String? dataStreamDelta, String? errorStreamDelta) \n\r\n## functions available ends ##",
+    "model": "gpt-4",
+    "caching": true,
+    "RawResponse": null
+  },
+  "RunOnBuild": false
+}

@@ -1,0 +1,13 @@
+Example
+- when variable %stream% is changed, call OutputStreamer
+- use ffmpeg to convert video/sample.mp4 to audio/sample.mp3, 
+    overwrite existing file, 
+    write debug delta info to %stream%
+- set %ffmpegDone% as true
+- wait 7 sec
+- write out 'Is ffmpegDone: %ffmpegDone%'
+
+OutputStreamer
+- write out %stream%
+
+
