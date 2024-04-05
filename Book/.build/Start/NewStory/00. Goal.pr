@@ -21,7 +21,7 @@
       "CancellationHandler": null,
       "Custom": {},
       "Number": 0,
-      "LineNumber": 5,
+      "LineNumber": 6,
       "LlmRequest": {
         "temperature": 0.0,
         "top_p": 0.0,
@@ -88,7 +88,7 @@
       "CancellationHandler": null,
       "Custom": {},
       "Number": 1,
-      "LineNumber": 6,
+      "LineNumber": 7,
       "LlmRequest": {
         "temperature": 0.0,
         "top_p": 0.0,
@@ -155,7 +155,7 @@
       "CancellationHandler": null,
       "Custom": {},
       "Number": 2,
-      "LineNumber": 24,
+      "LineNumber": 25,
       "LlmRequest": {
         "temperature": 0.0,
         "top_p": 0.0,
@@ -222,7 +222,7 @@
       "CancellationHandler": null,
       "Custom": {},
       "Number": 3,
-      "LineNumber": 25,
+      "LineNumber": 26,
       "LlmRequest": {
         "temperature": 0.0,
         "top_p": 0.0,
@@ -289,7 +289,7 @@
       "CancellationHandler": null,
       "Custom": {},
       "Number": 4,
-      "LineNumber": 26,
+      "LineNumber": 27,
       "LlmRequest": {
         "temperature": 0.0,
         "top_p": 0.0,
@@ -356,7 +356,7 @@
       "CancellationHandler": null,
       "Custom": {},
       "Number": 5,
-      "LineNumber": 27,
+      "LineNumber": 28,
       "LlmRequest": {
         "temperature": 0.0,
         "top_p": 0.0,
@@ -423,7 +423,7 @@
       "CancellationHandler": null,
       "Custom": {},
       "Number": 6,
-      "LineNumber": 35,
+      "LineNumber": 36,
       "LlmRequest": {
         "temperature": 0.0,
         "top_p": 0.0,
@@ -490,7 +490,7 @@
       "CancellationHandler": null,
       "Custom": {},
       "Number": 7,
-      "LineNumber": 39,
+      "LineNumber": 40,
       "LlmRequest": {
         "temperature": 0.0,
         "top_p": 0.0,
@@ -557,7 +557,7 @@
       "CancellationHandler": null,
       "Custom": {},
       "Number": 8,
-      "LineNumber": 40,
+      "LineNumber": 41,
       "LlmRequest": {
         "temperature": 0.0,
         "top_p": 0.0,
@@ -613,9 +613,9 @@
   "RelativeGoalFolderPath": "\\",
   "RelativePrPath": ".build\\Start\\NewStory\\00. Goal.pr",
   "RelativePrFolderPath": ".build\\Start\\NewStory",
-  "BuilderVersion": "0.1.0.0",
+  "BuilderVersion": "0.1.0.2",
   "GoalApiInfo": null,
   "Injections": [],
   "Signature": null,
-  "Hash": "d0211ad9640d2ed5d2fcf5628d4be6010a91ee808b56785de8c0d4b0cb6fbb0e"
+  "Hash": "6332c44ce8b30a4afb23520a43a93e8f5a05e76e21bbf928bc87b87476ff848a"
 }

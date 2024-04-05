@@ -21,7 +21,7 @@
       "CancellationHandler": null,
       "Custom": {},
       "Number": 0,
-      "LineNumber": 84,
+      "LineNumber": 47,
       "LlmRequest": {
         "temperature": 0.0,
         "top_p": 0.0,
@@ -88,7 +88,7 @@
       "CancellationHandler": null,
       "Custom": {},
       "Number": 1,
-      "LineNumber": 85,
+      "LineNumber": 48,
       "LlmRequest": {
         "temperature": 0.0,
         "top_p": 0.0,
@@ -144,9 +144,9 @@
   "RelativeGoalFolderPath": "\\",
   "RelativePrPath": ".build\\Start\\ShowChapter\\00. Goal.pr",
   "RelativePrFolderPath": ".build\\Start\\ShowChapter",
-  "BuilderVersion": "0.1.0.0",
+  "BuilderVersion": "0.1.0.4",
   "GoalApiInfo": null,
   "Injections": [],
   "Signature": null,
-  "Hash": "51c40c3063c6ea4d16ee57d063ef9992b721a19b80222fa74d2c7cf783a2dee9"
+  "Hash": "6f5f6c971b8d4c836a88c11cf168161f42670385952640080609fd643c3a7e84"
 }

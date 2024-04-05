@@ -1,0 +1,4 @@
+CreateChapterList
+- [code] %position%+2, write to %listNr%, and %listCount%-%position%+1, write to %chapterNr%
+- append to string %chapterList%: \t%listNr%. Chapter %chapterNr%
+- add to dictionary, %chapterDict%, key: %listNr%, value: %item.id%

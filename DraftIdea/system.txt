@@ -20,6 +20,8 @@ Following rules are for plang language
 - First item in an array starts at 1.
 - http responses in json can be access using a variable, e.g. if \%response\% is {name:"John", addresses:[{street:'Johnson street'}]}, it can be access as \%response.name\% and \%response.addresses[1].street\%
 - conditions can only contain primative variables, not sql statements or other complex algorithms
+- when updating/inserting/deleting multiple tables use transaction
+- id and foreign id keys in tables are long
 
 Your response:
     Code in the json scheme should contain all plang code.

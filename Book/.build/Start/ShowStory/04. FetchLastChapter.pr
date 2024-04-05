@@ -5,10 +5,10 @@
       {
         "Type": "System.String",
         "Name": "sql",
-        "Value": "SELECT * FROM story_lines WHERE storyId=@storyId ORDER BY id DESC"
+        "Value": "SELECT * FROM story_lines WHERE storyId=@storyId ORDER BY id DESC LIMIT 1"
       },
       {
-        "Type": "System.Collections.Generic.List<System.Object>",
+        "Type": "System.Collections.Generic.List`1[System.Object]",
         "Name": "SqlParameters",
         "Value": [
           {
@@ -48,13 +48,11 @@
         "content": [
           {
             "type": "text",
-            "text": "Map user command to this c# function: \r\n\r\n## csharp function ##\r\nobject? Select(String sql, List<object>()? SqlParameters = null, bool selectOneRow_Top1OrLimit1 = false)\r\n## csharp function ##\r\n\r\n## Rules ##\r\nVariable is defined with starting and ending %, e.g. %filePath%.\r\nSqlParameters is List of ParameterInfo(string ParameterName, string VariableNameOrValue, string TypeFullName). SqlParameters @id MUST be type System.Int64\r\nTypeFullName is Full name of the type in c#, System.String, System.Double, etc.\r\nReturnValue rules: \r\n- If user defines variable to write into, e.g. 'write to %result%' then ReturnValue=%result%, \r\n- If there does not define 'write to ..' statement then Columns being returned with type if defined by user. \r\n- * will return dynamic. \r\n- integer/int should always be System.Int64. \r\n\r\nIf table name is a variable, keep the variable in the sql statement\r\nYou MUST generate a valid sql statement for SQLiteConnection.\r\nYou MUST provide SqlParameters if SQL has @parameter.\r\n## Rules ##\r\n",
-            "image_url": null
+            "text": "Map user command to this c# function: \r\n\r\n## csharp function ##\r\nobject? Select(String sql, List<object>()? SqlParameters = null, bool selectOneRow_Top1OrLimit1 = false)\r\n## csharp function ##\r\n\r\n## Rules ##\r\nVariable is defined with starting and ending %, e.g. %filePath%.\r\n\\% is escape from start of variable, would be used in LIKE statements, then VariableNameOrValue should keep the escaped character, e.g. the user input \\%%title%\\%, should map to VariableNameOrValue=\\%%title%\\%\r\nSqlParameters is List of ParameterInfo(string ParameterName, string VariableNameOrValue, string TypeFullName). SqlParameters @id MUST be type System.Int64\r\nTypeFullName is Full name of the type in c#, System.String, System.Double, etc.\r\nReturnValue rules: \r\n- If user defines variable to write into, e.g. 'write to %result%' then ReturnValue=%result%, \r\n- If there does not define 'write to ..' statement then Columns being returned with type if defined by user. \r\n- * will return dynamic. \r\n- integer/int should always be System.Int64. \r\n\r\nIf table name is a variable, keep the variable in the sql statement\r\nYou MUST generate a valid sql statement for PostgreSQL.\r\nYou MUST provide SqlParameters if SQL has @parameter.\r\n## Rules ##\r\n"
           },
           {
             "type": "text",
-            "text": "You MUST respond in JSON, scheme:\r\n {\"FunctionName\": string,\n\"Parameters\": [{\"Type\": string,\n\"Name\": string,\n\"Value\": object}],\n\"ReturnValue\"?: [{\"Type\": string,\n\"VariableName\": string}] = null}",
-            "image_url": null
+            "text": "You MUST respond in JSON, scheme:\r\n {\"FunctionName\": string,\n\"Parameters\": [{\"Type\": string,\n\"Name\": string,\n\"Value\": object}],\n\"ReturnValue\"?: [{\"Type\": string,\n\"VariableName\": string}] = null}"
           }
         ]
       },
@@ -63,13 +61,11 @@
         "content": [
           {
             "type": "text",
-            "text": "# examples #\r\n- select everything from tableX, write to %table% => sql: SELECT * FROM tableX, ReturnValue: %table%\r\n- select from tableB where id=%id%, into %table% => sql: SELECT * FROM tableB WHERE id=@id, ReturnValue: %table%\r\n- select * from %table% WHERE %name%, write to %result% => sql: SELECT * FROM %table% WHERE name=@name, ReturnValue: %result%\r\n- select id, name from users, write to %user% => then ReturnValue is %user% object\r\n- select id, name from users => then ReturnValue is %id%, %name% objects\r\n# examples #",
-            "image_url": null
+            "text": "# examples #\r\n- select everything from tableX, write to %table% => sql: SELECT * FROM tableX, ReturnValue: %table%\r\n- select from tableB where id=%id%, into %table% => sql: SELECT * FROM tableB WHERE id=@id, ReturnValue: %table%\r\n- select * from %table% WHERE %name%, write to %result% => sql: SELECT * FROM %table% WHERE name=@name, ReturnValue: %result%\r\n- select id, name from users, write to %user% => then ReturnValue is %user% object\r\n- select id, name from users => then ReturnValue is %id%, %name% objects\r\n# examples #"
           },
           {
             "type": "text",
-            "text": "### story_lines table info starts ###\n[{\"cid\":0,\"name\":\"id\",\"type\":\"INTEGER\",\"notnull\":0,\"dflt_value\":null,\"pk\":1},{\"cid\":1,\"name\":\"storyId\",\"type\":\"INTEGER\",\"notnull\":0,\"dflt_value\":null,\"pk\":0},{\"cid\":2,\"name\":\"chapter\",\"type\":\"TEXT\",\"notnull\":1,\"dflt_value\":null,\"pk\":0},{\"cid\":3,\"name\":\"shortSummary\",\"type\":\"TEXT\",\"notnull\":1,\"dflt_value\":null,\"pk\":0}]\n### table info ends ###",
-            "image_url": null
+            "text": "### story_lines table info starts ###\n[{\"cid\":0,\"name\":\"id\",\"type\":\"INTEGER\",\"notnull\":0,\"dflt_value\":null,\"pk\":1},{\"cid\":1,\"name\":\"storyId\",\"type\":\"INTEGER\",\"notnull\":0,\"dflt_value\":null,\"pk\":0},{\"cid\":2,\"name\":\"chapter\",\"type\":\"TEXT\",\"notnull\":1,\"dflt_value\":null,\"pk\":0},{\"cid\":3,\"name\":\"shortSummary\",\"type\":\"TEXT\",\"notnull\":1,\"dflt_value\":null,\"pk\":0}]\n### table info ends ###"
           }
         ]
       },
@@ -78,15 +74,14 @@
         "content": [
           {
             "type": "text",
-            "text": "select * from story_lines where storyId=%storyId% order by id desc, top 1, write to %lastChapter%",
-            "image_url": null
+            "text": "select * from story_lines where storyId=%storyId% order by id desc, top 1, write to %lastChapter%"
           }
         ]
       }
     ],
     "model": "gpt-4",
     "caching": true,
-    "RawResponse": "{\r\n  \"FunctionName\": \"Select\",\r\n  \"Parameters\": [\r\n    {\r\n      \"Type\": \"System.String\",\r\n      \"Name\": \"sql\",\r\n      \"Value\": \"SELECT * FROM story_lines WHERE storyId=@storyId ORDER BY id DESC\"\r\n    },\r\n    {\r\n      \"Type\": \"System.Collections.Generic.List<System.Object>\",\r\n      \"Name\": \"SqlParameters\",\r\n      \"Value\": [\r\n        {\r\n          \"ParameterName\": \"@storyId\",\r\n          \"VariableNameOrValue\": \"%storyId%\",\r\n          \"TypeFullName\": \"System.Int64\"\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      \"Type\": \"System.Boolean\",\r\n      \"Name\": \"selectOneRow_Top1OrLimit1\",\r\n      \"Value\": true\r\n    }\r\n  ],\r\n  \"ReturnValue\": [\r\n    {\r\n      \"Type\": \"dynamic\",\r\n      \"VariableName\": \"%lastChapter%\"\r\n    }\r\n  ]\r\n}"
+    "RawResponse": "{\n  \"FunctionName\": \"Select\",\n  \"Parameters\": [\n    {\n      \"Type\": \"System.String\",\n      \"Name\": \"sql\",\n      \"Value\": \"SELECT * FROM story_lines WHERE storyId=@storyId ORDER BY id DESC LIMIT 1\"\n    },\n    {\n      \"Type\": \"System.Collections.Generic.List`1[System.Object]\",\n      \"Name\": \"SqlParameters\",\n      \"Value\": [\n        {\n          \"ParameterName\": \"@storyId\",\n          \"VariableNameOrValue\": \"%storyId%\",\n          \"TypeFullName\": \"System.Int64\"\n        }\n      ]\n    },\n    {\n      \"Type\": \"System.Boolean\",\n      \"Name\": \"selectOneRow_Top1OrLimit1\",\n      \"Value\": true\n    }\n  ],\n  \"ReturnValue\": [\n    {\n      \"Type\": \"dynamic\",\n      \"VariableName\": \"%lastChapter%\"\n    }\n  ]\n}"
   },
   "RunOnBuild": false
 }

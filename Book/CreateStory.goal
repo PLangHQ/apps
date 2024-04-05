@@ -1,0 +1,13 @@
+CreateStory
+- write out 'Creating chapter for your story. Give me few minutes...\n========================\n\n'
+- [llm] system: %system%
+        scheme: {chapter:string, shortSummary:string}
+        model: 'gpt-4-1106-preview'
+        tempature: 1
+        top p: 1
+        write to %chapterInfo%
+- insert into story_lines, values %storyId%(long) %chapterInfo.chapter%, %chapterInfo.shortSummary%
+- update stories set last_used=%Now% where %storyId%
+- call !ShowStory %storyId%
+
+

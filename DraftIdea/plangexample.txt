@@ -249,7 +249,12 @@ File
 - write to  demo2.xlsx, data: %excelData%, %csvData%, overwrite file
 - delete demo.xlsx
 - delete demo2.xlsx
-- listen to 'files/*.json', call !ProcessJson
+- listen to new at 'files/*.json', call !ProcessJson
+
+ProcessJson
+- copy %FullPath% to /newFolder/%Name%
+- write out 'The absolute path is %FullPath%, name is %Name%, change type is %ChangeType%, sender is %Sender%
+- write out 'For rename, the old absolute path is %OldFullPath%, and old name is %OldName%'
 
 PrintOutExcel
 - write out %item.Name% - %item.Email%

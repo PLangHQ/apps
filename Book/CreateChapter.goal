@@ -1,0 +1,5 @@
+CreateChapter
+- select count(id, 1) as chapterCount from story_lines where storyId=%storyId%, write to %chapterCount%
+- select shortSummary from story_lines where %storyId% order by id, write to %chapters%
+- read file llm/system_chapter.txt, write to %systemChapter%, load variables
+- call !CreateStory system=%systemChapter%, storyId=%storyId%

@@ -2,44 +2,6 @@ Start
 - select * from stories order by last_used desc,  write to %stories%
 - if %stories.Count = 0, then !NewStory, else !ShowStories
 
-NewStory
-- Ask, "How old is the reader?", must be number, write to %age%
-- Ask, "Give a description of a character/story/location/etc. 
-    Here is something to help you:\n\n
-
-    \t- Make sure to relate to you
-    \t- Where does the story happen, Reykjavik(Iceland), Space, Down below earth?
-    \t- You have a favorite animal, color, toy, car?
-    \t- Special quirks or personality features?
-    \t- Could the story be happening at work, at home, on vacation?\n\n
-
-    \t===== Example =====\n\n
-    
-    \tHazel is a tiny, adventurous squirrel with a fluffy chestnut-and-cream coat. Known for her bright eyes and boundless curiosity, she roams the parks, eager to help friends and discover new wonders. Her city is Reykjavik, Iceland. Hazel loves the city center. Winters are cold, which is nice and summers are not to hot.\n\n
-    
-    \t===== Example =====\n\n
-    
-    Now write your own description:
-    
-    ", write to %character%
-- Ask, "In what language should the story be in?", write to %language%
-- Write out '\n\n========================\nThank you, we are analyzing and setting up the first chapter. This will take few seconds."
-- read llm/system_categories.txt, write to %system%, load variables
-- [llm] system: %system%
-        user: "
-            1. %age%
-            2. %character%
-            3. %language%"
-        model: 'gpt-4-1106-preview'
-        scheme: {title:string, age:number, timeInMinutes:number, summary:string, language:string, category:string, tags:string[]}
-        write to %response%
-- insert into stories, %response.title%, %response.summary%, %response.age%, %character% 
-            %response.language%, %response.timeInMinutes%, 
-            %response.category%, %response.tags.Join(";")%
-    write to %storyId%
-- read llm/system_first.txt into %system%, load variables
-- call !CreateStory system=%system%
-
 ShowStories
 - select * from stories order by last_used desc, write to %stories%
 - write out '================\n\nWelcome to Book
@@ -85,25 +47,6 @@ ShowChapter
 - get dictionary %chapterDict%, key: %action%, write to %storyLineId%
 - call !ShowStory storyLineId=%storyLineId%
 
-CreateChapterList
-- [code] %position%+2, write to %listNr%, and %listCount%-%position%+1, write to %chapterNr%
-- append to string %chapterList%: \t%listNr%. Chapter %chapterNr%
-- add to dictionary, %chapterDict%, key: %listNr%, value: %item.id%
 
-CreateChapter
-- select count(id, 1) as chapterCount from story_lines where storyId=%storyId%, write to %chapterCount%
-- select shortSummary from story_lines where %storyId% order by id, write to %chapters%
-- read file llm/system_chapter.txt, write to %systemChapter%, load variables
-- call !CreateStory system=%systemChapter%, storyId=%storyId%
 
-CreateStory
-- write out 'Creating chapter for your story. Give me few minutes...\n========================\n\n'
-- [llm] system: %system%
-        scheme: {chapter:string, shortSummary:string}
-        model: 'gpt-4-1106-preview'
-        tempature: 1
-        top p: 1
-        write to %chapterInfo%
-- insert into story_lines, values %storyId% %chapterInfo.chapter%, %chapterInfo.shortSummary%
-- update stories set last_used=%Now% where %storyId%
-- call !ShowStory %storyId%
+

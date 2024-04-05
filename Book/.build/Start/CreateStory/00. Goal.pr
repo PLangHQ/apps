@@ -21,7 +21,7 @@
       "CancellationHandler": null,
       "Custom": {},
       "Number": 0,
-      "LineNumber": 99,
+      "LineNumber": 100,
       "LlmRequest": {
         "temperature": 0.0,
         "top_p": 0.0,
@@ -88,7 +88,7 @@
       "CancellationHandler": null,
       "Custom": {},
       "Number": 1,
-      "LineNumber": 100,
+      "LineNumber": 101,
       "LlmRequest": {
         "temperature": 0.0,
         "top_p": 0.0,
@@ -155,7 +155,7 @@
       "CancellationHandler": null,
       "Custom": {},
       "Number": 2,
-      "LineNumber": 106,
+      "LineNumber": 107,
       "LlmRequest": {
         "temperature": 0.0,
         "top_p": 0.0,
@@ -222,7 +222,7 @@
       "CancellationHandler": null,
       "Custom": {},
       "Number": 3,
-      "LineNumber": 107,
+      "LineNumber": 108,
       "LlmRequest": {
         "temperature": 0.0,
         "top_p": 0.0,
@@ -289,7 +289,7 @@
       "CancellationHandler": null,
       "Custom": {},
       "Number": 4,
-      "LineNumber": 108,
+      "LineNumber": 109,
       "LlmRequest": {
         "temperature": 0.0,
         "top_p": 0.0,
@@ -345,9 +345,9 @@
   "RelativeGoalFolderPath": "\\",
   "RelativePrPath": ".build\\Start\\CreateStory\\00. Goal.pr",
   "RelativePrFolderPath": ".build\\Start\\CreateStory",
-  "BuilderVersion": "0.1.0.0",
+  "BuilderVersion": "0.1.0.2",
   "GoalApiInfo": null,
   "Injections": [],
   "Signature": null,
-  "Hash": "56df22cc254deee7851d362b73ba170a2689df640e559beaf6ff9f3e0459611c"
+  "Hash": "86ab054b2b3375faecdbe72da6cf2cea1605eeef88618200c86c5636aa6ef062"
 }
