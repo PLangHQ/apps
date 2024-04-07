@@ -1,0 +1,10 @@
+These are previous story lines to help with your next move:
+
+The sequence in story lines:
+    1. user
+    2. summary
+    3. when story is created 
+
+=== Previous story lines ===
+%summaries%
+=== Previous story lines ===

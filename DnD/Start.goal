@@ -1,0 +1,19 @@
+Start
+- set string var %askUser% to "What would you like to do?\n\n
+    \t0. Create new DoD
+    \---------------------------
+    \t- Story Arc Id"
+- call goal !GenerateAskUser
+- ask user "%askUser%\n\nType in Story Arc Id or 0 to Create new game"
+    , must be number(long), write to %gameId%
+- if %gameId% = 0, then call !CreateNewGame
+- if %gameId% > 0, then call !ShowStoryLine gameId=%gameId%
+
+GenerateAskUser
+- select * from games order by updated desc, write to %games%
+- foreach item in %games%, call !GenerateItemAskUser
+
+GenerateItemAskUser
+- append to %askUser%, "\t- %item.id%\t%item.GAME% - %item.BOOKS% - %item.Updated.ToString("f")%"
+
+

@@ -1,0 +1,8 @@
+Setup
+- create table games, columns: 
+    GAME(string),BOOKS(string),ROLE(string), 
+    THEME(string), TONALITY(string), CHARACTER(string)
+    Created(datetime, now), Updated(datetime, now), Summary(string)
+- create table story_lines, columns:
+    game_id(long), created(datetime, now), 
+    story(string), summary(string), user(string)

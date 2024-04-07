@@ -1,0 +1,9 @@
+From the user input, fill in the json scheme
+
+There are the defaults:
+    GAME: Dungeons & Dragons: 5th Edition
+    BOOKS: Any Random Campaign Book
+    ROLE: Dungeon Master
+    THEME: High Fantasy
+    TONALITY: Whimsical & Heroic
+    CHARACTER: Sabrina, a human mage with a funny pet.

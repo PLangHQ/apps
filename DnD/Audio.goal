@@ -1,0 +1,30 @@
+Audio
+- file exist 'sound/%storyLineId%.mp3', write to %fileExists%
+- if %fileExists% then 
+    - stop running goal
+- read voices.json into %voicesObj%
+- set default value %voiceName% to "Paul"
+- [code] go through the array(not list) %voicesObj.voices% and 
+        match property voice.name.ToString()=%voiceName% (ignore case), 
+        write to property voice.voice_id to %voice_id% 
+- set string var %storyNoFormat% = %story.Replace("#", "").Replace("**", "")
+- post https://api.elevenlabs.io/v1/text-to-speech/%voice_id%
+    headers:
+        xi-api-key: %Settings.ElevenLabsApi%
+        Accept: "audio/mpeg"
+    data:
+        "text": "%storyNoFormat%",
+        "model_id": "eleven_monolingual_v1",
+        "voice_settings": {
+            "stability": 0.5,
+            "similarity_boost": 0.5
+        },
+        output_format:"mp3_22050_32"
+    timeout 10 minutes
+    write to %file%
+- create folder 'sound'
+- write %file% to 'sound/%storyLineId%.mp3'
+- [code] if windows then write "start sound/%storyLineId%.mp3", to %terminalCommand%
+        if linux then write "xdg-open sound/%storyLineId%.mp3", to %terminalCommand%
+        if macos then write "open sound/%storyLineId%.mp3", to %terminalCommand%
+- run terminal app=%terminalCommand%

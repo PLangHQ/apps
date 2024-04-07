@@ -1,0 +1,69 @@
+CreateNewGame
+- set default values 
+    %GAME%: Dungeons & Dragons: 5th Edition
+    %BOOKS%: Any Random Campaign Book
+    %ROLE%: Dungeon Master
+    %THEME%: High Fantasy
+    %TONALITY%: Whimsical & Heroic
+    %CHARACTER%: Sabrina, a human mage with a funny pet.
+- ask user 'Before we start, choose your setup of the game
+    GAME: Dungeons & Dragons: 5th Edition
+    BOOKS: Any Random Campaign Book
+    ROLE: Dungeon Master
+    THEME: High Fantasy
+    TONALITY: Whimsical & Heroic
+    CHARACTER: Sabrina, a human mage with a funny pet.
+    \n\n
+    Leave it empty if you happy with the defaults.
+    '
+    write to %answer%
+- if %answer% is not empty call !LoadPreferences
+- insert into games, %GAME%, %BOOKS%, %ROLE%, %THEME%, %TONALITY%, %CHARACTER%
+    write to %gameId%
+- call goal !StartGame
+
+LoadPreferences
+- read llm/preferenceSystem.txt into %preferenceSystem%
+- [llm] system: %preferenceSystem%
+    user: %answer%
+    scheme: {GAME:string,BOOKS:string,ROLE:string, THEME:string, TONALITY:string, CHARACTER:string}
+
+StartGame
+- write out 'Starting game, loading...'
+- read llm/gameSetupSystem.txt, write to %gameSetupSystem%, load vars
+- [llm] system: %gameSetupSystem%
+        scheme: {story:string, summary:string}
+- call goal !SaveStoryLine %user%="Let's play"
+
+CreateStoryLine
+- select GAME,BOOKS,ROLE, THEME, TONALITY, CHARACTER from games where id=%gameId%, 1 row
+- select user as user_input, summary as story_line_summary, created from story_lines 
+    where gameId=%gameId% order by id desc, 
+    newest 5, 
+    write to %summaries%
+- read llm/gameSetupSystem.txt, write to %gameSetupSystem%, load vars
+- read llm/gameSetupAssistant.txt, write to %gameSetupAssistant%, load vars
+- write out 'Loading next story arc...'
+- [llm] system:%gameSetupSystem%
+    assistant: %gameSetupAssistant%
+    user: %nextStep%
+    model: 'gpt-4-0125-preview'
+    tempature: 1
+    topp: 1
+    scheme: {story:string, summary:string}
+- call goal !SaveStoryLine user=%nextStep%
+
+SaveStoryLine
+- insert into story_lines %gameId%, %story%, %summary%, %user%, write to %storyLineId%
+- call goal !ShowStoryLine
+
+
+ShowStoryLine
+- select story, sl.id as storyLineId from story_lines sl
+    join games g on g.id=sl.game_id
+    where g.id=%gameId%, order by sl.id desc, limit 1
+- write out %story%
+- ask user "\n(to exit the game, type in 'exit game')
+
+    ?:", write to %nextStep%
+- if %nextStep% == 'exit game' or empty (case insesitive), then call !Start, else !CreateStoryLine
