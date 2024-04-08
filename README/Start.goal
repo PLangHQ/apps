@@ -1,0 +1,17 @@
+Start
+- if %path% is empty then
+    - ask user 'What is the path to your app', write to %path%
+- get content of all '.goal' files in %path%, write to %files%
+- foreach %files%, call !ConcatFileContent
+- get content of all '.txt' files in %path% that are in folder 'llm', write to %llmFiles%
+- read SetupREADME.llm, into %system%, load vars
+- read user.llm, into %user%, load vars
+- logger warning 'Doing LLM request'
+- [llm] system: %system%
+        user: %user%
+        model: 'gpt-4-0125-preview'
+        write to %doc%
+- write %doc% to %path%/README.md
+
+ConcatFileContent
+- append '=== Goal file starts - path: %item.Path% ===\n%item.Content%\n=== Goal file ends === to %fileContent%
