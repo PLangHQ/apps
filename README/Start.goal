@@ -14,4 +14,4 @@ Start
 - write %doc% to %path%/README.md
 
 ConcatFileContent
-- append '=== Goal file starts - path: %item.Path% ===\n%item.Content%\n=== Goal file ends === to %fileContent%
+- append '=== Goal file starts - path: %item.Path% ===\n%item.Content%\n=== Goal file ends === to %fileContent%c

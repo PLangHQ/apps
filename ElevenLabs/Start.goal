@@ -1,6 +1,18 @@
-Audio
-- file exist 'sound/%storyLineId%.mp3', write to %fileExists%
+/ You need an API key from https://elevenlabs.io/ to use this app
+/ %path% parameter is default /, but you can choose your path
+/ %fileName% parameter is the name of generated sound file
+/ %story% is the text you want to convert to sound
+Start
+- set default value on 
+    %path% to 'sound/'
+    %fileName% to "%Now.ToString("yyyy-MM-ddTHH-mm")%.mp3"
+    %model_id% to "eleven_monolingual_v1"
+    %stability% to 0.5
+    %similarity_boost% to 0.5
+    %output_format% to "mp3_22050_32"
+- file exist '%path%%fileName%', write to %fileExists%
 - if %fileExists% then 
+    - write out 'File %path%%fileName% already exists'
     - stop running goal
 - read voices.json into %voicesObj%
 - set default value %voiceName% to "Paul"
@@ -14,17 +26,19 @@ Audio
         Accept: "audio/mpeg"
     data:
         "text": "%storyNoFormat%",
-        "model_id": "eleven_monolingual_v1",
+        "model_id": "%model_id%",
         "voice_settings": {
-            "stability": 0.5,
-            "similarity_boost": 0.5
+            "stability": %stability%,
+            "similarity_boost": %similarity_boost%
         },
-        output_format:"mp3_22050_32"
+        output_format:"%output_format%"
     timeout 10 minutes
     write to %file%
 - create folder 'sound'
-- write %file% to 'sound/%storyLineId%.mp3'
-- [code] if windows then write "start sound/%storyLineId%.mp3", to %terminalCommand%
-        if linux then write "xdg-open sound/%storyLineId%.mp3", to %terminalCommand%
-        if macos then write "open sound/%storyLineId%.mp3", to %terminalCommand%
+- write bytes %file% to '%path%%fileName%'
+
+PlayFile
+- [code] if windows then write "start %path%%fileName%", to %terminalCommand%
+        if linux then write "xdg-open %path%%fileName%", to %terminalCommand%
+        if macos then write "open %path%%fileName%", to %terminalCommand%
 - run terminal app=%terminalCommand%
