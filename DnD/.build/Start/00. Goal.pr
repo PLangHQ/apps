@@ -6,14 +6,14 @@
       "Text": "set string var %askUser% to \"What would you like to do?\\n\\n\n    \\t0. Create new DoD\n    \\---------------------------\n    \\t- Story Arc Id\"",
       "Comment": null,
       "ModuleType": "PLang.Modules.LocalOrGlobalVariableModule",
-      "Name": "SetAskUserVariable",
+      "Name": "SetStringVariable",
       "Description": "Set the string variable %askUser% to the provided text which includes options for the user to choose from.",
-      "PrFileName": "01. SetAskUserVariable.pr",
-      "RelativePrPath": ".build\\Start\\01. SetAskUserVariable.pr",
+      "PrFileName": "01. SetStringVariable.pr",
+      "RelativePrPath": ".build\\Start\\01. SetStringVariable.pr",
       "Indent": 0,
       "Execute": true,
       "RunOnce": false,
-      "Generated": "2024-04-06T23:52:48.6333909+00:00",
+      "Generated": "2024-04-08T08:37:35.6937621+00:00",
       "WaitForExecution": true,
       "ErrorHandler": null,
       "RetryHandler": null,
@@ -66,7 +66,7 @@
         ],
         "model": "gpt-4",
         "caching": true,
-        "RawResponse": "{\n  \"StepName\": \"SetAskUserVariable\",\n  \"StepDescription\": \"Set the string variable %askUser% to the provided text which includes options for the user to choose from.\",\n  \"Modules\": [\n    \"PLang.Modules.LocalOrGlobalVariableModule\"\n  ],\n  \"WaitForExecution\": true\n}"
+        "RawResponse": "{\"StepName\": \"SetStringVariable\",\n\"StepDescription\": \"Set the string variable %askUser% to the provided text which includes options for the user to choose from.\",\n\"Modules\": [\"PLang.Modules.LocalOrGlobalVariableModule\"],\n\"WaitForExecution\": true}"
       }
     },
     {
@@ -80,7 +80,7 @@
       "Indent": 0,
       "Execute": true,
       "RunOnce": false,
-      "Generated": "2024-04-06T23:45:54.6332881+00:00",
+      "Generated": "2024-04-08T08:38:01.5073446+00:00",
       "WaitForExecution": true,
       "ErrorHandler": null,
       "RetryHandler": null,
@@ -147,7 +147,7 @@
       "Indent": 0,
       "Execute": true,
       "RunOnce": false,
-      "Generated": "2024-04-07T00:01:42.1277352+00:00",
+      "Generated": "2024-04-08T08:38:18.7247172+00:00",
       "WaitForExecution": true,
       "ErrorHandler": null,
       "RetryHandler": null,
@@ -200,7 +200,7 @@
         ],
         "model": "gpt-4",
         "caching": true,
-        "RawResponse": "{\n  \"StepName\": \"AskUserForGameId\",\n  \"StepDescription\": \"Ask the user to input the Story Arc Id or 0 to create a new game. The input must be a number (long) and it will be stored in the variable %gameId%.\",\n  \"Modules\": [\n    \"PLang.Modules.OutputModule\"\n  ],\n  \"WaitForExecution\": true\n}"
+        "RawResponse": "{\"StepName\": \"AskUserForGameId\",\n\"StepDescription\": \"Ask the user to input the Story Arc Id or 0 to create a new game. The input must be a number (long) and it will be stored in the variable %gameId%.\",\n\"Modules\": [\"PLang.Modules.OutputModule\"],\n\"WaitForExecution\": true}"
       }
     },
     {
@@ -208,13 +208,13 @@
       "Comment": null,
       "ModuleType": "PLang.Modules.ConditionalModule",
       "Name": "CheckGameIdAndCreateNewGame",
-      "Description": "This step checks if the variable 'gameId' is equal to 0. If it is, it calls the function 'CreateNewGame'.",
+      "Description": "If the variable 'gameId' is equal to 0, then the function 'CreateNewGame' is called.",
       "PrFileName": "04. CheckGameIdAndCreateNewGame.pr",
       "RelativePrPath": ".build\\Start\\04. CheckGameIdAndCreateNewGame.pr",
       "Indent": 0,
       "Execute": true,
       "RunOnce": false,
-      "Generated": "2024-04-07T00:01:52.5108569+00:00",
+      "Generated": "2024-04-08T08:38:36.2500173+00:00",
       "WaitForExecution": true,
       "ErrorHandler": null,
       "RetryHandler": null,
@@ -267,21 +267,21 @@
         ],
         "model": "gpt-4",
         "caching": true,
-        "RawResponse": "{\n  \"StepName\": \"CheckGameIdAndCreateNewGame\",\n  \"StepDescription\": \"This step checks if the variable 'gameId' is equal to 0. If it is, it calls the function 'CreateNewGame'.\",\n  \"Modules\": [\n    \"PLang.Modules.ConditionalModule\",\n    \"PLang.Modules.CallGoalModule\"\n  ],\n  \"WaitForExecution\": true\n}"
+        "RawResponse": "{\"StepName\": \"CheckGameIdAndCreateNewGame\",\n\"StepDescription\": \"If the variable 'gameId' is equal to 0, then the function 'CreateNewGame' is called.\",\n\"Modules\": [\"PLang.Modules.ConditionalModule\", \"PLang.Modules.CallGoalModule\"],\n\"WaitForExecution\": true}"
       }
     },
     {
       "Text": "if %gameId% > 0, then call !ShowStoryLine gameId=%gameId%",
       "Comment": null,
       "ModuleType": "PLang.Modules.ConditionalModule",
-      "Name": "CallShowStoryLineIfGameIdIsPositive",
+      "Name": "CheckGameIdAndShowStoryLine",
       "Description": "If the variable 'gameId' is greater than 0, then the function 'ShowStoryLine' is called with 'gameId' as a parameter.",
-      "PrFileName": "05. CallShowStoryLineIfGameIdIsPositive.pr",
-      "RelativePrPath": ".build\\Start\\05. CallShowStoryLineIfGameIdIsPositive.pr",
+      "PrFileName": "05. CheckGameIdAndShowStoryLine.pr",
+      "RelativePrPath": ".build\\Start\\05. CheckGameIdAndShowStoryLine.pr",
       "Indent": 0,
       "Execute": true,
       "RunOnce": false,
-      "Generated": "2024-04-07T00:05:18.6320558+00:00",
+      "Generated": "2024-04-08T08:38:47.007187+00:00",
       "WaitForExecution": true,
       "ErrorHandler": null,
       "RetryHandler": null,
@@ -334,7 +334,7 @@
         ],
         "model": "gpt-4",
         "caching": true,
-        "RawResponse": "{\n  \"StepName\": \"CallShowStoryLineIfGameIdIsPositive\",\n  \"StepDescription\": \"If the variable 'gameId' is greater than 0, then the function 'ShowStoryLine' is called with 'gameId' as a parameter.\",\n  \"Modules\": [\n    \"PLang.Modules.ConditionalModule\",\n    \"PLang.Modules.CallGoalModule\"\n  ],\n  \"WaitForExecution\": true\n}"
+        "RawResponse": "{\"StepName\": \"CheckGameIdAndShowStoryLine\",\n\"StepDescription\": \"If the variable 'gameId' is greater than 0, then the function 'ShowStoryLine' is called with 'gameId' as a parameter.\",\n\"Modules\": [\"PLang.Modules.ConditionalModule\", \"PLang.Modules.CallGoalModule\"],\n\"WaitForExecution\": true}"
       }
     }
   ],
@@ -347,7 +347,16 @@
   "RelativePrFolderPath": ".build\\Start",
   "BuilderVersion": "0.1.0.4",
   "GoalApiInfo": null,
-  "Injections": [],
+  "Injections": [
+    {
+      "AtSignInjection": true,
+      "Type": "llm",
+      "Path": "OpenAiService.dll",
+      "IsGlobal": true,
+      "EnvironmentVariable": null,
+      "EnvironmentVariableValue": null
+    }
+  ],
   "Signature": null,
-  "Hash": "13c3ef7a8b85e2eb8a2519b8b623e7411b0807864770276e33809f4a11849223"
+  "Hash": "d135218f3da0e852ca7eef6e3327d3692ecee6ed3b97c90e06fd58819f89efb8"
 }

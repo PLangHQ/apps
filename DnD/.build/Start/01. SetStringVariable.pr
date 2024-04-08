@@ -61,7 +61,7 @@
     ],
     "model": "gpt-4",
     "caching": true,
-    "RawResponse": "{\n  \"FunctionName\": \"SetStringVariable\",\n  \"Parameters\": [\n    {\n      \"Type\": \"String\",\n      \"Name\": \"key\",\n      \"Value\": \"%askUser%\"\n    },\n    {\n      \"Type\": \"String\",\n      \"Name\": \"value\",\n      \"Value\": \"What would you like to do?\\n\\n\\t0. Create new DoD\\n\\t---------------------------\\n\\t- Story Arc Id\"\n    }\n  ],\n  \"ReturnValue\": null\n}"
+    "RawResponse": "{\n\"FunctionName\": \"SetStringVariable\",\n\"Parameters\": [\n    {\n        \"Type\": \"String\",\n        \"Name\": \"key\",\n        \"Value\": \"%askUser%\"\n    },\n    {\n        \"Type\": \"String\",\n        \"Name\": \"value\",\n        \"Value\": \"What would you like to do?\\n\\n\\t0. Create new DoD\\n\\t---------------------------\\n\\t- Story Arc Id\"\n    }\n],\n\"ReturnValue\": null\n}"
   },
   "RunOnBuild": false
 }

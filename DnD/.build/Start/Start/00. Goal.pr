@@ -1,19 +1,19 @@
 {
-  "GoalName": "ShowStoryLine",
+  "GoalName": "Start",
   "Comment": null,
   "GoalSteps": [
     {
-      "Text": "select story, sl.id as storyLineId from story_lines sl\n    join games g on g.id=sl.game_id\n    where g.id=%gameId%, order by sl.id desc, limit 1",
+      "Text": "set string var %askUser% to \"What would you like to do?\\n\\n\n    \\t0. Create new DoD\n    \\---------------------------\n    \\t- Story Arc Id\"",
       "Comment": null,
-      "ModuleType": "PLang.Modules.DbModule",
-      "Name": "FetchLatestStoryLine",
-      "Description": "Fetch the latest story line from the 'story_lines' table for a specific game identified by 'gameId'. The query joins the 'story_lines' table with the 'games' table on the 'id' field and orders the results in descending order by 'id'. The query then limits the results to the most recent story line.",
-      "PrFileName": "01. FetchLatestStoryLine.pr",
-      "RelativePrPath": ".build\\CreateNewGame\\ShowStoryLine\\01. FetchLatestStoryLine.pr",
+      "ModuleType": "PLang.Modules.LocalOrGlobalVariableModule",
+      "Name": "SetAskUserVariable",
+      "Description": "Set the string variable %askUser% to the provided text which includes options for the user to choose from.",
+      "PrFileName": "01. SetAskUserVariable.pr",
+      "RelativePrPath": ".build\\Start\\Start\\01. SetAskUserVariable.pr",
       "Indent": 0,
       "Execute": true,
       "RunOnce": false,
-      "Generated": "2024-04-07T13:56:03.3797911+00:00",
+      "Generated": "2024-04-08T08:36:22.9482432+00:00",
       "WaitForExecution": true,
       "ErrorHandler": null,
       "RetryHandler": null,
@@ -21,7 +21,7 @@
       "CancellationHandler": null,
       "Custom": {},
       "Number": 0,
-      "LineNumber": 62,
+      "LineNumber": 4,
       "LlmRequest": {
         "temperature": 0.0,
         "top_p": 0.0,
@@ -59,28 +59,28 @@
             "content": [
               {
                 "type": "text",
-                "text": "select story, sl.id as storyLineId from story_lines sl\n    join games g on g.id=sl.game_id\n    where g.id=%gameId%, order by sl.id desc, limit 1"
+                "text": "set string var %askUser% to \"What would you like to do?\\n\\n\n    \\t0. Create new DoD\n    \\---------------------------\n    \\t- Story Arc Id\""
               }
             ]
           }
         ],
         "model": "gpt-4",
         "caching": true,
-        "RawResponse": "{\n  \"StepName\": \"FetchLatestStoryLine\",\n  \"StepDescription\": \"Fetch the latest story line from the 'story_lines' table for a specific game identified by 'gameId'. The query joins the 'story_lines' table with the 'games' table on the 'id' field and orders the results in descending order by 'id'. The query then limits the results to the most recent story line.\",\n  \"Modules\": [\n    \"PLang.Modules.DbModule\"\n  ],\n  \"WaitForExecution\": true\n}"
+        "RawResponse": null
       }
     },
     {
-      "Text": "write out %story%",
+      "Text": "call goal !GenerateAskUser",
       "Comment": null,
-      "ModuleType": "PLang.Modules.OutputModule",
-      "Name": "WriteOutStory",
-      "Description": "This step involves outputting the content of the variable 'story' to the user interface.",
-      "PrFileName": "02. WriteOutStory.pr",
-      "RelativePrPath": ".build\\CreateNewGame\\ShowStoryLine\\02. WriteOutStory.pr",
+      "ModuleType": "PLang.Modules.CallGoalModule",
+      "Name": "CallGenerateAskUserGoal",
+      "Description": "This step involves calling the goal named 'GenerateAskUser'.",
+      "PrFileName": "02. CallGenerateAskUserGoal.pr",
+      "RelativePrPath": ".build\\Start\\Start\\02. CallGenerateAskUserGoal.pr",
       "Indent": 0,
       "Execute": true,
       "RunOnce": false,
-      "Generated": "2024-04-07T00:03:58.3162996+00:00",
+      "Generated": "2024-04-08T08:36:23.0029986+00:00",
       "WaitForExecution": true,
       "ErrorHandler": null,
       "RetryHandler": null,
@@ -88,7 +88,7 @@
       "CancellationHandler": null,
       "Custom": {},
       "Number": 1,
-      "LineNumber": 65,
+      "LineNumber": 8,
       "LlmRequest": {
         "temperature": 0.0,
         "top_p": 0.0,
@@ -126,7 +126,7 @@
             "content": [
               {
                 "type": "text",
-                "text": "write out %story%"
+                "text": "call goal !GenerateAskUser"
               }
             ]
           }
@@ -137,17 +137,17 @@
       }
     },
     {
-      "Text": "ask user \"\\n(to exit the game, type in 'exit game')\n    ?:\", write to %nextStep%",
+      "Text": "ask user \"%askUser%\\n\\nType in Story Arc Id or 0 to Create new game\"\n    , must be number(long), write to %gameId%",
       "Comment": null,
       "ModuleType": "PLang.Modules.OutputModule",
-      "Name": "AskUserInput",
-      "Description": "Ask the user to provide input with the prompt '(to exit the game, type in 'exit game') ?:', and store the user's response in the variable %nextStep%",
-      "PrFileName": "03. AskUserInput.pr",
-      "RelativePrPath": ".build\\CreateNewGame\\ShowStoryLine\\03. AskUserInput.pr",
+      "Name": "AskUserForGameId",
+      "Description": "Ask the user to input the Story Arc Id or 0 to create a new game. The input must be a number (long) and it will be stored in the variable %gameId%.",
+      "PrFileName": "03. AskUserForGameId.pr",
+      "RelativePrPath": ".build\\Start\\Start\\03. AskUserForGameId.pr",
       "Indent": 0,
       "Execute": true,
       "RunOnce": false,
-      "Generated": "2024-04-08T08:34:22.1478194+00:00",
+      "Generated": "2024-04-08T08:36:23.0982263+00:00",
       "WaitForExecution": true,
       "ErrorHandler": null,
       "RetryHandler": null,
@@ -155,7 +155,7 @@
       "CancellationHandler": null,
       "Custom": {},
       "Number": 2,
-      "LineNumber": 66,
+      "LineNumber": 9,
       "LlmRequest": {
         "temperature": 0.0,
         "top_p": 0.0,
@@ -193,7 +193,7 @@
             "content": [
               {
                 "type": "text",
-                "text": "ask user \"\\n(to exit the game, type in 'exit game')\n    ?:\", write to %nextStep%"
+                "text": "ask user \"%askUser%\\n\\nType in Story Arc Id or 0 to Create new game\"\n    , must be number(long), write to %gameId%"
               }
             ]
           }
@@ -204,17 +204,17 @@
       }
     },
     {
-      "Text": "if %nextStep% == 'exit game' or empty (case insesitive), then call !Start, else !CreateStoryLine",
+      "Text": "if %gameId% = 0, then call !CreateNewGame",
       "Comment": null,
       "ModuleType": "PLang.Modules.ConditionalModule",
-      "Name": "CheckNextStep",
-      "Description": "Check if the variable 'nextStep' is equal to 'exit game' or is empty. If it is, call the function 'Start', otherwise call the function 'CreateStoryLine'.",
-      "PrFileName": "04. CheckNextStep.pr",
-      "RelativePrPath": ".build\\CreateNewGame\\ShowStoryLine\\04. CheckNextStep.pr",
+      "Name": "CheckGameIdAndCreateNewGame",
+      "Description": "This step checks if the variable 'gameId' is equal to 0. If it is, it calls the function 'CreateNewGame'.",
+      "PrFileName": "04. CheckGameIdAndCreateNewGame.pr",
+      "RelativePrPath": ".build\\Start\\Start\\04. CheckGameIdAndCreateNewGame.pr",
       "Indent": 0,
       "Execute": true,
       "RunOnce": false,
-      "Generated": "2024-04-08T08:34:23.5587079+00:00",
+      "Generated": "2024-04-08T08:36:34.2044279+00:00",
       "WaitForExecution": true,
       "ErrorHandler": null,
       "RetryHandler": null,
@@ -222,7 +222,7 @@
       "CancellationHandler": null,
       "Custom": {},
       "Number": 3,
-      "LineNumber": 69,
+      "LineNumber": 11,
       "LlmRequest": {
         "temperature": 0.0,
         "top_p": 0.0,
@@ -260,7 +260,7 @@
             "content": [
               {
                 "type": "text",
-                "text": "if %nextStep% == 'exit game' or empty (case insesitive), then call !Start, else !CreateStoryLine"
+                "text": "if %gameId% = 0, then call !CreateNewGame"
               }
             ]
           }
@@ -269,18 +269,40 @@
         "caching": true,
         "RawResponse": null
       }
+    },
+    {
+      "Text": "if %gameId% > 0, then call !ShowStoryLine gameId=%gameId%",
+      "Comment": null,
+      "ModuleType": null,
+      "Name": null,
+      "Description": null,
+      "PrFileName": null,
+      "RelativePrPath": null,
+      "Indent": 0,
+      "Execute": true,
+      "RunOnce": false,
+      "Generated": "0001-01-01T00:00:00",
+      "WaitForExecution": true,
+      "ErrorHandler": null,
+      "RetryHandler": null,
+      "CacheHandler": null,
+      "CancellationHandler": null,
+      "Custom": {},
+      "Number": 5,
+      "LineNumber": 12,
+      "LlmRequest": null
     }
   ],
   "Description": null,
   "Visibility": 0,
-  "GoalFileName": "CreateNewGame.goal",
-  "RelativeGoalPath": "\\CreateNewGame.goal",
+  "GoalFileName": "Start.goal",
+  "RelativeGoalPath": "\\Start.goal",
   "RelativeGoalFolderPath": "\\",
-  "RelativePrPath": ".build\\CreateNewGame\\ShowStoryLine\\00. Goal.pr",
-  "RelativePrFolderPath": ".build\\CreateNewGame\\ShowStoryLine",
+  "RelativePrPath": ".build\\Start\\Start\\00. Goal.pr",
+  "RelativePrFolderPath": ".build\\Start\\Start",
   "BuilderVersion": "0.1.0.4",
   "GoalApiInfo": null,
   "Injections": [],
   "Signature": null,
-  "Hash": "3ddc2196f71d6a9b9c59e2743f36e3a5b368d5ec5a6f3fa468d8202839f29097"
+  "Hash": "5636ce184806744f6e583446504b0a2bb798777bc76a7ef2fa22be63996f66e5"
 }

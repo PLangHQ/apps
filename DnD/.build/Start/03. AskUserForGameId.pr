@@ -5,7 +5,7 @@
       {
         "Type": "String",
         "Name": "text",
-        "Value": "%askUser%\n\nType in Story Arc Id or 0 to Create new game"
+        "Value": "%askUser%\\n\\nType in Story Arc Id or 0 to Create new game"
       },
       {
         "Type": "String",
@@ -81,7 +81,7 @@
     ],
     "model": "gpt-4",
     "caching": true,
-    "RawResponse": "{\n  \"FunctionName\": \"Ask\",\n  \"Parameters\": [\n    {\n      \"Type\": \"String\",\n      \"Name\": \"text\",\n      \"Value\": \"%askUser%\\n\\nType in Story Arc Id or 0 to Create new game\"\n    },\n    {\n      \"Type\": \"String\",\n      \"Name\": \"type\",\n      \"Value\": \"text\"\n    },\n    {\n      \"Type\": \"Int32\",\n      \"Name\": \"statusCode\",\n      \"Value\": 200\n    },\n    {\n      \"Type\": \"String\",\n      \"Name\": \"regexPattern\",\n      \"Value\": \"^[0-9]+$\"\n    },\n    {\n      \"Type\": \"String\",\n      \"Name\": \"errorMessage\",\n      \"Value\": \"Input must be a number.\"\n    }\n  ],\n  \"ReturnValue\": [\n    {\n      \"Type\": \"String\",\n      \"VariableName\": \"gameId\"\n    }\n  ]\n}"
+    "RawResponse": "{\n  \"FunctionName\": \"Ask\",\n  \"Parameters\": [\n    {\n      \"Type\": \"String\",\n      \"Name\": \"text\",\n      \"Value\": \"%askUser%\\\\n\\\\nType in Story Arc Id or 0 to Create new game\"\n    },\n    {\n      \"Type\": \"String\",\n      \"Name\": \"type\",\n      \"Value\": \"text\"\n    },\n    {\n      \"Type\": \"Int32\",\n      \"Name\": \"statusCode\",\n      \"Value\": 200\n    },\n    {\n      \"Type\": \"String\",\n      \"Name\": \"regexPattern\",\n      \"Value\": \"^[0-9]+$\"\n    },\n    {\n      \"Type\": \"String\",\n      \"Name\": \"errorMessage\",\n      \"Value\": \"Input must be a number.\"\n    }\n  ],\n  \"ReturnValue\": [\n    {\n      \"Type\": \"String\",\n      \"VariableName\": \"gameId\"\n    }\n  ]\n}"
   },
   "RunOnBuild": false
 }

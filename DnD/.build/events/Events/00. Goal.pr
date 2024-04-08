@@ -82,7 +82,16 @@
   "RelativePrFolderPath": ".build\\events\\Events",
   "BuilderVersion": null,
   "GoalApiInfo": null,
-  "Injections": [],
+  "Injections": [
+    {
+      "AtSignInjection": true,
+      "Type": "llm",
+      "Path": "OpenAiService.dll",
+      "IsGlobal": true,
+      "EnvironmentVariable": null,
+      "EnvironmentVariableValue": null
+    }
+  ],
   "Signature": null,
   "Hash": null
 }

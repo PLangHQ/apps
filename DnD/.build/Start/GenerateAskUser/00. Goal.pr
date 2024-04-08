@@ -146,7 +146,16 @@
   "RelativePrFolderPath": ".build\\Start\\GenerateAskUser",
   "BuilderVersion": "0.1.0.4",
   "GoalApiInfo": null,
-  "Injections": [],
+  "Injections": [
+    {
+      "AtSignInjection": true,
+      "Type": "llm",
+      "Path": "OpenAiService.dll",
+      "IsGlobal": true,
+      "EnvironmentVariable": null,
+      "EnvironmentVariableValue": null
+    }
+  ],
   "Signature": null,
-  "Hash": "e920802a40251598d7ca08e4267eb39006394626bd46d1a09e0a055c558dd6ff"
+  "Hash": "73f0d5cf9ce48db7c957f8980f2ea37a45d0b94592ef00c90ac6ad27c6e40782"
 }
