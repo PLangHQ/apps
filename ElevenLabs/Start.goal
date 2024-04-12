@@ -10,6 +10,7 @@ Start
     %stability% to 0.5
     %similarity_boost% to 0.5
     %output_format% to "mp3_22050_32"
+    %useSharedSettings% to true
 - file exist '%path%%fileName%', write to %fileExists%
 - if %fileExists% then 
     - write out 'File %path%%fileName% already exists'
@@ -20,6 +21,7 @@ Start
         match property voice.name.ToString()=%voiceName% (ignore case), 
         write to property voice.voice_id to %voice_id% 
 - set string var %storyNoFormat% = %story.Replace("#", "").Replace("**", "")
+- set shared settings to %useSharedSettings%
 - post https://api.elevenlabs.io/v1/text-to-speech/%voice_id%
     headers:
         xi-api-key: %Settings.ElevenLabsApi%

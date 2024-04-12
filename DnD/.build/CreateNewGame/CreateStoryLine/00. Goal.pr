@@ -338,17 +338,17 @@
       }
     },
     {
-      "Text": "[llm] system:%gameSetupSystem%\n    assistant: %gameSetupAssistant%\n    user: %nextStep%\n    model: 'gpt-4-0125-preview'\n    tempature: 1\n    topp: 1\n    scheme: {story:string, summary:string}",
+      "Text": "[llm] system:%gameSetupSystem%\n    assistant: %gameSetupAssistant%\n    user: %nextStep%\n    tempature: 1\n    topp: 1\n    scheme: {story:string, summary:string}",
       "Comment": null,
       "ModuleType": "PLang.Modules.LlmModule",
-      "Name": "LLM_Game_Setup",
-      "Description": "This step involves setting up the game using the LLM module. The system, assistant, user, model, temperature, topp, and scheme are all defined.",
-      "PrFileName": "06. LLM_Game_Setup.pr",
-      "RelativePrPath": ".build\\CreateNewGame\\CreateStoryLine\\06. LLM_Game_Setup.pr",
+      "Name": "ConfigureGameSetup",
+      "Description": "Configure the game setup system with specified parameters including assistant, user's next step, temperature, and topp settings, and define the scheme with story and summary.",
+      "PrFileName": "06. ConfigureGameSetup.pr",
+      "RelativePrPath": ".build\\CreateNewGame\\CreateStoryLine\\06. ConfigureGameSetup.pr",
       "Indent": 0,
       "Execute": true,
       "RunOnce": false,
-      "Generated": "2024-04-06T21:53:32.2989566+00:00",
+      "Generated": "2024-04-12T12:35:14.7569952+00:00",
       "WaitForExecution": true,
       "ErrorHandler": null,
       "RetryHandler": null,
@@ -372,7 +372,7 @@
             "content": [
               {
                 "type": "text",
-                "text": "You are provided with a statement from the user. \r\nThis statement is a step in a Function. \r\n\r\nYou MUST determine which module can be used to solve the statement.\r\nYou MUST choose from available modules provided by the assistant to determine which module. If you cannot choose module, set N/A\r\n\r\nvariable is defined with starting and ending %, e.g. %filePath%\r\n! defines a call to a function\r\n\r\nModules: Name of module. Suggest 1-3 modules that could be used to solve the step.\r\nStepName: Short name for step\r\nStepDescription: Rewrite the step as you understand it, make it detailed\r\nWaitForExecution: Indicates if code should wait for execution to finish, default is true\r\nErrorHandler: How to handle errors, default is null. if error should be handled but text (OnExceptionContainingTextCallGoal) is not defined, then use * for key\r\nRetryHandler: How to retry the step if there is error, default is null\r\nCachingHandler: How caching is handled, default is null\r\nRead the description of each module, then determine which module to use.\r\nMake sure to return valid JSON, escape double quote if needed\r\n\r\nBe Concise\r\n"
+                "text": "You are provided with a statement from the user. \r\nThis statement is a step in a Function. \r\n\r\nYou MUST determine which module can be used to solve the statement.\r\nYou MUST choose from available modules provided by the assistant to determine which module. If you cannot choose module, set N/A\r\n\r\nvariable is defined with starting and ending %, e.g. %filePath%\r\n! defines a call to a function\r\n\r\nModules: Name of module. Suggest 1-3 modules that could be used to solve the step.\r\nStepName: Short name for step\r\nStepDescription: Rewrite the step as you understand it, make it detailed\r\nWaitForExecution: Indicates if code should wait for execution to finish, default is true\r\nErrorHandler: How to handle errors defined by user, default is null. if error should be handled but text (OnExceptionContainingTextCallGoal) is not defined, then use * for key\r\nRetryHandler: How to retry the step if there is error, default is null\r\nCachingHandler: How caching is handled, default is null\r\nRead the description of each module, then determine which module to use.\r\nMake sure to return valid JSON, escape double quote if needed\r\n\r\nBe Concise\r\n"
               },
               {
                 "type": "text",
@@ -394,14 +394,14 @@
             "content": [
               {
                 "type": "text",
-                "text": "[llm] system:%gameSetupSystem%\n    assistant: %gameSetupAssistant%\n    user: %nextStep%\n    model: 'gpt-4-0125-preview'\n    tempature: 1\n    topp: 1\n    scheme: {story:string, summary:string}"
+                "text": "[llm] system:%gameSetupSystem%\n    assistant: %gameSetupAssistant%\n    user: %nextStep%\n    tempature: 1\n    topp: 1\n    scheme: {story:string, summary:string}"
               }
             ]
           }
         ],
-        "model": "gpt-4",
+        "model": "gpt-4-turbo",
         "caching": true,
-        "RawResponse": "{\n  \"StepName\": \"LLM_Game_Setup\",\n  \"StepDescription\": \"This step involves setting up the game using the LLM module. The system, assistant, user, model, temperature, topp, and scheme are all defined.\",\n  \"Modules\": [\n    \"PLang.Modules.LlmModule\"\n  ],\n  \"WaitForExecution\": true\n}"
+        "RawResponse": "{\r\n  \"StepName\": \"ConfigureGameSetup\",\r\n  \"StepDescription\": \"Configure the game setup system with specified parameters including assistant, user's next step, temperature, and topp settings, and define the scheme with story and summary.\",\r\n  \"Modules\": [\r\n    \"PLang.Modules.LlmModule\"\r\n  ],\r\n  \"WaitForExecution\": true\r\n}"
       }
     },
     {
@@ -423,7 +423,7 @@
       "CancellationHandler": null,
       "Custom": {},
       "Number": 6,
-      "LineNumber": 54,
+      "LineNumber": 53,
       "LlmRequest": {
         "temperature": 0.0,
         "top_p": 0.0,
@@ -483,5 +483,5 @@
   "GoalApiInfo": null,
   "Injections": [],
   "Signature": null,
-  "Hash": "341d69b064b92a87dace325ce142b6e3677442675b3f251d6dd34daa25ae639b"
+  "Hash": "10e7bf06ca6e37dbc8871cbcbb23983e7c1252a5a8c90afc6c80466a430a5a57"
 }

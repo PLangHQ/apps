@@ -21,6 +21,7 @@ To run the DnD app, navigate to the app's folder in your terminal or command pro
 ```bash
 plang
 ```
+*If you have OpenAI key you can start with the parameter `plang --llmservice=openai`*
 
 This command initiates the app, and you will be prompted with options to start a new game or continue with an existing storyline.
 

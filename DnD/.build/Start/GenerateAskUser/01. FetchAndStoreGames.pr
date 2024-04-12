@@ -3,9 +3,9 @@
     "FunctionName": "Select",
     "Parameters": [
       {
-        "Type": "System.String",
+        "Type": "String",
         "Name": "sql",
-        "Value": "SELECT * FROM games ORDER BY updated DESC"
+        "Value": "SELECT * FROM games ORDER BY Updated DESC"
       }
     ],
     "ReturnValue": [
@@ -63,9 +63,9 @@
         ]
       }
     ],
-    "model": "gpt-4",
+    "model": "gpt-4-turbo",
     "caching": true,
-    "RawResponse": "{\n  \"FunctionName\": \"Select\",\n  \"Parameters\": [\n    {\n      \"Type\": \"System.String\",\n      \"Name\": \"sql\",\n      \"Value\": \"SELECT * FROM games ORDER BY updated DESC\"\n    }\n  ],\n  \"ReturnValue\": [\n    {\n      \"Type\": \"System.Object\",\n      \"VariableName\": \"games\"\n    }\n  ]\n}"
+    "RawResponse": "```json\n{\n  \"FunctionName\": \"Select\",\n  \"Parameters\": [\n    {\n      \"Type\": \"String\",\n      \"Name\": \"sql\",\n      \"Value\": \"SELECT * FROM games ORDER BY Updated DESC\"\n    }\n  ],\n  \"ReturnValue\": [\n    {\n      \"Type\": \"System.Object\",\n      \"VariableName\": \"games\"\n    }\n  ]\n}\n```"
   },
   "RunOnBuild": false
 }

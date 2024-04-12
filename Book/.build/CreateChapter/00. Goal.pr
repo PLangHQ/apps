@@ -7,13 +7,13 @@
       "Comment": null,
       "ModuleType": "PLang.Modules.DbModule",
       "Name": "CountStoryChapters",
-      "Description": "This step involves executing a SQL query to count the number of chapters in a story using the storyId. The result is then stored in the variable chapterCount.",
+      "Description": "Execute a SQL query to count the number of chapters (id) in the story_lines table for a specific storyId and store the result in the chapterCount variable.",
       "PrFileName": "01. CountStoryChapters.pr",
       "RelativePrPath": ".build\\CreateChapter\\01. CountStoryChapters.pr",
       "Indent": 0,
       "Execute": true,
       "RunOnce": false,
-      "Generated": "2024-04-03T15:33:17.0720239+00:00",
+      "Generated": "2024-04-10T11:34:38.54898+00:00",
       "WaitForExecution": true,
       "ErrorHandler": null,
       "RetryHandler": null,
@@ -37,7 +37,7 @@
             "content": [
               {
                 "type": "text",
-                "text": "You are provided with a statement from the user. \r\nThis statement is a step in a Function. \r\n\r\nYou MUST determine which module can be used to solve the statement.\r\nYou MUST choose from available modules provided by the assistant to determine which module. If you cannot choose module, set N/A\r\n\r\nvariable is defined with starting and ending %, e.g. %filePath%\r\n! defines a call to a function\r\n\r\nModules: Name of module. Suggest 1-3 modules that could be used to solve the step.\r\nStepName: Short name for step\r\nStepDescription: Rewrite the step as you understand it, make it detailed\r\nWaitForExecution: Indicates if code should wait for execution to finish, default is true\r\nErrorHandler: How to handle errors, default is null. if error should be handled but text (OnExceptionContainingTextCallGoal) is not defined, then use * for key\r\nRetryHandler: How to retry the step if there is error, default is null\r\nCachingHandler: How caching is handled, default is null\r\nRead the description of each module, then determine which module to use.\r\nMake sure to return valid JSON, escape double quote if needed\r\n\r\nBe Concise\r\n"
+                "text": "You are provided with a statement from the user. \r\nThis statement is a step in a Function. \r\n\r\nYou MUST determine which module can be used to solve the statement.\r\nYou MUST choose from available modules provided by the assistant to determine which module. If you cannot choose module, set N/A\r\n\r\nvariable is defined with starting and ending %, e.g. %filePath%\r\n! defines a call to a function\r\n\r\nModules: Name of module. Suggest 1-3 modules that could be used to solve the step.\r\nStepName: Short name for step\r\nStepDescription: Rewrite the step as you understand it, make it detailed\r\nWaitForExecution: Indicates if code should wait for execution to finish, default is true\r\nErrorHandler: How to handle errors defined by user, default is null. if error should be handled but text (OnExceptionContainingTextCallGoal) is not defined, then use * for key\r\nRetryHandler: How to retry the step if there is error, default is null\r\nCachingHandler: How caching is handled, default is null\r\nRead the description of each module, then determine which module to use.\r\nMake sure to return valid JSON, escape double quote if needed\r\n\r\nBe Concise\r\n"
               },
               {
                 "type": "text",
@@ -64,23 +64,23 @@
             ]
           }
         ],
-        "model": "gpt-4",
+        "model": "gpt-4-turbo",
         "caching": true,
-        "RawResponse": "{\n  \"StepName\": \"CountStoryChapters\",\n  \"StepDescription\": \"This step involves executing a SQL query to count the number of chapters in a story using the storyId. The result is then stored in the variable chapterCount.\",\n  \"Modules\": [\n    \"PLang.Modules.DbModule\"\n  ],\n  \"WaitForExecution\": true\n}"
+        "RawResponse": "{\n  \"StepName\": \"CountStoryChapters\",\n  \"StepDescription\": \"Execute a SQL query to count the number of chapters (id) in the story_lines table for a specific storyId and store the result in the chapterCount variable.\",\n  \"Modules\": [\"PLang.Modules.DbModule\"],\n  \"WaitForExecution\": true\n}"
       }
     },
     {
       "Text": "select shortSummary from story_lines where %storyId% order by id, write to %chapters%",
       "Comment": null,
       "ModuleType": "PLang.Modules.DbModule",
-      "Name": "FetchStoryChapters",
-      "Description": "Fetch the short summaries from the 'story_lines' table where the story ID matches the provided %storyId%. The results are ordered by the 'id' column and then written to the %chapters% variable.",
-      "PrFileName": "02. FetchStoryChapters.pr",
-      "RelativePrPath": ".build\\CreateChapter\\02. FetchStoryChapters.pr",
+      "Name": "QueryStoryLines",
+      "Description": "Execute a SQL query to select the 'shortSummary' from the 'story_lines' table where the story ID matches %storyId%, order the results by 'id', and write the output to the variable %chapters%.",
+      "PrFileName": "02. QueryStoryLines.pr",
+      "RelativePrPath": ".build\\CreateChapter\\02. QueryStoryLines.pr",
       "Indent": 0,
       "Execute": true,
       "RunOnce": false,
-      "Generated": "2024-04-03T15:33:45.5571525+00:00",
+      "Generated": "2024-04-10T11:34:53.8537065+00:00",
       "WaitForExecution": true,
       "ErrorHandler": null,
       "RetryHandler": null,
@@ -104,7 +104,7 @@
             "content": [
               {
                 "type": "text",
-                "text": "You are provided with a statement from the user. \r\nThis statement is a step in a Function. \r\n\r\nYou MUST determine which module can be used to solve the statement.\r\nYou MUST choose from available modules provided by the assistant to determine which module. If you cannot choose module, set N/A\r\n\r\nvariable is defined with starting and ending %, e.g. %filePath%\r\n! defines a call to a function\r\n\r\nModules: Name of module. Suggest 1-3 modules that could be used to solve the step.\r\nStepName: Short name for step\r\nStepDescription: Rewrite the step as you understand it, make it detailed\r\nWaitForExecution: Indicates if code should wait for execution to finish, default is true\r\nErrorHandler: How to handle errors, default is null. if error should be handled but text (OnExceptionContainingTextCallGoal) is not defined, then use * for key\r\nRetryHandler: How to retry the step if there is error, default is null\r\nCachingHandler: How caching is handled, default is null\r\nRead the description of each module, then determine which module to use.\r\nMake sure to return valid JSON, escape double quote if needed\r\n\r\nBe Concise\r\n"
+                "text": "You are provided with a statement from the user. \r\nThis statement is a step in a Function. \r\n\r\nYou MUST determine which module can be used to solve the statement.\r\nYou MUST choose from available modules provided by the assistant to determine which module. If you cannot choose module, set N/A\r\n\r\nvariable is defined with starting and ending %, e.g. %filePath%\r\n! defines a call to a function\r\n\r\nModules: Name of module. Suggest 1-3 modules that could be used to solve the step.\r\nStepName: Short name for step\r\nStepDescription: Rewrite the step as you understand it, make it detailed\r\nWaitForExecution: Indicates if code should wait for execution to finish, default is true\r\nErrorHandler: How to handle errors defined by user, default is null. if error should be handled but text (OnExceptionContainingTextCallGoal) is not defined, then use * for key\r\nRetryHandler: How to retry the step if there is error, default is null\r\nCachingHandler: How caching is handled, default is null\r\nRead the description of each module, then determine which module to use.\r\nMake sure to return valid JSON, escape double quote if needed\r\n\r\nBe Concise\r\n"
               },
               {
                 "type": "text",
@@ -131,23 +131,23 @@
             ]
           }
         ],
-        "model": "gpt-4",
+        "model": "gpt-4-turbo",
         "caching": true,
-        "RawResponse": "{\n  \"StepName\": \"FetchStoryChapters\",\n  \"StepDescription\": \"Fetch the short summaries from the 'story_lines' table where the story ID matches the provided %storyId%. The results are ordered by the 'id' column and then written to the %chapters% variable.\",\n  \"Modules\": [\n    \"PLang.Modules.DbModule\"\n  ],\n  \"WaitForExecution\": true\n}"
+        "RawResponse": "{\n  \"StepName\": \"QueryStoryLines\",\n  \"StepDescription\": \"Execute a SQL query to select the 'shortSummary' from the 'story_lines' table where the story ID matches %storyId%, order the results by 'id', and write the output to the variable %chapters%.\",\n  \"Modules\": [\"PLang.Modules.DbModule\"],\n  \"WaitForExecution\": true\n}"
       }
     },
     {
       "Text": "read file llm/system_chapter.txt, write to %systemChapter%, load variables",
       "Comment": null,
       "ModuleType": "PLang.Modules.FileModule",
-      "Name": "ReadFileAndLoadVariables",
-      "Description": "Read the content of the file named 'system_chapter.txt' located in the 'llm' directory and store the content in the variable named 'systemChapter'. Then, load the variables.",
-      "PrFileName": "03. ReadFileAndLoadVariables.pr",
-      "RelativePrPath": ".build\\CreateChapter\\03. ReadFileAndLoadVariables.pr",
+      "Name": "ReadAndLoadSystemChapter",
+      "Description": "Read the contents of the file 'llm/system_chapter.txt', store the contents in the variable %systemChapter%, and load these variables for further use.",
+      "PrFileName": "03. ReadAndLoadSystemChapter.pr",
+      "RelativePrPath": ".build\\CreateChapter\\03. ReadAndLoadSystemChapter.pr",
       "Indent": 0,
       "Execute": true,
       "RunOnce": false,
-      "Generated": "2024-04-03T15:34:00.0021622+00:00",
+      "Generated": "2024-04-10T11:35:12.5772864+00:00",
       "WaitForExecution": true,
       "ErrorHandler": null,
       "RetryHandler": null,
@@ -171,7 +171,7 @@
             "content": [
               {
                 "type": "text",
-                "text": "You are provided with a statement from the user. \r\nThis statement is a step in a Function. \r\n\r\nYou MUST determine which module can be used to solve the statement.\r\nYou MUST choose from available modules provided by the assistant to determine which module. If you cannot choose module, set N/A\r\n\r\nvariable is defined with starting and ending %, e.g. %filePath%\r\n! defines a call to a function\r\n\r\nModules: Name of module. Suggest 1-3 modules that could be used to solve the step.\r\nStepName: Short name for step\r\nStepDescription: Rewrite the step as you understand it, make it detailed\r\nWaitForExecution: Indicates if code should wait for execution to finish, default is true\r\nErrorHandler: How to handle errors, default is null. if error should be handled but text (OnExceptionContainingTextCallGoal) is not defined, then use * for key\r\nRetryHandler: How to retry the step if there is error, default is null\r\nCachingHandler: How caching is handled, default is null\r\nRead the description of each module, then determine which module to use.\r\nMake sure to return valid JSON, escape double quote if needed\r\n\r\nBe Concise\r\n"
+                "text": "You are provided with a statement from the user. \r\nThis statement is a step in a Function. \r\n\r\nYou MUST determine which module can be used to solve the statement.\r\nYou MUST choose from available modules provided by the assistant to determine which module. If you cannot choose module, set N/A\r\n\r\nvariable is defined with starting and ending %, e.g. %filePath%\r\n! defines a call to a function\r\n\r\nModules: Name of module. Suggest 1-3 modules that could be used to solve the step.\r\nStepName: Short name for step\r\nStepDescription: Rewrite the step as you understand it, make it detailed\r\nWaitForExecution: Indicates if code should wait for execution to finish, default is true\r\nErrorHandler: How to handle errors defined by user, default is null. if error should be handled but text (OnExceptionContainingTextCallGoal) is not defined, then use * for key\r\nRetryHandler: How to retry the step if there is error, default is null\r\nCachingHandler: How caching is handled, default is null\r\nRead the description of each module, then determine which module to use.\r\nMake sure to return valid JSON, escape double quote if needed\r\n\r\nBe Concise\r\n"
               },
               {
                 "type": "text",
@@ -198,23 +198,23 @@
             ]
           }
         ],
-        "model": "gpt-4",
+        "model": "gpt-4-turbo",
         "caching": true,
-        "RawResponse": "{\n  \"StepName\": \"ReadFileAndLoadVariables\",\n  \"StepDescription\": \"Read the content of the file named 'system_chapter.txt' located in the 'llm' directory and store the content in the variable named 'systemChapter'. Then, load the variables.\",\n  \"Modules\": [\n    \"PLang.Modules.FileModule\",\n    \"PLang.Modules.LocalOrGlobalVariableModule\"\n  ],\n  \"WaitForExecution\": true\n}"
+        "RawResponse": "{\n  \"StepName\": \"ReadAndLoadSystemChapter\",\n  \"StepDescription\": \"Read the contents of the file 'llm/system_chapter.txt', store the contents in the variable %systemChapter%, and load these variables for further use.\",\n  \"Modules\": [\"PLang.Modules.FileModule\", \"PLang.Modules.LocalOrGlobalVariableModule\"],\n  \"WaitForExecution\": true\n}"
       }
     },
     {
       "Text": "call !CreateStory system=%systemChapter%, storyId=%storyId%",
       "Comment": null,
       "ModuleType": "PLang.Modules.CallGoalModule",
-      "Name": "CallCreateStory",
-      "Description": "This step involves calling the 'CreateStory' function with the parameters 'systemChapter' and 'storyId'.",
-      "PrFileName": "04. CallCreateStory.pr",
-      "RelativePrPath": ".build\\CreateChapter\\04. CallCreateStory.pr",
+      "Name": "CallCreateStoryFunction",
+      "Description": "Call the 'CreateStory' function with parameters for system chapter and story ID.",
+      "PrFileName": "04. CallCreateStoryFunction.pr",
+      "RelativePrPath": ".build\\CreateChapter\\04. CallCreateStoryFunction.pr",
       "Indent": 0,
       "Execute": true,
       "RunOnce": false,
-      "Generated": "2024-04-03T15:34:16.4977017+00:00",
+      "Generated": "2024-04-10T11:35:19.581013+00:00",
       "WaitForExecution": true,
       "ErrorHandler": null,
       "RetryHandler": null,
@@ -238,7 +238,7 @@
             "content": [
               {
                 "type": "text",
-                "text": "You are provided with a statement from the user. \r\nThis statement is a step in a Function. \r\n\r\nYou MUST determine which module can be used to solve the statement.\r\nYou MUST choose from available modules provided by the assistant to determine which module. If you cannot choose module, set N/A\r\n\r\nvariable is defined with starting and ending %, e.g. %filePath%\r\n! defines a call to a function\r\n\r\nModules: Name of module. Suggest 1-3 modules that could be used to solve the step.\r\nStepName: Short name for step\r\nStepDescription: Rewrite the step as you understand it, make it detailed\r\nWaitForExecution: Indicates if code should wait for execution to finish, default is true\r\nErrorHandler: How to handle errors, default is null. if error should be handled but text (OnExceptionContainingTextCallGoal) is not defined, then use * for key\r\nRetryHandler: How to retry the step if there is error, default is null\r\nCachingHandler: How caching is handled, default is null\r\nRead the description of each module, then determine which module to use.\r\nMake sure to return valid JSON, escape double quote if needed\r\n\r\nBe Concise\r\n"
+                "text": "You are provided with a statement from the user. \r\nThis statement is a step in a Function. \r\n\r\nYou MUST determine which module can be used to solve the statement.\r\nYou MUST choose from available modules provided by the assistant to determine which module. If you cannot choose module, set N/A\r\n\r\nvariable is defined with starting and ending %, e.g. %filePath%\r\n! defines a call to a function\r\n\r\nModules: Name of module. Suggest 1-3 modules that could be used to solve the step.\r\nStepName: Short name for step\r\nStepDescription: Rewrite the step as you understand it, make it detailed\r\nWaitForExecution: Indicates if code should wait for execution to finish, default is true\r\nErrorHandler: How to handle errors defined by user, default is null. if error should be handled but text (OnExceptionContainingTextCallGoal) is not defined, then use * for key\r\nRetryHandler: How to retry the step if there is error, default is null\r\nCachingHandler: How caching is handled, default is null\r\nRead the description of each module, then determine which module to use.\r\nMake sure to return valid JSON, escape double quote if needed\r\n\r\nBe Concise\r\n"
               },
               {
                 "type": "text",
@@ -265,9 +265,9 @@
             ]
           }
         ],
-        "model": "gpt-4",
+        "model": "gpt-4-turbo",
         "caching": true,
-        "RawResponse": "{\n  \"StepName\": \"CallCreateStory\",\n  \"StepDescription\": \"This step involves calling the 'CreateStory' function with the parameters 'systemChapter' and 'storyId'.\",\n  \"Modules\": [\n    \"PLang.Modules.CallGoalModule\"\n  ],\n  \"WaitForExecution\": true\n}"
+        "RawResponse": "{\n\"StepName\": \"CallCreateStoryFunction\",\n\"StepDescription\": \"Call the 'CreateStory' function with parameters for system chapter and story ID.\",\n\"Modules\": [\"PLang.Modules.CallGoalModule\"],\n\"WaitForExecution\": true\n}"
       }
     }
   ],
@@ -282,5 +282,5 @@
   "GoalApiInfo": null,
   "Injections": [],
   "Signature": null,
-  "Hash": "67e125585d00c637796bba07a5bab09e3851248870f563b411d2e051db12b88f"
+  "Hash": "18a3c37e5623a974d213c9b7de2b8369fafcb15e67ae32a83311aed8408399c9"
 }

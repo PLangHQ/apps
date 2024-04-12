@@ -1,0 +1,13 @@
+Tickets
+- 
+- get https://hopkaup.zendesk.com/api/v2/tickets.json?sort_by=created_at&sort_order=desc
+    basic auth: %Settings.BasicAuth%
+    write to %tickets%
+- go through %tickets%, call !ProcessTicket %ticket%=item
+
+ProcessTicket
+- if %ticket.via.channel% == 'voice' then call !ProcessVoice
+- if %ticket.via.channel% == "
+
+ProcessVoice
+- logger info 'Process voice for id:%ticket.id%'

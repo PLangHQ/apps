@@ -1,8 +1,8 @@
 {
   "Action": {
     "Namespace": "PLangGeneratedCode",
-    "Name": "CalculateListAndChapterNr",
-    "Code": "\nusing System;\n\nnamespace PLangGeneratedCode\n{\n    public static class CalculateListAndChapterNr\n    {\n        public static void ExecutePlangCode(long? position, out long listNr, long? listCount, out long chapterNr)\n        {\n            if (position == null)\n                throw new Exception(\"Position is not defined.\");\n            if (listCount == null)\n                throw new Exception(\"List count is not defined.\");\n\n            listNr = position.Value + 2;\n            chapterNr = listCount.Value - position.Value + 1;\n        }\n    }\n}\n",
+    "Name": "ArithmeticOperations",
+    "Code": "\nnamespace PLangGeneratedCode\n{\n    public static class ArithmeticOperations\n    {\n        public static void ExecutePlangCode(long? position, out long listNr, long? listCount, out long chapterNr)\n        {\n            if (position == null)\n                throw new Exception(\"Position value is missing.\");\n            if (listCount == null)\n                throw new Exception(\"List count value is missing.\");\n\n            listNr = position.Value + 2;\n            chapterNr = listCount.Value - position.Value + 1;\n        }\n    }\n}\n",
     "Using": null,
     "InputParameters": {
       "position": "long?",
@@ -10,7 +10,16 @@
       "listCount": "long?",
       "chapterNr": "long"
     },
-    "OutParameterDefinition": null,
+    "OutParameterDefinition": {
+      "listNr": {
+        "Name": "listNr",
+        "FullTypeName": "long"
+      },
+      "chapterNr": {
+        "Name": "chapterNr",
+        "FullTypeName": "long"
+      }
+    },
     "GoalToCallOnTrue": null,
     "GoalToCallOnFalse": null,
     "GoalToCallOnTrueParameters": null,
@@ -65,9 +74,9 @@
         ]
       }
     ],
-    "model": "gpt-4",
+    "model": "gpt-4-turbo",
     "caching": true,
-    "RawResponse": null
+    "RawResponse": "```csharp\nnamespace PLangGeneratedCode\n{\n    public static class ArithmeticOperations\n    {\n        public static void ExecutePlangCode(long? position, out long listNr, long? listCount, out long chapterNr)\n        {\n            if (position == null)\n                throw new Exception(\"Position value is missing.\");\n            if (listCount == null)\n                throw new Exception(\"List count value is missing.\");\n\n            listNr = position.Value + 2;\n            chapterNr = listCount.Value - position.Value + 1;\n        }\n    }\n}\n```\n```json\n{\n  \"Namespace\": \"PLangGeneratedCode\",\n  \"Name\": \"ArithmeticOperations\",\n  \"OutParameterDefinition\": {\n    \"listNr\": {\n      \"Name\": \"listNr\",\n      \"FullTypeName\": \"long\"\n    },\n    \"chapterNr\": {\n      \"Name\": \"chapterNr\",\n      \"FullTypeName\": \"long\"\n    }\n  }\n}\n```"
   },
   "RunOnBuild": false
 }

@@ -23,7 +23,7 @@
         }
       },
       {
-        "Type": "Int32",
+        "Type": "Int32?",
         "Name": "timeoutInSeconds",
         "Value": 1800
       }
@@ -83,9 +83,9 @@
         ]
       }
     ],
-    "model": "gpt-4",
+    "model": "gpt-4-turbo",
     "caching": true,
-    "RawResponse": "{\n  \"FunctionName\": \"Post\",\n  \"Parameters\": [\n    {\n      \"Type\": \"String\",\n      \"Name\": \"url\",\n      \"Value\": \"http://localhost:60877/\"\n    },\n    {\n      \"Type\": \"Object\",\n      \"Name\": \"data\",\n      \"Value\": {\n        \"goal\": \"%__GOAL__%\",\n        \"step\": \"%__STEP__%\",\n        \"event\": \"%__Event__%\",\n        \"isHttpRequest\": \"%__IsHttpRequest__%\",\n        \"stepIndex\": \"%__StepIndex__%\",\n        \"instruction\": \"%__Instruction__%\",\n        \"memoryStack\": \"%__memorystack__%\",\n        \"absolutePath\": \"%__GOAL__.AbsoluteGoalPath%\",\n        \"exception\": \"%__Exception__%\"\n      }\n    },\n    {\n      \"Type\": \"Int32\",\n      \"Name\": \"timeoutInSeconds\",\n      \"Value\": 1800\n    }\n  ],\n  \"ReturnValue\": [\n    {\n      \"Type\": \"Object\",\n      \"VariableName\": \"%debugReponse%\"\n    }\n  ]\n}"
+    "RawResponse": "{\n  \"FunctionName\": \"Post\",\n  \"Parameters\": [\n    {\n      \"Type\": \"String\",\n      \"Name\": \"url\",\n      \"Value\": \"http://localhost:60877/\"\n    },\n    {\n      \"Type\": \"Object\",\n      \"Name\": \"data\",\n      \"Value\": {\n        \"goal\": \"%__GOAL__%\",\n        \"step\": \"%__STEP__%\",\n        \"event\": \"%__Event__%\",\n        \"isHttpRequest\": \"%__IsHttpRequest__%\",\n        \"stepIndex\": \"%__StepIndex__%\",\n        \"instruction\": \"%__Instruction__%\",\n        \"memoryStack\": \"%__memorystack__%\",\n        \"absolutePath\": \"%__GOAL__.AbsoluteGoalPath%\",\n        \"exception\": \"%__Exception__%\"\n      }\n    },\n    {\n      \"Type\": \"Int32?\",\n      \"Name\": \"timeoutInSeconds\",\n      \"Value\": 1800\n    }\n  ],\n  \"ReturnValue\": [\n    {\n      \"Type\": \"Object\",\n      \"VariableName\": \"%debugReponse%\"\n    }\n  ]\n}"
   },
   "RunOnBuild": false
 }

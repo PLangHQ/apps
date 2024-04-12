@@ -7,13 +7,13 @@
       "Comment": null,
       "ModuleType": "PLang.Modules.DbModule",
       "Name": "FetchAndStoreGames",
-      "Description": "Fetch all records from the 'games' table, order them by the 'updated' field in descending order, and store the result in the 'games' variable.",
+      "Description": "Execute a SQL query to select all records from the 'games' table, order them by the 'updated' column in descending order, and store the result in the variable %games%.",
       "PrFileName": "01. FetchAndStoreGames.pr",
       "RelativePrPath": ".build\\Start\\GenerateAskUser\\01. FetchAndStoreGames.pr",
       "Indent": 0,
       "Execute": true,
       "RunOnce": false,
-      "Generated": "2024-04-06T21:12:16.911681+00:00",
+      "Generated": "2024-04-12T12:54:23.5409381+00:00",
       "WaitForExecution": true,
       "ErrorHandler": null,
       "RetryHandler": null,
@@ -37,7 +37,7 @@
             "content": [
               {
                 "type": "text",
-                "text": "You are provided with a statement from the user. \r\nThis statement is a step in a Function. \r\n\r\nYou MUST determine which module can be used to solve the statement.\r\nYou MUST choose from available modules provided by the assistant to determine which module. If you cannot choose module, set N/A\r\n\r\nvariable is defined with starting and ending %, e.g. %filePath%\r\n! defines a call to a function\r\n\r\nModules: Name of module. Suggest 1-3 modules that could be used to solve the step.\r\nStepName: Short name for step\r\nStepDescription: Rewrite the step as you understand it, make it detailed\r\nWaitForExecution: Indicates if code should wait for execution to finish, default is true\r\nErrorHandler: How to handle errors, default is null. if error should be handled but text (OnExceptionContainingTextCallGoal) is not defined, then use * for key\r\nRetryHandler: How to retry the step if there is error, default is null\r\nCachingHandler: How caching is handled, default is null\r\nRead the description of each module, then determine which module to use.\r\nMake sure to return valid JSON, escape double quote if needed\r\n\r\nBe Concise\r\n"
+                "text": "You are provided with a statement from the user. \r\nThis statement is a step in a Function. \r\n\r\nYou MUST determine which module can be used to solve the statement.\r\nYou MUST choose from available modules provided by the assistant to determine which module. If you cannot choose module, set N/A\r\n\r\nvariable is defined with starting and ending %, e.g. %filePath%\r\n! defines a call to a function\r\n\r\nModules: Name of module. Suggest 1-3 modules that could be used to solve the step.\r\nStepName: Short name for step\r\nStepDescription: Rewrite the step as you understand it, make it detailed\r\nWaitForExecution: Indicates if code should wait for execution to finish, default is true\r\nErrorHandler: How to handle errors defined by user, default is null. if error should be handled but text (OnExceptionContainingTextCallGoal) is not defined, then use * for key\r\nRetryHandler: How to retry the step if there is error, default is null\r\nCachingHandler: How caching is handled, default is null\r\nRead the description of each module, then determine which module to use.\r\nMake sure to return valid JSON, escape double quote if needed\r\n\r\nBe Concise\r\n"
               },
               {
                 "type": "text",
@@ -64,23 +64,23 @@
             ]
           }
         ],
-        "model": "gpt-4",
+        "model": "gpt-4-turbo",
         "caching": true,
-        "RawResponse": "{\n  \"StepName\": \"FetchAndStoreGames\",\n  \"StepDescription\": \"Fetch all records from the 'games' table, order them by the 'updated' field in descending order, and store the result in the 'games' variable.\",\n  \"Modules\": [\n    \"PLang.Modules.DbModule\"\n  ],\n  \"WaitForExecution\": true\n}"
+        "RawResponse": "{\r\n  \"StepName\": \"FetchAndStoreGames\",\r\n  \"StepDescription\": \"Execute a SQL query to select all records from the 'games' table, order them by the 'updated' column in descending order, and store the result in the variable %games%.\",\r\n  \"Modules\": [\r\n    \"PLang.Modules.DbModule\"\r\n  ],\r\n  \"WaitForExecution\": true\r\n}"
       }
     },
     {
       "Text": "foreach item in %games%, call !GenerateItemAskUser",
       "Comment": null,
       "ModuleType": "PLang.Modules.LoopModule",
-      "Name": "ForEachGameGenerateItem",
-      "Description": "For each item in the 'games' list, call the function 'GenerateItemAskUser'.",
-      "PrFileName": "02. ForEachGameGenerateItem.pr",
-      "RelativePrPath": ".build\\Start\\GenerateAskUser\\02. ForEachGameGenerateItem.pr",
+      "Name": "ProcessEachGame",
+      "Description": "Iterate through each item in the list stored in the variable %games% and call the function GenerateItemAskUser for each item.",
+      "PrFileName": "02. ProcessEachGame.pr",
+      "RelativePrPath": ".build\\Start\\GenerateAskUser\\02. ProcessEachGame.pr",
       "Indent": 0,
       "Execute": true,
       "RunOnce": false,
-      "Generated": "2024-04-06T20:58:29.7760471+00:00",
+      "Generated": "2024-04-12T12:54:36.2813842+00:00",
       "WaitForExecution": true,
       "ErrorHandler": null,
       "RetryHandler": null,
@@ -104,7 +104,7 @@
             "content": [
               {
                 "type": "text",
-                "text": "You are provided with a statement from the user. \r\nThis statement is a step in a Function. \r\n\r\nYou MUST determine which module can be used to solve the statement.\r\nYou MUST choose from available modules provided by the assistant to determine which module. If you cannot choose module, set N/A\r\n\r\nvariable is defined with starting and ending %, e.g. %filePath%\r\n! defines a call to a function\r\n\r\nModules: Name of module. Suggest 1-3 modules that could be used to solve the step.\r\nStepName: Short name for step\r\nStepDescription: Rewrite the step as you understand it, make it detailed\r\nWaitForExecution: Indicates if code should wait for execution to finish, default is true\r\nErrorHandler: How to handle errors, default is null. if error should be handled but text (OnExceptionContainingTextCallGoal) is not defined, then use * for key\r\nRetryHandler: How to retry the step if there is error, default is null\r\nCachingHandler: How caching is handled, default is null\r\nRead the description of each module, then determine which module to use.\r\nMake sure to return valid JSON, escape double quote if needed\r\n\r\nBe Concise\r\n"
+                "text": "You are provided with a statement from the user. \r\nThis statement is a step in a Function. \r\n\r\nYou MUST determine which module can be used to solve the statement.\r\nYou MUST choose from available modules provided by the assistant to determine which module. If you cannot choose module, set N/A\r\n\r\nvariable is defined with starting and ending %, e.g. %filePath%\r\n! defines a call to a function\r\n\r\nModules: Name of module. Suggest 1-3 modules that could be used to solve the step.\r\nStepName: Short name for step\r\nStepDescription: Rewrite the step as you understand it, make it detailed\r\nWaitForExecution: Indicates if code should wait for execution to finish, default is true\r\nErrorHandler: How to handle errors defined by user, default is null. if error should be handled but text (OnExceptionContainingTextCallGoal) is not defined, then use * for key\r\nRetryHandler: How to retry the step if there is error, default is null\r\nCachingHandler: How caching is handled, default is null\r\nRead the description of each module, then determine which module to use.\r\nMake sure to return valid JSON, escape double quote if needed\r\n\r\nBe Concise\r\n"
               },
               {
                 "type": "text",
@@ -131,9 +131,9 @@
             ]
           }
         ],
-        "model": "gpt-4",
+        "model": "gpt-4-turbo",
         "caching": true,
-        "RawResponse": "{\n  \"StepName\": \"ForEachGameGenerateItem\",\n  \"StepDescription\": \"For each item in the 'games' list, call the function 'GenerateItemAskUser'.\",\n  \"Modules\": [\n    \"PLang.Modules.LoopModule\",\n    \"PLang.Modules.CallGoalModule\"\n  ],\n  \"WaitForExecution\": true\n}"
+        "RawResponse": "{\r\n  \"StepName\": \"ProcessEachGame\",\r\n  \"StepDescription\": \"Iterate through each item in the list stored in the variable %games% and call the function GenerateItemAskUser for each item.\",\r\n  \"Modules\": [\r\n    \"PLang.Modules.LoopModule\",\r\n    \"PLang.Modules.CallGoalModule\"\r\n  ],\r\n  \"WaitForExecution\": true\r\n}"
       }
     }
   ],
@@ -146,16 +146,7 @@
   "RelativePrFolderPath": ".build\\Start\\GenerateAskUser",
   "BuilderVersion": "0.1.0.4",
   "GoalApiInfo": null,
-  "Injections": [
-    {
-      "AtSignInjection": true,
-      "Type": "llm",
-      "Path": "OpenAiService.dll",
-      "IsGlobal": true,
-      "EnvironmentVariable": null,
-      "EnvironmentVariableValue": null
-    }
-  ],
+  "Injections": [],
   "Signature": null,
-  "Hash": "73f0d5cf9ce48db7c957f8980f2ea37a45d0b94592ef00c90ac6ad27c6e40782"
+  "Hash": "e05f631072cd9d94f26f0ac2ca2c0d53804b845f7e0e3c03425b7fdccf90b62f"
 }

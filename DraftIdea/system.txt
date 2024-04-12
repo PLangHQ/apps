@@ -22,6 +22,7 @@ Following rules are for plang language
 - conditions can only contain primative variables, not sql statements or other complex algorithms
 - when updating/inserting/deleting multiple tables use transaction
 - id and foreign id keys in tables are long
+- data source is created automatically, creating a datasource is only needed if multiple databases are used.
 
 Your response:
     Code in the json scheme should contain all plang code.

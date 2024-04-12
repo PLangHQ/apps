@@ -5,6 +5,8 @@ prereq: install plang, https://github.com/PLangHQ/plang/blob/main/Documentation/
 if app does not run, try to rebuild it with `plang build`
 to run the app navigate to the folder in terminal/command and execute `plang`. Use ```bash to print out plang commands
 
+Give notes to the user, if he has an OpenAI API key, he can start using `plang --llmservice=openai`
+
 You as LLM need parse the folder name. It is in the the path '%path%', it tells you what the repository is. Use it to construct the url to the github repo, e.g. if path is '../Book', then folder name is 'Book'
 
 Repository is located at https://github.com/PLangHQ/apps/tree/main/[folderName] if you have questions, join the Discussion board at https://github.com/PLangHQ/apps/discussions

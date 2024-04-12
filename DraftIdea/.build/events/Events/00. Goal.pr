@@ -13,7 +13,7 @@
       "Indent": 0,
       "Execute": true,
       "RunOnce": false,
-      "Generated": "2024-01-08T14:00:44.4294914+01:00",
+      "Generated": "2024-04-12T12:56:02.3819557+00:00",
       "WaitForExecution": true,
       "ErrorHandler": null,
       "RetryHandler": null,
@@ -21,15 +21,16 @@
       "CancellationHandler": null,
       "Custom": {
         "Event": {
-          "EventType": 0,
-          "EventScope": 30,
-          "GoalToBindTo": "*",
+          "EventType": "Before",
+          "EventScope": "Step",
+          "GoalToBindTo": ".*",
           "GoalToCall": "!SendDebug",
           "IncludePrivate": true,
           "StepNumber": null,
           "StepText": null,
           "WaitForExecution": true,
-          "RunOnlyInDebugMode": true
+          "RunOnlyInDebugMode": true,
+          "OnErrorContinueNextStep": false
         }
       },
       "Number": 1,
@@ -47,7 +48,7 @@
       "Indent": 0,
       "Execute": true,
       "RunOnce": false,
-      "Generated": "2024-01-08T14:00:44.4370389+01:00",
+      "Generated": "2024-04-12T12:56:02.3898849+00:00",
       "WaitForExecution": true,
       "ErrorHandler": null,
       "RetryHandler": null,
@@ -55,15 +56,16 @@
       "CancellationHandler": null,
       "Custom": {
         "Event": {
-          "EventType": 1,
-          "EventScope": 20,
-          "GoalToBindTo": null,
+          "EventType": "Before",
+          "EventScope": "Goal",
+          "GoalToBindTo": ".*",
           "GoalToCall": "!SendDebug",
           "IncludePrivate": true,
           "StepNumber": null,
           "StepText": null,
           "WaitForExecution": true,
-          "RunOnlyInDebugMode": true
+          "RunOnlyInDebugMode": true,
+          "OnErrorContinueNextStep": false
         }
       },
       "Number": 2,

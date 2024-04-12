@@ -8,10 +8,11 @@ It won't be fully functional, but it's a great way to kickstart your development
 Check out [the video](https://www.youtube.com/watch?v=6JFJWS6rpMQ)
 ## How to use
 1. Clone this repository to your local machine.
-2. Open a terminal or command prompt, navigate to the cloned directory, and execute:
-```bash
-plang
-```
+2. Open a terminal or command prompt, navigate to the cloned directory, and execute: 
+    ```bash
+    plang
+    ```
+    *If you have OpenAI key you can start with the parameter `plang --llmservice=openai`*
 3.  Provide as much detail as possible about your app for the best results.
 
 ## Summary

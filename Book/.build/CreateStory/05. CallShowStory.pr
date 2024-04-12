@@ -3,7 +3,7 @@
     "FunctionName": "RunGoal",
     "Parameters": [
       {
-        "Type": "string",
+        "Type": "String",
         "Name": "goalName",
         "Value": "ShowStory"
       },
@@ -11,8 +11,13 @@
         "Type": "Dictionary`2<String, Object>",
         "Name": "parameters",
         "Value": {
-          "%storyId%": "%storyId%"
+          "storyId": "%storyId%"
         }
+      },
+      {
+        "Type": "Boolean?",
+        "Name": "waitForExecution",
+        "Value": true
       }
     ],
     "ReturnValue": null
@@ -65,9 +70,9 @@
         ]
       }
     ],
-    "model": "gpt-4",
+    "model": "gpt-4-turbo",
     "caching": true,
-    "RawResponse": "{\n  \"FunctionName\": \"RunGoal\",\n  \"Parameters\": [\n    {\n      \"Type\": \"string\",\n      \"Name\": \"goalName\",\n      \"Value\": \"ShowStory\"\n    },\n    {\n      \"Type\": \"Dictionary`2<String, Object>\",\n      \"Name\": \"parameters\",\n      \"Value\": {\n        \"%storyId%\": \"%storyId%\"\n      }\n    }\n  ],\n  \"ReturnValue\": null\n}"
+    "RawResponse": "{\n  \"FunctionName\": \"RunGoal\",\n  \"Parameters\": [\n    {\n      \"Type\": \"String\",\n      \"Name\": \"goalName\",\n      \"Value\": \"ShowStory\"\n    },\n    {\n      \"Type\": \"Dictionary`2<String, Object>\",\n      \"Name\": \"parameters\",\n      \"Value\": {\n        \"storyId\": \"%storyId%\"\n      }\n    },\n    {\n      \"Type\": \"Boolean?\",\n      \"Name\": \"waitForExecution\",\n      \"Value\": true\n    }\n  ],\n  \"ReturnValue\": null\n}"
   },
   "RunOnBuild": false
 }

@@ -6,14 +6,14 @@
       "Text": "set string var %askUser% to \"What would you like to do?\\n\\n\n    \\t0. Create new DoD\n    \\---------------------------\n    \\t- Story Arc Id\"",
       "Comment": null,
       "ModuleType": "PLang.Modules.LocalOrGlobalVariableModule",
-      "Name": "SetStringVariable",
-      "Description": "Set the string variable %askUser% to the provided text which includes options for the user to choose from.",
-      "PrFileName": "01. SetStringVariable.pr",
-      "RelativePrPath": ".build\\Start\\01. SetStringVariable.pr",
+      "Name": "SetAskUserString",
+      "Description": "Set the string variable %askUser% with a multi-line text asking the user what they would like to do, with options listed.",
+      "PrFileName": "01. SetAskUserString.pr",
+      "RelativePrPath": ".build\\Start\\01. SetAskUserString.pr",
       "Indent": 0,
       "Execute": true,
       "RunOnce": false,
-      "Generated": "2024-04-08T08:37:35.6937621+00:00",
+      "Generated": "2024-04-12T12:51:10.2152199+00:00",
       "WaitForExecution": true,
       "ErrorHandler": null,
       "RetryHandler": null,
@@ -37,7 +37,7 @@
             "content": [
               {
                 "type": "text",
-                "text": "You are provided with a statement from the user. \r\nThis statement is a step in a Function. \r\n\r\nYou MUST determine which module can be used to solve the statement.\r\nYou MUST choose from available modules provided by the assistant to determine which module. If you cannot choose module, set N/A\r\n\r\nvariable is defined with starting and ending %, e.g. %filePath%\r\n! defines a call to a function\r\n\r\nModules: Name of module. Suggest 1-3 modules that could be used to solve the step.\r\nStepName: Short name for step\r\nStepDescription: Rewrite the step as you understand it, make it detailed\r\nWaitForExecution: Indicates if code should wait for execution to finish, default is true\r\nErrorHandler: How to handle errors, default is null. if error should be handled but text (OnExceptionContainingTextCallGoal) is not defined, then use * for key\r\nRetryHandler: How to retry the step if there is error, default is null\r\nCachingHandler: How caching is handled, default is null\r\nRead the description of each module, then determine which module to use.\r\nMake sure to return valid JSON, escape double quote if needed\r\n\r\nBe Concise\r\n"
+                "text": "You are provided with a statement from the user. \r\nThis statement is a step in a Function. \r\n\r\nYou MUST determine which module can be used to solve the statement.\r\nYou MUST choose from available modules provided by the assistant to determine which module. If you cannot choose module, set N/A\r\n\r\nvariable is defined with starting and ending %, e.g. %filePath%\r\n! defines a call to a function\r\n\r\nModules: Name of module. Suggest 1-3 modules that could be used to solve the step.\r\nStepName: Short name for step\r\nStepDescription: Rewrite the step as you understand it, make it detailed\r\nWaitForExecution: Indicates if code should wait for execution to finish, default is true\r\nErrorHandler: How to handle errors defined by user, default is null. if error should be handled but text (OnExceptionContainingTextCallGoal) is not defined, then use * for key\r\nRetryHandler: How to retry the step if there is error, default is null\r\nCachingHandler: How caching is handled, default is null\r\nRead the description of each module, then determine which module to use.\r\nMake sure to return valid JSON, escape double quote if needed\r\n\r\nBe Concise\r\n"
               },
               {
                 "type": "text",
@@ -64,9 +64,9 @@
             ]
           }
         ],
-        "model": "gpt-4",
+        "model": "gpt-4-turbo",
         "caching": true,
-        "RawResponse": "{\"StepName\": \"SetStringVariable\",\n\"StepDescription\": \"Set the string variable %askUser% to the provided text which includes options for the user to choose from.\",\n\"Modules\": [\"PLang.Modules.LocalOrGlobalVariableModule\"],\n\"WaitForExecution\": true}"
+        "RawResponse": "{\r\n  \"StepName\": \"SetAskUserString\",\r\n  \"StepDescription\": \"Set the string variable %askUser% with a multi-line text asking the user what they would like to do, with options listed.\",\r\n  \"Modules\": [\r\n    \"PLang.Modules.LocalOrGlobalVariableModule\"\r\n  ],\r\n  \"WaitForExecution\": true\r\n}"
       }
     },
     {
@@ -74,13 +74,13 @@
       "Comment": null,
       "ModuleType": "PLang.Modules.CallGoalModule",
       "Name": "CallGenerateAskUserGoal",
-      "Description": "This step involves calling the goal named 'GenerateAskUser'.",
+      "Description": "Call the 'GenerateAskUser' goal to execute its defined tasks.",
       "PrFileName": "02. CallGenerateAskUserGoal.pr",
       "RelativePrPath": ".build\\Start\\02. CallGenerateAskUserGoal.pr",
       "Indent": 0,
       "Execute": true,
       "RunOnce": false,
-      "Generated": "2024-04-08T08:38:01.5073446+00:00",
+      "Generated": "2024-04-12T12:51:25.1861361+00:00",
       "WaitForExecution": true,
       "ErrorHandler": null,
       "RetryHandler": null,
@@ -104,7 +104,7 @@
             "content": [
               {
                 "type": "text",
-                "text": "You are provided with a statement from the user. \r\nThis statement is a step in a Function. \r\n\r\nYou MUST determine which module can be used to solve the statement.\r\nYou MUST choose from available modules provided by the assistant to determine which module. If you cannot choose module, set N/A\r\n\r\nvariable is defined with starting and ending %, e.g. %filePath%\r\n! defines a call to a function\r\n\r\nModules: Name of module. Suggest 1-3 modules that could be used to solve the step.\r\nStepName: Short name for step\r\nStepDescription: Rewrite the step as you understand it, make it detailed\r\nWaitForExecution: Indicates if code should wait for execution to finish, default is true\r\nErrorHandler: How to handle errors, default is null. if error should be handled but text (OnExceptionContainingTextCallGoal) is not defined, then use * for key\r\nRetryHandler: How to retry the step if there is error, default is null\r\nCachingHandler: How caching is handled, default is null\r\nRead the description of each module, then determine which module to use.\r\nMake sure to return valid JSON, escape double quote if needed\r\n\r\nBe Concise\r\n"
+                "text": "You are provided with a statement from the user. \r\nThis statement is a step in a Function. \r\n\r\nYou MUST determine which module can be used to solve the statement.\r\nYou MUST choose from available modules provided by the assistant to determine which module. If you cannot choose module, set N/A\r\n\r\nvariable is defined with starting and ending %, e.g. %filePath%\r\n! defines a call to a function\r\n\r\nModules: Name of module. Suggest 1-3 modules that could be used to solve the step.\r\nStepName: Short name for step\r\nStepDescription: Rewrite the step as you understand it, make it detailed\r\nWaitForExecution: Indicates if code should wait for execution to finish, default is true\r\nErrorHandler: How to handle errors defined by user, default is null. if error should be handled but text (OnExceptionContainingTextCallGoal) is not defined, then use * for key\r\nRetryHandler: How to retry the step if there is error, default is null\r\nCachingHandler: How caching is handled, default is null\r\nRead the description of each module, then determine which module to use.\r\nMake sure to return valid JSON, escape double quote if needed\r\n\r\nBe Concise\r\n"
               },
               {
                 "type": "text",
@@ -131,9 +131,9 @@
             ]
           }
         ],
-        "model": "gpt-4",
+        "model": "gpt-4-turbo",
         "caching": true,
-        "RawResponse": null
+        "RawResponse": "{\r\n  \"StepName\": \"CallGenerateAskUserGoal\",\r\n  \"StepDescription\": \"Call the 'GenerateAskUser' goal to execute its defined tasks.\",\r\n  \"Modules\": [\r\n    \"PLang.Modules.CallGoalModule\"\r\n  ],\r\n  \"WaitForExecution\": true\r\n}"
       }
     },
     {
@@ -141,13 +141,13 @@
       "Comment": null,
       "ModuleType": "PLang.Modules.OutputModule",
       "Name": "AskUserForGameId",
-      "Description": "Ask the user to input the Story Arc Id or 0 to create a new game. The input must be a number (long) and it will be stored in the variable %gameId%.",
+      "Description": "Prompt the user with the message stored in %askUser% followed by a newline and the text 'Type in Story Arc Id or 0 to Create new game'. The user must input a number which will be stored in the variable %gameId%.",
       "PrFileName": "03. AskUserForGameId.pr",
       "RelativePrPath": ".build\\Start\\03. AskUserForGameId.pr",
       "Indent": 0,
       "Execute": true,
       "RunOnce": false,
-      "Generated": "2024-04-08T08:38:18.7247172+00:00",
+      "Generated": "2024-04-12T12:51:43.5355786+00:00",
       "WaitForExecution": true,
       "ErrorHandler": null,
       "RetryHandler": null,
@@ -171,7 +171,7 @@
             "content": [
               {
                 "type": "text",
-                "text": "You are provided with a statement from the user. \r\nThis statement is a step in a Function. \r\n\r\nYou MUST determine which module can be used to solve the statement.\r\nYou MUST choose from available modules provided by the assistant to determine which module. If you cannot choose module, set N/A\r\n\r\nvariable is defined with starting and ending %, e.g. %filePath%\r\n! defines a call to a function\r\n\r\nModules: Name of module. Suggest 1-3 modules that could be used to solve the step.\r\nStepName: Short name for step\r\nStepDescription: Rewrite the step as you understand it, make it detailed\r\nWaitForExecution: Indicates if code should wait for execution to finish, default is true\r\nErrorHandler: How to handle errors, default is null. if error should be handled but text (OnExceptionContainingTextCallGoal) is not defined, then use * for key\r\nRetryHandler: How to retry the step if there is error, default is null\r\nCachingHandler: How caching is handled, default is null\r\nRead the description of each module, then determine which module to use.\r\nMake sure to return valid JSON, escape double quote if needed\r\n\r\nBe Concise\r\n"
+                "text": "You are provided with a statement from the user. \r\nThis statement is a step in a Function. \r\n\r\nYou MUST determine which module can be used to solve the statement.\r\nYou MUST choose from available modules provided by the assistant to determine which module. If you cannot choose module, set N/A\r\n\r\nvariable is defined with starting and ending %, e.g. %filePath%\r\n! defines a call to a function\r\n\r\nModules: Name of module. Suggest 1-3 modules that could be used to solve the step.\r\nStepName: Short name for step\r\nStepDescription: Rewrite the step as you understand it, make it detailed\r\nWaitForExecution: Indicates if code should wait for execution to finish, default is true\r\nErrorHandler: How to handle errors defined by user, default is null. if error should be handled but text (OnExceptionContainingTextCallGoal) is not defined, then use * for key\r\nRetryHandler: How to retry the step if there is error, default is null\r\nCachingHandler: How caching is handled, default is null\r\nRead the description of each module, then determine which module to use.\r\nMake sure to return valid JSON, escape double quote if needed\r\n\r\nBe Concise\r\n"
               },
               {
                 "type": "text",
@@ -198,23 +198,23 @@
             ]
           }
         ],
-        "model": "gpt-4",
+        "model": "gpt-4-turbo",
         "caching": true,
-        "RawResponse": "{\"StepName\": \"AskUserForGameId\",\n\"StepDescription\": \"Ask the user to input the Story Arc Id or 0 to create a new game. The input must be a number (long) and it will be stored in the variable %gameId%.\",\n\"Modules\": [\"PLang.Modules.OutputModule\"],\n\"WaitForExecution\": true}"
+        "RawResponse": "{\r\n  \"StepName\": \"AskUserForGameId\",\r\n  \"StepDescription\": \"Prompt the user with the message stored in %askUser% followed by a newline and the text 'Type in Story Arc Id or 0 to Create new game'. The user must input a number which will be stored in the variable %gameId%.\",\r\n  \"Modules\": [\r\n    \"PLang.Modules.OutputModule\"\r\n  ],\r\n  \"WaitForExecution\": true\r\n}"
       }
     },
     {
       "Text": "if %gameId% = 0, then call !CreateNewGame",
       "Comment": null,
       "ModuleType": "PLang.Modules.ConditionalModule",
-      "Name": "CheckGameIdAndCreateNewGame",
-      "Description": "If the variable 'gameId' is equal to 0, then the function 'CreateNewGame' is called.",
-      "PrFileName": "04. CheckGameIdAndCreateNewGame.pr",
-      "RelativePrPath": ".build\\Start\\04. CheckGameIdAndCreateNewGame.pr",
+      "Name": "CheckGameIdAndCreate",
+      "Description": "Check if the gameId variable is zero, and if so, call the CreateNewGame function.",
+      "PrFileName": "04. CheckGameIdAndCreate.pr",
+      "RelativePrPath": ".build\\Start\\04. CheckGameIdAndCreate.pr",
       "Indent": 0,
       "Execute": true,
       "RunOnce": false,
-      "Generated": "2024-04-08T08:38:36.2500173+00:00",
+      "Generated": "2024-04-12T12:52:01.6099462+00:00",
       "WaitForExecution": true,
       "ErrorHandler": null,
       "RetryHandler": null,
@@ -238,7 +238,7 @@
             "content": [
               {
                 "type": "text",
-                "text": "You are provided with a statement from the user. \r\nThis statement is a step in a Function. \r\n\r\nYou MUST determine which module can be used to solve the statement.\r\nYou MUST choose from available modules provided by the assistant to determine which module. If you cannot choose module, set N/A\r\n\r\nvariable is defined with starting and ending %, e.g. %filePath%\r\n! defines a call to a function\r\n\r\nModules: Name of module. Suggest 1-3 modules that could be used to solve the step.\r\nStepName: Short name for step\r\nStepDescription: Rewrite the step as you understand it, make it detailed\r\nWaitForExecution: Indicates if code should wait for execution to finish, default is true\r\nErrorHandler: How to handle errors, default is null. if error should be handled but text (OnExceptionContainingTextCallGoal) is not defined, then use * for key\r\nRetryHandler: How to retry the step if there is error, default is null\r\nCachingHandler: How caching is handled, default is null\r\nRead the description of each module, then determine which module to use.\r\nMake sure to return valid JSON, escape double quote if needed\r\n\r\nBe Concise\r\n"
+                "text": "You are provided with a statement from the user. \r\nThis statement is a step in a Function. \r\n\r\nYou MUST determine which module can be used to solve the statement.\r\nYou MUST choose from available modules provided by the assistant to determine which module. If you cannot choose module, set N/A\r\n\r\nvariable is defined with starting and ending %, e.g. %filePath%\r\n! defines a call to a function\r\n\r\nModules: Name of module. Suggest 1-3 modules that could be used to solve the step.\r\nStepName: Short name for step\r\nStepDescription: Rewrite the step as you understand it, make it detailed\r\nWaitForExecution: Indicates if code should wait for execution to finish, default is true\r\nErrorHandler: How to handle errors defined by user, default is null. if error should be handled but text (OnExceptionContainingTextCallGoal) is not defined, then use * for key\r\nRetryHandler: How to retry the step if there is error, default is null\r\nCachingHandler: How caching is handled, default is null\r\nRead the description of each module, then determine which module to use.\r\nMake sure to return valid JSON, escape double quote if needed\r\n\r\nBe Concise\r\n"
               },
               {
                 "type": "text",
@@ -265,9 +265,9 @@
             ]
           }
         ],
-        "model": "gpt-4",
+        "model": "gpt-4-turbo",
         "caching": true,
-        "RawResponse": "{\"StepName\": \"CheckGameIdAndCreateNewGame\",\n\"StepDescription\": \"If the variable 'gameId' is equal to 0, then the function 'CreateNewGame' is called.\",\n\"Modules\": [\"PLang.Modules.ConditionalModule\", \"PLang.Modules.CallGoalModule\"],\n\"WaitForExecution\": true}"
+        "RawResponse": "{\r\n  \"StepName\": \"CheckGameIdAndCreate\",\r\n  \"StepDescription\": \"Check if the gameId variable is zero, and if so, call the CreateNewGame function.\",\r\n  \"Modules\": [\r\n    \"PLang.Modules.ConditionalModule\",\r\n    \"PLang.Modules.CallGoalModule\"\r\n  ],\r\n  \"WaitForExecution\": true\r\n}"
       }
     },
     {
@@ -275,13 +275,13 @@
       "Comment": null,
       "ModuleType": "PLang.Modules.ConditionalModule",
       "Name": "CheckGameIdAndShowStoryLine",
-      "Description": "If the variable 'gameId' is greater than 0, then the function 'ShowStoryLine' is called with 'gameId' as a parameter.",
+      "Description": "Check if the gameId is greater than 0, and if true, call the ShowStoryLine function with gameId as a parameter.",
       "PrFileName": "05. CheckGameIdAndShowStoryLine.pr",
       "RelativePrPath": ".build\\Start\\05. CheckGameIdAndShowStoryLine.pr",
       "Indent": 0,
       "Execute": true,
       "RunOnce": false,
-      "Generated": "2024-04-08T08:38:47.007187+00:00",
+      "Generated": "2024-04-12T12:52:21.547323+00:00",
       "WaitForExecution": true,
       "ErrorHandler": null,
       "RetryHandler": null,
@@ -305,7 +305,7 @@
             "content": [
               {
                 "type": "text",
-                "text": "You are provided with a statement from the user. \r\nThis statement is a step in a Function. \r\n\r\nYou MUST determine which module can be used to solve the statement.\r\nYou MUST choose from available modules provided by the assistant to determine which module. If you cannot choose module, set N/A\r\n\r\nvariable is defined with starting and ending %, e.g. %filePath%\r\n! defines a call to a function\r\n\r\nModules: Name of module. Suggest 1-3 modules that could be used to solve the step.\r\nStepName: Short name for step\r\nStepDescription: Rewrite the step as you understand it, make it detailed\r\nWaitForExecution: Indicates if code should wait for execution to finish, default is true\r\nErrorHandler: How to handle errors, default is null. if error should be handled but text (OnExceptionContainingTextCallGoal) is not defined, then use * for key\r\nRetryHandler: How to retry the step if there is error, default is null\r\nCachingHandler: How caching is handled, default is null\r\nRead the description of each module, then determine which module to use.\r\nMake sure to return valid JSON, escape double quote if needed\r\n\r\nBe Concise\r\n"
+                "text": "You are provided with a statement from the user. \r\nThis statement is a step in a Function. \r\n\r\nYou MUST determine which module can be used to solve the statement.\r\nYou MUST choose from available modules provided by the assistant to determine which module. If you cannot choose module, set N/A\r\n\r\nvariable is defined with starting and ending %, e.g. %filePath%\r\n! defines a call to a function\r\n\r\nModules: Name of module. Suggest 1-3 modules that could be used to solve the step.\r\nStepName: Short name for step\r\nStepDescription: Rewrite the step as you understand it, make it detailed\r\nWaitForExecution: Indicates if code should wait for execution to finish, default is true\r\nErrorHandler: How to handle errors defined by user, default is null. if error should be handled but text (OnExceptionContainingTextCallGoal) is not defined, then use * for key\r\nRetryHandler: How to retry the step if there is error, default is null\r\nCachingHandler: How caching is handled, default is null\r\nRead the description of each module, then determine which module to use.\r\nMake sure to return valid JSON, escape double quote if needed\r\n\r\nBe Concise\r\n"
               },
               {
                 "type": "text",
@@ -332,9 +332,9 @@
             ]
           }
         ],
-        "model": "gpt-4",
+        "model": "gpt-4-turbo",
         "caching": true,
-        "RawResponse": "{\"StepName\": \"CheckGameIdAndShowStoryLine\",\n\"StepDescription\": \"If the variable 'gameId' is greater than 0, then the function 'ShowStoryLine' is called with 'gameId' as a parameter.\",\n\"Modules\": [\"PLang.Modules.ConditionalModule\", \"PLang.Modules.CallGoalModule\"],\n\"WaitForExecution\": true}"
+        "RawResponse": "{\r\n  \"StepName\": \"CheckGameIdAndShowStoryLine\",\r\n  \"StepDescription\": \"Check if the gameId is greater than 0, and if true, call the ShowStoryLine function with gameId as a parameter.\",\r\n  \"Modules\": [\r\n    \"PLang.Modules.ConditionalModule\",\r\n    \"PLang.Modules.CallGoalModule\"\r\n  ],\r\n  \"WaitForExecution\": true\r\n}"
       }
     }
   ],
@@ -347,16 +347,7 @@
   "RelativePrFolderPath": ".build\\Start",
   "BuilderVersion": "0.1.0.4",
   "GoalApiInfo": null,
-  "Injections": [
-    {
-      "AtSignInjection": true,
-      "Type": "llm",
-      "Path": "OpenAiService.dll",
-      "IsGlobal": true,
-      "EnvironmentVariable": null,
-      "EnvironmentVariableValue": null
-    }
-  ],
+  "Injections": [],
   "Signature": null,
-  "Hash": "d135218f3da0e852ca7eef6e3327d3692ecee6ed3b97c90e06fd58819f89efb8"
+  "Hash": "75911b3798fe158ac5d2131aee8f5a2463b689679721a4a8d7bd76b064af7516"
 }

@@ -47,7 +47,6 @@ CreateStoryLine
 - [llm] system:%gameSetupSystem%
     assistant: %gameSetupAssistant%
     user: %nextStep%
-    model: 'gpt-4-0125-preview'
     tempature: 1
     topp: 1
     scheme: {story:string, summary:string}
@@ -63,6 +62,7 @@ ShowStoryLine
     join games g on g.id=sl.game_id
     where g.id=%gameId%, order by sl.id desc, limit 1
 - write out %story%
+/- call apps/ElevenLabs story=%story%
 - ask user "\n(to exit the game, type in 'exit game')
 
     ?:", write to %nextStep%

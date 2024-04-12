@@ -6,14 +6,14 @@
       "Text": "[code] remove anything that comes before 'Tests' in %item.Path%(string)\n    write to %fileName%",
       "Comment": null,
       "ModuleType": "PLang.Modules.CodeModule",
-      "Name": "RemovePrefixAndWriteToFile",
-      "Description": "This step involves removing any text that comes before 'Tests' in the string variable %item.Path%. The resulting string is then written to the file specified by %fileName%.",
-      "PrFileName": "01. RemovePrefixAndWriteToFile.pr",
-      "RelativePrPath": ".build\\PlangExamples\\AppendFile\\01. RemovePrefixAndWriteToFile.pr",
+      "Name": "RemovePrefixAndWrite",
+      "Description": "Remove any text that precedes the word 'Tests' in the string provided by %item.Path% and then write the modified string to the file specified by %fileName%.",
+      "PrFileName": "01. RemovePrefixAndWrite.pr",
+      "RelativePrPath": ".build\\PlangExamples\\AppendFile\\01. RemovePrefixAndWrite.pr",
       "Indent": 0,
       "Execute": true,
       "RunOnce": false,
-      "Generated": "2024-03-19T19:43:37.230277+01:00",
+      "Generated": "2024-04-12T13:08:27.2478365+00:00",
       "WaitForExecution": true,
       "ErrorHandler": null,
       "RetryHandler": null,
@@ -37,7 +37,7 @@
             "content": [
               {
                 "type": "text",
-                "text": "You are provided with a statement from the user. \r\nThis statement is a step in a Function. \r\n\r\nYou MUST determine which module can be used to solve the statement.\r\nYou MUST choose from available modules provided by the assistant to determine which module. If you cannot choose module, set N/A\r\n\r\nvariable is defined with starting and ending %, e.g. %filePath%\r\n! defines a call to a function\r\n\r\nModules: Name of module. Suggest 1-3 modules that could be used to solve the step.\r\nStepName: Short name for step\r\nStepDescription: Rewrite the step as you understand it, make it detailed\r\nWaitForExecution: Indicates if code should wait for execution to finish, default is true\r\nErrorHandler: How to handle errors, default is null. if error should be handled but text (OnExceptionContainingTextCallGoal) is not defined, then use * for key\r\nRetryHandler: How to retry the step if there is error, default is null\r\nCachingHandler: How caching is handled, default is null\r\nRead the description of each module, then determine which module to use.\r\nMake sure to return valid JSON, escape double quote if needed\r\n\r\nBe Concise\r\n"
+                "text": "You are provided with a statement from the user. \r\nThis statement is a step in a Function. \r\n\r\nYou MUST determine which module can be used to solve the statement.\r\nYou MUST choose from available modules provided by the assistant to determine which module. If you cannot choose module, set N/A\r\n\r\nvariable is defined with starting and ending %, e.g. %filePath%\r\n! defines a call to a function\r\n\r\nModules: Name of module. Suggest 1-3 modules that could be used to solve the step.\r\nStepName: Short name for step\r\nStepDescription: Rewrite the step as you understand it, make it detailed\r\nWaitForExecution: Indicates if code should wait for execution to finish, default is true\r\nErrorHandler: How to handle errors defined by user, default is null. if error should be handled but text (OnExceptionContainingTextCallGoal) is not defined, then use * for key\r\nRetryHandler: How to retry the step if there is error, default is null\r\nCachingHandler: How caching is handled, default is null\r\nRead the description of each module, then determine which module to use.\r\nMake sure to return valid JSON, escape double quote if needed\r\n\r\nBe Concise\r\n"
               },
               {
                 "type": "text",
@@ -64,23 +64,23 @@
             ]
           }
         ],
-        "model": "gpt-4",
+        "model": "gpt-4-turbo",
         "caching": true,
-        "RawResponse": "{\n  \"StepName\": \"RemovePrefixAndWriteToFile\",\n  \"StepDescription\": \"This step involves removing any text that comes before 'Tests' in the string variable %item.Path%. The resulting string is then written to the file specified by %fileName%.\",\n  \"Modules\": [\n    \"PLang.Modules.CodeModule\"\n  ],\n  \"WaitForExecution\": true\n}"
+        "RawResponse": "{\r\n  \"StepName\": \"RemovePrefixAndWrite\",\r\n  \"StepDescription\": \"Remove any text that precedes the word 'Tests' in the string provided by %item.Path% and then write the modified string to the file specified by %fileName%.\",\r\n  \"Modules\": [\r\n    \"PLang.Modules.CodeModule\"\r\n  ],\r\n  \"WaitForExecution\": true\r\n}"
       }
     },
     {
       "Text": "append to var %content%, \"#### Start of %fileName% ####\\n\"",
       "Comment": null,
       "ModuleType": "PLang.Modules.LocalOrGlobalVariableModule",
-      "Name": "AppendToVariable",
-      "Description": "Append the string '#### Start of %fileName% ####\n' to the variable %content%",
-      "PrFileName": "02. AppendToVariable.pr",
-      "RelativePrPath": ".build\\PlangExamples\\AppendFile\\02. AppendToVariable.pr",
+      "Name": "AppendHeaderToFileContent",
+      "Description": "Append a header string to the variable %content% which includes a formatted start indicator and the file name stored in %fileName%.",
+      "PrFileName": "02. AppendHeaderToFileContent.pr",
+      "RelativePrPath": ".build\\PlangExamples\\AppendFile\\02. AppendHeaderToFileContent.pr",
       "Indent": 0,
       "Execute": true,
       "RunOnce": false,
-      "Generated": "2024-03-19T19:43:45.7212139+01:00",
+      "Generated": "2024-04-12T13:08:43.2785226+00:00",
       "WaitForExecution": true,
       "ErrorHandler": null,
       "RetryHandler": null,
@@ -104,7 +104,7 @@
             "content": [
               {
                 "type": "text",
-                "text": "You are provided with a statement from the user. \r\nThis statement is a step in a Function. \r\n\r\nYou MUST determine which module can be used to solve the statement.\r\nYou MUST choose from available modules provided by the assistant to determine which module. If you cannot choose module, set N/A\r\n\r\nvariable is defined with starting and ending %, e.g. %filePath%\r\n! defines a call to a function\r\n\r\nModules: Name of module. Suggest 1-3 modules that could be used to solve the step.\r\nStepName: Short name for step\r\nStepDescription: Rewrite the step as you understand it, make it detailed\r\nWaitForExecution: Indicates if code should wait for execution to finish, default is true\r\nErrorHandler: How to handle errors, default is null. if error should be handled but text (OnExceptionContainingTextCallGoal) is not defined, then use * for key\r\nRetryHandler: How to retry the step if there is error, default is null\r\nCachingHandler: How caching is handled, default is null\r\nRead the description of each module, then determine which module to use.\r\nMake sure to return valid JSON, escape double quote if needed\r\n\r\nBe Concise\r\n"
+                "text": "You are provided with a statement from the user. \r\nThis statement is a step in a Function. \r\n\r\nYou MUST determine which module can be used to solve the statement.\r\nYou MUST choose from available modules provided by the assistant to determine which module. If you cannot choose module, set N/A\r\n\r\nvariable is defined with starting and ending %, e.g. %filePath%\r\n! defines a call to a function\r\n\r\nModules: Name of module. Suggest 1-3 modules that could be used to solve the step.\r\nStepName: Short name for step\r\nStepDescription: Rewrite the step as you understand it, make it detailed\r\nWaitForExecution: Indicates if code should wait for execution to finish, default is true\r\nErrorHandler: How to handle errors defined by user, default is null. if error should be handled but text (OnExceptionContainingTextCallGoal) is not defined, then use * for key\r\nRetryHandler: How to retry the step if there is error, default is null\r\nCachingHandler: How caching is handled, default is null\r\nRead the description of each module, then determine which module to use.\r\nMake sure to return valid JSON, escape double quote if needed\r\n\r\nBe Concise\r\n"
               },
               {
                 "type": "text",
@@ -131,23 +131,23 @@
             ]
           }
         ],
-        "model": "gpt-4",
+        "model": "gpt-4-turbo",
         "caching": true,
-        "RawResponse": "{\n  \"StepName\": \"AppendToVariable\",\n  \"StepDescription\": \"Append the string '#### Start of %fileName% ####\\n' to the variable %content%\",\n  \"Modules\": [\n    \"PLang.Modules.LocalOrGlobalVariableModule\"\n  ],\n  \"WaitForExecution\": true\n}"
+        "RawResponse": "{\r\n  \"StepName\": \"AppendHeaderToFileContent\",\r\n  \"StepDescription\": \"Append a header string to the variable %content% which includes a formatted start indicator and the file name stored in %fileName%.\",\r\n  \"Modules\": [\r\n    \"PLang.Modules.LocalOrGlobalVariableModule\"\r\n  ],\r\n  \"WaitForExecution\": true\r\n}"
       }
     },
     {
       "Text": "append %item.Content% to var %content%, seperator two new lines",
       "Comment": null,
       "ModuleType": "PLang.Modules.LocalOrGlobalVariableModule",
-      "Name": "AppendContent",
-      "Description": "Append the content of the variable 'item.Content' to another variable 'content', with two new lines as a separator.",
-      "PrFileName": "03. AppendContent.pr",
-      "RelativePrPath": ".build\\PlangExamples\\AppendFile\\03. AppendContent.pr",
+      "Name": "AppendContentWithSeparator",
+      "Description": "Append the content from the variable %item.Content% to the variable %content%, using two new lines as a separator.",
+      "PrFileName": "03. AppendContentWithSeparator.pr",
+      "RelativePrPath": ".build\\PlangExamples\\AppendFile\\03. AppendContentWithSeparator.pr",
       "Indent": 0,
       "Execute": true,
       "RunOnce": false,
-      "Generated": "2024-03-19T19:43:53.9911083+01:00",
+      "Generated": "2024-04-12T13:09:03.3091018+00:00",
       "WaitForExecution": true,
       "ErrorHandler": null,
       "RetryHandler": null,
@@ -171,7 +171,7 @@
             "content": [
               {
                 "type": "text",
-                "text": "You are provided with a statement from the user. \r\nThis statement is a step in a Function. \r\n\r\nYou MUST determine which module can be used to solve the statement.\r\nYou MUST choose from available modules provided by the assistant to determine which module. If you cannot choose module, set N/A\r\n\r\nvariable is defined with starting and ending %, e.g. %filePath%\r\n! defines a call to a function\r\n\r\nModules: Name of module. Suggest 1-3 modules that could be used to solve the step.\r\nStepName: Short name for step\r\nStepDescription: Rewrite the step as you understand it, make it detailed\r\nWaitForExecution: Indicates if code should wait for execution to finish, default is true\r\nErrorHandler: How to handle errors, default is null. if error should be handled but text (OnExceptionContainingTextCallGoal) is not defined, then use * for key\r\nRetryHandler: How to retry the step if there is error, default is null\r\nCachingHandler: How caching is handled, default is null\r\nRead the description of each module, then determine which module to use.\r\nMake sure to return valid JSON, escape double quote if needed\r\n\r\nBe Concise\r\n"
+                "text": "You are provided with a statement from the user. \r\nThis statement is a step in a Function. \r\n\r\nYou MUST determine which module can be used to solve the statement.\r\nYou MUST choose from available modules provided by the assistant to determine which module. If you cannot choose module, set N/A\r\n\r\nvariable is defined with starting and ending %, e.g. %filePath%\r\n! defines a call to a function\r\n\r\nModules: Name of module. Suggest 1-3 modules that could be used to solve the step.\r\nStepName: Short name for step\r\nStepDescription: Rewrite the step as you understand it, make it detailed\r\nWaitForExecution: Indicates if code should wait for execution to finish, default is true\r\nErrorHandler: How to handle errors defined by user, default is null. if error should be handled but text (OnExceptionContainingTextCallGoal) is not defined, then use * for key\r\nRetryHandler: How to retry the step if there is error, default is null\r\nCachingHandler: How caching is handled, default is null\r\nRead the description of each module, then determine which module to use.\r\nMake sure to return valid JSON, escape double quote if needed\r\n\r\nBe Concise\r\n"
               },
               {
                 "type": "text",
@@ -198,23 +198,23 @@
             ]
           }
         ],
-        "model": "gpt-4",
+        "model": "gpt-4-turbo",
         "caching": true,
-        "RawResponse": "{\n  \"StepName\": \"AppendContent\",\n  \"StepDescription\": \"Append the content of the variable 'item.Content' to another variable 'content', with two new lines as a separator.\",\n  \"Modules\": [\n    \"PLang.Modules.LocalOrGlobalVariableModule\"\n  ],\n  \"WaitForExecution\": true\n}"
+        "RawResponse": "{\r\n  \"StepName\": \"AppendContentWithSeparator\",\r\n  \"StepDescription\": \"Append the content from the variable %item.Content% to the variable %content%, using two new lines as a separator.\",\r\n  \"Modules\": [\r\n    \"PLang.Modules.LocalOrGlobalVariableModule\"\r\n  ],\r\n  \"WaitForExecution\": true\r\n}"
       }
     },
     {
       "Text": "append to var %content%, \"#### End of %fileName% ####\\n\"",
       "Comment": null,
       "ModuleType": "PLang.Modules.LocalOrGlobalVariableModule",
-      "Name": "AppendToEndOfFile",
-      "Description": "Append the string '#### End of %fileName% ####\n' to the variable %content%",
-      "PrFileName": "04. AppendToEndOfFile.pr",
-      "RelativePrPath": ".build\\PlangExamples\\AppendFile\\04. AppendToEndOfFile.pr",
+      "Name": "AppendToFileContent",
+      "Description": "Append the text '#### End of %fileName% ####\\n' to the variable %content%.",
+      "PrFileName": "04. AppendToFileContent.pr",
+      "RelativePrPath": ".build\\PlangExamples\\AppendFile\\04. AppendToFileContent.pr",
       "Indent": 0,
       "Execute": true,
       "RunOnce": false,
-      "Generated": "2024-03-19T19:44:02.6534896+01:00",
+      "Generated": "2024-04-12T13:09:18.6290962+00:00",
       "WaitForExecution": true,
       "ErrorHandler": null,
       "RetryHandler": null,
@@ -238,7 +238,7 @@
             "content": [
               {
                 "type": "text",
-                "text": "You are provided with a statement from the user. \r\nThis statement is a step in a Function. \r\n\r\nYou MUST determine which module can be used to solve the statement.\r\nYou MUST choose from available modules provided by the assistant to determine which module. If you cannot choose module, set N/A\r\n\r\nvariable is defined with starting and ending %, e.g. %filePath%\r\n! defines a call to a function\r\n\r\nModules: Name of module. Suggest 1-3 modules that could be used to solve the step.\r\nStepName: Short name for step\r\nStepDescription: Rewrite the step as you understand it, make it detailed\r\nWaitForExecution: Indicates if code should wait for execution to finish, default is true\r\nErrorHandler: How to handle errors, default is null. if error should be handled but text (OnExceptionContainingTextCallGoal) is not defined, then use * for key\r\nRetryHandler: How to retry the step if there is error, default is null\r\nCachingHandler: How caching is handled, default is null\r\nRead the description of each module, then determine which module to use.\r\nMake sure to return valid JSON, escape double quote if needed\r\n\r\nBe Concise\r\n"
+                "text": "You are provided with a statement from the user. \r\nThis statement is a step in a Function. \r\n\r\nYou MUST determine which module can be used to solve the statement.\r\nYou MUST choose from available modules provided by the assistant to determine which module. If you cannot choose module, set N/A\r\n\r\nvariable is defined with starting and ending %, e.g. %filePath%\r\n! defines a call to a function\r\n\r\nModules: Name of module. Suggest 1-3 modules that could be used to solve the step.\r\nStepName: Short name for step\r\nStepDescription: Rewrite the step as you understand it, make it detailed\r\nWaitForExecution: Indicates if code should wait for execution to finish, default is true\r\nErrorHandler: How to handle errors defined by user, default is null. if error should be handled but text (OnExceptionContainingTextCallGoal) is not defined, then use * for key\r\nRetryHandler: How to retry the step if there is error, default is null\r\nCachingHandler: How caching is handled, default is null\r\nRead the description of each module, then determine which module to use.\r\nMake sure to return valid JSON, escape double quote if needed\r\n\r\nBe Concise\r\n"
               },
               {
                 "type": "text",
@@ -265,9 +265,9 @@
             ]
           }
         ],
-        "model": "gpt-4",
+        "model": "gpt-4-turbo",
         "caching": true,
-        "RawResponse": "{\n  \"StepName\": \"AppendToEndOfFile\",\n  \"StepDescription\": \"Append the string '#### End of %fileName% ####\\n' to the variable %content%\",\n  \"Modules\": [\n    \"PLang.Modules.LocalOrGlobalVariableModule\"\n  ],\n  \"WaitForExecution\": true\n}"
+        "RawResponse": "{\r\n  \"StepName\": \"AppendToFileContent\",\r\n  \"StepDescription\": \"Append the text '#### End of %fileName% ####\\\\n' to the variable %content%.\",\r\n  \"Modules\": [\r\n    \"PLang.Modules.LocalOrGlobalVariableModule\"\r\n  ],\r\n  \"WaitForExecution\": true\r\n}"
       }
     }
   ],
@@ -278,9 +278,9 @@
   "RelativeGoalFolderPath": "\\",
   "RelativePrPath": ".build\\PlangExamples\\AppendFile\\00. Goal.pr",
   "RelativePrFolderPath": ".build\\PlangExamples\\AppendFile",
-  "BuilderVersion": "0.1.0.0",
+  "BuilderVersion": "0.1.0.4",
   "GoalApiInfo": null,
   "Injections": [],
   "Signature": null,
-  "Hash": "de67bd6a89493bfaf6fcc88dfa893acaa89bb1fda20510527b4eb866add3d970"
+  "Hash": "3fdb5992e1a20e9b916a71b35140482b76ca4c87df7bdfbce709f0a201d65a4c"
 }

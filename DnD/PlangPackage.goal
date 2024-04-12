@@ -1,0 +1,6 @@
+PlangPackage
+- get app name, write to %appName%
+- get all folders & files, including subfolders in paths ./, 
+    exclude folder .db, .build/PlangPackage, and files PlangPackage.goal and %appName%.zip
+    write to %paths%
+- compress %paths% to %appName%.zip, overwrite

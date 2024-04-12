@@ -6,14 +6,14 @@
       "Text": "append to %askUser%, \"\\t- %item.id%\\t%item.GAME% - %item.BOOKS% - %item.Updated.ToString(\"f\")%\"",
       "Comment": null,
       "ModuleType": "PLang.Modules.LocalOrGlobalVariableModule",
-      "Name": "AppendToVariable",
-      "Description": "Append the string containing the id, GAME, BOOKS, and Updated fields of the item to the variable 'askUser'. The 'Updated' field is formatted to a short date and time string.",
-      "PrFileName": "01. AppendToVariable.pr",
-      "RelativePrPath": ".build\\Start\\GenerateItemAskUser\\01. AppendToVariable.pr",
+      "Name": "AppendItemDetails",
+      "Description": "Append the details of an item including its ID, game, books, and updated timestamp to the 'askUser' variable in a formatted string.",
+      "PrFileName": "01. AppendItemDetails.pr",
+      "RelativePrPath": ".build\\Start\\GenerateItemAskUser\\01. AppendItemDetails.pr",
       "Indent": 0,
       "Execute": true,
       "RunOnce": false,
-      "Generated": "2024-04-06T23:52:56.963001+00:00",
+      "Generated": "2024-04-12T12:54:50.9852555+00:00",
       "WaitForExecution": true,
       "ErrorHandler": null,
       "RetryHandler": null,
@@ -37,7 +37,7 @@
             "content": [
               {
                 "type": "text",
-                "text": "You are provided with a statement from the user. \r\nThis statement is a step in a Function. \r\n\r\nYou MUST determine which module can be used to solve the statement.\r\nYou MUST choose from available modules provided by the assistant to determine which module. If you cannot choose module, set N/A\r\n\r\nvariable is defined with starting and ending %, e.g. %filePath%\r\n! defines a call to a function\r\n\r\nModules: Name of module. Suggest 1-3 modules that could be used to solve the step.\r\nStepName: Short name for step\r\nStepDescription: Rewrite the step as you understand it, make it detailed\r\nWaitForExecution: Indicates if code should wait for execution to finish, default is true\r\nErrorHandler: How to handle errors, default is null. if error should be handled but text (OnExceptionContainingTextCallGoal) is not defined, then use * for key\r\nRetryHandler: How to retry the step if there is error, default is null\r\nCachingHandler: How caching is handled, default is null\r\nRead the description of each module, then determine which module to use.\r\nMake sure to return valid JSON, escape double quote if needed\r\n\r\nBe Concise\r\n"
+                "text": "You are provided with a statement from the user. \r\nThis statement is a step in a Function. \r\n\r\nYou MUST determine which module can be used to solve the statement.\r\nYou MUST choose from available modules provided by the assistant to determine which module. If you cannot choose module, set N/A\r\n\r\nvariable is defined with starting and ending %, e.g. %filePath%\r\n! defines a call to a function\r\n\r\nModules: Name of module. Suggest 1-3 modules that could be used to solve the step.\r\nStepName: Short name for step\r\nStepDescription: Rewrite the step as you understand it, make it detailed\r\nWaitForExecution: Indicates if code should wait for execution to finish, default is true\r\nErrorHandler: How to handle errors defined by user, default is null. if error should be handled but text (OnExceptionContainingTextCallGoal) is not defined, then use * for key\r\nRetryHandler: How to retry the step if there is error, default is null\r\nCachingHandler: How caching is handled, default is null\r\nRead the description of each module, then determine which module to use.\r\nMake sure to return valid JSON, escape double quote if needed\r\n\r\nBe Concise\r\n"
               },
               {
                 "type": "text",
@@ -64,9 +64,9 @@
             ]
           }
         ],
-        "model": "gpt-4",
+        "model": "gpt-4-turbo",
         "caching": true,
-        "RawResponse": "{\n  \"StepName\": \"AppendToVariable\",\n  \"StepDescription\": \"Append the string containing the id, GAME, BOOKS, and Updated fields of the item to the variable 'askUser'. The 'Updated' field is formatted to a short date and time string.\",\n  \"Modules\": [\n    \"PLang.Modules.LocalOrGlobalVariableModule\"\n  ],\n  \"WaitForExecution\": true\n}"
+        "RawResponse": "{\r\n  \"StepName\": \"AppendItemDetails\",\r\n  \"StepDescription\": \"Append the details of an item including its ID, game, books, and updated timestamp to the 'askUser' variable in a formatted string.\",\r\n  \"Modules\": [\r\n    \"PLang.Modules.LocalOrGlobalVariableModule\"\r\n  ],\r\n  \"WaitForExecution\": true\r\n}"
       }
     }
   ],
@@ -79,16 +79,7 @@
   "RelativePrFolderPath": ".build\\Start\\GenerateItemAskUser",
   "BuilderVersion": "0.1.0.4",
   "GoalApiInfo": null,
-  "Injections": [
-    {
-      "AtSignInjection": true,
-      "Type": "llm",
-      "Path": "OpenAiService.dll",
-      "IsGlobal": true,
-      "EnvironmentVariable": null,
-      "EnvironmentVariableValue": null
-    }
-  ],
+  "Injections": [],
   "Signature": null,
-  "Hash": "28063eec6337b7af448c3b34fc48db359f9cdf98c872cda1b7651dc6265363c8"
+  "Hash": "726b5cc3a23ee48f1e33e413ef5b30c6d5b49c7436216869d5f37ce7dcc90495"
 }

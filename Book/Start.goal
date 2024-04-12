@@ -4,7 +4,7 @@ Start
 
 ShowStories
 - select * from stories order by last_used desc, write to %stories%
-- write out '================\n\nWelcome to Book
+- write out     '================\n\nWelcome to Book 
 
     0. Create new story' (keep tabs)
 - foreach %stories%, call !ShowStoryItem
@@ -16,7 +16,7 @@ LoadStory
 - call !ShowStory %storyId%
 
 ShowStoryItem
-- write out '\t%position%. %item.title% - %item.last_used%'
+- write out  '\t%position%. %item.title% - %item.last_used%'
 - add to dictionary, 'stories_dict', key: %position%, value: %item.id%
 
 ShowStory
@@ -37,7 +37,7 @@ ShowStory
     1. Create & read next chapter 
     2. See list of stories
     Chapters
-        %chapterList%    
+ %chapterList%    
     ", write to %action%(int) - keep spaces
 - if %action% == 1 then call !CreateChapter
 - if %action% == 2, call !ShowStories

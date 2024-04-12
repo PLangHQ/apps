@@ -6,14 +6,14 @@
       "Text": "select * from stories order by last_used desc,  write to %stories%",
       "Comment": null,
       "ModuleType": "PLang.Modules.DbModule",
-      "Name": "FetchAndWriteStories",
-      "Description": "Fetch all records from the 'stories' table, order them by the 'last_used' column in descending order, and store the result in the 'stories' variable.",
-      "PrFileName": "01. FetchAndWriteStories.pr",
-      "RelativePrPath": ".build\\Start\\01. FetchAndWriteStories.pr",
+      "Name": "FetchAndStoreStories",
+      "Description": "Execute a SQL query to select all records from the 'stories' table, order them by 'last_used' in descending order, and store the result in the variable %stories%.",
+      "PrFileName": "01. FetchAndStoreStories.pr",
+      "RelativePrPath": ".build\\Start\\01. FetchAndStoreStories.pr",
       "Indent": 0,
       "Execute": true,
       "RunOnce": false,
-      "Generated": "2024-03-01T10:59:29.3865514+00:00",
+      "Generated": "2024-04-10T11:30:26.1449914+00:00",
       "WaitForExecution": true,
       "ErrorHandler": null,
       "RetryHandler": null,
@@ -37,7 +37,7 @@
             "content": [
               {
                 "type": "text",
-                "text": "You are provided with a statement from the user. \r\nThis statement is a step in a Function. \r\n\r\nYou MUST determine which module can be used to solve the statement.\r\nYou MUST choose from available modules provided by the assistant to determine which module. If you cannot choose module, set N/A\r\n\r\nvariable is defined with starting and ending %, e.g. %filePath%\r\n! defines a call to a function\r\n\r\nModules: Name of module. Suggest 1-3 modules that could be used to solve the step.\r\nStepName: Short name for step\r\nStepDescription: Rewrite the step as you understand it, make it detailed\r\nWaitForExecution: Indicates if code should wait for execution to finish, default is true\r\nErrorHandler: How to handle errors, default is null. if error should be handled but text (OnExceptionContainingTextCallGoal) is not defined, then use * for key\r\nRetryHandler: How to retry the step if there is error, default is null\r\nCachingHandler: How caching is handled, default is null\r\nRead the description of each module, then determine which module to use.\r\nMake sure to return valid JSON, escape double quote if needed\r\n\r\nBe Concise\r\n"
+                "text": "You are provided with a statement from the user. \r\nThis statement is a step in a Function. \r\n\r\nYou MUST determine which module can be used to solve the statement.\r\nYou MUST choose from available modules provided by the assistant to determine which module. If you cannot choose module, set N/A\r\n\r\nvariable is defined with starting and ending %, e.g. %filePath%\r\n! defines a call to a function\r\n\r\nModules: Name of module. Suggest 1-3 modules that could be used to solve the step.\r\nStepName: Short name for step\r\nStepDescription: Rewrite the step as you understand it, make it detailed\r\nWaitForExecution: Indicates if code should wait for execution to finish, default is true\r\nErrorHandler: How to handle errors defined by user, default is null. if error should be handled but text (OnExceptionContainingTextCallGoal) is not defined, then use * for key\r\nRetryHandler: How to retry the step if there is error, default is null\r\nCachingHandler: How caching is handled, default is null\r\nRead the description of each module, then determine which module to use.\r\nMake sure to return valid JSON, escape double quote if needed\r\n\r\nBe Concise\r\n"
               },
               {
                 "type": "text",
@@ -64,23 +64,23 @@
             ]
           }
         ],
-        "model": "gpt-4",
+        "model": "gpt-4-turbo",
         "caching": true,
-        "RawResponse": "{\n  \"StepName\": \"FetchAndWriteStories\",\n  \"StepDescription\": \"Fetch all records from the 'stories' table, order them by the 'last_used' column in descending order, and store the result in the 'stories' variable.\",\n  \"Modules\": [\n    \"PLang.Modules.DbModule\",\n    \"PLang.Modules.LocalOrGlobalVariableModule\"\n  ],\n  \"WaitForExecution\": true\n}"
+        "RawResponse": "{\n  \"StepName\": \"FetchAndStoreStories\",\n  \"StepDescription\": \"Execute a SQL query to select all records from the 'stories' table, order them by 'last_used' in descending order, and store the result in the variable %stories%.\",\n  \"Modules\": [\"PLang.Modules.DbModule\"],\n  \"WaitForExecution\": true\n}"
       }
     },
     {
       "Text": "if %stories.Count = 0, then !NewStory, else !ShowStories",
       "Comment": null,
       "ModuleType": "PLang.Modules.ConditionalModule",
-      "Name": "CheckStoriesCount",
-      "Description": "Check if the count of stories is zero. If it is, call the NewStory function. If it's not, call the ShowStories function.",
-      "PrFileName": "02. CheckStoriesCount.pr",
-      "RelativePrPath": ".build\\Start\\02. CheckStoriesCount.pr",
+      "Name": "ConditionalStoryHandling",
+      "Description": "Check if the count of stories is zero. If it is, call the NewStory function. If not, call the ShowStories function.",
+      "PrFileName": "02. ConditionalStoryHandling.pr",
+      "RelativePrPath": ".build\\Start\\02. ConditionalStoryHandling.pr",
       "Indent": 0,
       "Execute": true,
       "RunOnce": false,
-      "Generated": "2024-04-05T08:45:53.5202948+00:00",
+      "Generated": "2024-04-10T11:30:32.8876535+00:00",
       "WaitForExecution": true,
       "ErrorHandler": null,
       "RetryHandler": null,
@@ -104,7 +104,7 @@
             "content": [
               {
                 "type": "text",
-                "text": "You are provided with a statement from the user. \r\nThis statement is a step in a Function. \r\n\r\nYou MUST determine which module can be used to solve the statement.\r\nYou MUST choose from available modules provided by the assistant to determine which module. If you cannot choose module, set N/A\r\n\r\nvariable is defined with starting and ending %, e.g. %filePath%\r\n! defines a call to a function\r\n\r\nModules: Name of module. Suggest 1-3 modules that could be used to solve the step.\r\nStepName: Short name for step\r\nStepDescription: Rewrite the step as you understand it, make it detailed\r\nWaitForExecution: Indicates if code should wait for execution to finish, default is true\r\nErrorHandler: How to handle errors, default is null. if error should be handled but text (OnExceptionContainingTextCallGoal) is not defined, then use * for key\r\nRetryHandler: How to retry the step if there is error, default is null\r\nCachingHandler: How caching is handled, default is null\r\nRead the description of each module, then determine which module to use.\r\nMake sure to return valid JSON, escape double quote if needed\r\n\r\nBe Concise\r\n"
+                "text": "You are provided with a statement from the user. \r\nThis statement is a step in a Function. \r\n\r\nYou MUST determine which module can be used to solve the statement.\r\nYou MUST choose from available modules provided by the assistant to determine which module. If you cannot choose module, set N/A\r\n\r\nvariable is defined with starting and ending %, e.g. %filePath%\r\n! defines a call to a function\r\n\r\nModules: Name of module. Suggest 1-3 modules that could be used to solve the step.\r\nStepName: Short name for step\r\nStepDescription: Rewrite the step as you understand it, make it detailed\r\nWaitForExecution: Indicates if code should wait for execution to finish, default is true\r\nErrorHandler: How to handle errors defined by user, default is null. if error should be handled but text (OnExceptionContainingTextCallGoal) is not defined, then use * for key\r\nRetryHandler: How to retry the step if there is error, default is null\r\nCachingHandler: How caching is handled, default is null\r\nRead the description of each module, then determine which module to use.\r\nMake sure to return valid JSON, escape double quote if needed\r\n\r\nBe Concise\r\n"
               },
               {
                 "type": "text",
@@ -131,9 +131,9 @@
             ]
           }
         ],
-        "model": "gpt-4",
+        "model": "gpt-4-turbo",
         "caching": true,
-        "RawResponse": null
+        "RawResponse": "{\n\"StepName\": \"ConditionalStoryHandling\",\n\"StepDescription\": \"Check if the count of stories is zero. If it is, call the NewStory function. If not, call the ShowStories function.\",\n\"Modules\": [\"PLang.Modules.ConditionalModule\", \"PLang.Modules.CallGoalModule\"],\n\"WaitForExecution\": true\n}"
       }
     }
   ],
@@ -148,5 +148,5 @@
   "GoalApiInfo": null,
   "Injections": [],
   "Signature": null,
-  "Hash": "3283ab3b5eccce13e831906a2947b62b2c0aefe8dc422c9a1d185a09decdce07"
+  "Hash": "e488a0dc94b86508b6a950f2a2013a9b1603268b1aaa2dd705698a376a892b5f"
 }

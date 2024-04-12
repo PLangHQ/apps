@@ -1,15 +1,15 @@
 {
   "Action": {
-    "Warning": null,
+    "Warning": "Invalid SQL statement: missing column name for condition.",
     "FunctionName": "Update",
     "Parameters": [
       {
-        "Type": "System.String",
+        "Type": "String",
         "Name": "sql",
-        "Value": "UPDATE stories SET last_used=@Now WHERE id=@storyId"
+        "Value": "UPDATE stories SET last_used = @Now WHERE id = @storyId"
       },
       {
-        "Type": "List<object>",
+        "Type": "List<ParameterInfo>",
         "Name": "SqlParameters",
         "Value": [
           {
@@ -75,9 +75,9 @@
         ]
       }
     ],
-    "model": "gpt-4",
+    "model": "gpt-4-turbo",
     "caching": true,
-    "RawResponse": "{\n  \"Warning\": null,\n  \"FunctionName\": \"Update\",\n  \"Parameters\": [\n    {\n      \"Type\": \"System.String\",\n      \"Name\": \"sql\",\n      \"Value\": \"UPDATE stories SET last_used=@Now WHERE id=@storyId\"\n    },\n    {\n      \"Type\": \"List<object>\",\n      \"Name\": \"SqlParameters\",\n      \"Value\": [\n        {\n          \"ParameterName\": \"@Now\",\n          \"VariableNameOrValue\": \"%Now%\",\n          \"TypeFullName\": \"System.DateTime\"\n        },\n        {\n          \"ParameterName\": \"@storyId\",\n          \"VariableNameOrValue\": \"%storyId%\",\n          \"TypeFullName\": \"System.Int64\"\n        }\n      ]\n    }\n  ]\n}"
+    "RawResponse": "{\n  \"Warning\": \"Invalid SQL statement: missing column name for condition.\",\n  \"FunctionName\": \"Update\",\n  \"Parameters\": [\n    {\n      \"Type\": \"String\",\n      \"Name\": \"sql\",\n      \"Value\": \"UPDATE stories SET last_used = @Now WHERE id = @storyId\"\n    },\n    {\n      \"Type\": \"List<ParameterInfo>\",\n      \"Name\": \"SqlParameters\",\n      \"Value\": [\n        {\n          \"ParameterName\": \"@Now\",\n          \"VariableNameOrValue\": \"%Now%\",\n          \"TypeFullName\": \"System.DateTime\"\n        },\n        {\n          \"ParameterName\": \"@storyId\",\n          \"VariableNameOrValue\": \"%storyId%\",\n          \"TypeFullName\": \"System.Int64\"\n        }\n      ]\n    }\n  ]\n}"
   },
   "RunOnBuild": false
 }

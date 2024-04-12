@@ -6,17 +6,24 @@
       "Text": "post http://localhost:60877/\n    data: {\n        goal:\"%__GOAL__%\", \n        step:\"%__STEP__%\",\n        event:\"%__Event__%\",\n        isHttpRequest:\"%__IsHttpRequest__%\",\n        stepIndex:%__StepIndex__%,\n        instruction:%__Instruction__%,\n        memoryStack:\"%__memorystack__%\",\n        absolutePath:%__GOAL__.AbsoluteGoalPath%,        \n        exception:\"%__Exception__%\",\n        }\n    timeout 30 min\n    write to %debugReponse%",
       "Comment": null,
       "ModuleType": "PLang.Modules.HttpModule",
-      "Name": "PostHttpRequest",
-      "Description": "Make a POST HTTP request to the URL 'http://localhost:60877/' with a specified data payload. The data payload includes various parameters such as goal, step, event, isHttpRequest, stepIndex, instruction, memoryStack, absolutePath, and exception. The request has a timeout of 30 minutes. The response from the request is written to the variable 'debugReponse'.",
-      "PrFileName": "01. PostHttpRequest.pr",
-      "RelativePrPath": ".build\\events\\SendDebug\\01. PostHttpRequest.pr",
+      "Name": "PostHTTPRequest",
+      "Description": "Send an HTTP POST request to the specified URL with provided data including various parameters and write the response to a debug variable. Set a timeout for the request.",
+      "PrFileName": "01. PostHTTPRequest.pr",
+      "RelativePrPath": ".build\\events\\SendDebug\\01. PostHTTPRequest.pr",
       "Indent": 0,
       "Execute": true,
       "RunOnce": false,
-      "Generated": "2024-04-03T15:12:30.2086552+00:00",
+      "Generated": "2024-04-10T11:29:18.8976178+00:00",
       "WaitForExecution": true,
-      "ErrorHandler": null,
-      "RetryHandler": null,
+      "ErrorHandler": {
+        "IgnoreErrors": false,
+        "OnExceptionContainingTextCallGoal": null,
+        "ContinueToNextStep": true
+      },
+      "RetryHandler": {
+        "RetryCount": 3,
+        "RetryDelayInMilliseconds": 1000
+      },
       "CacheHandler": null,
       "CancellationHandler": null,
       "Custom": {},
@@ -37,7 +44,7 @@
             "content": [
               {
                 "type": "text",
-                "text": "You are provided with a statement from the user. \r\nThis statement is a step in a Function. \r\n\r\nYou MUST determine which module can be used to solve the statement.\r\nYou MUST choose from available modules provided by the assistant to determine which module. If you cannot choose module, set N/A\r\n\r\nvariable is defined with starting and ending %, e.g. %filePath%\r\n! defines a call to a function\r\n\r\nModules: Name of module. Suggest 1-3 modules that could be used to solve the step.\r\nStepName: Short name for step\r\nStepDescription: Rewrite the step as you understand it, make it detailed\r\nWaitForExecution: Indicates if code should wait for execution to finish, default is true\r\nErrorHandler: How to handle errors, default is null. if error should be handled but text (OnExceptionContainingTextCallGoal) is not defined, then use * for key\r\nRetryHandler: How to retry the step if there is error, default is null\r\nCachingHandler: How caching is handled, default is null\r\nRead the description of each module, then determine which module to use.\r\nMake sure to return valid JSON, escape double quote if needed\r\n\r\nBe Concise\r\n"
+                "text": "You are provided with a statement from the user. \r\nThis statement is a step in a Function. \r\n\r\nYou MUST determine which module can be used to solve the statement.\r\nYou MUST choose from available modules provided by the assistant to determine which module. If you cannot choose module, set N/A\r\n\r\nvariable is defined with starting and ending %, e.g. %filePath%\r\n! defines a call to a function\r\n\r\nModules: Name of module. Suggest 1-3 modules that could be used to solve the step.\r\nStepName: Short name for step\r\nStepDescription: Rewrite the step as you understand it, make it detailed\r\nWaitForExecution: Indicates if code should wait for execution to finish, default is true\r\nErrorHandler: How to handle errors defined by user, default is null. if error should be handled but text (OnExceptionContainingTextCallGoal) is not defined, then use * for key\r\nRetryHandler: How to retry the step if there is error, default is null\r\nCachingHandler: How caching is handled, default is null\r\nRead the description of each module, then determine which module to use.\r\nMake sure to return valid JSON, escape double quote if needed\r\n\r\nBe Concise\r\n"
               },
               {
                 "type": "text",
@@ -64,23 +71,23 @@
             ]
           }
         ],
-        "model": "gpt-4",
+        "model": "gpt-4-turbo",
         "caching": true,
-        "RawResponse": null
+        "RawResponse": "{\n    \"StepName\": \"PostHTTPRequest\",\n    \"StepDescription\": \"Send an HTTP POST request to the specified URL with provided data including various parameters and write the response to a debug variable. Set a timeout for the request.\",\n    \"Modules\": [\"PLang.Modules.HttpModule\"],\n    \"WaitForExecution\": true,\n    \"ErrorHandler\": {\n        \"IgnoreErrors\": false,\n        \"ContinueToNextStep\": true\n    },\n    \"RetryHandler\": {\n        \"RetryCount\": 3,\n        \"RetryDelayInMilliseconds\": 1000\n    }\n}"
       }
     },
     {
       "Text": "if %debugReponse.go_to% is not null then call GoToLine line=%debugReponse.go_to%",
       "Comment": null,
       "ModuleType": "PLang.Modules.ConditionalModule",
-      "Name": "CheckDebugResponseAndGoToLine",
-      "Description": "This step checks if the 'go_to' field in the 'debugReponse' variable is not null. If it's not null, it calls the 'GoToLine' function with the line number specified in the 'go_to' field.",
-      "PrFileName": "02. CheckDebugResponseAndGoToLine.pr",
-      "RelativePrPath": ".build\\events\\SendDebug\\02. CheckDebugResponseAndGoToLine.pr",
+      "Name": "ConditionalGoToLine",
+      "Description": "Check if the variable %debugReponse.go_to% is not null, and if it is not, call the function GoToLine with the line number specified in %debugReponse.go_to%.",
+      "PrFileName": "02. ConditionalGoToLine.pr",
+      "RelativePrPath": ".build\\events\\SendDebug\\02. ConditionalGoToLine.pr",
       "Indent": 0,
       "Execute": true,
       "RunOnce": false,
-      "Generated": "2024-04-03T15:12:31.3106796+00:00",
+      "Generated": "2024-04-10T11:29:28.7754619+00:00",
       "WaitForExecution": true,
       "ErrorHandler": null,
       "RetryHandler": null,
@@ -104,7 +111,7 @@
             "content": [
               {
                 "type": "text",
-                "text": "You are provided with a statement from the user. \r\nThis statement is a step in a Function. \r\n\r\nYou MUST determine which module can be used to solve the statement.\r\nYou MUST choose from available modules provided by the assistant to determine which module. If you cannot choose module, set N/A\r\n\r\nvariable is defined with starting and ending %, e.g. %filePath%\r\n! defines a call to a function\r\n\r\nModules: Name of module. Suggest 1-3 modules that could be used to solve the step.\r\nStepName: Short name for step\r\nStepDescription: Rewrite the step as you understand it, make it detailed\r\nWaitForExecution: Indicates if code should wait for execution to finish, default is true\r\nErrorHandler: How to handle errors, default is null. if error should be handled but text (OnExceptionContainingTextCallGoal) is not defined, then use * for key\r\nRetryHandler: How to retry the step if there is error, default is null\r\nCachingHandler: How caching is handled, default is null\r\nRead the description of each module, then determine which module to use.\r\nMake sure to return valid JSON, escape double quote if needed\r\n\r\nBe Concise\r\n"
+                "text": "You are provided with a statement from the user. \r\nThis statement is a step in a Function. \r\n\r\nYou MUST determine which module can be used to solve the statement.\r\nYou MUST choose from available modules provided by the assistant to determine which module. If you cannot choose module, set N/A\r\n\r\nvariable is defined with starting and ending %, e.g. %filePath%\r\n! defines a call to a function\r\n\r\nModules: Name of module. Suggest 1-3 modules that could be used to solve the step.\r\nStepName: Short name for step\r\nStepDescription: Rewrite the step as you understand it, make it detailed\r\nWaitForExecution: Indicates if code should wait for execution to finish, default is true\r\nErrorHandler: How to handle errors defined by user, default is null. if error should be handled but text (OnExceptionContainingTextCallGoal) is not defined, then use * for key\r\nRetryHandler: How to retry the step if there is error, default is null\r\nCachingHandler: How caching is handled, default is null\r\nRead the description of each module, then determine which module to use.\r\nMake sure to return valid JSON, escape double quote if needed\r\n\r\nBe Concise\r\n"
               },
               {
                 "type": "text",
@@ -131,9 +138,9 @@
             ]
           }
         ],
-        "model": "gpt-4",
+        "model": "gpt-4-turbo",
         "caching": true,
-        "RawResponse": null
+        "RawResponse": "{\n  \"StepName\": \"ConditionalGoToLine\",\n  \"StepDescription\": \"Check if the variable %debugReponse.go_to% is not null, and if it is not, call the function GoToLine with the line number specified in %debugReponse.go_to%.\",\n  \"Modules\": [\"PLang.Modules.ConditionalModule\", \"PLang.Modules.CallGoalModule\"],\n  \"WaitForExecution\": true\n}"
       }
     }
   ],
@@ -148,5 +155,5 @@
   "GoalApiInfo": null,
   "Injections": [],
   "Signature": null,
-  "Hash": "73258d835a7e2c91aa4622e10c7b3eb263b56b9521a12fa759e37551309f1584"
+  "Hash": "aefb4501c8be894b25aad6f80b8322d8f542f1fdd00e05d46b3e79babde1f004"
 }

@@ -17,6 +17,8 @@ To use the Book app, follow these simple steps:
 1. Clone the repository from [PLangHQ's Book app GitHub page](https://github.com/PLangHQ/apps/tree/main/Book).
 2. Navigate to the root directory of the Book folder on your local machine.
 3. Execute the `plang` command to start the application.
+    
+*If you have OpenAI key you can start with the parameter `plang --llmservice=openai`*
 
 The application will guide you through the process of creating or selecting a story and managing chapters.
 

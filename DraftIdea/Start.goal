@@ -16,7 +16,7 @@ Start
 - create folder 'output/%appName%'
 - foreach %files% call !SaveCode
 - write out '
-    Your code has been generated to %appName%.goal file. 
+    Your code has been generated to output/%appName% folder. 
 
     Note that this is only to get you started, syntax and logic might be wrong.
     '

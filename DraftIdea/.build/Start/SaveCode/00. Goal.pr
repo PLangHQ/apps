@@ -6,14 +6,14 @@
       "Text": "write %item.code% to output/%appName%/%item.filename%",
       "Comment": null,
       "ModuleType": "PLang.Modules.FileModule",
-      "Name": "WriteToFile",
-      "Description": "Write the content of the variable 'item.code' to a file located at 'output/appName/item.filename'",
-      "PrFileName": "01. WriteToFile.pr",
-      "RelativePrPath": ".build\\Start\\SaveCode\\01. WriteToFile.pr",
+      "Name": "WriteCodeToFile",
+      "Description": "Write the content from the variable %item.code% to a file located in the directory output/%appName% with the filename %item.filename%",
+      "PrFileName": "01. WriteCodeToFile.pr",
+      "RelativePrPath": ".build\\Start\\SaveCode\\01. WriteCodeToFile.pr",
       "Indent": 0,
       "Execute": true,
       "RunOnce": false,
-      "Generated": "2024-03-21T11:46:04.9595427+01:00",
+      "Generated": "2024-04-12T13:02:59.1798746+00:00",
       "WaitForExecution": true,
       "ErrorHandler": null,
       "RetryHandler": null,
@@ -37,7 +37,7 @@
             "content": [
               {
                 "type": "text",
-                "text": "You are provided with a statement from the user. \r\nThis statement is a step in a Function. \r\n\r\nYou MUST determine which module can be used to solve the statement.\r\nYou MUST choose from available modules provided by the assistant to determine which module. If you cannot choose module, set N/A\r\n\r\nvariable is defined with starting and ending %, e.g. %filePath%\r\n! defines a call to a function\r\n\r\nModules: Name of module. Suggest 1-3 modules that could be used to solve the step.\r\nStepName: Short name for step\r\nStepDescription: Rewrite the step as you understand it, make it detailed\r\nWaitForExecution: Indicates if code should wait for execution to finish, default is true\r\nErrorHandler: How to handle errors, default is null. if error should be handled but text (OnExceptionContainingTextCallGoal) is not defined, then use * for key\r\nRetryHandler: How to retry the step if there is error, default is null\r\nCachingHandler: How caching is handled, default is null\r\nRead the description of each module, then determine which module to use.\r\nMake sure to return valid JSON, escape double quote if needed\r\n\r\nBe Concise\r\n"
+                "text": "You are provided with a statement from the user. \r\nThis statement is a step in a Function. \r\n\r\nYou MUST determine which module can be used to solve the statement.\r\nYou MUST choose from available modules provided by the assistant to determine which module. If you cannot choose module, set N/A\r\n\r\nvariable is defined with starting and ending %, e.g. %filePath%\r\n! defines a call to a function\r\n\r\nModules: Name of module. Suggest 1-3 modules that could be used to solve the step.\r\nStepName: Short name for step\r\nStepDescription: Rewrite the step as you understand it, make it detailed\r\nWaitForExecution: Indicates if code should wait for execution to finish, default is true\r\nErrorHandler: How to handle errors defined by user, default is null. if error should be handled but text (OnExceptionContainingTextCallGoal) is not defined, then use * for key\r\nRetryHandler: How to retry the step if there is error, default is null\r\nCachingHandler: How caching is handled, default is null\r\nRead the description of each module, then determine which module to use.\r\nMake sure to return valid JSON, escape double quote if needed\r\n\r\nBe Concise\r\n"
               },
               {
                 "type": "text",
@@ -64,9 +64,9 @@
             ]
           }
         ],
-        "model": "gpt-4",
+        "model": "gpt-4-turbo",
         "caching": true,
-        "RawResponse": "{\n  \"StepName\": \"WriteToFile\",\n  \"StepDescription\": \"Write the content of the variable 'item.code' to a file located at 'output/appName/item.filename'\",\n  \"Modules\": [\n    \"PLang.Modules.FileModule\"\n  ],\n  \"WaitForExecution\": true\n}"
+        "RawResponse": "{\r\n  \"StepName\": \"WriteCodeToFile\",\r\n  \"StepDescription\": \"Write the content from the variable %item.code% to a file located in the directory output/%appName% with the filename %item.filename%\",\r\n  \"Modules\": [\r\n    \"PLang.Modules.FileModule\"\r\n  ],\r\n  \"WaitForExecution\": true\r\n}"
       }
     }
   ],
@@ -77,9 +77,9 @@
   "RelativeGoalFolderPath": "\\",
   "RelativePrPath": ".build\\Start\\SaveCode\\00. Goal.pr",
   "RelativePrFolderPath": ".build\\Start\\SaveCode",
-  "BuilderVersion": "0.1.0.0",
+  "BuilderVersion": "0.1.0.4",
   "GoalApiInfo": null,
   "Injections": [],
   "Signature": null,
-  "Hash": "13c98b30a204fa59bb55ff16bfb0ae6c2c700d01777755fa9bb53564dacdd859"
+  "Hash": "c7ca6204da5e247184f7ab0f36762dc1cadec53a22498e638eaf0ff32c8e5463"
 }

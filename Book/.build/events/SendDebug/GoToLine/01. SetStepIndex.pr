@@ -5,7 +5,7 @@
       {
         "Type": "String",
         "Name": "key",
-        "Value": "__StepIndex__"
+        "Value": "%__StepIndex__%"
       },
       {
         "Type": "Object",
@@ -59,9 +59,9 @@
         ]
       }
     ],
-    "model": "gpt-4",
+    "model": "gpt-4-turbo",
     "caching": true,
-    "RawResponse": null
+    "RawResponse": "{\n  \"FunctionName\": \"SetVariable\",\n  \"Parameters\": [\n    {\n      \"Type\": \"String\",\n      \"Name\": \"key\",\n      \"Value\": \"%__StepIndex__%\"\n    },\n    {\n      \"Type\": \"Object\",\n      \"Name\": \"value\",\n      \"Value\": \"%line%\"\n    }\n  ]\n}"
   },
   "RunOnBuild": false
 }
