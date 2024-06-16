@@ -1,6 +1,7 @@
 {
   "GoalName": "AppendFile",
   "Comment": null,
+  "Text": "AppendFile",
   "GoalSteps": [
     {
       "Text": "[code] remove anything that comes before 'Tests' in %item.Path%(string)\n    write to %fileName%",
@@ -278,9 +279,9 @@
   "RelativeGoalFolderPath": "\\",
   "RelativePrPath": ".build\\PlangExamples\\AppendFile\\00. Goal.pr",
   "RelativePrFolderPath": ".build\\PlangExamples\\AppendFile",
-  "BuilderVersion": "0.1.0.4",
-  "GoalApiInfo": null,
+  "BuilderVersion": "0.1.0.10",
+  "GoalInfo": null,
   "Injections": [],
   "Signature": null,
-  "Hash": "3fdb5992e1a20e9b916a71b35140482b76ca4c87df7bdfbce709f0a201d65a4c"
+  "Hash": "5d9fec91a9fea590e4f4bdc86ac9b3e3efc4ee967cc838dce3cee43db604f46b"
 }

@@ -1,6 +1,5 @@
 Tickets
-- 
-- get https://hopkaup.zendesk.com/api/v2/tickets.json?sort_by=created_at&sort_order=desc
+- get %Settings.Domain%/api/v2/tickets.json?sort_by=created_at&sort_order=desc
     basic auth: %Settings.BasicAuth%
     write to %tickets%
 - go through %tickets%, call !ProcessTicket %ticket%=item

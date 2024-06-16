@@ -1,6 +1,7 @@
 {
   "GoalName": "Start",
   "Comment": null,
+  "Text": "Start",
   "GoalSteps": [
     {
       "Text": "Ask user, \"Write description of you app you want to create\n    \\t- Does it need to read or write to database?\n    \\t- Does it need to get data from webservice?\n    \\t- Does the user need to make decision\n    \", \n    write to %idea%",
@@ -479,9 +480,9 @@
   "RelativeGoalFolderPath": "\\",
   "RelativePrPath": ".build\\Start\\00. Goal.pr",
   "RelativePrFolderPath": ".build\\Start",
-  "BuilderVersion": "0.1.0.4",
-  "GoalApiInfo": null,
+  "BuilderVersion": "0.1.0.10",
+  "GoalInfo": null,
   "Injections": [],
   "Signature": null,
-  "Hash": "2b01275a1fedddcbb05b89d594fc0c4872ff896da610cbbc13b52aad48b76f59"
+  "Hash": "fd880d343bb8cb97d5f207f2373b5ddd7a5a1912564939c350046e4f1bef387f"
 }

@@ -1,6 +1,7 @@
 {
   "GoalName": "SaveCode",
   "Comment": null,
+  "Text": "SaveCode",
   "GoalSteps": [
     {
       "Text": "write %item.code% to output/%appName%/%item.filename%",
@@ -77,9 +78,9 @@
   "RelativeGoalFolderPath": "\\",
   "RelativePrPath": ".build\\Start\\SaveCode\\00. Goal.pr",
   "RelativePrFolderPath": ".build\\Start\\SaveCode",
-  "BuilderVersion": "0.1.0.4",
-  "GoalApiInfo": null,
+  "BuilderVersion": "0.1.0.10",
+  "GoalInfo": null,
   "Injections": [],
   "Signature": null,
-  "Hash": "c7ca6204da5e247184f7ab0f36762dc1cadec53a22498e638eaf0ff32c8e5463"
+  "Hash": "5d07fb462829b84cce25b07cd7e6e5b59e5e9f863d131ea7ba5f92a17fccc90c"
 }

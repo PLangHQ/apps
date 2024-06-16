@@ -1,6 +1,7 @@
 {
   "GoalName": "PlangExamples",
   "Comment": null,
+  "Text": "PlangExamples",
   "GoalSteps": [
     {
       "Text": "get content of all *.goal files from '../../plang/Tests/' and subfolders, write to %testFiles%",
@@ -211,9 +212,9 @@
   "RelativeGoalFolderPath": "\\",
   "RelativePrPath": ".build\\PlangExamples\\00. Goal.pr",
   "RelativePrFolderPath": ".build\\PlangExamples",
-  "BuilderVersion": "0.1.0.4",
-  "GoalApiInfo": null,
+  "BuilderVersion": "0.1.0.10",
+  "GoalInfo": null,
   "Injections": [],
   "Signature": null,
-  "Hash": "c699fb6511c175538d26654e26b62be1987cfb8bf3864c2e56c4aba1a1278ecf"
+  "Hash": "0e5541698939aa4b6180bbc84b3a70191670794633176aef99e6a04ff5bb9db1"
 }

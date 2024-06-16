@@ -77,9 +77,9 @@
   "RelativeGoalFolderPath": "\\Events",
   "RelativePrPath": ".build\\Events\\SendDebug\\GoToLine\\00. Goal.pr",
   "RelativePrFolderPath": ".build\\Events\\SendDebug\\GoToLine",
-  "BuilderVersion": "0.1.0.4",
+  "BuilderVersion": "0.1.0.6",
   "GoalApiInfo": null,
   "Injections": [],
   "Signature": null,
-  "Hash": "88725d4117d4488ba054aff0f1ecd5df64fd852f73f6f65870827ff90dcfbcdd"
+  "Hash": "b2dbf506b8fc6a4fa19c9050d288e0f39941f4fdc80ff5781e9c29ab375b74d2"
 }

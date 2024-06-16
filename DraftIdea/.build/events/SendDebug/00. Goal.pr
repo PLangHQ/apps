@@ -1,6 +1,7 @@
 {
   "GoalName": "SendDebug",
   "Comment": null,
+  "Text": "SendDebug",
   "GoalSteps": [
     {
       "Text": "post http://localhost:60877/\n    data: {\n        goal:\"%__GOAL__%\", \n        step:\"%__STEP__%\",\n        event:\"%__Event__%\",\n        isHttpRequest:\"%__IsHttpRequest__%\",\n        stepIndex:%__StepIndex__%,\n        instruction:%__Instruction__%,\n        memoryStack:\"%__memorystack__%\",\n        absolutePath:%__GOAL__.AbsoluteGoalPath%,        \n        exception:\"%__Exception__%\",\n        }\n    timeout 30 min\n    write to %debugReponse%",
@@ -153,9 +154,9 @@
   "RelativeGoalFolderPath": "\\Events",
   "RelativePrPath": ".build\\Events\\SendDebug\\00. Goal.pr",
   "RelativePrFolderPath": ".build\\Events\\SendDebug",
-  "BuilderVersion": "0.1.0.4",
-  "GoalApiInfo": null,
+  "BuilderVersion": "0.1.0.10",
+  "GoalInfo": null,
   "Injections": [],
   "Signature": null,
-  "Hash": "eaafe6ed726426b57ea6afd54bbb067bd2918ea0fc2c09de2b152192ca08329b"
+  "Hash": "66f067545dc5a378a01abfc53efd7b61e0b371ffb4531e0f64249870705e4297"
 }

@@ -1,6 +1,7 @@
 {
   "GoalName": "GoToLine",
   "Comment": null,
+  "Text": "GoToLine",
   "GoalSteps": [
     {
       "Text": "set %__StepIndex__% as %line%",
@@ -77,9 +78,9 @@
   "RelativeGoalFolderPath": "\\Events",
   "RelativePrPath": ".build\\Events\\SendDebug\\GoToLine\\00. Goal.pr",
   "RelativePrFolderPath": ".build\\Events\\SendDebug\\GoToLine",
-  "BuilderVersion": "0.1.0.4",
-  "GoalApiInfo": null,
+  "BuilderVersion": "0.1.0.10",
+  "GoalInfo": null,
   "Injections": [],
   "Signature": null,
-  "Hash": "c312457e69231a8e0bb18d1d8fed56304bc1ed4a8f295fd1d5edd5468ecda482"
+  "Hash": "7ed9a279a9e300afe8cc09b68fffaf6cc47f0b77e2244bfe2790fb26cc4fe8f5"
 }

@@ -1,0 +1,10 @@
+Start
+- set default value of %output% to 'output_001.mp4'
+- get all 'mp4' files from folder, %files%
+- if %output% is in %files%(List) then
+    - [code] append "_X" to %output%, where X is the next number, e.g. output_001.mp4 becomes output_002.mp4
+        , write to %newOutplangput%
+- run ffmpeg -probesize 50M -f gdigrab -framerate 30 -i desktop -f dshow -i audio="Microphone (HyperX SoloCast)" %output%
+
+
+
