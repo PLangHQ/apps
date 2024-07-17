@@ -5,11 +5,11 @@ Start
 - foreach %files%, call !ConcatFileContent
 - get content of all '.txt' files in %path% that are in folder 'llm', write to %llmFiles%
 - read SetupREADME.llm, into %system%, load vars
+- read %path%/ReadMeSetup.txt, into %readmeSetupForProject%, load vars
 - read user.llm, into %user%, load vars
 - logger warning 'Doing LLM request'
-- [llm] system: %system%
+- [llm] system: %system% %readmeSetupForProject%
         user: %user%
-        model: 'gpt-4-0125-preview'
         write to %doc%
 - write %doc% to %path%/README.md
 
