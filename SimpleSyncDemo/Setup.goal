@@ -1,0 +1,3 @@
+Setup
+- create table tasks, columns: text, due_date(datetime)
+

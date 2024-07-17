@@ -1,6 +1,7 @@
 {
   "GoalName": "DownloadUsage",
   "Comment": null,
+  "Text": "DownloadUsage",
   "GoalSteps": [
     {
       "Text": "GET http://llm.plang.is/api/Usage.goal, write to %response%",
@@ -21,7 +22,7 @@
       "CancellationHandler": null,
       "Custom": {},
       "Number": 0,
-      "LineNumber": 28,
+      "LineNumber": 30,
       "LlmRequest": {
         "temperature": 0.0,
         "top_p": 0.0,
@@ -88,7 +89,7 @@
       "CancellationHandler": null,
       "Custom": {},
       "Number": 1,
-      "LineNumber": 29,
+      "LineNumber": 31,
       "LlmRequest": {
         "temperature": 0.0,
         "top_p": 0.0,
@@ -155,7 +156,7 @@
       "CancellationHandler": null,
       "Custom": {},
       "Number": 2,
-      "LineNumber": 30,
+      "LineNumber": 32,
       "LlmRequest": {
         "temperature": 0.0,
         "top_p": 0.0,
@@ -222,7 +223,7 @@
       "CancellationHandler": null,
       "Custom": {},
       "Number": 3,
-      "LineNumber": 31,
+      "LineNumber": 33,
       "LlmRequest": {
         "temperature": 0.0,
         "top_p": 0.0,
@@ -289,7 +290,7 @@
       "CancellationHandler": null,
       "Custom": {},
       "Number": 4,
-      "LineNumber": 32,
+      "LineNumber": 34,
       "LlmRequest": {
         "temperature": 0.0,
         "top_p": 0.0,
@@ -345,9 +346,9 @@
   "RelativeGoalFolderPath": "\\",
   "RelativePrPath": ".build\\Start\\DownloadUsage\\00. Goal.pr",
   "RelativePrFolderPath": ".build\\Start\\DownloadUsage",
-  "BuilderVersion": "0.1.0.0",
-  "GoalApiInfo": null,
+  "BuilderVersion": "0.1.0.10",
+  "GoalInfo": null,
   "Injections": [],
   "Signature": null,
-  "Hash": "e286a321954de5751912c43769cc21ec958d089269279d3fec0ed4235230e37a"
+  "Hash": "8b56374382b66c9426dcad260861850f2969425dd5f33598d42b1b2a7112424e"
 }
