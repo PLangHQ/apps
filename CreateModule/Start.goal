@@ -1,0 +1,29 @@
+Start
+- write out "Make sure to have dotnet in your PATH variable!"
+- Ask "What is the module name?", write to %moduleName%
+- Ask "What should the module do?", write to %description%
+- call goal AskForExamples
+- ask "Do you have documentation website that you would like me to use? N for no"
+    must be url or "N", write to %url%
+- if %url% != "N" then
+    - get %url%, write to %docs%
+    - append to %system%, "--- docs to assistast with code ---\n%docs%\n--- docs to assistast with code ---"
+- read file llm/system.txt, write to %system%
+- [llm] system: %system%
+    user: "ModuleName: %moduleName%, Description:%description%\n Plang Examples: %examplesList%"
+    model: 'gpt-4o'
+    scheme: {needFileSystem:bool, nugetPackages:string[], csharpCode:string, plangCode:string}
+- write %csharpCode% to "modules/%moduleName%/Program.cs"
+- write %plangCode% to "modules/%moduleName%/Start.goal"
+- run terminal, dotnet new classlib -n %moduleName% --force, working dir "modules/"
+- delete file "modules/%moduleName%/Class1.cs"
+- foreach %nugetPackages% call goal AddNuget
+
+AskForExamples
+- Ask "Can you give me example of step? type in D when you are done", write to %example%
+- if %example% != "D" (case insensitive) then
+    - add %example% to %examplesList%(list)
+    - call goal AskForExamples
+
+AddNuget
+- run terminal, dotnet add package %item%, working dir "modules/%moduleName%/"

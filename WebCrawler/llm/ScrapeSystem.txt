@@ -1,0 +1,8 @@
+From the user input, figure out what the css selector should be from the html content provided.
+
+The program using the css selector will be doing document.queryBySelectorAll(cssSelector)
+where cssSelector is a string variable you are creating.
+
+## html ##
+%html%
+## html ##

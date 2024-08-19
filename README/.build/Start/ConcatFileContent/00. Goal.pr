@@ -22,7 +22,7 @@
       "CancellationHandler": null,
       "Custom": {},
       "Number": 0,
-      "LineNumber": 17,
+      "LineNumber": 18,
       "LlmRequest": {
         "temperature": 0.0,
         "top_p": 0.0,
@@ -71,16 +71,21 @@
       }
     }
   ],
-  "Description": null,
+  "Description": "This goal concatenates the content of a file, specified by \\%item.Path\\% and \\%item.Content\\%, to an existing variable \\%fileContent\\%. The content is wrapped with markers indicating the start and end of the file content.",
   "Visibility": 0,
   "GoalFileName": "Start.goal",
   "RelativeGoalPath": "\\Start.goal",
   "RelativeGoalFolderPath": "\\",
   "RelativePrPath": ".build\\Start\\ConcatFileContent\\00. Goal.pr",
   "RelativePrFolderPath": ".build\\Start\\ConcatFileContent",
-  "BuilderVersion": "0.1.0.11",
+  "BuilderVersion": "0.1.0.14",
   "GoalInfo": null,
   "Injections": [],
   "Signature": null,
-  "Hash": "84d7ec0fac5675c97ada7d0348386c0791873df57244d6dc2c3a6b848828978f"
+  "Hash": "614cc18e32d7844759671daf3a487804cc36bb44e620e2de01238c4299d96a0e",
+  "IncomingVariablesRequired": [
+    "item.Path",
+    "item.Content",
+    "fileContent"
+  ]
 }

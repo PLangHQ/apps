@@ -71,16 +71,19 @@
       }
     }
   ],
-  "Description": null,
+  "Description": "The GoToLine goal sets the \\%__StepIndex\\% variable to the value of the \\%line\\% variable.",
   "Visibility": 0,
   "GoalFileName": "SendDebug.goal",
   "RelativeGoalPath": "\\events\\SendDebug.goal",
   "RelativeGoalFolderPath": "\\events",
   "RelativePrPath": ".build\\events\\SendDebug\\GoToLine\\00. Goal.pr",
   "RelativePrFolderPath": ".build\\events\\SendDebug\\GoToLine",
-  "BuilderVersion": "0.1.0.11",
+  "BuilderVersion": "0.1.0.14",
   "GoalInfo": null,
   "Injections": [],
   "Signature": null,
-  "Hash": "eb6a43de85d0c5ede180263cfcab70ea6a24de8dd54697d963ddb1c2c73f47f6"
+  "Hash": "313b09537ec7e5084d5cad20d78833ac98f262e551768a1da5b4a4e12da4158e",
+  "IncomingVariablesRequired": [
+    "line"
+  ]
 }

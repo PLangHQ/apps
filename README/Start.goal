@@ -4,14 +4,15 @@ Start
 - get content of all '.goal' files in %path%, write to %files%
 - foreach %files%, call !ConcatFileContent
 - get content of all '.txt' files in %path% that are in folder 'llm', write to %llmFiles%
-- read SetupREADME.llm, into %system%, load vars
+- read SetupREADME.txt, into %system%, load vars
 - read %path%/ReadMeSetup.txt, into %readmeSetupForProject%, load vars
-- read user.llm, into %user%, load vars
+- read "user.txt", into %user%, load vars
 - logger warning 'Doing LLM request'
-- [llm] system: %system% %readmeSetupForProject%
+- [llm] system: %system%  %readmeSetupForProject%
         user: %user%
+        model: "gpt-4o"
         write to %doc%
-- write %doc% to %path%/README.md
+- write %doc% to %path%/README.md, overwrite
 
 ConcatFileContent
 - append '=== Goal file starts - path: %item.Path% ===\n%item.Content%\n=== Goal file ends === to %fileContent%c

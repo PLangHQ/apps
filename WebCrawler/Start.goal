@@ -1,0 +1,24 @@
+Start
+- ask "What would you like to scrape?", write to %idea%
+- read file llm/GetUrl.txt, write to %system%
+- [llm]: system: %system%,
+    user: %idea%
+    scheme: {url:string}
+- open %url% in browser
+- get the content of 'html', with html, write to %html%
+- read file llm/ScrapeSystem.txt, load vars, write to %system%
+- [llm] system: %system%
+    user: %idea%
+    scehem: {cssSelector:string}
+- read file llm/ProgramCrawlerSystem.txt, write to %system%
+- [llm] system: %system%
+    user: %idea%
+    scheme: {appName:string, files:[fileNameWithRelativePath:string, code:string]}
+    write to %app%
+- create folder crawlers/%appName%
+- go through %app.files%, call SaveCode
+- build plang /app/%app.AppName%
+- write out "go to /app/%app.AppName% and run 'plang'"
+
+SaveCode
+- save %itime.code% to crawlers/%item.fileNameWithRelativePath%

@@ -1,0 +1,10 @@
+Start
+- terminal app 'docker', params: 'ps -a', write to %response%
+- write out %response%
+- Ask "What would you like to do?
+    - 1. Create new docker
+    ", write to %answer%, should be number
+- if %answer% == 1, then call CreateNewDocker
+
+CreateNewDocker
+- ask 

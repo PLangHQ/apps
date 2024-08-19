@@ -1,0 +1,2 @@
+Setup
+- create table person, columns: name(string), year(number), isUnderAge(bool)

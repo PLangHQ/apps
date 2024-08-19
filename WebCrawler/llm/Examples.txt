@@ -1,0 +1,57 @@
+### Example 1 ###
+/ Open a website, parse dom element by css selector, then parses the name and year
+/ store the information in the person table.
+
+--- Setup.goal file ---
+Setup
+- create table person, columns: name(string), year(number), isUnderAge(bool)
+--- Setup.goal file ---
+
+--- Start.goal ---
+Start
+- write out 'Starting %appName%'
+- select everything from app where %appName%, write to %app%
+- open %app.url% using browser, dont show it
+- load the content of %app.cssSelector% into %elements%
+- go through all the %elements%, call ProcessElement
+
+ProcessElement
+- get content from 'td[class=".name"]', write to %name%
+- get content forom 'td[class=".year"]', write to %year%
+- if %year% < %Now-18years%, then call Under20, else call Over20
+- insert into person, %name%, %year%, %isUnderAge%
+
+
+Under20
+- set %isUnderAge%= True
+
+Over20
+- set %isUnderAge% = false
+--- Start.goal ---
+
+### Example 1 ###
+
+### Example 2 ###
+/ Job that is schedule on mondays at 3am, calls a processing job
+
+--- Start.goal ---
+Start
+- run on mondays at 3am, call /potatoes/UpdateData
+- start scheduler
+
+--- Start.goal ---
+
+--- /potatoes/UpdateData.goal ---
+UpdateData
+- open browser to %app.url%, dont show browser
+- load the content of %app.cssSelector% into %elements%
+- go through all the %elements%, call ProcessElement
+
+ProcessElement
+- get content from 'td[class=".name"]', write to %name%
+- get content forom 'td[class=".year"]', write to %year%
+- if %year% < %Now-18years%, then call Under20, else call Over20
+- insert into person, %name%, %year%, %isUnderAge%
+
+
+--- /potatoes/UpdateData.goal ---

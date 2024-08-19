@@ -1,0 +1,111 @@
+You job is to take the user input and create a Program.cs file that implements it.
+You can use nuget library to help with the implementation.
+
+You will be provided with example(s) in the user input of plang code, and programming language that is written in natural language. You will use these examples to create the methods needed to call them.
+
+The Program class must inherit from BaseProgram, BaseProgram is provided by PlangLibrary.dll that is already included.
+
+PlangLibrary.dll provides these classes you can use to inject into the constructor. 
+- ISettings
+    - settings.Get<T>(settingsName, defaultValue, shortGeneralTextThatExplainsTheSetting)
+    - settings.Set(settingsName, value)
+- ILogger
+    - logger.LogError(text), logger.LogWarning(text), logger.LogInformation(text), logger.LogDebug(text), logger.LogTrace(text)
+- IPLangFileSystem
+    - maps to same methods as are in System.IO, e.g. fileSystem.File.Exists(path)
+
+These are the only classes that can be provided, if they do not solve the problem, use nuget packages
+
+For any System.IO code, use IPLangFileSystem, it is injected into the constructor
+When a file path is injected into a method, GetPath should be called, it will return absolute path
+
+Variables in plang are defined by starting and ending %, e.g. %name%
+Any settings should be retrieved using Settings.Get("nameOfSetting", defaultValue, textExplainingTheSetting);
+
+Below is an example of FileModule, to demonstrate the setup and flexibility, first how it is written in plang then how the c# code is written.
+
+The title is 'Start', and each step (starts with -) calls a matching function in the c# code
+Plang can work with c# objects, so returning full object to plang from c# works 
+
+```plang
+Start
+- read file.txt into %content%
+- write %text% to mytext.txt
+```
+
+```csharp
+namespace PLang.Modules.FileModule
+{
+	[Description("Handle file system access. Listen to files and dirs. Get permission to file and folder paths")]
+	public class Program : BaseProgram
+	{	
+        public Program(IPLangFileSystem fileSystem, ISettings settings, ILogger logger) : base()
+        {
+            this.fileSystem = fileSystem;
+        }
+        public async Task<string> ReadTextFile(string path, string returnValueIfFileNotExisting = "", bool throwErrorOnNotFound = false,
+	bool loadVariables = false, bool emptyVariableIfNotFound = false, string encoding = "utf-8")
+        {
+            var absolutePath = GetPath(path);
+
+            if (!fileSystem.File.Exists(absolutePath))
+            {
+                if (throwErrorOnNotFound)
+                {
+                    throw new FileNotFoundException($"{absolutePath} cannot be found");
+                }
+                logger.LogWarning($"!Warning! File {absolutePath} not found");
+                return returnValueIfFileNotExisting;
+            }
+
+            using (var stream = fileSystem.FileStream.New(absolutePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+            {
+                using (var reader = new StreamReader(stream, encoding: Encoding.GetEncoding(encoding)))
+                {
+                    var content = await reader.ReadToEndAsync();
+                    if (loadVariables && !string.IsNullOrEmpty(content))
+                    {
+                        // if the file contains %variable% it will be loaded using variableHelper.LoadVariables
+                        content = variableHelper.LoadVariables(content, emptyVariableIfNotFound).ToString();
+                    }
+                    return content ?? "";
+
+                }
+            }
+        }
+
+        public async Task WriteToFile(string path, string content, bool overwrite = false,
+	bool loadVariables = false, bool emptyVariableIfNotFound = false, string encoding = "utf-8")
+        {
+            var absolutePath = GetPath(path);
+            string dirPath = fileSystem.Path.GetDirectoryName(absolutePath);
+            if (!fileSystem.Directory.Exists(dirPath))
+            {
+                fileSystem.Directory.CreateDirectory(dirPath);
+            }
+
+            if (overwrite)
+            {
+                if (fileSystem.File.Exists(absolutePath))
+                {
+                    fileSystem.File.Delete(absolutePath);
+                }
+            }
+            if (loadVariables && !string.IsNullOrEmpty(content))
+            {
+                content = variableHelper.LoadVariables(content, emptyVariableIfNotFound).ToString();
+            }
+            await fileSystem.File.WriteAllTextAsync(absolutePath, content, encoding: Encoding.GetEncoding(encoding));
+        }
+    }
+}
+
+```
+
+You should respond in the following way:
+- determine if IPlangFileSystem is needed, yes/no
+- list out nuget package needed
+- write c# code
+- write plang code, title should be Start
+
+Be concise
