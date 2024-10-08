@@ -1,23 +1,30 @@
 Start
 - write out "Make sure to have dotnet in your PATH variable!"
 - Ask "What is the module name?", write to %moduleName%
-- Ask "What should the module do?", write to %description%
+- Ask "What should the module do? Just general description, you will write examples next", write to %description%
 - call goal AskForExamples
-- ask "Do you have documentation website that you would like me to use? N for no"
+- ask "Do you have documentation website that you would like me to use?\n\nIf you are linking to github repo, use the RAW version of README\n\nN for no"
     must be url or "N", write to %url%
-- if %url% != "N" then
+- read file llm/system.txt, write to %system%    
+- if %url% != "N" and %url% is valid url then
     - get %url%, write to %docs%
-    - append to %system%, "--- docs to assistast with code ---\n%docs%\n--- docs to assistast with code ---"
-- read file llm/system.txt, write to %system%
+    - append to %system%, "### Docs to assistast with code ###\n%docs%\n### Docs to assistast with code ###"
 - [llm] system: %system%
     user: "ModuleName: %moduleName%, Description:%description%\n Plang Examples: %examplesList%"
     model: 'gpt-4o'
     scheme: {needFileSystem:bool, nugetPackages:string[], csharpCode:string, plangCode:string}
-- write %csharpCode% to "modules/%moduleName%/Program.cs"
-- write %plangCode% to "modules/%moduleName%/Start.goal"
-- run terminal, dotnet new classlib -n %moduleName% --force, working dir "modules/"
-- delete file "modules/%moduleName%/Class1.cs"
+- write %csharpCode% to "modules/MyModule.%moduleName%/Program.cs"
+- write %plangCode% to "modules/MyModule.%moduleName%/Start.goal"
+- read file llm/unitTestSystem.txt, write to %system%   
+- [llm] system: %system%
+        user: %plangCode%
+        scheme: {charpTestCode:string}
+- write %csharpCode% to "modules/MyModule.%moduleName%/Test.cs"        
+- run terminal, dotnet new classlib -n "MyModule.%moduleName%" --force, working dir "modules/"
+- delete file "modules/MyModule.%moduleName%/Class1.cs"
+- call goal AddPlangLibrary
 - foreach %nugetPackages% call goal AddNuget
+- call goal BuildCSharpCode
 
 AskForExamples
 - Ask "Can you give me example of step? type in D when you are done", write to %example%
@@ -26,4 +33,25 @@ AskForExamples
     - call goal AskForExamples
 
 AddNuget
-- run terminal, dotnet add package %item%, working dir "modules/%moduleName%/"
+- write out 'Adding nuget packget %item%'
+- run terminal, dotnet add package %item%, working dir "modules/MyModule.%moduleName%/"
+
+AddPlangLibrary
+- run terminal, dotnet add package "PlangLibrary", working dir "modules/MyModule.%moduleName%/"
+- read "modules/MyModule.%moduleName%/MyModule.%moduleName%.csproj", write to %projectFile%
+- set %runtimeIdentifier% = "<RuntimeIdentifier Condition=" '$(RuntimeIdentifier)' == '' and '$(OS)' == 'Windows_NT' ">win-x64</RuntimeIdentifier>
+    <RuntimeIdentifier Condition=" '$(RuntimeIdentifier)' == '' and '$(OS)' == 'Linux' ">linux-x64</RuntimeIdentifier>
+    <RuntimeIdentifier Condition=" '$(RuntimeIdentifier)' == '' and '$(OS)' == 'OSX' ">osx-x64</RuntimeIdentifier>
+    "
+- [code] insert this %runtimeIdentifier% before "</PropertyGroup>" in %refProjectFile%, 
+        do not use xml object, just string manipulation
+        write to %newProjectFile%
+- write %newProjectFile% to "modules/MyModule.%moduleName%/MyModule.%moduleName%.csproj"
+
+BuildCSharpCode
+- ask 'Will try to build C# Code.\n\nIf success I can install it into your plang project.\nWhere is you project located that you want to use the module?'
+    write to %path%
+- run terminal, dotnet build, working dir "modules/MyModule.%moduleName%/"
+    set errorOutputVariable=%error%
+- if %error% is emtpy and %path% is not emtpy then
+    - copy "modules/MyModule.%moduleName%/bin/Debug/"

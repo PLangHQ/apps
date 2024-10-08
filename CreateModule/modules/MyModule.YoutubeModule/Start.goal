@@ -1,0 +1,4 @@
+﻿Start
+- upload file.mp4, "My first video", "I am doing my first video.....", put on "default" playlist, make it public and update %status% on the progress
+- get all videos, write to %videos%
+- get all videos in my "default" playlist

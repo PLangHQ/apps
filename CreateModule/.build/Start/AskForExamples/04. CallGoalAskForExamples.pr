@@ -8,27 +8,12 @@
         "Value": "AskForExamples"
       },
       {
-        "Type": "Dictionary`2<String, Object>",
+        "Type": "Dictionary<String, Object>",
         "Name": "parameters",
         "Value": null
-      },
-      {
-        "Type": "Boolean",
-        "Name": "waitForExecution",
-        "Value": true
-      },
-      {
-        "Type": "Int32",
-        "Name": "delayWhenNotWaitingInMilliseconds",
-        "Value": 50
-      },
-      {
-        "Type": "UInt32",
-        "Name": "waitForXMillisecondsBeforeRunningGoal",
-        "Value": 0
       }
     ],
-    "ReturnValue": null
+    "ReturnValues": null
   },
   "Text": "call goal AskForExamples",
   "Reload": false,
@@ -39,8 +24,8 @@
     "presencePenalty": 0.0,
     "maxLength": 4000,
     "llmResponseType": "json",
-    "scheme": "{\"FunctionName\": string,\n\"Parameters\": [{\"Type\": string,\n\"Name\": string,\n\"Value\": object}],\n\"ReturnValue\"?: [{\"Type\": string,\n\"VariableName\": string}] = null}",
-    "type": "PLang.Modules.CallGoalModule.Builder",
+    "scheme": "{\n\t\"FunctionName\": string,\n\t\"Parameters\": [{\n\t\"Type\": string,\n\t\"Name\": string,\n\t\"Value\"?: object\n}],\n\t\"ReturnValues\"?: [{\n\t\"Type\": string,\n\t\"VariableName\": string\n}] = null\n}",
+    "model": "gpt-4o-2024-08-06",
     "promptMessage": [
       {
         "role": "system",
@@ -51,7 +36,7 @@
           },
           {
             "type": "text",
-            "text": "You MUST respond in JSON, scheme:\r\n {\"FunctionName\": string,\n\"Parameters\": [{\"Type\": string,\n\"Name\": string,\n\"Value\": object}],\n\"ReturnValue\"?: [{\"Type\": string,\n\"VariableName\": string}] = null}"
+            "text": "You MUST respond in JSON, scheme:\r\n {\n\t\"FunctionName\": string,\n\t\"Parameters\": [{\n\t\"Type\": string,\n\t\"Name\": string,\n\t\"Value\"?: object\n}],\n\t\"ReturnValues\"?: [{\n\t\"Type\": string,\n\t\"VariableName\": string\n}] = null\n}"
           }
         ]
       },
@@ -60,7 +45,7 @@
         "content": [
           {
             "type": "text",
-            "text": "## functions available starts ##\r\nRunGoal(GoalToCall goalName, Dictionary`2<String, Object>? parameters, Boolean? waitForExecution = True, Int32? delayWhenNotWaitingInMilliseconds = 50, UInt32? waitForXMillisecondsBeforeRunningGoal = 0)  : IError  // If backward slash(\\) is used by user, change to forward slash(/).\r\n## functions available ends ##"
+            "text": "## functions available starts ##\r\nRunGoal(GoalToCall goalName, Dictionary`2<String, Object>? parameters, Boolean? waitForExecution = True, Int32? delayWhenNotWaitingInMilliseconds = 50, UInt32? waitForXMillisecondsBeforeRunningGoal = 0)  : void  // If backward slash(\\) is used by user, change to forward slash(/).\r\n## functions available ends ##"
           },
           {
             "type": "text",
@@ -78,9 +63,9 @@
         ]
       }
     ],
-    "model": "gpt-4o",
+    "type": "PLang.Modules.CallGoalModule.Builder",
     "caching": true,
-    "RawResponse": "```json\n{\n  \"FunctionName\": \"RunGoal\",\n  \"Parameters\": [\n    {\n      \"Type\": \"GoalToCall\",\n      \"Name\": \"goalName\",\n      \"Value\": \"AskForExamples\"\n    },\n    {\n      \"Type\": \"Dictionary`2<String, Object>\",\n      \"Name\": \"parameters\",\n      \"Value\": null\n    },\n    {\n      \"Type\": \"Boolean\",\n      \"Name\": \"waitForExecution\",\n      \"Value\": true\n    },\n    {\n      \"Type\": \"Int32\",\n      \"Name\": \"delayWhenNotWaitingInMilliseconds\",\n      \"Value\": 50\n    },\n    {\n      \"Type\": \"UInt32\",\n      \"Name\": \"waitForXMillisecondsBeforeRunningGoal\",\n      \"Value\": 0\n    }\n  ],\n  \"ReturnValue\": null\n}\n```"
+    "RawResponse": null
   },
   "RunOnBuild": false
 }

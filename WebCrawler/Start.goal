@@ -1,15 +1,15 @@
 Start
-- ask "What would you like to scrape?", write to %idea%
+- ask "What would you like to scrape? \nExample:\n\t Scrape the In the News section on https://en.wikipedia.org/wiki/Main_Page.", write to %idea%
 - read file llm/GetUrl.txt, write to %system%
 - [llm]: system: %system%,
     user: %idea%
-    scheme: {url:string}
+    scheme: {url:string, getContentFromCssSelector:string}
 - open %url% in browser
-- get the content of 'html', with html, write to %html%
+- get the content of 'html', include html, write to %html%
 - read file llm/ScrapeSystem.txt, load vars, write to %system%
 - [llm] system: %system%
     user: %idea%
-    scehem: {cssSelector:string}
+    scheme: {cssSelectors:string[]}
 - read file llm/ProgramCrawlerSystem.txt, write to %system%
 - [llm] system: %system%
     user: %idea%
@@ -17,7 +17,7 @@ Start
     write to %app%
 - create folder crawlers/%appName%
 - go through %app.files%, call SaveCode
-- build plang /app/%app.AppName%
+- terminal, app: plang, parameter: build, working dir /app/%app.AppName%
 - write out "go to /app/%app.AppName% and run 'plang'"
 
 SaveCode

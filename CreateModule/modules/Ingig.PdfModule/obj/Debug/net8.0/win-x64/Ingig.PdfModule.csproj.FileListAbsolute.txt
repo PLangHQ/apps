@@ -1,0 +1,16 @@
+C:\Users\Ingi Gauti\source\repos\apps\CreateModule\modules\Ingig.PdfModule\obj\Debug\net8.0\win-x64\Ingig.PdfModule.csproj.AssemblyReference.cache
+C:\Users\Ingi Gauti\source\repos\apps\CreateModule\modules\Ingig.PdfModule\obj\Debug\net8.0\win-x64\Ingig.PdfModule.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ingi Gauti\source\repos\apps\CreateModule\modules\Ingig.PdfModule\obj\Debug\net8.0\win-x64\Ingig.PdfModule.AssemblyInfoInputs.cache
+C:\Users\Ingi Gauti\source\repos\apps\CreateModule\modules\Ingig.PdfModule\obj\Debug\net8.0\win-x64\Ingig.PdfModule.AssemblyInfo.cs
+C:\Users\Ingi Gauti\source\repos\apps\CreateModule\modules\Ingig.PdfModule\obj\Debug\net8.0\win-x64\Ingig.PdfModule.csproj.CoreCompileInputs.cache
+C:\Users\Ingi Gauti\source\repos\apps\CreateModule\modules\Ingig.PdfModule\obj\Debug\net8.0\win-x64\Ingig.PdfModule.sourcelink.json
+C:\Users\Ingi Gauti\source\repos\apps\CreateModule\modules\Ingig.PdfModule\bin\Debug\net8.0\win-x64\Ingig.PdfModule.deps.json
+C:\Users\Ingi Gauti\source\repos\apps\CreateModule\modules\Ingig.PdfModule\bin\Debug\net8.0\win-x64\Ingig.PdfModule.dll
+C:\Users\Ingi Gauti\source\repos\apps\CreateModule\modules\Ingig.PdfModule\bin\Debug\net8.0\win-x64\Ingig.PdfModule.pdb
+C:\Users\Ingi Gauti\source\repos\apps\CreateModule\modules\Ingig.PdfModule\bin\Debug\net8.0\win-x64\PlangLibrary.dll
+C:\Users\Ingi Gauti\source\repos\apps\CreateModule\modules\Ingig.PdfModule\bin\Debug\net8.0\win-x64\PlangLibrary.pdb
+C:\Users\Ingi Gauti\source\repos\apps\CreateModule\modules\Ingig.PdfModule\obj\Debug\net8.0\win-x64\Ingig.Pd.20CE7DBF.Up2Date
+C:\Users\Ingi Gauti\source\repos\apps\CreateModule\modules\Ingig.PdfModule\obj\Debug\net8.0\win-x64\Ingig.PdfModule.dll
+C:\Users\Ingi Gauti\source\repos\apps\CreateModule\modules\Ingig.PdfModule\obj\Debug\net8.0\win-x64\refint\Ingig.PdfModule.dll
+C:\Users\Ingi Gauti\source\repos\apps\CreateModule\modules\Ingig.PdfModule\obj\Debug\net8.0\win-x64\Ingig.PdfModule.pdb
+C:\Users\Ingi Gauti\source\repos\apps\CreateModule\modules\Ingig.PdfModule\obj\Debug\net8.0\win-x64\ref\Ingig.PdfModule.dll

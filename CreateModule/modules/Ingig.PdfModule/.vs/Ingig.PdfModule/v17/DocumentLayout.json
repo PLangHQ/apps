@@ -1,0 +1,58 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Ingi Gauti\\source\\repos\\apps\\CreateModule\\modules\\Ingig.PdfModule\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{FF9C422C-45FC-4F71-AD03-05BE28F00DAF}|Ingig.PdfModule.csproj|c:\\users\\ingi gauti\\source\\repos\\apps\\createmodule\\modules\\ingig.pdfmodule\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FF9C422C-45FC-4F71-AD03-05BE28F00DAF}|Ingig.PdfModule.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FF9C422C-45FC-4F71-AD03-05BE28F00DAF}|Ingig.PdfModule.csproj|c:\\users\\ingi gauti\\source\\repos\\apps\\createmodule\\modules\\ingig.pdfmodule\\ingig.pdfmodule.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{FF9C422C-45FC-4F71-AD03-05BE28F00DAF}|Ingig.PdfModule.csproj|solutionrelative:ingig.pdfmodule.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Ingig.PdfModule",
+              "DocumentMoniker": "C:\\Users\\Ingi Gauti\\source\\repos\\apps\\CreateModule\\modules\\Ingig.PdfModule\\Ingig.PdfModule.csproj",
+              "RelativeDocumentMoniker": "Ingig.PdfModule.csproj",
+              "ToolTip": "C:\\Users\\Ingi Gauti\\source\\repos\\apps\\CreateModule\\modules\\Ingig.PdfModule\\Ingig.PdfModule.csproj",
+              "RelativeToolTip": "Ingig.PdfModule.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-09-06T19:37:29.596Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Ingi Gauti\\source\\repos\\apps\\CreateModule\\modules\\Ingig.PdfModule\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\Ingi Gauti\\source\\repos\\apps\\CreateModule\\modules\\Ingig.PdfModule\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AQIAAFgAAAAAAAAAAAAIwGkAAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-06T19:36:27.57Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

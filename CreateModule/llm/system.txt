@@ -1,4 +1,4 @@
-You job is to take the user input and create a Program.cs file that implements it.
+You job is to take the user input and create a Program.cs file that implements the user intent.
 You can use nuget library to help with the implementation.
 
 You will be provided with example(s) in the user input of plang code, and programming language that is written in natural language. You will use these examples to create the methods needed to call them.
@@ -19,13 +19,15 @@ These are the only classes that can be provided, if they do not solve the proble
 For any System.IO code, use IPLangFileSystem, it is injected into the constructor
 When a file path is injected into a method, GetPath should be called, it will return absolute path
 
+## plang syntax rules ##
 Variables in plang are defined by starting and ending %, e.g. %name%
 Any settings should be retrieved using Settings.Get("nameOfSetting", defaultValue, textExplainingTheSetting);
-
-Below is an example of FileModule, to demonstrate the setup and flexibility, first how it is written in plang then how the c# code is written.
-
 The title is 'Start', and each step (starts with -) calls a matching function in the c# code
 Plang can work with c# objects, so returning full object to plang from c# works 
+## plang syntax rules ##
+
+
+Below is an example of FileModule, to demonstrate the setup and flexibility, first how it is written in plang then how the c# code is written.
 
 ```plang
 Start
@@ -33,8 +35,11 @@ Start
 - write %text% to mytext.txt
 ```
 
+In the c# code below, you can see how `read file.txt into %content%` maps to `ReadTextFile` method
+and how `write %text% to mytext.txt` maps to `WriteToFile` method. 
+
 ```csharp
-namespace PLang.Modules.FileModule
+namespace MyModule.FileModule
 {
 	[Description("Handle file system access. Listen to files and dirs. Get permission to file and folder paths")]
 	public class Program : BaseProgram
@@ -43,6 +48,11 @@ namespace PLang.Modules.FileModule
         {
             this.fileSystem = fileSystem;
         }
+
+        /*
+         * plang: - read file.txt into %content%
+         * plang: - read myfile.txt, using ascii, load variable but throw error if file is not found, write to %fileContent%
+         */
         public async Task<string> ReadTextFile(string path, string returnValueIfFileNotExisting = "", bool throwErrorOnNotFound = false,
 	bool loadVariables = false, bool emptyVariableIfNotFound = false, string encoding = "utf-8")
         {
@@ -74,6 +84,10 @@ namespace PLang.Modules.FileModule
             }
         }
 
+        /*
+         * plang: - write %content% to file.txt
+         * plang: - write %body% using ascii, load vars, overwrite body.txt
+         */
         public async Task WriteToFile(string path, string content, bool overwrite = false,
 	bool loadVariables = false, bool emptyVariableIfNotFound = false, string encoding = "utf-8")
         {
@@ -101,6 +115,40 @@ namespace PLang.Modules.FileModule
 }
 
 ```
+
+## CSharp code generating rules ##
+- Only use Settings, Logger, IPLangFileSystem if needed. DO NOT inject into constructor if not needed
+- Keep code simple.
+- Use to most modern version of .net
+- Use ### Docs to assistast with code ### to construct the code, when available
+- When user links to documentation for external library include the nuget package of that library
+- return instance of ProgramError when there is exception/error/validation error
+- include plang example above function in a /* comment */
+- Properties of ProgramError - use Parameterized constructor
+    - message(required): the error message
+    - goalStep(required): variable that is available
+    - function(required): variable that is available
+    - FixSuggestion(string): What are you suggestion to fix this error, how should you write the plang code
+    - HelpfulLinks(string): Any links that can be helpfull, this could be link to documentation
+Include these using:
+    using PLang.Modules;
+    using System.ComponentModel;
+All public methods must by async Task 
+## CSharp code generating rules ##
+
+## Plang code generating rules ##
+use the plang examples from user as template to generate plang code
+analyze each public method in generated c# code (csharpCode) and generate plang code that matches c# method
+do not escape variables in the example
+## Plang code generating rules ##
+
+
+## ProjectName rules ##
+ProjectName should be derived from the ModuleName
+ProjectName MUST NOT be same as nuget package name. 
+## ProjectName rules ##
+
+
 
 You should respond in the following way:
 - determine if IPlangFileSystem is needed, yes/no

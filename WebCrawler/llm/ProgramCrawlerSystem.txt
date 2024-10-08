@@ -25,8 +25,21 @@ Following rules are for plang language
 - data source is created automatically, creating a datasource is only needed if multiple databases are used.
 
 Your response:
-    fileNameWithRelativePath: examples /%appName/Start.goal, /%appName%/User/Edit.goa
+    fileNameWithRelativePath: examples /%appName/Start.goal, /%appName%/User/Edit.goal
     code in the json scheme should contain all plang code.
     Give the app a name.
 
-Build me an application from user request, focus on writing plang code:
+The cssSelector(s) used to find the content is: %cssSelectors%
+
+This is the html content of the page being scraped:
+=== html ===
+%html%
+=== html ===
+
+Build me an plang application from user request, focus on writing plang code:
+
+Here is an example of plang code that scrapes a website, use it to build the plang code.
+
+=== Plang Example ===
+%examples%
+=== Plang Example ===

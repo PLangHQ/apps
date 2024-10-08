@@ -8,15 +8,15 @@
         "Value": "%example%"
       },
       {
-        "Type": "List`1<Object>?",
+        "Type": "List`1<Object>",
         "Name": "listInstance",
         "Value": "%examplesList%"
       }
     ],
-    "ReturnValue": [
+    "ReturnValues": [
       {
         "Type": "List`1",
-        "VariableName": "%examplesList%"
+        "VariableName": "examplesList"
       }
     ]
   },
@@ -29,8 +29,8 @@
     "presencePenalty": 0.0,
     "maxLength": 4000,
     "llmResponseType": "json",
-    "scheme": "{\"FunctionName\": string,\n\"Parameters\": [{\"Type\": string,\n\"Name\": string,\n\"Value\": object}],\n\"ReturnValue\"?: [{\"Type\": string,\n\"VariableName\": string}] = null}",
-    "type": "PLang.Modules.GenericFunctionBuilder",
+    "scheme": "{\n\t\"FunctionName\": string,\n\t\"Parameters\": [{\n\t\"Type\": string,\n\t\"Name\": string,\n\t\"Value\"?: object\n}],\n\t\"ReturnValues\"?: [{\n\t\"Type\": string,\n\t\"VariableName\": string\n}] = null\n}",
+    "model": "gpt-4o-2024-08-06",
     "promptMessage": [
       {
         "role": "system",
@@ -41,7 +41,7 @@
           },
           {
             "type": "text",
-            "text": "You MUST respond in JSON, scheme:\r\n {\"FunctionName\": string,\n\"Parameters\": [{\"Type\": string,\n\"Name\": string,\n\"Value\": object}],\n\"ReturnValue\"?: [{\"Type\": string,\n\"VariableName\": string}] = null}"
+            "text": "You MUST respond in JSON, scheme:\r\n {\n\t\"FunctionName\": string,\n\t\"Parameters\": [{\n\t\"Type\": string,\n\t\"Name\": string,\n\t\"Value\"?: object\n}],\n\t\"ReturnValues\"?: [{\n\t\"Type\": string,\n\t\"VariableName\": string\n}] = null\n}"
           }
         ]
       },
@@ -50,7 +50,7 @@
         "content": [
           {
             "type": "text",
-            "text": "## functions available starts ##\r\nClearList(List`1<Object> listInstance)  : void \nClearDictionary(Dictionary`2<String, Object> dictionary)  : void \nDeleteFromList(Object item, List`1<Object> listInstance)  : Boolean \nDeleteKeyFromDictionary(String key, Dictionary`2<String, Object> dictionary)  : Boolean \nAddItemsToList(List`1<Object> value, List`1<Object>? listInstance)  : List`1  // Method always returns instance of listInstance, it creates a new instance if it is null. ReturnValue should always be used with AddItemsToList. \nAddToList(Object value, List`1<Object>? listInstance)  : List`1  // Method always returns instance of listInstance, it creates a new instance if it is null. ReturnValue should always be used with AddToList. \nGetFromList(Int32 position, List`1<Object>? listInstance)  : Object  // Gets an item from a list by position. \nAddItemsToDictionary(String key, Dictionary`2<String, Object> value, Dictionary`2<String, Object>? dictionaryInstance, Boolean? updateIfExists = True)  : Dictionary`2  // Method always returns instance of dictionaryInstance, it creates a new instance if it is null. ReturnValue should always be used with AddItemsToDictionary. \nAddToDictionary(String key, Object value, Dictionary`2<String, Object>? dictionaryInstance, Boolean? updateIfExists = True)  : ValueTuple`2  // Method always returns instance of dictionaryInstance, it creates a new instance if it is null. ReturnValue should always be used with AddToDictionary. \nGetFromDictionary(String key, Dictionary`2<String, Object>? dictionaryInstance)  : Object  // Gets an object from dictionary. ReturnValue should always be used with GetFromDictionary.\r\n## functions available ends ##\r\n## defined variables ##\r\nexample (type:String), examplesList (type:object), \r\n## defined variables ##"
+            "text": "## functions available starts ##\r\nClearList(List`1<Object> listInstance)  : void\nClearDictionary(Dictionary`2<String, Object> dictionary)  : void\nDeleteFromList(Object item, List`1<Object> listInstance)  : Boolean \nDeleteKeyFromDictionary(String key, Dictionary`2<String, Object> dictionary)  : Boolean \nAddItemsToList(List`1<Object> value, List`1<Object>? listInstance)  : List`1  // Method always returns instance of listInstance, it creates a new instance if it is null. ReturnValue should always be used with AddItemsToList. \nAddToList(Object value, List`1<Object>? listInstance)  : List`1  // Method always returns instance of listInstance, it creates a new instance if it is null. ReturnValue should always be used with AddToList. \nGetFromList(Int32 position, List`1<Object>? listInstance)  : void  // Gets an item from a list by position. \nAddItemsToDictionary(String key, Dictionary`2<String, Object> value, Dictionary`2<String, Object>? dictionaryInstance, Boolean? updateIfExists = True)  : Dictionary`2  // Method always returns instance of dictionaryInstance, it creates a new instance if it is null. ReturnValue should always be used with AddItemsToDictionary. \nAddToDictionary(String key, Object value, Dictionary`2<String, Object>? dictionaryInstance, Boolean? updateIfExists = True)  : Dicionary<String, Object>  // Method always returns instance of dictionaryInstance, it creates a new instance if it is null. ReturnValue should always be used with AddToDictionary. \nGetFromDictionary(String key, Dictionary`2<String, Object>? dictionaryInstance)  : void  // Gets an object from dictionary. ReturnValue should always be used with GetFromDictionary.\r\n## functions available ends ##\r\n## defined variables ##\r\nexample (type:String), examplesList (type:object), \r\n## defined variables ##"
           }
         ]
       },
@@ -64,9 +64,9 @@
         ]
       }
     ],
-    "model": "gpt-4o",
+    "type": "PLang.Modules.GenericFunctionBuilder",
     "caching": true,
-    "RawResponse": "```json\n{\n  \"FunctionName\": \"AddToList\",\n  \"Parameters\": [\n    {\n      \"Type\": \"Object\",\n      \"Name\": \"value\",\n      \"Value\": \"%example%\"\n    },\n    {\n      \"Type\": \"List`1<Object>?\",\n      \"Name\": \"listInstance\",\n      \"Value\": \"%examplesList%\"\n    }\n  ],\n  \"ReturnValue\": [\n    {\n      \"Type\": \"List`1\",\n      \"VariableName\": \"%examplesList%\"\n    }\n  ]\n}\n```"
+    "RawResponse": "```json\n{\n\t\"FunctionName\": \"AddToList\",\n\t\"Parameters\": [{\n\t\t\t\"Type\": \"Object\",\n\t\t\t\"Name\": \"value\",\n\t\t\t\"Value\": \"%example%\"\n\t\t},\n\t\t{\n\t\t\t\"Type\": \"List`1<Object>\",\n\t\t\t\"Name\": \"listInstance\",\n\t\t\t\"Value\": \"%examplesList%\"\n\t\t}\n\t],\n\t\"ReturnValues\": [{\n\t\t\"Type\": \"List`1\",\n\t\t\"VariableName\": \"examplesList\"\n\t}]\n}\n```"
   },
   "RunOnBuild": false
 }

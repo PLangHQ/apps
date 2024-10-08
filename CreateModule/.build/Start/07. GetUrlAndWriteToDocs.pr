@@ -11,9 +11,34 @@
         "Type": "Object",
         "Name": "data",
         "Value": null
+      },
+      {
+        "Type": "Boolean",
+        "Name": "doNotSignRequest",
+        "Value": false
+      },
+      {
+        "Type": "Dictionary`2<String, Object>",
+        "Name": "headers",
+        "Value": null
+      },
+      {
+        "Type": "String",
+        "Name": "encoding",
+        "Value": "utf-8"
+      },
+      {
+        "Type": "String",
+        "Name": "contentType",
+        "Value": "application/json"
+      },
+      {
+        "Type": "Int32",
+        "Name": "timeoutInSeconds",
+        "Value": 30
       }
     ],
-    "ReturnValue": [
+    "ReturnValues": [
       {
         "Type": "Object",
         "VariableName": "docs"
@@ -29,8 +54,8 @@
     "presencePenalty": 0.0,
     "maxLength": 4000,
     "llmResponseType": "json",
-    "scheme": "{\"FunctionName\": string,\n\"Parameters\": [{\"Type\": string,\n\"Name\": string,\n\"Value\": object}],\n\"ReturnValue\"?: [{\"Type\": string,\n\"VariableName\": string}] = null}",
-    "type": "PLang.Modules.HttpModule.Builder",
+    "scheme": "{\n\t\"FunctionName\": string,\n\t\"Parameters\": [{\n\t\"Type\": string,\n\t\"Name\": string,\n\t\"Value\"?: object\n}],\n\t\"ReturnValues\"?: [{\n\t\"Type\": string,\n\t\"VariableName\": string\n}] = null\n}",
+    "model": "gpt-4o-2024-08-06",
     "promptMessage": [
       {
         "role": "system",
@@ -41,7 +66,7 @@
           },
           {
             "type": "text",
-            "text": "You MUST respond in JSON, scheme:\r\n {\"FunctionName\": string,\n\"Parameters\": [{\"Type\": string,\n\"Name\": string,\n\"Value\": object}],\n\"ReturnValue\"?: [{\"Type\": string,\n\"VariableName\": string}] = null}"
+            "text": "You MUST respond in JSON, scheme:\r\n {\n\t\"FunctionName\": string,\n\t\"Parameters\": [{\n\t\"Type\": string,\n\t\"Name\": string,\n\t\"Value\"?: object\n}],\n\t\"ReturnValues\"?: [{\n\t\"Type\": string,\n\t\"VariableName\": string\n}] = null\n}"
           }
         ]
       },
@@ -64,9 +89,9 @@
         ]
       }
     ],
-    "model": "gpt-4o",
+    "type": "PLang.Modules.HttpModule.Builder",
     "caching": true,
-    "RawResponse": "```json\n{\n  \"FunctionName\": \"Get\",\n  \"Parameters\": [\n    {\n      \"Type\": \"String\",\n      \"Name\": \"url\",\n      \"Value\": \"%url%\"\n    },\n    {\n      \"Type\": \"Object\",\n      \"Name\": \"data\",\n      \"Value\": null\n    }\n  ],\n  \"ReturnValue\": [\n    {\n      \"Type\": \"Object\",\n      \"VariableName\": \"docs\"\n    }\n  ]\n}\n```"
+    "RawResponse": "```json\n{\n\t\"FunctionName\": \"Get\",\n\t\"Parameters\": [{\n\t\t\"Type\": \"String\",\n\t\t\"Name\": \"url\",\n\t\t\"Value\": \"%url%\"\n\t}, {\n\t\t\"Type\": \"Object\",\n\t\t\"Name\": \"data\",\n\t\t\"Value\": null\n\t}, {\n\t\t\"Type\": \"Boolean\",\n\t\t\"Name\": \"doNotSignRequest\",\n\t\t\"Value\": false\n\t}, {\n\t\t\"Type\": \"Dictionary`2<String, Object>\",\n\t\t\"Name\": \"headers\",\n\t\t\"Value\": null\n\t}, {\n\t\t\"Type\": \"String\",\n\t\t\"Name\": \"encoding\",\n\t\t\"Value\": \"utf-8\"\n\t}, {\n\t\t\"Type\": \"String\",\n\t\t\"Name\": \"contentType\",\n\t\t\"Value\": \"application/json\"\n\t}, {\n\t\t\"Type\": \"Int32\",\n\t\t\"Name\": \"timeoutInSeconds\",\n\t\t\"Value\": 30\n\t}],\n\t\"ReturnValues\": [{\n\t\t\"Type\": \"Object\",\n\t\t\"VariableName\": \"docs\"\n\t}]\n}\n```"
   },
   "RunOnBuild": false
 }

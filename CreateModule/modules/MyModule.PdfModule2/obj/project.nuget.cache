@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "ZAOUZb/Z/7SxWGk2HN+fim2472fSYKUnFJvfGYY8KjAyIWtC43W9lGqq10yBHKLGLCkfVp/ZdleCgRAdX57CfA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Ingi Gauti\\source\\repos\\apps\\CreateModule\\modules\\MyModule.PdfModule2\\MyModule.PdfModule2.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Ingi Gauti\\.nuget\\packages\\pdfpig\\0.1.8\\pdfpig.0.1.8.nupkg.sha512"
+  ],
+  "logs": []
+}
