@@ -1,21 +1,18 @@
 {
   "Action": {
     "Namespace": "PLangGeneratedCode",
-    "Name": "InsertReferenceInProjectFile",
-    "Code": "\nusing System;\nusing System.Text;\n\nnamespace PLangGeneratedCode\n{\n    public static class InsertReferenceInProjectFile\n    {\n        public static void ExecutePlangCode(dynamic? runtimeIdentifier, string refProjectFile, out string newProjectFile)\n        {\n            if (runtimeIdentifier == null)\n            {\n                throw new Exception(\"Runtime identifier is required.\");\n            }\n\n            if (string.IsNullOrEmpty(refProjectFile))\n            {\n                throw new Exception(\"Reference project file content is required.\");\n            }\n\n            string runtimeIdentifierString = Convert.ToString(runtimeIdentifier);\n            if (string.IsNullOrEmpty(runtimeIdentifierString))\n            {\n                throw new Exception(\"Runtime identifier must be a valid string.\");\n            }\n\n            string closingTag = \"</PropertyGroup>\";\n            int index = refProjectFile.IndexOf(closingTag, StringComparison.Ordinal);\n            if (index == -1)\n            {\n                throw new Exception(\"The reference project file does not contain a closing </PropertyGroup> tag.\");\n            }\n\n            StringBuilder sb = new StringBuilder(refProjectFile);\n            sb.Insert(index, runtimeIdentifierString);\n            newProjectFile = sb.ToString();\n        }\n    }\n}\n",
-    "Using": [
-      "System",
-      "System.Text"
-    ],
+    "Name": "InsertRuntimeIdentifier",
+    "Code": "\nnamespace PLangGeneratedCode\n{\n    public static class InsertRuntimeIdentifier\n    {\n        public static void ExecutePlangCode(string runtimeIdentifier, string projectFile, out string newProjectFile)\n        {\n            if (string.IsNullOrEmpty(runtimeIdentifier))\n            {\n                throw new Exception(\"Runtime identifier is required.\");\n            }\n\n            if (string.IsNullOrEmpty(projectFile))\n            {\n                throw new Exception(\"Project file content is required.\");\n            }\n\n            const string propertyGroupEndTag = \"</PropertyGroup>\";\n            int insertPosition = projectFile.IndexOf(propertyGroupEndTag);\n\n            if (insertPosition == -1)\n            {\n                throw new Exception(\"The project file does not contain a closing PropertyGroup tag.\");\n            }\n\n            newProjectFile = projectFile.Insert(insertPosition, runtimeIdentifier);\n        }\n    }\n}\n",
+    "Using": null,
     "InputParameters": [
       {
         "VariableName": "%runtimeIdentifier%",
         "ParameterName": "runtimeIdentifier",
-        "ParameterType": "dynamic?"
+        "ParameterType": "string"
       },
       {
-        "VariableName": "%refProjectFile%",
-        "ParameterName": "refProjectFile",
+        "VariableName": "%projectFile%",
+        "ParameterName": "projectFile",
         "ParameterType": "string"
       }
     ],
@@ -32,7 +29,7 @@
     "GoalToCallOnFalseParameters": null,
     "ServicesAssembly": []
   },
-  "Text": "[code] insert this %runtimeIdentifier% before \"</PropertyGroup>\" in %refProjectFile%,\n        do not use xml object, just string manipulation\n        write to %newProjectFile%",
+  "Text": "[code] insert this %runtimeIdentifier% before \"</PropertyGroup>\" in %projectFile%,\n        do not use xml object, just string manipulation\n        write to %newProjectFile%",
   "Reload": false,
   "LlmRequest": {
     "temperature": 0.0,
@@ -42,14 +39,14 @@
     "maxLength": 4000,
     "llmResponseType": "csharp",
     "scheme": "{\n\t\"OutParameters\"?: string[] = null,\n\t\"Namespace\": string,\n\t\"Name\": string,\n\t\"Using\"?: string[] = null,\n\t\"Assemblies\"?: string[] = null,\n\t\"InputParameters\"?: string[] = null\n}",
-    "model": "gpt-4o-2024-08-06",
+    "model": "gpt-4o",
     "promptMessage": [
       {
         "role": "system",
         "content": [
           {
             "type": "text",
-            "text": "Act as a senior C# developer, that converts the user statement into a C#(Version. 9) code. \r\n\r\n## Rules ##\r\n- Generate static class. The code generated should have 1 method with the static method named ExecutePlangCode and return void. \r\n- A variable in user intent is defined by starting and ending %.\r\n- Variables defined in the user intent can be passed into the ExecutePlangCode function by value, but only if defined by user intent. \r\n- Variable names passed to ExecutePlangCode function MUST be unmodified from the user statement\r\n- The code will not be modified after you generate it.\r\n- If condition fails, throw Exception, unless defined otherwise by user command\r\n- Exception message should be for non-technical user\r\n- ALWAYS use long or long? instead of int or int?\r\n- Use long.TryParse When validating if variable is long\r\n- Do not reference any DTO classes. Choose the type that seems to fit best when not defined by user input. Use dynamic? if complex object is needed.\r\n- Strings are defined with double quote (\")\r\n- Any class from System.IO, should be replaced with PLang.SafeFileSystem.PLangFileSystem. It contains same classes and methods. \r\n- If PLangFileSystem is needed, add parameter PLang.SafeFileSystem.PLangFileSystem fileSystem into ExecutePlangCode method, but ONLY if needed. Assembly for PLangFileSystem is already include, do not list it in Assemblies response.\r\n- System.IO.Path needs to be mapped to PLang.SafeFileSystem.Path which DOES not contain static methods, e.g. Path.GetFileName => fileSystem.Path.GetFileName. fileSystem IS provided as parameter as part of ExecutePlangCode method \r\n- When condition is checking if variable is null, the variable needs to be defined with ? in the parameter, e.g. ExecutePlangCode(dynamic? variable)\r\n- Variables that are injected into ExecutePlangCode method and contain dot(.), then replace dot(.) with the letter α in the parameter list. e.g. %user.id% to userαid, %product.items[0].title% to productαitemsα0ααtitle, %list[1]% to listα1α\r\n- Keep underscore in variables if defined by user, e.g.  if %data.user_id%(string) is null => ExecutePlangCode(string? dataαuser_id)\r\n- Consider top security measures when generating code and validate code\r\n- When checking type and converting variables to type, use Convert.ChangeType method\r\n- When user defines assembly or using, include them in your answer\r\n- append @ sign for reserved variable in C#\r\n## Rules ##\r\n\r\n## Response information ##\r\n- Namespace: MUST be PLangGeneratedCode\r\n- Name: is name of class, it should represent the intent of what the code is doing. \r\n- Name of class cannot be: InsertReferenceInProjectFile\n\r\n- Using: must include namespaces that are needed to compile code.\r\n- Assemblies: dll to reference to compile using Roslyn\r\n- InputParameters: InputParameters MUST match parameter count sent to ExecutePlangCode. Keep format as is defined by user, e.g. user: 'convert %name% to upper, write to %nameUpper%' => InputParameters would be [\"%name%\"]. user: 'check %items.count% > 0 and %isValid% and %!error.status%, write \"yes\" to %answer%' => InputParameters would be [\"%list[0]%\", \"%isValid%\", \"%!error.status%\"]\r\n- OutParameters: keep as is defined by user, e.g. user: 'is leap year, write \"yes\" to %answer% => OutParameters would be [\"%answer%\"]\r\n## Response information ##\r\n"
+            "text": "Act as a senior C# developer, that converts the user statement into a C#(Version. 9) code. \r\n\r\n## Rules ##\r\n- Generate static class. The code generated should have 1 method with the static method named ExecutePlangCode and return void. \r\n- A variable in user intent is defined by starting and ending %.\r\n- Variables defined in the user intent can be passed into the ExecutePlangCode function by value, but only if defined by user intent. \r\n- Variable names passed to ExecutePlangCode function MUST be unmodified from the user statement\r\n- The code will not be modified after you generate it.\r\n- If condition fails, throw Exception, unless defined otherwise by user command\r\n- Exception message should be for non-technical user\r\n- ALWAYS use long or long? instead of int or int?\r\n- Use long.TryParse When validating if variable is long\r\n- Do not reference any DTO classes. Choose the type that seems to fit best when not defined by user input. Use dynamic? if complex object is needed.\r\n- Strings are defined with double quote (\")\r\n- Any class from System.IO, should be replaced with PLang.SafeFileSystem.PLangFileSystem. It contains same classes and methods. \r\n- If PLangFileSystem is needed, add parameter PLang.SafeFileSystem.PLangFileSystem fileSystem into ExecutePlangCode method, but ONLY if needed. Assembly for PLangFileSystem is already include, do not list it in Assemblies response.\r\n- System.IO.Path needs to be mapped to PLang.SafeFileSystem.Path which DOES not contain static methods, e.g. Path.GetFileName => fileSystem.Path.GetFileName. fileSystem IS provided as parameter as part of ExecutePlangCode method \r\n- When condition is checking if variable is null, the variable needs to be defined with ? in the parameter, e.g. ExecutePlangCode(dynamic? variable)\r\n- Variables that are injected into ExecutePlangCode method and contain dot(.), then replace dot(.) with the letter α in the parameter list. e.g. %user.id% to userαid, %product.items[0].title% to productαitemsα0ααtitle, %list[1]% to listα1α\r\n- Keep underscore in variables if defined by user, e.g.  if %data.user_id%(string) is null => ExecutePlangCode(string? dataαuser_id)\r\n- Consider top security measures when generating code and validate code\r\n- When checking type and converting variables to type, use Convert.ChangeType method\r\n- When user defines assembly or using, include them in your answer\r\n- append @ sign for reserved variable in C#\r\n## Rules ##\r\n\r\n## Response information ##\r\n- Namespace: MUST be PLangGeneratedCode\r\n- Name: is name of class, it should represent the intent of what the code is doing. \r\n- Name of class cannot be: InsertReferenceInProjectFile, InsertStringInFile, InsertStringInFile\n\r\n- Using: must include namespaces that are needed to compile code.\r\n- Assemblies: dll to reference to compile using Roslyn\r\n- InputParameters: InputParameters MUST match parameter count sent to ExecutePlangCode. Keep format as is defined by user, e.g. user: 'convert %name% to upper, write to %nameUpper%' => InputParameters would be [\"%name%\"]. user: 'check %items.count% > 0 and %isValid% and %!error.status%, write \"yes\" to %answer%' => InputParameters would be [\"%list[0]%\", \"%isValid%\", \"%!error.status%\"]\r\n- OutParameters: keep as is defined by user, e.g. user: 'is leap year, write \"yes\" to %answer% => OutParameters would be [\"%answer%\"]\r\n## Response information ##\r\n"
           },
           {
             "type": "text",
@@ -62,7 +59,7 @@
         "content": [
           {
             "type": "text",
-            "text": "## defined variables ##\r\nruntimeIdentifier (type:object), refProjectFile (type:string), newProjectFile (type:object), \r\n## defined variables ##"
+            "text": "## defined variables ##\r\nruntimeIdentifier (type:object), projectFile (type:object), newProjectFile (type:object), \r\n## defined variables ##"
           },
           {
             "type": "text",
@@ -75,14 +72,14 @@
         "content": [
           {
             "type": "text",
-            "text": "[code] insert this %runtimeIdentifier% before \"</PropertyGroup>\" in %refProjectFile%,\n        do not use xml object, just string manipulation\n        write to %newProjectFile%"
+            "text": "[code] insert this %runtimeIdentifier% before \"</PropertyGroup>\" in %projectFile%,\n        do not use xml object, just string manipulation\n        write to %newProjectFile%"
           }
         ]
       }
     ],
     "type": "PLang.Modules.CodeModule.Builder",
     "caching": true,
-    "RawResponse": "```csharp\nusing System;\nusing System.Text;\n\nnamespace PLangGeneratedCode\n{\n    public static class InsertReferenceInProjectFile\n    {\n        public static void ExecutePlangCode(dynamic? runtimeIdentifier, string refProjectFile, out string newProjectFile)\n        {\n            if (runtimeIdentifier == null)\n            {\n                throw new Exception(\"Runtime identifier is required.\");\n            }\n\n            if (string.IsNullOrEmpty(refProjectFile))\n            {\n                throw new Exception(\"Reference project file content is required.\");\n            }\n\n            string runtimeIdentifierString = Convert.ToString(runtimeIdentifier);\n            if (string.IsNullOrEmpty(runtimeIdentifierString))\n            {\n                throw new Exception(\"Runtime identifier must be a valid string.\");\n            }\n\n            string closingTag = \"</PropertyGroup>\";\n            int index = refProjectFile.IndexOf(closingTag, StringComparison.Ordinal);\n            if (index == -1)\n            {\n                throw new Exception(\"The reference project file does not contain a closing </PropertyGroup> tag.\");\n            }\n\n            StringBuilder sb = new StringBuilder(refProjectFile);\n            sb.Insert(index, runtimeIdentifierString);\n            newProjectFile = sb.ToString();\n        }\n    }\n}\n```\n\n```json\n{\n    \"OutParameters\": [\"%newProjectFile%\"],\n    \"Namespace\": \"PLangGeneratedCode\",\n    \"Name\": \"InsertReferenceInProjectFile\",\n    \"Using\": [\"System\", \"System.Text\"],\n    \"InputParameters\": [\"%runtimeIdentifier%\", \"%refProjectFile%\"]\n}\n```"
+    "RawResponse": "```csharp\nnamespace PLangGeneratedCode\n{\n    public static class InsertRuntimeIdentifier\n    {\n        public static void ExecutePlangCode(string runtimeIdentifier, string projectFile, out string newProjectFile)\n        {\n            if (string.IsNullOrEmpty(runtimeIdentifier))\n            {\n                throw new Exception(\"Runtime identifier is required.\");\n            }\n\n            if (string.IsNullOrEmpty(projectFile))\n            {\n                throw new Exception(\"Project file content is required.\");\n            }\n\n            const string propertyGroupEndTag = \"</PropertyGroup>\";\n            int insertPosition = projectFile.IndexOf(propertyGroupEndTag);\n\n            if (insertPosition == -1)\n            {\n                throw new Exception(\"The project file does not contain a closing PropertyGroup tag.\");\n            }\n\n            newProjectFile = projectFile.Insert(insertPosition, runtimeIdentifier);\n        }\n    }\n}\n```\n```json\n{\n    \"OutParameters\": [\"%newProjectFile%\"],\n    \"Namespace\": \"PLangGeneratedCode\",\n    \"Name\": \"InsertRuntimeIdentifier\",\n    \"InputParameters\": [\"%runtimeIdentifier%\", \"%projectFile%\"]\n}\n```"
   },
   "RunOnBuild": false
 }

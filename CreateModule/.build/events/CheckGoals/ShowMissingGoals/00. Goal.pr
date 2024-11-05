@@ -71,7 +71,8 @@
       },
       "EventBinding": null,
       "IsEvent": false,
-      "Hash": "3bf1d1e15877ea5ffcf2699a001d5c9b8a7bde4c4c294fff002fd9c9399984b3"
+      "Hash": "d5387cf720370c404d605d44c38a3d11df1679d62c819a03200b0bde6fec68ba",
+      "BuilderVersion": null
     }
   ],
   "SubGoals": [],
@@ -82,11 +83,11 @@
   "RelativeGoalFolderPath": "\\events",
   "RelativePrPath": ".build\\events\\CheckGoals\\ShowMissingGoals\\00. Goal.pr",
   "RelativePrFolderPath": ".build\\events\\CheckGoals\\ShowMissingGoals",
-  "BuilderVersion": "0.1.15.2",
+  "BuilderVersion": "1.0.0.0",
   "GoalInfo": null,
   "Injections": [],
   "Signature": null,
-  "Hash": "68e7f2b74aea42e511df7a03163d8c5c961679eeb14c53277c79db99211d61fd",
+  "Hash": "9943bb5175470eb5a8c98b9aad472ccbcad2b69bf58ea8bbe748681e4959ffc4",
   "IncomingVariablesRequired": [
     "missingGoals"
   ]

@@ -71,7 +71,8 @@
       },
       "EventBinding": null,
       "IsEvent": false,
-      "Hash": "df3671c4dda2227268e684557f7993848e0349832f9c7ad5704a21a989a6691d"
+      "Hash": "944c10a75e64d6742715165614c8cbe511dd01f922cd2c92568659ea12557908",
+      "BuilderVersion": null
     },
     {
       "Text": "set string var %goalToCall% = %stepPr.Action.Parameters[1].Value.ToString().Replace(\"!\", \"\")%",
@@ -141,7 +142,8 @@
       },
       "EventBinding": null,
       "IsEvent": false,
-      "Hash": "3aae5a7684a1eb0a1f70d9313c122768a428bbb8091abbdbdab3a996f4fad067"
+      "Hash": "60a6fa05dc79358cd0588813c4a297365f950d5ae671e3e86c522220c350c03d",
+      "BuilderVersion": null
     },
     {
       "Text": "if %goalToCall% != \"String\" then",
@@ -211,7 +213,8 @@
       },
       "EventBinding": null,
       "IsEvent": false,
-      "Hash": "72f26222292f843eea33ddf23533b2ff24bc178da06107d19e928705dd593d38"
+      "Hash": "cf860ef1f1c86a70a9aff50c8a7a68eaae4b19b9481b3472396685165fef7e8f",
+      "BuilderVersion": null
     },
     {
       "Text": "search in /.build/ for all dirs with name '%goalToCall%' , write to %dirs%",
@@ -281,7 +284,8 @@
       },
       "EventBinding": null,
       "IsEvent": false,
-      "Hash": "e907e3cbeb32e1073b6a422a80cd12ebf2637853784622557a4d458a6e47cac3"
+      "Hash": "b31f98b1180b407fe80d71e53ce6a89ba7c26ace23303b32108e1d00f57eb1be",
+      "BuilderVersion": null
     },
     {
       "Text": "create list %missingGoals% = []",
@@ -351,7 +355,8 @@
       },
       "EventBinding": null,
       "IsEvent": false,
-      "Hash": "75af3145122cf54abd9e4586f3d866fa842ceaa734be9c59f9e01abc3e59bcd9"
+      "Hash": "2e0685e396a3d97d19c370aa491f5e598a8936aa67d131737e3101a40addb4a7",
+      "BuilderVersion": null
     },
     {
       "Text": "if %dirs.Length% == 0 then",
@@ -421,7 +426,8 @@
       },
       "EventBinding": null,
       "IsEvent": false,
-      "Hash": "6ced2e1cb74ebb4bd7fcb7b7518d37ef3d01f2fd216c082122b7bd6450848178"
+      "Hash": "ce51f694a741b7e910f18900b2f71c0b845050ef92a3578d32fcff74923bcc93",
+      "BuilderVersion": null
     },
     {
       "Text": "append to %missingGoals% = '%goal.GoalName% - %step.Text% - Missing goal: %goalToCall%'",
@@ -491,7 +497,8 @@
       },
       "EventBinding": null,
       "IsEvent": false,
-      "Hash": "30febb8ed93070db24de4fed5007426e8ce22108cc96b2cc8842c4ad0caeff1c"
+      "Hash": "674a67ac98a72a9c93fc54519b56cf0c15f078facd60f31df7a5f0f977b7e715",
+      "BuilderVersion": null
     }
   ],
   "SubGoals": [],
@@ -502,11 +509,11 @@
   "RelativeGoalFolderPath": "\\events",
   "RelativePrPath": ".build\\events\\CheckGoals\\CheckCallingGoal\\00. Goal.pr",
   "RelativePrFolderPath": ".build\\events\\CheckGoals\\CheckCallingGoal",
-  "BuilderVersion": "0.1.15.2",
+  "BuilderVersion": "1.0.0.0",
   "GoalInfo": null,
   "Injections": [],
   "Signature": null,
-  "Hash": "8e422e9b5a0c7d1bfa5992cc702c527451841ace21017e69f3fd57ab653f830f",
+  "Hash": "332d66f8b84d0bc94b88d981ad1661a3835e8d6fbb0dea1d81e34d3d1f4ae24c",
   "IncomingVariablesRequired": [
     "step.RelativePrPath"
   ]

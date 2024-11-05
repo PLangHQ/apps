@@ -71,7 +71,8 @@
       },
       "EventBinding": null,
       "IsEvent": false,
-      "Hash": "04a4f37688d7c25ed194963b363eb31c5f2e3a0c61ce9f29f72c0c409a5f5da2"
+      "Hash": "786198ded892a526d2749d58fc45f45484af09f3613328b36fd87497ebe0cc63",
+      "BuilderVersion": null
     }
   ],
   "SubGoals": [],
@@ -82,11 +83,11 @@
   "RelativeGoalFolderPath": "\\events\\external\\plang\\runtime",
   "RelativePrPath": ".build\\events\\external\\plang\\runtime\\SendDebug\\00. Goal.pr",
   "RelativePrFolderPath": ".build\\events\\external\\plang\\runtime\\SendDebug",
-  "BuilderVersion": "0.1.15.2",
+  "BuilderVersion": "1.0.0.0",
   "GoalInfo": null,
   "Injections": [],
   "Signature": null,
-  "Hash": "b3bba199bf963a131dc37b2b67fd11c48f11a3d38c3258a8360f94237acbcf1b",
+  "Hash": "c5534cb8cb69bf90e3240faab7e242146d7c99915646de2875f1cf3d6fa8a9b4",
   "IncomingVariablesRequired": [
     "Goal",
     "Step",

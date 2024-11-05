@@ -22,7 +22,7 @@
       "CancellationHandler": null,
       "Custom": {},
       "Number": 0,
-      "LineNumber": 24,
+      "LineNumber": 39,
       "LlmRequest": {
         "temperature": 0.0,
         "top_p": 0.0,
@@ -71,7 +71,8 @@
       },
       "EventBinding": null,
       "IsEvent": false,
-      "Hash": "2e78228c61adc3c252d84da65fd88ac6ec0e402972f8e71ab1764d2443375361"
+      "Hash": "97220ffb3aa1ecace85807982d89ed20853da72bb080ccbc0f21d9dc769c8cf1",
+      "BuilderVersion": null
     },
     {
       "Text": "if %example% != \"D\" (case insensitive) then",
@@ -92,7 +93,7 @@
       "CancellationHandler": null,
       "Custom": {},
       "Number": 1,
-      "LineNumber": 25,
+      "LineNumber": 40,
       "LlmRequest": {
         "temperature": 0.0,
         "top_p": 0.0,
@@ -141,7 +142,8 @@
       },
       "EventBinding": null,
       "IsEvent": false,
-      "Hash": "a36848a2d7eebab42e90a5862f7339a5676fca5fc43042a8d59a4f353267aabf"
+      "Hash": "5ebc88fe45da1346074a365edb1c7dee49d0caec2b86a45d643851de3c692c1a",
+      "BuilderVersion": null
     },
     {
       "Text": "add %example% to %examplesList%(list)",
@@ -162,7 +164,7 @@
       "CancellationHandler": null,
       "Custom": {},
       "Number": 2,
-      "LineNumber": 26,
+      "LineNumber": 41,
       "LlmRequest": {
         "temperature": 0.0,
         "top_p": 0.0,
@@ -211,7 +213,8 @@
       },
       "EventBinding": null,
       "IsEvent": false,
-      "Hash": "a025f522a940488b94040b37453798a660fc0c8839d12db7569264749433aa86"
+      "Hash": "485accd7e5eb058c5a52d4eef07ccc84bfd5220a8433d3ac5d975fe21f9b1aa3",
+      "BuilderVersion": null
     },
     {
       "Text": "call goal AskForExamples",
@@ -232,7 +235,7 @@
       "CancellationHandler": null,
       "Custom": {},
       "Number": 3,
-      "LineNumber": 27,
+      "LineNumber": 42,
       "LlmRequest": {
         "temperature": 0.0,
         "top_p": 0.0,
@@ -281,7 +284,8 @@
       },
       "EventBinding": null,
       "IsEvent": false,
-      "Hash": "f0659ebec16bf241f8679e0f088f21e986ec85af4c79a0706eec83b60ed13ad3"
+      "Hash": "0b90c704194e7b702460497c08bba340f5477cf93f0894120be3aed67bdd7a67",
+      "BuilderVersion": null
     }
   ],
   "SubGoals": [],
@@ -292,11 +296,11 @@
   "RelativeGoalFolderPath": "\\",
   "RelativePrPath": ".build\\Start\\AskForExamples\\00. Goal.pr",
   "RelativePrFolderPath": ".build\\Start\\AskForExamples",
-  "BuilderVersion": "0.1.15.2",
+  "BuilderVersion": "1.0.0.0",
   "GoalInfo": null,
   "Injections": [],
   "Signature": null,
-  "Hash": "63e431a27d66e28fff01cd0a9a8cda70b148116ab467809ab1d8e9d7a3c92a2a",
+  "Hash": "d4b7760dbe4224d24fae65379195275ad3d80dd16b614bd4629c0eb755be24c0",
   "IncomingVariablesRequired": [
     "example",
     "examplesList"

@@ -71,7 +71,8 @@
       },
       "EventBinding": null,
       "IsEvent": false,
-      "Hash": "8966e3615d6ddaad0484790a74d349a14f4b2b80af0ab7725c0de24b0e549d69"
+      "Hash": "c17f2674baf042b38633c38b5fa9820ba395ede7246a0c13b0c195596bc41401",
+      "BuilderVersion": null
     }
   ],
   "SubGoals": [],
@@ -82,11 +83,11 @@
   "RelativeGoalFolderPath": "\\events\\external\\plang\\builder",
   "RelativePrPath": ".build\\events\\external\\plang\\builder\\CheckGoals\\CheckStep\\00. Goal.pr",
   "RelativePrFolderPath": ".build\\events\\external\\plang\\builder\\CheckGoals\\CheckStep",
-  "BuilderVersion": "0.1.15.2",
+  "BuilderVersion": "1.0.0.0",
   "GoalInfo": null,
   "Injections": [],
   "Signature": null,
-  "Hash": "8a0d4f9d36da6169ca201865520a742b6bb066fd73de119097e44ffc28255276",
+  "Hash": "5647a4b374468db8afa06efff81ae9899ab96435c6fd5f13258ddb2cc86a2e2f",
   "IncomingVariablesRequired": [
     "step.ModuleType"
   ]

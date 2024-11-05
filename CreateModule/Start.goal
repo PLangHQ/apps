@@ -1,5 +1,6 @@
 Start
 - write out "Make sure to have dotnet in your PATH variable!"
+- set %namespace% = %Settings.MyNamespace% (Settings description: what should your namespace be, this can be your name or company name)
 - Ask "What is the module name?", write to %moduleName%
 - Ask "What should the module do? Just general description, you will write examples next", write to %description%
 - call goal AskForExamples
@@ -13,18 +14,26 @@ Start
     user: "ModuleName: %moduleName%, Description:%description%\n Plang Examples: %examplesList%"
     model: 'gpt-4o'
     scheme: {needFileSystem:bool, nugetPackages:string[], csharpCode:string, plangCode:string}
-- write %csharpCode% to "modules/MyModule.%moduleName%/Program.cs"
-- write %plangCode% to "modules/MyModule.%moduleName%/Start.goal"
-- read file llm/unitTestSystem.txt, write to %system%   
+- write %csharpCode% to "/.generated_modules/%namespace%.%moduleName%/src/Program.cs"
+- write %plangCode% to "/.generated_modules/%namespace%.%moduleName%/examples/Start.goal"
+- read file llm/unitTestSystem.txt, load vars, write to %system%   
 - [llm] system: %system%
         user: %plangCode%
         scheme: {charpTestCode:string}
-- write %csharpCode% to "modules/MyModule.%moduleName%/Test.cs"        
-- run terminal, dotnet new classlib -n "MyModule.%moduleName%" --force, working dir "modules/"
-- delete file "modules/MyModule.%moduleName%/Class1.cs"
+- write %charpTestCode% to "/.generated_modules/%namespace%.%moduleName%/tests/ProgramTest.cs"    
+- run dotnet new sln -n %moduleName%, working dir "/.generated_modules/%namespace%.%moduleName%"
+- run terminal, dotnet new classlib --force, working dir "/.generated_modules/%namespace%.%moduleName%/src"
+- run terminal dotnet new mstest --force , working dir "/.generated_modules/%namespace%.%moduleName%/tests"
+- dotnet sln add "src/src.csproj", 
+    working dir "/.generated_modules/%namespace%.%moduleName%"
+- dotnet sln add "tests/tests.csproj", 
+    working dir "/.generated_modules/%namespace%.%moduleName%"
+- dotnet add "/.generated_modules/%namespace%.%moduleName%/tests/tests.csproj" reference "/.generated_modules/%namespace%.%moduleName%/src/src.csproj"
+- delete file "/.generated_modules/%namespace%.%moduleName%/src/Class1.cs"
+- delete file "/.generated_modules/%namespace%.%moduleName%/tests/UnitTest1.cs"
 - call goal AddPlangLibrary
 - foreach %nugetPackages% call goal AddNuget
-- call goal BuildCSharpCode
+- write out "You module is now ready, you will need to adjust the C# code to fit your usage"
 
 AskForExamples
 - Ask "Can you give me example of step? type in D when you are done", write to %example%
@@ -34,24 +43,19 @@ AskForExamples
 
 AddNuget
 - write out 'Adding nuget packget %item%'
-- run terminal, dotnet add package %item%, working dir "modules/MyModule.%moduleName%/"
+- run terminal, dotnet add package %item%, working dir "/.generated_modules/%namespace%.%moduleName%/src"
 
 AddPlangLibrary
-- run terminal, dotnet add package "PlangLibrary", working dir "modules/MyModule.%moduleName%/"
-- read "modules/MyModule.%moduleName%/MyModule.%moduleName%.csproj", write to %projectFile%
+- run terminal, dotnet add package "PlangLibrary", working dir "/.generated_modules/%namespace%.%moduleName%/src"
+- run terminal, dotnet add package "PlangLibrary.Tests", working dir "/.generated_modules/%namespace%.%moduleName%/tests"
+- read "/.generated_modules/%namespace%.%moduleName%/src/src.csproj", write to %projectFile%
 - set %runtimeIdentifier% = "<RuntimeIdentifier Condition=" '$(RuntimeIdentifier)' == '' and '$(OS)' == 'Windows_NT' ">win-x64</RuntimeIdentifier>
     <RuntimeIdentifier Condition=" '$(RuntimeIdentifier)' == '' and '$(OS)' == 'Linux' ">linux-x64</RuntimeIdentifier>
     <RuntimeIdentifier Condition=" '$(RuntimeIdentifier)' == '' and '$(OS)' == 'OSX' ">osx-x64</RuntimeIdentifier>
+    <AssemblyName>%namespace%.%moduleName%</AssemblyName>
+    <IsPackable>true</IsPackable>
     "
-- [code] insert this %runtimeIdentifier% before "</PropertyGroup>" in %refProjectFile%, 
+- [code] insert this %runtimeIdentifier% before "</PropertyGroup>" in %projectFile%, 
         do not use xml object, just string manipulation
         write to %newProjectFile%
-- write %newProjectFile% to "modules/MyModule.%moduleName%/MyModule.%moduleName%.csproj"
-
-BuildCSharpCode
-- ask 'Will try to build C# Code.\n\nIf success I can install it into your plang project.\nWhere is you project located that you want to use the module?'
-    write to %path%
-- run terminal, dotnet build, working dir "modules/MyModule.%moduleName%/"
-    set errorOutputVariable=%error%
-- if %error% is emtpy and %path% is not emtpy then
-    - copy "modules/MyModule.%moduleName%/bin/Debug/"
+- write %newProjectFile% to "/.generated_modules/%namespace%.%moduleName%/src/src.csproj"

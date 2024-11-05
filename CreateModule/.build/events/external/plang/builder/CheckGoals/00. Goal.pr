@@ -71,7 +71,8 @@
       },
       "EventBinding": null,
       "IsEvent": false,
-      "Hash": "919cb6b37bbac03d82763360df02cac1ac71c90cc1e429657c509d3b5d4dcf68"
+      "Hash": "78611ad8f973406af6edb1d5cfb6948d9f09e017a9086e082ab73e5ca9531534",
+      "BuilderVersion": null
     },
     {
       "Text": "get content of all '00. Goal.pr' files, in ../, include subfolder, write into %goalFiles%",
@@ -141,7 +142,8 @@
       },
       "EventBinding": null,
       "IsEvent": false,
-      "Hash": "758cd9ea56c6880fcc67ae9a9e2908f7ae5ea32aa7c190f0fa136e423fe17de7"
+      "Hash": "f8ffb49d3139e9ac2323dc8fc1c5e953fafaaee9fb277f1dc8484f42b4477724",
+      "BuilderVersion": null
     },
     {
       "Text": "go throug %goalFiles%, call !CheckGoal item=%goal%",
@@ -211,7 +213,8 @@
       },
       "EventBinding": null,
       "IsEvent": false,
-      "Hash": "4ea7e8d91b3fb350cfd40fca566d074cb8ee6200fd8920ad193ab5afd79446d1"
+      "Hash": "9c08993cff59e3a5338b3061027088c7a880c1786843d1755d2e4ec4d6df224f",
+      "BuilderVersion": null
     },
     {
       "Text": "if %missingGoals%(list) is not empty then, call ShowMissingGoals, else ShowAllValid",
@@ -281,7 +284,8 @@
       },
       "EventBinding": null,
       "IsEvent": false,
-      "Hash": "70d69002ea9af904f63e2a3dc9a909011001d652cd56be0e60483d5bf6d41788"
+      "Hash": "595041547b5766347f9b041e58cbb29b1f85a18331f2d930b86c5b91cadc214c",
+      "BuilderVersion": null
     }
   ],
   "SubGoals": [
@@ -298,11 +302,11 @@
   "RelativeGoalFolderPath": "\\events\\external\\plang\\builder",
   "RelativePrPath": ".build\\events\\external\\plang\\builder\\CheckGoals\\00. Goal.pr",
   "RelativePrFolderPath": ".build\\events\\external\\plang\\builder\\CheckGoals",
-  "BuilderVersion": "0.1.15.2",
+  "BuilderVersion": "1.0.0.0",
   "GoalInfo": null,
   "Injections": [],
   "Signature": null,
-  "Hash": "a667ae2d22fc1e621c2425fb7f883362c3c9f9df3c987a834b21b5c4b44f99bb",
+  "Hash": "f0d7cfdc22daa2e915a18587036600d00b28bdcaa8f69dcafa48ee925e8545d9",
   "IncomingVariablesRequired": [
     "goal"
   ]

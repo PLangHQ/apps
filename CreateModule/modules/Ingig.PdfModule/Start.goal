@@ -1,6 +1,0 @@
-﻿Start
-- read file.pdf into %content%
-- read page 1 from file.pdf, write into %page%
-- read form data from file.pdf, write into %formData%
-- get page count from file.pdf, write to %pageCount%
-- write %content% to file.pdf

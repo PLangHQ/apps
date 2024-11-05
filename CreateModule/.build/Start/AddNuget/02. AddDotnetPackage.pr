@@ -19,12 +19,32 @@
       {
         "Type": "String",
         "Name": "pathToWorkingDirInTerminal",
-        "Value": "modules/MyModule.%moduleName%/"
+        "Value": "/.generated_modules/%namespace%.%moduleName%/src"
+      },
+      {
+        "Type": "String",
+        "Name": "dataOutputVariable",
+        "Value": null
+      },
+      {
+        "Type": "String",
+        "Name": "errorDebugInfoOutputVariable",
+        "Value": null
+      },
+      {
+        "Type": "String",
+        "Name": "dataStreamDelta",
+        "Value": null
+      },
+      {
+        "Type": "String",
+        "Name": "debugErrorStreamDelta",
+        "Value": null
       }
     ],
     "ReturnValues": null
   },
-  "Text": "run terminal, dotnet add package %item%, working dir \"modules/MyModule.%moduleName%/\"",
+  "Text": "run terminal, dotnet add package %item%, working dir \"/.generated_modules/%namespace%.%moduleName%/src\"",
   "Reload": false,
   "LlmRequest": {
     "temperature": 0.0,
@@ -34,7 +54,7 @@
     "maxLength": 4000,
     "llmResponseType": "json",
     "scheme": "{\n\t\"FunctionName\": string,\n\t\"Parameters\": [{\n\t\"Type\": string,\n\t\"Name\": string,\n\t\"Value\"?: object\n}],\n\t\"ReturnValues\"?: [{\n\t\"Type\": string,\n\t\"VariableName\": string\n}] = null\n}",
-    "model": "gpt-4o-2024-08-06",
+    "model": "gpt-4o",
     "promptMessage": [
       {
         "role": "system",
@@ -54,7 +74,7 @@
         "content": [
           {
             "type": "text",
-            "text": "## functions available starts ##\r\nRead(String variableName)  : void\nRunTerminal(String appExecutableName, List`1<String>? parameters, String? pathToWorkingDirInTerminal, String? dataOutputVariable = \"data\", String? errorDebugInfoOutputVariable = \"error\", String? dataStreamDelta, String? debugErrorStreamDelta)  : ReturnDictionary`2\r\n## functions available ends ##\r\n## defined variables ##\r\nitem (type:object), moduleName (type:String), \r\n## defined variables ##"
+            "text": "## functions available starts ##\r\nRead(String variableName)  : void\nRunTerminal(String appExecutableName, List`1<String>? parameters, String? pathToWorkingDirInTerminal, String? dataOutputVariable, String? errorDebugInfoOutputVariable, String? dataStreamDelta, String? debugErrorStreamDelta)  : void\r\n## functions available ends ##\r\n## defined variables ##\r\nitem (type:object), namespace (type:object), moduleName (type:String), \r\n## defined variables ##"
           },
           {
             "type": "text",
@@ -67,14 +87,14 @@
         "content": [
           {
             "type": "text",
-            "text": "run terminal, dotnet add package %item%, working dir \"modules/MyModule.%moduleName%/\""
+            "text": "run terminal, dotnet add package %item%, working dir \"/.generated_modules/%namespace%.%moduleName%/src\""
           }
         ]
       }
     ],
     "type": "PLang.Modules.TerminalModule.Builder",
     "caching": true,
-    "RawResponse": "```json\n{\n\t\"FunctionName\": \"RunTerminal\",\n\t\"Parameters\": [\n\t\t{\n\t\t\t\"Type\": \"String\",\n\t\t\t\"Name\": \"appExecutableName\",\n\t\t\t\"Value\": \"dotnet\"\n\t\t},\n\t\t{\n\t\t\t\"Type\": \"List`1<String>\",\n\t\t\t\"Name\": \"parameters\",\n\t\t\t\"Value\": [\"add\", \"package\", \"%item%\"]\n\t\t},\n\t\t{\n\t\t\t\"Type\": \"String\",\n\t\t\t\"Name\": \"pathToWorkingDirInTerminal\",\n\t\t\t\"Value\": \"modules/MyModule.%moduleName%/\"\n\t\t}\n\t],\n\t\"ReturnValues\": null\n}\n```"
+    "RawResponse": "```json\n{\n\t\"FunctionName\": \"RunTerminal\",\n\t\"Parameters\": [\n\t\t{\n\t\t\t\"Type\": \"String\",\n\t\t\t\"Name\": \"appExecutableName\",\n\t\t\t\"Value\": \"dotnet\"\n\t\t},\n\t\t{\n\t\t\t\"Type\": \"List`1<String>\",\n\t\t\t\"Name\": \"parameters\",\n\t\t\t\"Value\": [\"add\", \"package\", \"%item%\"]\n\t\t},\n\t\t{\n\t\t\t\"Type\": \"String\",\n\t\t\t\"Name\": \"pathToWorkingDirInTerminal\",\n\t\t\t\"Value\": \"/.generated_modules/%namespace%.%moduleName%/src\"\n\t\t},\n\t\t{\n\t\t\t\"Type\": \"String\",\n\t\t\t\"Name\": \"dataOutputVariable\",\n\t\t\t\"Value\": null\n\t\t},\n\t\t{\n\t\t\t\"Type\": \"String\",\n\t\t\t\"Name\": \"errorDebugInfoOutputVariable\",\n\t\t\t\"Value\": null\n\t\t},\n\t\t{\n\t\t\t\"Type\": \"String\",\n\t\t\t\"Name\": \"dataStreamDelta\",\n\t\t\t\"Value\": null\n\t\t},\n\t\t{\n\t\t\t\"Type\": \"String\",\n\t\t\t\"Name\": \"debugErrorStreamDelta\",\n\t\t\t\"Value\": null\n\t\t}\n\t],\n\t\"ReturnValues\": null\n}\n```"
   },
   "RunOnBuild": false
 }

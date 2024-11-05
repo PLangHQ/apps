@@ -71,7 +71,8 @@
       },
       "EventBinding": null,
       "IsEvent": false,
-      "Hash": "b46cf1fcc8bbc20de48af7bf871f9ef7623e54b0d03a85031b3533f700982788"
+      "Hash": "4daf3974df2e097d82774eb34fc3ad92adf7d8668f1dec5b4f36c68539439bcc",
+      "BuilderVersion": null
     },
     {
       "Text": "get content of all '00. Goal.pr' files, in ../, include subfolder, write into %goalFiles%",
@@ -141,7 +142,8 @@
       },
       "EventBinding": null,
       "IsEvent": false,
-      "Hash": "ad7bc8bf8c398d1fbf34d29962e3cb3c1c04fd4bbedc5a45942680a5c7bcc8a0"
+      "Hash": "22d73a744a23fdc8b55512bdb40202cf62c7ade40401e6da59fa67f2384f45c0",
+      "BuilderVersion": null
     },
     {
       "Text": "go throug %goalFiles%, call !CheckGoal item=%goal%",
@@ -211,7 +213,8 @@
       },
       "EventBinding": null,
       "IsEvent": false,
-      "Hash": "40e2f33880ab6d822c38640e068f68f2e76bfbaedd5603a4d62d5c6d1773564d"
+      "Hash": "6f4c6a26c9f6a9d6b66c6a3f73ae7eee60fc58308eb1755eb4fa6bfafd2d044c",
+      "BuilderVersion": null
     },
     {
       "Text": "if %missingGoals% is not empty then, call ShowMissingGoals, else ShowAllValid",
@@ -281,7 +284,8 @@
       },
       "EventBinding": null,
       "IsEvent": false,
-      "Hash": "1fc5911515717bdb89a7ab4f2b10f93a1df3066c47942d1bcf885976413d144a"
+      "Hash": "7f1cc2e1efbb4556933f85056c0f370e78f9162041f191b91af898cde32527b9",
+      "BuilderVersion": null
     }
   ],
   "SubGoals": [
@@ -298,11 +302,11 @@
   "RelativeGoalFolderPath": "\\events",
   "RelativePrPath": ".build\\events\\CheckGoals\\00. Goal.pr",
   "RelativePrFolderPath": ".build\\events\\CheckGoals",
-  "BuilderVersion": "0.1.15.2",
+  "BuilderVersion": "1.0.0.0",
   "GoalInfo": null,
   "Injections": [],
   "Signature": null,
-  "Hash": "e845e021c90e92934c8aeb294395c009efb63386fad7987d5c993cceb5ee223b",
+  "Hash": "3e982cf8e0f7c08b4e7801d60e143f5a50783283d7d821c75d6f0903ef392fd9",
   "IncomingVariablesRequired": [
     "\\%goal\\%",
     "\\%missingGoals\\%"

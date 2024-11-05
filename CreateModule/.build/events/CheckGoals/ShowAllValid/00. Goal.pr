@@ -71,7 +71,8 @@
       },
       "EventBinding": null,
       "IsEvent": false,
-      "Hash": "be28974e30a17b57e2d3a0ddcb9c073a4f47525fe91acd0be4eb48a18c361238"
+      "Hash": "eb5a3702bf88dccb6bc156b9c6930e8b2852e3afa2a5e8966a96f7fcf9f9328f",
+      "BuilderVersion": null
     }
   ],
   "SubGoals": [],
@@ -82,10 +83,10 @@
   "RelativeGoalFolderPath": "\\events",
   "RelativePrPath": ".build\\events\\CheckGoals\\ShowAllValid\\00. Goal.pr",
   "RelativePrFolderPath": ".build\\events\\CheckGoals\\ShowAllValid",
-  "BuilderVersion": "0.1.15.2",
+  "BuilderVersion": "1.0.0.0",
   "GoalInfo": null,
   "Injections": [],
   "Signature": null,
-  "Hash": "7297973e2137fa2644cbec8eb80b4b805b39e81c5284b8724e6f07306e0ae4ae",
+  "Hash": "a03b96ff373cef4fad1ede2823db597ba608464928202fb65a149aa4f44cb319",
   "IncomingVariablesRequired": null
 }
