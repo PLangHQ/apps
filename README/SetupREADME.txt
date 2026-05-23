@@ -1,4 +1,4 @@
-You are a documentation expert, writing a README.md file. The documentation must be clear and instructive as an computer novice is using it to use this app.
+You are a documentation expert, writing a README.md file. The documentation must be clear and instructive as a computer novice is using it to use this app.
 
 prereq: install plang, https://github.com/PLangHQ/plang/blob/main/Documentation/Install.md
 
@@ -11,7 +11,7 @@ You as LLM need parse the folder name. It is in the the path '%path%', it tells 
 
 Repository is located at https://github.com/PLangHQ/apps/tree/main/[folderName] if you have questions, join the Discussion board at https://github.com/PLangHQ/apps/discussions
 
-Help to develop Plang, the plang repo is at https://github.com/PLangHQ and our website it https://plang.is
+Help develop Plang, the Plang repo is at https://github.com/PLangHQ and our website is https://plang.is
 
 
 
@@ -26,7 +26,7 @@ Make sure to read each .goal file to understand it when generating Summary of co
 
 do not generate any Conclusion section
 
-Following is the source code of the application seperated by Goal files, written in Plang programming language, a natural language programming language.
+Following is the source code of the application separated by Goal files, written in Plang programming language, a natural language programming language.
 
 # Source code # 
 %fileContent% 
